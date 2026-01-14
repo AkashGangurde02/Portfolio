@@ -13,7 +13,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: calc(100vh - 12rem);
+  min-height: calc(100vh - 16rem);
 }
 
 .hero-content {
@@ -38,8 +38,8 @@
 }
 
 .hero-description {
-  max-width: 580px;
-  font-size: 1.1rem;
+  max-width: 680px;
+  font-size: 20px;
   line-height: 1.7;
   color: #333333;
   margin-bottom: 4rem;

@@ -13,15 +13,13 @@ const Footer = () => {
   const wordsRef = useRef([])
   const [isHovered, setIsHovered] = useState(false)
   const [currentText, setCurrentText] = useState('Good design disappears. Great UX remains.')
-  const [showBadge, setShowBadge] = useState(false)
-  const [badgePosition, setBadgePosition] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from(headingRef.current, {
         scrollTrigger: {
           trigger: footerRef.current,
-          start: 'top 80%',
+          start: 'top 95%',
           toggleActions: 'play none none reverse'
         },
         y: 50,
@@ -33,7 +31,7 @@ const Footer = () => {
       gsap.from(contentRef.current.children, {
         scrollTrigger: {
           trigger: footerRef.current,
-          start: 'top 80%',
+          start: 'top 95%',
           toggleActions: 'play none none reverse'
         },
         y: 30,
@@ -118,51 +116,25 @@ const Footer = () => {
     // Handle newsletter subscription
   }
 
-  const handleMouseMove = (e) => {
-    setBadgePosition({ x: e.clientX, y: e.clientY })
-  }
-
-  const handleMouseEnter = () => {
-    setShowBadge(true)
-  }
-
-  const handleMouseLeave = () => {
-    setShowBadge(false)
-  }
-
   return (
-    <footer 
-      ref={footerRef} 
+    <footer
+      ref={footerRef}
       className="footer"
-      onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
     >
-      {showBadge && (
-        <div 
-          className="cursor-badge"
-          style={{
-            left: `${badgePosition.x}px`,
-            top: `${badgePosition.y}px`
-          }}
-        >
-          Hover on Big text
-        </div>
-      )}
       <div className="footer-container">
         {/* Contact Section */}
         <div className="footer-contact">
           <p className="footer-subtitle">Have a nice works? lets talk with me.</p>
-          <p 
-            ref={headingRef} 
+          <p
+            ref={headingRef}
             className="footer-Heading"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
             <span className="heading-text-wrapper">
               {currentText.split(' ').map((word, index) => (
-                <span 
-                  key={`${word}-${index}`} 
+                <span
+                  key={`${word}-${index}`}
                   className="word-wrapper"
                   ref={(el) => (wordsRef.current[index] = el)}
                 >
@@ -198,15 +170,15 @@ const Footer = () => {
             <div className="footer-newsletter">
               <p className="newsletter-text">Keep up with me if you can.</p>
               <form onSubmit={handleSubmit} className="newsletter-form">
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   placeholder="Enter your email"
                   className="newsletter-input"
                   required
                 />
                 <button type="submit" className="newsletter-submit">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </button>
               </form>

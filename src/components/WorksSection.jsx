@@ -17,7 +17,7 @@ const WorksSection = () => {
       gsap.from(featuredRef.current, {
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 70%',
+          start: 'top 90%',
           toggleActions: 'play none none reverse'
         },
         scale: 0.9,
@@ -29,7 +29,7 @@ const WorksSection = () => {
       gsap.from(projectsRef.current.children, {
         scrollTrigger: {
           trigger: projectsRef.current,
-          start: 'top 80%',
+          start: 'top 95%',
           toggleActions: 'play none none reverse'
         },
         y: 60,
@@ -74,22 +74,22 @@ const WorksSection = () => {
         {/* Featured Project */}
         <div ref={featuredRef} className="featured-work-card">
           <div className="work-image-wrapper featured">
-            <img 
-              src={featuredProject.image} 
+            <img
+              src={featuredProject.image}
               alt={featuredProject.title}
               className="work-image"
             />
           </div>
-          
+
           <div className="work-info">
             <div className="work-details">
               <h3 className="work-name">{featuredProject.title}</h3>
               <p className="work-category">{featuredProject.category}</p>
             </div>
-            
+
             <Link to={featuredProject.link} className="work-link">
               <svg className="arrow-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </Link>
           </div>
@@ -100,22 +100,22 @@ const WorksSection = () => {
           {projects.map((project) => (
             <div key={project.id} className="work-card">
               <div className="work-image-wrapper">
-                <img 
-                  src={project.image} 
+                <img
+                  src={project.image}
                   alt={project.title}
                   className="work-image"
                 />
               </div>
-              
+
               <div className="work-info">
                 <div className="work-details">
                   <h3 className="work-name">{project.title}</h3>
                   <p className="work-category">{project.category}</p>
                 </div>
-                
+
                 <a href={project.link} className="work-link">
                   <svg className="arrow-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </a>
               </div>
@@ -125,12 +125,12 @@ const WorksSection = () => {
 
         {/* View All Works Link */}
         <div className="view-all-wrapper">
-          <a href="#all-works" className="view-all-link">
+          <Link to="/work" className="view-all-link">
             View All Works
             <svg className="arrow-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

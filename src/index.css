@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -19,6 +21,17 @@ a {
   color: inherit;
 }
 
-button {
-  font-family: inherit;
+/* Apply Poppins to all buttons and button-like links, plus nav/social links */
+button,
+.btn,
+.button,
+.hero-cta-btn,
+.submit-btn,
+.lets-talk-btn,
+.view-all-link,
+.navbar-links a,
+.social-link,
+.footer-nav-link,
+.footer-social-link {
+  font-family: 'Poppins', sans-serif;
 }

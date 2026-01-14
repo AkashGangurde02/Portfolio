@@ -1,0 +1,46 @@
+/* Shared properties for both cursor parts */
+.cursor-dot,
+.cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    /* Centered on coordinates */
+    mix-blend-mode: difference;
+    /* Invert colors */
+    will-change: transform;
+}
+
+/* The small central dot */
+.cursor-dot {
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    /* Difference mode makes it black on white, white on black */
+}
+
+/* The trailing ring */
+.cursor-ring {
+    width: 32px;
+    height: 32px;
+    border: 1.5px solid white;
+    background-color: transparent;
+    transition: border-color 0.3s ease;
+}
+
+/* On dark background - optional tweaks if difference mode isn't enough */
+/* Usually difference mode with white color works on both. */
+/* If the user wants specific colors (like non-inverted), we can override here. */
+/* Keeping it simple with difference mode for now as per "invert blend mode" request. */
+
+/* Hide on touch devices */
+@media (hover: none) {
+
+    .cursor-dot,
+    .cursor-ring {
+        display: none;
+    }
+}

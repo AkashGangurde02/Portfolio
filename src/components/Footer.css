@@ -10,24 +10,6 @@
   margin: 0 auto;
 }
 
-/* Cursor Badge */
-.cursor-badge {
-  position: fixed;
-  background-color: #6b7a99;
-  color: #ffffff;
-  padding: 0.75rem 1.5rem;
-  border-radius: 50px;
-  border: 2px solid #ffffff;
-  font-size: 0.9rem;
-  font-weight: 500;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  white-space: nowrap;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition: opacity 0.2s ease;
-}
-
 /* Contact Section */
 .footer-contact {
   margin-bottom: 6rem;
@@ -266,4 +248,3 @@
     gap: 2rem;
   }
 }
-

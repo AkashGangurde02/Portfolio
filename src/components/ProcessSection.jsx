@@ -15,7 +15,7 @@ const ProcessSection = () => {
       gsap.from(titleRef.current, {
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 80%',
+          start: 'top 95%',
           toggleActions: 'play none none reverse'
         },
         y: 50,
@@ -27,7 +27,7 @@ const ProcessSection = () => {
       gsap.from(processRef.current.children, {
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 70%',
+          start: 'top 90%',
           toggleActions: 'play none none reverse'
         },
         y: 60,
@@ -68,7 +68,7 @@ const ProcessSection = () => {
     <section ref={sectionRef} className="process-section">
       <div className="process-container">
         <h2 ref={titleRef} className="process-title">My Design Process</h2>
-        
+
         <div ref={processRef} className="process-steps">
           {processSteps.map((step, index) => (
             <div key={index} className="process-step">
@@ -78,7 +78,7 @@ const ProcessSection = () => {
               {index < processSteps.length - 1 && (
                 <div className="step-arrow">
                   <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                    <path d="M15 10L25 20L15 30" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M15 10L25 20L15 30" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
               )}

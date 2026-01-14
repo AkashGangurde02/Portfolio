@@ -21,13 +21,13 @@ const Navbar = () => {
         opacity: 0,
         duration: 0.6
       })
-      .from(linksRef.current?.children || [], {
-        y: -20,
-        opacity: 0,
-        duration: 0.5,
-        stagger: 0.1
-      }, '-=0.4')
-      
+        .from(linksRef.current?.children || [], {
+          y: -20,
+          opacity: 0,
+          duration: 0.5,
+          stagger: 0.1
+        }, '-=0.4')
+
       if (btnRef.current) {
         tl.from(btnRef.current, {
           x: 30,
@@ -53,19 +53,19 @@ const Navbar = () => {
         <Link ref={logoRef} to="/" className="navbar-logo">
           Akash <span className="logo-year">2026</span>
         </Link>
-        
+
         <ul ref={linksRef} className="navbar-links">
           <li><Link to="/">Home</Link></li>
-          <li><Link to="/#work">Work</Link></li>
+          <li><Link to="/work">Work</Link></li>
           <li><Link to="/about">About</Link></li>
           <li><Link to="/blog">Blog</Link></li>
         </ul>
-        
+
         {!isContactPage && (
           <Link ref={btnRef} to="/contact" className="lets-talk-btn">
             Let's Talk
             <svg className="arrow-icon" width="16" height="16" viewBox="0 0 20 20" fill="none">
-              <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </Link>
         )}
