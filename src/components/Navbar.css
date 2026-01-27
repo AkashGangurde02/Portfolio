@@ -92,6 +92,15 @@
   .navbar-links {
     display: none;
   }
+
+  .navbar {
+    padding: 1rem 1.5rem;
+  }
+
+  .lets-talk-btn {
+    padding: 0.65rem 1.5rem;
+    font-size: 0.85rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -100,11 +109,31 @@
   }
 
   .navbar-logo {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
 
   .lets-talk-btn {
-    padding: 0.6rem 1.3rem;
+    padding: 0.6rem 1.25rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.95rem 1.25rem;
+  }
+
+  .navbar-logo {
     font-size: 0.85rem;
+  }
+
+  .lets-talk-btn {
+    padding: 0.55rem 1.1rem;
+    font-size: 0.75rem;
+  }
+
+  .arrow-icon {
+    width: 14px;
+    height: 14px;
   }
 }

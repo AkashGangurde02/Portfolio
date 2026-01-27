@@ -45,8 +45,8 @@ const WorksSection = () => {
 
   const featuredProject = {
     id: 1,
-    title: 'Estatery',
-    category: 'UI/UX',
+    title: 'Improving Contact Form Usability',
+    category: 'UX/UI Redesign Case Study',
     image: contactFormImage,
     link: '/case-study/contact-form'
   }

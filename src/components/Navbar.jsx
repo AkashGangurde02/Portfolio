@@ -58,17 +58,15 @@ const Navbar = () => {
           <li><Link to="/">Home</Link></li>
           <li><Link to="/work">Work</Link></li>
           <li><Link to="/about">About</Link></li>
-          <li><Link to="/blog">Blog</Link></li>
+          {/* <li><Link to="/blog">Blog</Link></li> */}
         </ul>
 
-        {!isContactPage && (
-          <Link ref={btnRef} to="/contact" className="lets-talk-btn">
-            Let's Talk
-            <svg className="arrow-icon" width="16" height="16" viewBox="0 0 20 20" fill="none">
-              <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </Link>
-        )}
+        <Link ref={btnRef} to="/contact" className="lets-talk-btn">
+          Let's Talk
+          <svg className="arrow-icon" width="16" height="16" viewBox="0 0 20 20" fill="none">
+            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </Link>
       </div>
     </nav>
   )
