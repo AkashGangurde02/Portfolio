@@ -93,20 +93,37 @@ const About = () => {
                 </svg>
               </Link>
             </div>
-          </div>
-
-          {/* Experience Section */}
+          </div>          {/* Experience Section */}
           <div ref={experienceRef} className="experience-section">
             <h2 className="section-title">My past work experience</h2>
             <div className="experience-list">
               {experiences.map((exp, index) => (
-                <div key={index} className="experience-item">
-                  <div className="experience-info">
-                    <h3 className="experience-title">{exp.title}</h3>
-                    <p className="experience-company">{exp.company}</p>
+                exp.title === 'Software Team Member' ? (
+                  <Link 
+                    key={index} 
+                    to="/experience/robotics" 
+                    className="experience-item experience-item-clickable"
+                  >
+                    <div className="experience-info">
+                      <h3 className="experience-title">{exp.title}</h3>
+                      <p className="experience-company">{exp.company}</p>
+                    </div>
+                    <div className="experience-right">
+                      <span className="experience-period">{exp.period}</span>
+                      <svg className="experience-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
+                  </Link>
+                ) : (
+                  <div key={index} className="experience-item">
+                    <div className="experience-info">
+                      <h3 className="experience-title">{exp.title}</h3>
+                      <p className="experience-company">{exp.company}</p>
+                    </div>
+                    <span className="experience-period">{exp.period}</span>
                   </div>
-                  <span className="experience-period">{exp.period}</span>
-                </div>
+                )
               ))}
             </div>
           </div>

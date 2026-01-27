@@ -348,3 +348,44 @@
     font-size: 1.5rem;
   }
 }
+/* Clickable Experience Item */
+.experience-item-clickable {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.experience-item-clickable:hover {
+  background-color: #f9f9f9;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+
+.experience-item-clickable .experience-title {
+  transition: color 0.3s ease;
+}
+
+.experience-item-clickable:hover .experience-title {
+  color: #333333;
+}
+
+.experience-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.experience-arrow {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+}
+
+.experience-item-clickable:hover .experience-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}

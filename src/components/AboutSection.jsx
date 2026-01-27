@@ -67,7 +67,7 @@ const AboutSection = () => {
             in the digital realm and distinguishes itself from the rivals.
           </p>
 
-          <Link to="/about" className="about-link">
+          <Link to="/about" className="about-secondary-btn" style={{ opacity: 1 }}>
             Know More
             <svg className="arrow-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />

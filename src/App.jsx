@@ -6,15 +6,18 @@ import Work from './pages/Work'
 // import Blog from './pages/Blog'
 import Contact from './pages/Contact'
 import CaseStudyContactForm from './pages/CaseStudyContactForm'
+import ExperienceRobotics from './pages/ExperienceRobotics'
 import Footer from './components/Footer'
 import SmoothScroll from './components/SmoothScroll'
 import CursorFollower from './components/CursorFollower'
+import ScrollToTop from './components/ScrollToTop'
 // import IntroOverlay from './components/IntroOverlay'
 import './App.css'
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       {/* <IntroOverlay /> */}
       <CursorFollower />
       <SmoothScroll>
@@ -27,6 +30,7 @@ function App() {
             {/* <Route path="/blog" element={<Blog />} /> */}
             <Route path="/contact" element={<Contact />} />
             <Route path="/case-study/contact-form" element={<CaseStudyContactForm />} />
+            <Route path="/experience/robotics" element={<ExperienceRobotics />} />
           </Routes>
           <Footer />
         </div>

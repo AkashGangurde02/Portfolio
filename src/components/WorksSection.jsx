@@ -72,7 +72,7 @@ const WorksSection = () => {
     <section ref={sectionRef} id="work" className="works-section">
       <div className="works-container">
         {/* Featured Project */}
-        <div ref={featuredRef} className="featured-work-card">
+        <Link to={featuredProject.link} ref={featuredRef} className="featured-work-card">
           <div className="work-image-wrapper featured">
             <img
               src={featuredProject.image}
@@ -87,18 +87,18 @@ const WorksSection = () => {
               <p className="work-category">{featuredProject.category}</p>
             </div>
 
-            <Link to={featuredProject.link} className="work-link">
+            <div className="work-link">
               <svg className="arrow-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-            </Link>
+            </div>
           </div>
-        </div>
+        </Link>
 
         {/* Regular Projects Grid */}
         <div ref={projectsRef} className="works-grid">
           {projects.map((project) => (
-            <div key={project.id} className="work-card">
+            <Link to={project.link} key={project.id} className="work-card">
               <div className="work-image-wrapper">
                 <img
                   src={project.image}
@@ -113,13 +113,13 @@ const WorksSection = () => {
                   <p className="work-category">{project.category}</p>
                 </div>
 
-                <a href={project.link} className="work-link">
+                <div className="work-link">
                   <svg className="arrow-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
-                </a>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

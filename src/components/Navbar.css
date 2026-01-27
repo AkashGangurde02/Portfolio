@@ -20,14 +20,14 @@
 .navbar-logo {
   font-size: 1rem;
   font-weight: 600;
-  color: #000000;
+  color: #000000 !important;
   cursor: pointer;
   text-decoration: none;
 }
 
 .logo-year {
   font-weight: 400;
-  color: #000000;
+  color: #000000 !important;
 }
 
 .navbar-links {
@@ -46,7 +46,7 @@
 }
 
 .navbar-links a {
-  color: #000000;
+  color: #000000 !important;
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 400;
@@ -61,21 +61,26 @@
 .lets-talk-btn {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.7rem 1.75rem;
-  border: 1px solid #000000;
+  gap: 0.75rem;
+  padding: 14px 28px;
+  border: 2px solid #000000;
   border-radius: 50px;
   background-color: transparent;
-  color: #000000;
-  font-size: 0.9rem;
-  font-weight: 400;
+  color: #000000 !important;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .lets-talk-btn:hover {
   background-color: #000000;
   color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .arrow-icon {
@@ -98,7 +103,7 @@
   }
 
   .lets-talk-btn {
-    padding: 0.65rem 1.5rem;
+    padding: 12px 24px;
     font-size: 0.85rem;
   }
 }
@@ -113,7 +118,7 @@
   }
 
   .lets-talk-btn {
-    padding: 0.6rem 1.25rem;
+    padding: 12px 24px;
     font-size: 0.8rem;
   }
 }
@@ -128,7 +133,7 @@
   }
 
   .lets-talk-btn {
-    padding: 0.55rem 1.1rem;
+    padding: 10px 20px;
     font-size: 0.75rem;
   }
 

@@ -61,7 +61,7 @@ const Navbar = () => {
           {/* <li><Link to="/blog">Blog</Link></li> */}
         </ul>
 
-        <Link ref={btnRef} to="/contact" className="lets-talk-btn">
+        <Link to="/contact" className="lets-talk-btn" style={{ opacity: 1 }}>
           Let's Talk
           <svg className="arrow-icon" width="16" height="16" viewBox="0 0 20 20" fill="none">
             <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
