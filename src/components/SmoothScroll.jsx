@@ -28,6 +28,11 @@ const SmoothScroll = ({ children }) => {
             }
 
             const handleWheel = (e) => {
+                // Allow browser zoom when Ctrl or Cmd is pressed
+                if (e.ctrlKey || e.metaKey) {
+                    return
+                }
+
                 e.preventDefault()
                 targetScrollPos += e.deltaY * wheelMultiplier
 

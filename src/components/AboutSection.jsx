@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './AboutSection.css'
-import aboutProfile from '../images/about-image.jpg'
+import aboutProfile from '../images/profile/about-image.jpg'
 
 gsap.registerPlugin(ScrollTrigger)
 

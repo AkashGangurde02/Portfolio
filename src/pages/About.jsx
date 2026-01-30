@@ -2,13 +2,14 @@ import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import './About.css'
-import aboutProfile from '../images/about-image.jpg'
+import aboutProfile from '../images/profile/about-image.jpg'
 
 const About = () => {
   const heroRef = useRef(null)
   const titleRef = useRef(null)
   const topSectionRef = useRef(null)
   const experienceRef = useRef(null)
+  const toolsRef = useRef(null)
   const partnersRef = useRef(null)
   const awardsRef = useRef(null)
 
@@ -34,7 +35,7 @@ const About = () => {
           duration: 0.8,
           stagger: 0.15
         }, '-=0.5')
-        .fromTo([experienceRef.current, partnersRef.current, awardsRef.current], {
+        .fromTo([experienceRef.current, toolsRef.current, partnersRef.current, awardsRef.current], {
           y: 60,
           opacity: 0
         }, {
@@ -54,11 +55,37 @@ const About = () => {
     { title: 'Software Team Member', company: 'VIIT Robotics Club', period: '2023 – 2024' }
   ]
 
+  const toolsCategories = [
+    {
+      category: 'Design Inspiration',
+      tools: [
+        { name: 'Dribbble', description: 'A space to track evolving UI trends and discover fresh interface styles that influence visual direction.' },
+        { name: 'Behance', description: 'A reference library for studying complete design case studies and strong presentation storytelling.' },
+        { name: 'Mobbin', description: 'A practical resource for analyzing real product UX flows and proven interface patterns.' },
+        { name: 'Awwwards', description: 'A showcase of experimental web experiences that inspires bold interaction and motion design.' },
+        { name: 'Pinterest', description: 'A moodboard hub for shaping color systems, typography direction, and brand aesthetics.' }
+      ]
+    },
+    {
+      category: 'AI & Productivity',
+      tools: [
+        { name: 'UX Pilot', description: 'An AI-powered workspace for accelerating wireframes, ideation, and rapid UX exploration.' },
+        { name: 'ChatGPT', description: 'A creative partner for UX writing, structured thinking, and refining product concepts.' },
+        { name: 'Google Gemini', description: 'A research companion that supports brainstorming and expands product perspectives.' }
+      ]
+    },
+    {
+      category: 'Learning & Research',
+      tools: [
+        { name: 'Medium', description: 'A continuous stream of UX insights that keeps design decisions aligned with industry thinking.' }
+      ]
+    }
+  ]
+
   const partners = [
-    { name: 'pipefy', category: 'UI/UX & Branding', year: '2022' },
-    { name: 'django', category: 'UI/UX & Branding', year: '2022' },
-    { name: 'rackspace', category: 'UI/UX & Branding', year: '2022' },
-    { name: 'portal', category: 'UI/UX & Branding', year: '2022' }
+    { name: 'Somvanshi Technologies Pvt Ltd', category: 'UI/UX & Branding', year: '2025' },
+    { name: 'Grubwala', category: 'UI/UX & Branding', year: '2025' },
+    { name: 'Hemphop Store', category: 'UI/UX & Branding', year: '2024' }
   ]
 
   const awards = [
@@ -93,15 +120,51 @@ const About = () => {
                 </svg>
               </Link>
             </div>
-          </div>          {/* Experience Section */}
+          </div>
+
+          {/* Experience Section */}
           <div ref={experienceRef} className="experience-section">
             <h2 className="section-title">My past work experience</h2>
             <div className="experience-list">
               {experiences.map((exp, index) => (
                 exp.title === 'Software Team Member' ? (
-                  <Link 
-                    key={index} 
-                    to="/experience/robotics" 
+                  <Link
+                    key={index}
+                    to="/experience/robotics"
+                    className="experience-item experience-item-clickable"
+                  >
+                    <div className="experience-info">
+                      <h3 className="experience-title">{exp.title}</h3>
+                      <p className="experience-company">{exp.company}</p>
+                    </div>
+                    <div className="experience-right">
+                      <span className="experience-period">{exp.period}</span>
+                      <svg className="experience-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
+                  </Link>
+                ) : exp.title === 'Non-Technical Head (Design & Coordination)' ? (
+                  <Link
+                    key={index}
+                    to="/experience/non-technical"
+                    className="experience-item experience-item-clickable"
+                  >
+                    <div className="experience-info">
+                      <h3 className="experience-title">{exp.title}</h3>
+                      <p className="experience-company">{exp.company}</p>
+                    </div>
+                    <div className="experience-right">
+                      <span className="experience-period">{exp.period}</span>
+                      <svg className="experience-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
+                  </Link>
+                ) : exp.title === 'UX/UI Designer Intern' ? (
+                  <Link
+                    key={index}
+                    to="/experience/somvanshi"
                     className="experience-item experience-item-clickable"
                   >
                     <div className="experience-info">
@@ -124,6 +187,26 @@ const About = () => {
                     <span className="experience-period">{exp.period}</span>
                   </div>
                 )
+              ))}
+            </div>
+          </div>
+
+          {/* Tools Section */}
+          <div ref={toolsRef} className="tools-section">
+            <h2 className="section-title">Tools I use to craft experiences</h2>
+            <div className="tools-categories">
+              {toolsCategories.map((category, catIndex) => (
+                <div key={catIndex} className="tools-category">
+                  <h3 className="tools-category-title">{category.category}</h3>
+                  <div className="tools-grid">
+                    {category.tools.map((tool, toolIndex) => (
+                      <div key={toolIndex} className="tool-card">
+                        <h4 className="tool-name">{tool.name}</h4>
+                        <p className="tool-description">{tool.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
           </div>

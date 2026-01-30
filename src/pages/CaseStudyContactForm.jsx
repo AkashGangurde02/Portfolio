@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import './CaseStudyContactForm.css'
-import contactFormImage from '../images/Contact-Redesign.jpg'
-import beforeImage from '../images/CaseStudy_1_Before.jpg'
-import wireframeImage from '../images/CaseStudy_1_Wireframe.jpg'
-import afterImage from '../images/CaseStudy_1_After.jpg'
+import contactFormImage from '../images/case-studies/case-study-1/contact-redesign.jpg'
+import beforeImage from '../images/case-studies/case-study-1/before.jpg'
+import wireframeImage from '../images/case-studies/case-study-1/wireframe.jpg'
+import afterImage from '../images/case-studies/case-study-1/after.jpg'
 
 const CaseStudyContactForm = () => {
   const heroRef = useRef(null)

@@ -6,7 +6,6 @@ import './Footer.css'
 gsap.registerPlugin(ScrollTrigger)
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear()
   const footerRef = useRef(null)
   const headingRef = useRef(null)
   const contentRef = useRef(null)
@@ -48,7 +47,6 @@ const Footer = () => {
   // Word slide-up animation on hover
   useEffect(() => {
     if (isHovered) {
-      // Animate words sliding up
       gsap.to(wordsRef.current, {
         y: -100,
         opacity: 0,
@@ -57,11 +55,8 @@ const Footer = () => {
         ease: 'power2.in',
         onComplete: () => {
           setCurrentText('Yes, even this text was intentional 😄')
-          // Wait for React to re-render with new text
           requestAnimationFrame(() => {
-            // Reset position for new text
             gsap.set(wordsRef.current, { y: 100, opacity: 0 })
-            // Animate new text sliding up word by word
             gsap.to(wordsRef.current, {
               y: 0,
               opacity: 1,
@@ -73,7 +68,6 @@ const Footer = () => {
         }
       })
     } else {
-      // Animate back to original text
       gsap.to(wordsRef.current, {
         y: -100,
         opacity: 0,
@@ -98,36 +92,21 @@ const Footer = () => {
   }, [isHovered])
 
   const navLinks = [
-    { name: 'HOME', href: '#home' },
-    { name: 'ABOUT ME', href: '#about' },
-    { name: 'WORKS', href: '#works' },
-    { name: 'INSIGHTS', href: '#insights' }
+    { name: 'Home', href: '#home' },
+    { name: 'About me', href: '#about' },
+    { name: 'Works', href: '#works' },
+    { name: 'Insights', href: '#insights' }
   ]
-
-  const socialLinks = [
-    { name: 'Twitter', icon: '𝕏', href: '#' },
-    { name: 'YouTube', icon: '▶', href: '#' },
-    { name: 'TikTok', icon: '♪', href: '#' },
-    { name: 'Instagram', icon: '⬡', href: '#' }
-  ]
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    // Handle newsletter subscription
-  }
 
   return (
-    <footer
-      ref={footerRef}
-      className="footer"
-    >
+    <footer ref={footerRef} className="footer">
       <div className="footer-container">
-        {/* Contact Section */}
-        <div className="footer-contact">
+        {/* Tagline Section */}
+        <div className="footer-tagline">
           <p className="footer-subtitle">Have a nice works? lets talk with me.</p>
-          <p
+          <h2
             ref={headingRef}
-            className="footer-Heading"
+            className="footer-heading"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
@@ -143,53 +122,44 @@ const Footer = () => {
                 </span>
               ))}
             </span>
-          </p>
+          </h2>
         </div>
 
-        {/* Navigation and Newsletter */}
-        <div ref={contentRef} className="footer-content">
-          <div className="footer-left">
-            <nav className="footer-nav">
-              {navLinks.map((link) => (
-                <a key={link.name} href={link.href} className="footer-nav-link">
-                  {link.name}
-                </a>
-              ))}
-            </nav>
+        {/* Main Footer Content */}
+        <div ref={contentRef} className="footer-main">
+          {/* Left: Avatar and Name */}
+          <div className="footer-brand">
+            <div className="footer-avatar">
+              <div className="avatar-circle"></div>
+            </div>
+            <p className="footer-name">Akash</p>
           </div>
 
-          <div className="footer-right">
-            <div className="footer-social">
-              {socialLinks.map((link) => (
-                <a key={link.name} href={link.href} className="footer-social-link" aria-label={link.name}>
-                  {link.icon}
-                </a>
-              ))}
-            </div>
+          {/* Center: Navigation Links */}
+          <nav className="footer-nav">
+            {navLinks.map((link) => (
+              <a key={link.name} href={link.href} className="footer-nav-link">
+                {link.name}
+              </a>
+            ))}
+          </nav>
 
-            <div className="footer-newsletter">
-              <p className="newsletter-text">Keep up with me if you can.</p>
-              <form onSubmit={handleSubmit} className="newsletter-form">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="newsletter-input"
-                  required
-                />
-                <button type="submit" className="newsletter-submit">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </button>
-              </form>
+          {/* Right: Testimonial Card */}
+          <div className="footer-testimonial">
+            <div className="testimonial-card">
+              <div className="testimonial-header">
+                <div className="testimonial-avatar"></div>
+                <span className="testimonial-name">Akash</span>
+              </div>
+              <p className="testimonial-text">Trust the people who trusted me for my work</p>
             </div>
           </div>
         </div>
 
-        {/* Footer Credits */}
+        {/* Footer Bottom */}
         <div className="footer-bottom">
           <p className="footer-credits">
-            © 2026 Akash Gangurde. I Designed best so users don't have to think
+            © 2025 Akash Gangurde. | Designed best so users don't have to think.
           </p>
         </div>
       </div>

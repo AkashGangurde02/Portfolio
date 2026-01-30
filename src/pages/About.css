@@ -135,6 +135,68 @@
   white-space: nowrap;
 }
 
+/* Tools Section */
+.tools-section {
+  margin-bottom: 6rem;
+}
+
+.tools-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.tools-category {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.tools-category-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.tool-card {
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 16px;
+  border: 1px solid #e8e8e8;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.tool-card:hover {
+  background-color: #ffffff;
+  border-color: #000000;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.tool-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 0.75rem;
+}
+
+.tool-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #666666;
+  margin: 0;
+}
+
+
 /* Partners Section */
 .partners-section {
   margin-bottom: 6rem;
@@ -156,7 +218,6 @@
   font-weight: 600;
   color: #b8b8b8;
   margin-bottom: 1rem;
-  text-transform: lowercase;
 }
 
 .partner-category {
@@ -170,6 +231,8 @@
   font-size: 0.9rem;
   color: #666666;
   margin: 0;
+  display: none;
+  /* Year hidden */
 }
 
 /* Awards Section */
@@ -337,6 +400,10 @@
   .awards-featured {
     padding: 2rem;
   }
+
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 480px) {
@@ -347,7 +414,12 @@
   .section-title {
     font-size: 1.5rem;
   }
+
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
 }
+
 /* Clickable Experience Item */
 .experience-item-clickable {
   text-decoration: none;

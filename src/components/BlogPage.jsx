@@ -1,5 +1,5 @@
 import './BlogPage.css'
-import blogHeroImage from '../images/about-image.jpg'
+import blogHeroImage from '../images/profile/about-image.jpg'
 
 const BlogPage = () => {
   return (
@@ -17,12 +17,12 @@ const BlogPage = () => {
           <section className="blog-section">
             <h2 className="section-heading">Introduction</h2>
             <p>
-              Every day, users interact with dozens of digital products — food delivery apps, banking 
-              platforms, learning portals, dashboards, and websites. Yet, only a few of these experiences 
+              Every day, users interact with dozens of digital products — food delivery apps, banking
+              platforms, learning portals, dashboards, and websites. Yet, only a few of these experiences
               feel effortless.
             </p>
             <p>
-              Good UX design isn't about aesthetics alone — it's about understanding human behavior. 
+              Good UX design isn't about aesthetics alone — it's about understanding human behavior.
               This blog explores why UX/UI design should always prioritize people over pixels.
             </p>
             <div className="blog-image-placeholder">
@@ -33,7 +33,7 @@ const BlogPage = () => {
           <section className="blog-section">
             <h2 className="section-heading">UX vs UI: Clearing the Confusion</h2>
             <p>
-              UI focuses on visual elements such as colors, typography, and layouts. UX focuses on how 
+              UI focuses on visual elements such as colors, typography, and layouts. UX focuses on how
               the product works — navigation, flow, usability, and emotions.
             </p>
             <p>A product can look beautiful and still fail if the experience is confusing.</p>
@@ -48,7 +48,7 @@ const BlogPage = () => {
             <h2 className="section-heading golden-rule">The Golden Rule of UX Design</h2>
             <p>Design is not what it looks like. Design is how it works.</p>
             <p>
-              Great UX starts by understanding who the user is, what problem they are trying to solve, 
+              Great UX starts by understanding who the user is, what problem they are trying to solve,
               and in what context they are using the product.
             </p>
           </section>
@@ -56,7 +56,7 @@ const BlogPage = () => {
           <section className="blog-section">
             <h2 className="section-heading">Understanding the User Before Designing</h2>
             <p>
-              Designers don't always need complex research. Studying reviews, competitors, and user 
+              Designers don't always need complex research. Studying reviews, competitors, and user
               behavior can reveal powerful insights. Empathy is the most important UX tool.
             </p>
             <div className="blog-image-placeholder">
@@ -106,7 +106,7 @@ const BlogPage = () => {
           <section className="blog-section">
             <h2 className="section-heading">Why UX Matters for Business</h2>
             <p>
-              Good UX increases retention, trust, and conversions. It directly impacts business growth 
+              Good UX increases retention, trust, and conversions. It directly impacts business growth
               and customer satisfaction.
             </p>
           </section>
@@ -114,7 +114,7 @@ const BlogPage = () => {
           <section className="blog-section">
             <h2 className="section-heading">Accessibility: Designing for Everyone</h2>
             <p>
-              Inclusive design ensures readability, clarity, and usability for all users. Accessibility is not 
+              Inclusive design ensures readability, clarity, and usability for all users. Accessibility is not
               optional — it's essential.
             </p>
             <div className="blog-image-placeholder">
@@ -127,7 +127,7 @@ const BlogPage = () => {
           <section className="blog-section">
             <h2 className="section-heading">Final Thoughts</h2>
             <p>
-              UX/UI design is about empathy, clarity, and problem-solving. We don't design screens — we 
+              UX/UI design is about empathy, clarity, and problem-solving. We don't design screens — we
               design experiences people rely on every day.
             </p>
           </section>
@@ -137,7 +137,7 @@ const BlogPage = () => {
             <div className="author-content">
               <img src={blogHeroImage} alt="Akash Gangurde" className="author-image" />
               <p>
-                Akash Gangurde is a Junior UX/UI Designer passionate about building meaningful digital 
+                Akash Gangurde is a Junior UX/UI Designer passionate about building meaningful digital
                 experiences through user-centered design.
               </p>
             </div>

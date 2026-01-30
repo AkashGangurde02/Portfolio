@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './Work.css'
-import contactFormImage from '../images/Contact-Redesign.jpg'
+import contactFormImage from '../images/case-studies/case-study-1/contact-redesign.jpg'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -136,6 +136,16 @@ const Work = () => {
                 </div>
             </section>
 
+            <section className="work-footer-nav">
+                <div className="work-container">
+                    <div className="footer-nav-links">
+                        <Link to="/about" className="footer-nav-link">ABOUT ME</Link>
+                        <Link to="/work" className="footer-nav-link active">WORKS</Link>
+                        <Link to="/contact" className="footer-nav-link">SERVICES</Link>
+                    </div>
+                </div>
+            </section>
+
             <section ref={ctaRef} className="work-cta">
                 <div className="work-container">
                     <h2 className="work-cta-title">
@@ -154,3 +164,4 @@ const Work = () => {
 }
 
 export default Work
+

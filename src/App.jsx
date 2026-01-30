@@ -7,6 +7,8 @@ import Work from './pages/Work'
 import Contact from './pages/Contact'
 import CaseStudyContactForm from './pages/CaseStudyContactForm'
 import ExperienceRobotics from './pages/ExperienceRobotics'
+import ExperienceNonTechnical from './pages/ExperienceNonTechnical'
+import ExperienceSomvanshi from './pages/ExperienceSomvanshi'
 import Footer from './components/Footer'
 import SmoothScroll from './components/SmoothScroll'
 import CursorFollower from './components/CursorFollower'
@@ -31,6 +33,8 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/case-study/contact-form" element={<CaseStudyContactForm />} />
             <Route path="/experience/robotics" element={<ExperienceRobotics />} />
+            <Route path="/experience/non-technical" element={<ExperienceNonTechnical />} />
+            <Route path="/experience/somvanshi" element={<ExperienceSomvanshi />} />
           </Routes>
           <Footer />
         </div>
