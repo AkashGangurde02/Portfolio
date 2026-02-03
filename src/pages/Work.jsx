@@ -4,6 +4,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './Work.css'
 import contactFormImage from '../images/case-studies/case-study-1/contact-redesign.jpg'
+import hempHopImage from '../images/case-studies/case-study-2/hemp-hop-cover.png'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -58,40 +59,31 @@ const Work = () => {
     const projects = [
         {
             id: 1,
-            title: 'Estatery',
-            category: 'UI/UX',
+            title: 'Improving Contact Form Usability',
+            category: 'UX/UI REDESIGN',
+            description: 'Redesigned the contact form to enhance user experience with improved field validation, clear error messaging, and a streamlined layout that increased form completion rates by 40%.',
             image: contactFormImage,
             link: '/case-study/contact-form',
-            featured: true
+            ctaText: 'View Case Study'
         },
         {
             id: 2,
-            title: 'Wepay',
-            category: 'Branding',
-            image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop',
-            link: '/case-study/wepay'
+            title: 'Improving Product Discovery & Trust',
+            category: 'E-COMMERCE UX',
+            description: "Redesigned Hemp Hop's D2C wellness platform to help users discover products effortlessly, understand their value quickly, and feel confident completing purchases without overwhelming them.",
+            image: hempHopImage,
+            link: '/dino-game',
+            ctaText: 'View Case Study'
         },
         {
             id: 3,
-            title: 'Somvanshi Technologies',
-            category: 'Website Redesign',
-            image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&h=400&fit=crop',
-            link: '/case-study/somvanshi',
-            large: true
-        },
-        {
-            id: 4,
-            title: 'Estatery',
-            category: 'UI/UX',
-            image: contactFormImage,
-            link: '/case-study/contact-form'
-        },
-        {
-            id: 5,
-            title: 'Wepay',
-            category: 'Branding',
-            image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop',
-            link: '/case-study/wepay'
+            title: 'Rebuilding a Trust-First Food Ordering Experience',
+            category: 'MOBILE APP UX',
+            description: 'End-to-end redesign of Grubwala food delivery app, transforming a functional product into a cohesive experience focused on emotional connection, trust, and reducing cognitive load.',
+            image: hempHopImage,
+            link: '/dino-game',
+            large: true,
+            ctaText: 'View Case Study'
         }
     ]
 
@@ -114,21 +106,16 @@ const Work = () => {
                             <Link
                                 key={project.id}
                                 to={project.link}
-                                className={`work-item ${project.featured ? 'featured' : ''} ${project.large ? 'large' : ''}`}
+                                className={`work-item ${project.large ? 'large' : ''}`}
                             >
+                                <div className="work-item-content">
+                                    <span className="work-item-category">{project.category}</span>
+                                    <h3 className="work-item-title">{project.title}</h3>
+                                    <p className="work-item-description">{project.description}</p>
+                                    <span className="work-item-cta">{project.ctaText}</span>
+                                </div>
                                 <div className="work-item-image">
                                     <img src={project.image} alt={project.title} />
-                                </div>
-                                <div className="work-item-info">
-                                    <div className="work-item-details">
-                                        <h3 className="work-item-title">{project.title}</h3>
-                                        <p className="work-item-category">{project.category}</p>
-                                    </div>
-                                    <div className="work-item-arrow">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                        </svg>
-                                    </div>
                                 </div>
                             </Link>
                         ))}
@@ -164,4 +151,3 @@ const Work = () => {
 }
 
 export default Work
-

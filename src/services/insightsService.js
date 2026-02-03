@@ -42,14 +42,25 @@ const FALLBACK_INSIGHTS = [
 /**
  * Fetches UX/UI design insights from Medium's RSS feed
  */
+/**
+ * Fetches UX/UI design insights from Medium's RSS feed
+ * Rotates topic every 3 days
+ */
 async function fetchMediumInsights() {
     try {
         // Using RSS2JSON API to convert RSS feed to JSON
         const topics = ['ux-design', 'ui-design', 'user-experience']
-        const randomTopic = topics[Math.floor(Math.random() * topics.length)]
+
+        // Calculate 3-day cycle index
+        const daysSinceEpoch = Math.floor(Date.now() / (1000 * 60 * 60 * 24))
+        const cycleIndex = Math.floor(daysSinceEpoch / 3)
+
+        // Select topic based on cycle
+        const topicIndex = cycleIndex % topics.length
+        const selectedTopic = topics[topicIndex]
 
         const response = await fetch(
-            `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/tag/${randomTopic}`
+            `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/tag/${selectedTopic}`
         )
 
         if (!response.ok) {
@@ -83,11 +94,13 @@ async function fetchMediumInsights() {
 
 /**
  * Fetches UX/UI design insights from Dev.to
+ * Updates content every 3 days by rotating through top 30 articles
  */
 async function fetchDevToInsights() {
     try {
+        // Fetch top 30 articles to allow for rotation
         const response = await fetch(
-            'https://dev.to/api/articles?tag=ux&top=7'
+            'https://dev.to/api/articles?tag=ux&top=30&per_page=30'
         )
 
         if (!response.ok) {
@@ -97,7 +110,25 @@ async function fetchDevToInsights() {
         const articles = await response.json()
 
         if (articles && articles.length > 0) {
-            return articles.slice(0, 4).map((article, index) => ({
+            // Calculate 3-day cycle index
+            const daysSinceEpoch = Math.floor(Date.now() / (1000 * 60 * 60 * 24))
+            const cycleIndex = Math.floor(daysSinceEpoch / 3)
+
+            // 4 articles per view
+            const articlesToShow = 4
+
+            // Calculate start index based on cycle (looping through available articles)
+            const startIndex = (cycleIndex * articlesToShow) % articles.length
+
+            let selectedArticles = articles.slice(startIndex, startIndex + articlesToShow)
+
+            // If we're at the end and don't have enough articles, wrap around to the start
+            if (selectedArticles.length < articlesToShow) {
+                const remaining = articlesToShow - selectedArticles.length
+                selectedArticles = selectedArticles.concat(articles.slice(0, remaining))
+            }
+
+            return selectedArticles.map((article, index) => ({
                 id: index + 1,
                 title: article.title,
                 description: article.description || article.title,

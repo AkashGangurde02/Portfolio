@@ -142,3 +142,9 @@
     height: 14px;
   }
 }
+.logo-image {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}

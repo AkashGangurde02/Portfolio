@@ -1,0 +1,121 @@
+.dino-game-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f7f7f7;
+    font-family: 'Inter', sans-serif;
+    padding: 2rem;
+    padding-top: 120px;
+    /* Added to clear navbar */
+}
+
+.dino-container {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+}
+
+.game-header {
+    margin-bottom: 0.5rem;
+}
+
+.game-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+    color: #333;
+}
+
+.game-subtitle {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.game-wrapper {
+    position: relative;
+    border: 2px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 0;
+    background-color: #fff;
+}
+
+.game-canvas {
+    display: block;
+    width: 100%;
+    cursor: pointer;
+}
+
+.game-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.restart-btn {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.restart-btn:hover {
+    transform: scale(1.05);
+    background: #000;
+}
+
+.score-display {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-family: monospace;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #555;
+}
+
+.game-controls-hint {
+    color: #888;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.game-controls-hint p {
+    margin: 0;
+}
+
+.back-home-link {
+    display: inline-block;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    border: none;
+    font-size: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.back-home-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    background-color: #333;
+}

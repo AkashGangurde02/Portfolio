@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
-import './ExperienceRobotics.css'
+import './ExperienceSomvanshi.css'
 
 const ExperienceSomvanshi = () => {
     const heroRef = useRef(null)
@@ -71,28 +71,31 @@ const ExperienceSomvanshi = () => {
                             </p>
                         </div>
 
-                        <div className="content-block contributions">
-                            <h2 className="content-title">🔧 Key Contributions</h2>
-                            <ul className="contributions-list">
-                                <li>Conducted UX research to inform design decisions</li>
-                                <li>Created wireframes and interactive prototypes in Figma</li>
-                                <li>Designed intuitive user interfaces for live projects</li>
-                                <li>Collaborated with developers for smooth design handoff</li>
-                                <li>Improved visual consistency through design system thinking</li>
-                                <li>Identified usability gaps and proposed practical solutions</li>
-                                <li>Participated in iterative feedback and rapid refinements</li>
-                            </ul>
-                        </div>
+                        {/* Two Column Layout: Key Contributions & Impact */}
+                        <div className="two-column-section">
+                            <div className="column left-column">
+                                <h2 className="content-title">🔧 Key Contributions</h2>
+                                <ul className="contributions-list">
+                                    <li>Conducted UX research to inform design decisions</li>
+                                    <li>Created wireframes and interactive prototypes in Figma</li>
+                                    <li>Designed intuitive user interfaces for live projects</li>
+                                    <li>Collaborated with developers for smooth design handoff</li>
+                                    <li>Improved visual consistency through design system thinking</li>
+                                    <li>Identified usability gaps and proposed practical solutions</li>
+                                    <li>Participated in iterative feedback and rapid refinements</li>
+                                </ul>
+                            </div>
 
-                        <div className="content-block highlight">
-                            <h2 className="content-title">📈 Impact</h2>
-                            <ul className="contributions-list">
-                                <li>Strengthened clarity and usability across multiple screens</li>
-                                <li>Reduced friction in user flows through structured layouts</li>
-                                <li>Contributed to faster design-to-development handoff</li>
-                                <li>Helped translate business requirements into usable interfaces</li>
-                                <li>Demonstrated proactive problem-solving during hiring process</li>
-                            </ul>
+                            <div className="column right-column">
+                                <h2 className="content-title">📈 Impact</h2>
+                                <ul className="contributions-list">
+                                    <li>Strengthened clarity and usability across multiple screens</li>
+                                    <li>Reduced friction in user flows through structured layouts</li>
+                                    <li>Contributed to faster design-to-development handoff</li>
+                                    <li>Helped translate business requirements into usable interfaces</li>
+                                    <li>Demonstrated proactive problem-solving during hiring process</li>
+                                </ul>
+                            </div>
                         </div>
 
                         <div className="content-block impact">
@@ -110,28 +113,31 @@ const ExperienceSomvanshi = () => {
                             <h2 className="content-title">Moments from the Journey</h2>
                             <div className="photo-gallery">
                                 <div className="photo-item photo-1">
-                                    <div className="photo-placeholder">Design Process</div>
+                                    <img src="/src/images/experience/somvanshi/images/Workplace_1.jpeg" alt="Design Process" />
                                 </div>
                                 <div className="photo-item photo-2">
-                                    <div className="photo-placeholder">Wireframing</div>
+                                    <img src="/src/images/experience/somvanshi/images/Workplace_3.jpeg" alt="Wireframing" />
                                 </div>
                                 <div className="photo-item photo-3">
-                                    <div className="photo-placeholder">Team Collaboration</div>
+                                    <img src="/src/images/experience/somvanshi/images/Team_2.jpeg" alt="Team Collaboration" />
                                 </div>
                                 <div className="photo-item photo-4">
-                                    <div className="photo-placeholder">UX Research</div>
+                                    <img src="/src/images/experience/somvanshi/images/Team_3.jpeg" alt="UX Research" />
                                 </div>
                                 <div className="photo-item photo-5">
-                                    <div className="photo-placeholder">Design Review</div>
+                                    <img src="/src/images/experience/somvanshi/images/Team_1.jpeg" alt="Design Review" />
                                 </div>
                                 <div className="photo-item photo-6">
-                                    <div className="photo-placeholder">Prototyping</div>
+                                    <img src="/src/images/experience/somvanshi/images/Team_4.jpeg" alt="Prototyping" />
                                 </div>
                                 <div className="photo-item photo-7">
-                                    <div className="photo-placeholder">Developer Handoff</div>
+                                    <img src="/src/images/experience/somvanshi/images/Team_5.jpeg" alt="Developer Handoff" />
                                 </div>
                                 <div className="photo-item photo-8">
-                                    <div className="photo-placeholder">Learning</div>
+                                    <img src="/src/images/experience/somvanshi/images/Workplace_2.jpeg" alt="Learning" />
+                                </div>
+                                <div className="photo-item photo-9">
+                                    <img src="/src/images/experience/somvanshi/images/Workplace_2.jpeg" alt="Workplace" />
                                 </div>
                             </div>
                         </div>
