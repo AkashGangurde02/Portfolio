@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './WorksSection.css'
 import contactFormImage from '../images/case-studies/case-study-1/contact-redesign.jpg'
 import hempHopImage from '../images/case-studies/case-study-2/hemp-hop-cover.png'
+import grubwalaImage from '../images/case-studies/case-study-3/grubwala-cover.png'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -60,7 +61,7 @@ const WorksSection = () => {
       category: 'E-COMMERCE UX',
       description: 'Redesigned Hemp Hop\'s D2C wellness platform to help users discover products effortlessly, understand their value quickly, and feel confident completing purchases without overwhelming them.',
       image: hempHopImage,
-      link: '/dino-game',
+      link: '/case-study/hemp-hop',
       ctaText: 'View Case Study'
     },
     {
@@ -68,8 +69,8 @@ const WorksSection = () => {
       title: 'Rebuilding a Trust-First Food Ordering Experience',
       category: 'MOBILE APP UX',
       description: 'End-to-end redesign of Grubwala food delivery app, transforming a functional product into a cohesive experience focused on emotional connection, trust, and reducing cognitive load.',
-      image: hempHopImage,
-      link: '/dino-game',
+      image: grubwalaImage,
+      link: '/case-study/grubwala',
       ctaText: 'View Case Study'
     },
     // {
