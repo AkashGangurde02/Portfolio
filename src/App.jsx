@@ -19,6 +19,8 @@ import ScrollToTop from './components/ScrollToTop'
 import PasswordProtectedRoute from './components/PasswordProtectedRoute'
 // import IntroOverlay from './components/IntroOverlay'
 import './App.css'
+import './mobile-enhancements.css'
+import './mobile-polish.css'
 
 function App() {
   return (

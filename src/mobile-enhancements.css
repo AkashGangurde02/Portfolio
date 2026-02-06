@@ -1,0 +1,291 @@
+/* ===========================
+   MOBILE ENHANCEMENTS
+   Additional mobile-specific improvements for better UX
+   =========================== */
+
+/* Ensure smooth scrolling on mobile */
+html {
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent text size adjustment on mobile */
+body {
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+/* Better touch targets for mobile (minimum 44x44px) */
+@media (max-width: 768px) {
+
+    button,
+    a.btn,
+    .hero-cta-btn,
+    .lets-talk-btn,
+    .submit-btn,
+    .featured-cta,
+    .work-cta {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    /* Improve tap targeting for links */
+    a {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    }
+
+    /* Prevent horizontal scroll */
+    body,
+    html {
+        overflow-x: hidden;
+        max-width: 100%;
+    }
+
+    /* Better image handling on mobile */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Ensure cards don't break layout */
+    .work-card,
+    .featured-work-card,
+    .skill-category,
+    .tool-card,
+    .testimonial-card {
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    /* Better spacing for mobile sections */
+    section {
+        scroll-margin-top: 80px;
+    }
+}
+
+/* Extra small screens (phones in portrait) */
+@media (max-width: 480px) {
+
+    /* Tighter line-height for small screens */
+    body {
+        line-height: 1.5;
+    }
+
+    /* Reduce excessive spacing on very small screens */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    /* Make sure CTAs are easily tappable */
+    .hero-cta-btn,
+    .submit-btn,
+    .work-cta-button {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 968px) and (orientation: landscape) {
+    .hero-section {
+        min-height: auto;
+        padding: 4rem 1.5rem 2rem;
+    }
+
+    .about-section,
+    .works-section,
+    .skills-section {
+        padding: 3rem 1.5rem;
+    }
+}
+
+/* Tablet-specific adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    /* Optimize for tablets */
+    .works-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .featured-work-card {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+}
+
+/* Touch-friendly hover states for mobile */
+@media (hover: none) and (pointer: coarse) {
+
+    /* Remove hover effects on touch devices */
+    .work-card:hover,
+    .featured-work-card:hover,
+    .skill-category:hover,
+    .tool-card:hover {
+        transform: none;
+    }
+
+    /* But keep active states */
+    .work-card:active,
+    .featured-work-card:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
+}
+
+/* Ensure proper font sizes on mobile */
+@media (max-width: 768px) {
+
+    /* Base font size adjustment */
+    html {
+        font-size: 16px;
+    }
+
+    /* Prevent tiny text */
+    * {
+        -webkit-text-size-adjust: none;
+        text-size-adjust: none;
+    }
+
+    /* Readable body text */
+    body,
+    p,
+    li {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    /* Clear heading hierarchy */
+    h1 {
+        font-size: clamp(1.75rem, 5vw, 2.5rem);
+    }
+
+    h2 {
+        font-size: clamp(1.5rem, 4vw, 2rem);
+    }
+
+    h3 {
+        font-size: clamp(1.25rem, 3.5vw, 1.75rem);
+    }
+}
+
+/* Mobile-specific utilities */
+@media (max-width: 768px) {
+
+    /* Hidden on mobile */
+    .hide-mobile {
+        display: none !important;
+    }
+
+    /* Show only on mobile */
+    .show-mobile {
+        display: block !important;
+    }
+
+    /* Full width on mobile */
+    .full-width-mobile {
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* Stack on mobile */
+    .stack-mobile {
+        flex-direction: column !important;
+    }
+
+    /* Center on mobile */
+    .center-mobile {
+        text-align: center !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+}
+
+/* Fix common mobile layout issues */
+@media (max-width: 768px) {
+
+    /* Prevent overflow from large margins */
+    * {
+        max-width: 100%;
+    }
+
+    /* Container improvements */
+    .container,
+    .works-container,
+    .about-container,
+    .hero-container,
+    .skills-container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    /* Grid improvements */
+    .works-grid,
+    .skills-grid,
+    .tools-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    /* Image containers */
+    .work-image-wrapper,
+    .featured-image-wrapper,
+    .about-image-wrapper {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* Smooth transitions for mobile */
+@media (max-width: 768px) {
+    * {
+        transition-duration: 0.2s !important;
+    }
+
+    /* Faster animations on mobile */
+    [class*="animate"],
+    [class*="transition"] {
+        animation-duration: 0.3s !important;
+        transition-duration: 0.2s !important;
+    }
+}
+
+/* iOS-specific fixes */
+@supports (-webkit-touch-callout: none) {
+
+    /* Fix for iOS Safari */
+    .hero-section,
+    .about-section,
+    .works-section {
+        min-height: -webkit-fill-available;
+    }
+
+    /* iOS input styling */
+    input,
+    textarea,
+    select,
+    button {
+        -webkit-appearance: none;
+        appearance: none;
+        border-radius: 0;
+    }
+}
+
+/* Android-specific fixes */
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (max-width: 768px) {
+
+    /* Better text rendering on Android */
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}

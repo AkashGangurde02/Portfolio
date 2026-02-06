@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import './HeroSection.css'
 import resumePDF from '../images/Akash_Gangurde.pdf'
+import profileImage from '../images/profile/about-image.jpg'
 
 const HeroSection = () => {
   const heroRef = useRef(null)
   const titleRef = useRef(null)
+  const imageRef = useRef(null)
   const descRef = useRef(null)
   const socialRef = useRef(null)
   const ctaRef = useRef(null)
@@ -24,6 +26,16 @@ const HeroSection = () => {
         duration: 1.2,
         delay: 0.3
       })
+        .fromTo(imageRef.current, {
+          y: 50,
+          opacity: 0,
+          scale: 0.95
+        }, {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.8
+        }, '-=0.6')
         .fromTo(descRef.current, {
           y: 50,
           opacity: 0
@@ -59,13 +71,17 @@ const HeroSection = () => {
       <div className="hero-container">
         <div className="hero-content">
           <h1 ref={titleRef} className="hero-title">
-            Designing experiences— {' '}
-            <span className="hero-title-highlight">so users don't have to think </span>
+            Designing experiences—{' '}
+            <span className="hero-title-highlight">so users don't have to think</span>
           </h1>
+
+          <div ref={imageRef} className="hero-profile-image">
+            <img src={profileImage} alt="Akash Gangurde" />
+          </div>
 
           <p ref={descRef} className="hero-description">
             I'm <strong>Akash Gangurde</strong>, a <strong>UX/UI Designer Intern</strong> at <strong>Somvanshi Technologies Pvt. Ltd.</strong>,
-            focused on designing clear, user-centered web and mobile experiences through research, usability, and thoughtful design.
+            focused on designing clear, user-centered digital experiences through research, strategy, and thoughtful design.
           </p>
         </div>
 

@@ -14,6 +14,14 @@ const AboutSection = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Check if mobile
+      const isMobile = window.innerWidth <= 768;
+
+      // Skip animations on mobile - show content immediately
+      if (isMobile) {
+        return;
+      }
+
       gsap.from(imageRef.current, {
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -58,13 +66,12 @@ const AboutSection = () => {
 
         <div ref={contentRef} className="about-content">
           <h2 className="about-title">
-            Design that sparks engagement and inspires action
+            Design that sparks{' '}
+            <span className="title-highlight">engagement and inspires action</span>
           </h2>
 
           <p className="home-about-description">
-            Concentrate on your primary objective which is expanding your business,
-            and leave it to me to ensure that your business is efficiently portrayed
-            in the digital realm and distinguishes itself from the rivals.
+            From complex user journeys to product visuals & expanding your brand, and have launched products that your business is offering. Improve existing digital assets and debug as needed from the web.
           </p>
 
           <Link to="/about" className="about-secondary-btn" style={{ opacity: 1 }}>

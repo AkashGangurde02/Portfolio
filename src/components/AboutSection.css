@@ -38,10 +38,16 @@
   color: #000000;
 }
 
+.about-title .title-highlight {
+  color: #b8b8b8;
+  font-weight: 700;
+}
+
 .home-about-description {
   font-size: 20px;
   line-height: 1.7;
-  color: #333333;
+  color: #1a1a1a;
+  /* Increased opacity from #333333 for better visibility */
   margin-bottom: 4rem;
 }
 
@@ -96,44 +102,64 @@
 
 @media (max-width: 768px) {
   .about-section {
-    padding: 4rem 1.5rem;
+    padding: 1.5rem 0;
+    /* Small top/bottom padding, no sides */
   }
 
   .about-container {
     grid-template-columns: 1fr;
     gap: 2rem;
-  }
-
-  .about-image-wrapper {
-    max-width: 100%;
-    width: 100%;
+    text-align: center;
+    padding: 0 !important;
+    /* Force no padding */
     margin: 0;
+    /* No margin */
   }
 
-  .about-image {
-    min-height: 350px;
-    border-radius: 16px;
+  /* Hide profile image on mobile (shown in hero instead) */
+  .about-image-wrapper {
+    display: none;
   }
 
   .about-content {
-    text-align: left;
+    max-width: 100%;
+    text-align: center;
+    /* Center align on mobile */
+    background-color: transparent;
+    /* Ensure no conflicting background */
+    padding: 0;
+    /* Remove all padding */
   }
 
   .about-title {
-    font-size: clamp(1.5rem, 5vw, 2rem);
-    margin-bottom: 1.25rem;
+    font-size: clamp(1.75rem, 6vw, 2.25rem);
+    margin-bottom: 1.5rem;
     line-height: 1.25;
+    color: #000000;
+    /* Ensure visible text */
+  }
+
+  /* Style the title - first part bold, second part gray */
+  .about-title {
+    display: block;
+  }
+
+  .about-title .title-highlight {
+    color: #b8b8b8;
+    /* Gray highlight */
   }
 
   .home-about-description {
-    font-size: 0.9rem;
-    line-height: 1.6;
-    margin-bottom: 1.75rem;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    color: #1a1a1a;
+    /* Ensure visible text */
   }
 
   .about-secondary-btn {
-    font-size: 0.95rem;
-    padding: 12px 24px;
+    display: none;
+    /* Hide "Know More" button on mobile */
   }
 }
 
@@ -144,11 +170,6 @@
 
   .about-container {
     gap: 1.5rem;
-  }
-
-  .about-image {
-    min-height: 300px;
-    border-radius: 14px;
   }
 
   .about-title {

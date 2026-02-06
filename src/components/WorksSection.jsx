@@ -59,7 +59,7 @@ const WorksSection = () => {
       id: 2,
       title: 'Improving Product Discovery & Trust',
       category: 'E-COMMERCE UX',
-      description: 'Redesigned Hemp Hop\'s D2C wellness platform to help users discover products effortlessly, understand their value quickly, and feel confident completing purchases without overwhelming them.',
+      description: 'Redesigned the product and collection pages of a D2C wellness e-commerce platform to improve product discovery, information clarity, and purchase confidence.',
       image: hempHopImage,
       link: '/case-study/hemp-hop',
       ctaText: 'View Case Study'
@@ -68,7 +68,7 @@ const WorksSection = () => {
       id: 3,
       title: 'Rebuilding a Trust-First Food Ordering Experience',
       category: 'MOBILE APP UX',
-      description: 'End-to-end redesign of Grubwala food delivery app, transforming a functional product into a cohesive experience focused on emotional connection, trust, and reducing cognitive load.',
+      description: 'Led the end-to-end UX redesign of a food delivery platform, improving usability, strengthening user trust, and creating a more emotionally engaging ordering experience.',
       image: grubwalaImage,
       link: '/case-study/grubwala',
       ctaText: 'View Case Study'

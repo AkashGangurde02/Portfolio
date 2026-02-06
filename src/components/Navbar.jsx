@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import gsap from 'gsap'
 import './Navbar.css'
@@ -11,6 +11,7 @@ const Navbar = () => {
   const logoRef = useRef(null)
   const linksRef = useRef(null)
   const btnRef = useRef(null)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -54,10 +55,11 @@ const Navbar = () => {
           Akash <span className="logo-year">2026</span>
         </Link>
 
-        <ul ref={linksRef} className="navbar-links">
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/work">Work</Link></li>
-          <li><Link to="/about">About</Link></li>
+        <ul ref={linksRef} className={`navbar-links ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
+          <li><Link to="/" onClick={() => setIsMobileMenuOpen(false)}>Home</Link></li>
+          <li><Link to="/work" onClick={() => setIsMobileMenuOpen(false)}>Work</Link></li>
+          <li><Link to="/about" onClick={() => setIsMobileMenuOpen(false)}>About</Link></li>
+          <li><Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link></li>
           {/* <li><Link to="/blog">Blog</Link></li> */}
         </ul>
 
@@ -67,6 +69,17 @@ const Navbar = () => {
             <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </Link>
+
+        {/* Hamburger Menu Icon (Mobile Only) */}
+        <button
+          className={`hamburger-menu ${isMobileMenuOpen ? 'open' : ''}`}
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </nav>
   )

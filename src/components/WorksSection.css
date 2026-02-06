@@ -4,7 +4,8 @@
 }
 
 .works-container {
-  max-width: 1400px;
+  max-width: 1600px;
+  /* Increased from 1400px for wider cards */
   margin: 0 auto;
 }
 
@@ -263,7 +264,15 @@
 
 @media (max-width: 768px) {
   .works-section {
-    padding: 4rem 1.5rem;
+    padding: 1.5rem 0;
+    /* Small top/bottom padding, no sides */
+  }
+
+  .works-container {
+    padding: 0;
+    /* Remove all padding */
+    margin: 0;
+    /* Remove margin */
   }
 
   .works-title {
@@ -273,61 +282,115 @@
 
   .works-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
-    margin-bottom: 2.5rem;
+    gap: 1rem;
+    /* Reduced gap */
+    margin-bottom: 0;
+    /* Remove margin */
+    padding: 0;
+    /* Remove padding */
   }
 
   .featured-work-card {
-    margin-bottom: 3rem;
-    padding: 2rem;
-    gap: 2rem;
+    margin: 0 0 1rem 0;
+    /* Only bottom margin */
+    padding: 0 !important;
+    /* Force no padding */
+    gap: 1rem;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  .featured-work-card:hover {
+    transform: none;
+    box-shadow: none;
   }
 
   .featured-image-wrapper {
-    height: 350px;
+    height: auto;
+    min-height: 200px;
+    border-radius: 12px;
+  }
+
+  .featured-content {
+    padding: 0;
+  }
+
+  .featured-category {
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
   }
 
   .featured-title {
-    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-size: clamp(1.35rem, 4vw, 1.75rem);
+    margin-bottom: 0.75rem;
   }
 
   .featured-description {
     font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
   }
 
   .featured-cta {
-    padding: 0.75rem 1.75rem;
-    font-size: 0.95rem;
+    display: none;
+    /* Hide CTA on featured card on mobile */
   }
 
   .work-card {
-    padding: 2rem;
+    margin: 0;
+    /* No margin */
+    padding: 0 !important;
+    /* Force no padding */
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  .work-card:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: transparent;
+  }
+
+  .work-category-label {
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
   }
 
   .work-title {
-    font-size: 1.4rem;
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
   }
 
   .work-description {
     font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
   }
 
   .work-image-wrapper {
-    height: 280px;
-    border-radius: 14px;
+    height: 200px;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+    margin-bottom: 0;
   }
 
   .work-cta {
-    padding: 0.75rem 1.75rem;
-    font-size: 0.95rem;
+    display: none;
+    /* Hide CTAs on work cards on mobile */
   }
 
   .view-all-wrapper {
-    padding-top: 1.5rem;
+    padding-top: 2rem;
+    text-align: center;
   }
 
   .view-all-link {
     font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 }
 

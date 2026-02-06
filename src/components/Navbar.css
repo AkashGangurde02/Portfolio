@@ -93,18 +93,124 @@
   transform: translateX(3px);
 }
 
+/* Hamburger Menu Icon - Untitled UI Style */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  z-index: 10;
+  position: relative;
+}
+
+.hamburger-menu span {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background-color: #000000;
+  border-radius: 1px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hamburger-menu:hover span {
+  background-color: #666666;
+}
+
 @media (max-width: 968px) {
+
+  /* Add padding to body for fixed navbar */
+  body {
+    padding-top: 60px;
+    /* Height of fixed navbar */
+  }
+
   .navbar-links {
     display: none;
   }
 
   .navbar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100%;
+    background-color: #ffffff;
+    z-index: 1000;
     padding: 1rem 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   }
 
   .lets-talk-btn {
-    padding: 12px 24px;
-    font-size: 0.85rem;
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: flex;
+  }
+
+  /* Mobile Menu Dropdown */
+  .navbar-links.mobile-menu-open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 60px;
+    /* Below navbar */
+    left: 0 !important;
+    /* Override desktop positioning */
+    right: 0;
+    transform: none !important;
+    /* Remove desktop transform */
+    background-color: #ffffff;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    gap: 1.5rem;
+    z-index: 999;
+    animation: slideDown 0.3s ease-out;
+    width: 100%;
+    margin: 0;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .navbar-links.mobile-menu-open li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar-links.mobile-menu-open a {
+    display: block;
+    padding: 0.75rem 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  /* Hamburger animation when open */
+  .hamburger-menu.open span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+
+  .hamburger-menu.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger-menu.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
   }
 }
 
@@ -142,6 +248,7 @@
     height: 14px;
   }
 }
+
 .logo-image {
   height: 40px;
   width: auto;
