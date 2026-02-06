@@ -58,6 +58,11 @@
   opacity: 0.6;
 }
 
+/* Hide Contact link on desktop (shown in mobile menu only) */
+.navbar-links li:has(a[href="/contact"]) {
+  display: none;
+}
+
 .lets-talk-btn {
   display: flex;
   align-items: center;
@@ -191,6 +196,8 @@
   .navbar-links.mobile-menu-open li {
     width: 100%;
     text-align: center;
+    display: block !important;
+    /* Show all links including Contact in mobile menu */
   }
 
   .navbar-links.mobile-menu-open a {
