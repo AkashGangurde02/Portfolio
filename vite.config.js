@@ -5,4 +5,9 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   base: '/',
+  appType: 'spa', // Ensures SPA fallback behavior
+  server: {
+    historyApiFallback: true, // Fallback to index.html for history API based routing
+    host: true, // Expose to network
+  },
 })

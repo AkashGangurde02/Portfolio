@@ -151,45 +151,16 @@ const About = () => {
           <div ref={experienceRef} className="experience-section">
             <h2 className="section-title">My work experience</h2>
             <div className="experience-list">
-              {experiences.map((exp, index) => (
-                exp.title === 'Software Team Member' ? (
+              {experiences.map((exp, index) => {
+                let linkPath = null;
+                if (exp.title === 'Software Team Member') linkPath = '/experience/robotics';
+                else if (exp.title === 'Non-Technical Head (Design & Coordination)') linkPath = '/experience/non-technical';
+                else if (exp.title === 'UX/UI Designer Intern') linkPath = '/experience/somvanshi';
+
+                return linkPath ? (
                   <Link
                     key={index}
-                    to="/experience/robotics"
-                    className="experience-item experience-item-clickable"
-                  >
-                    <div className="experience-info">
-                      <h3 className="experience-title">{exp.title}</h3>
-                      <p className="experience-company">{exp.company}</p>
-                    </div>
-                    <div className="experience-right">
-                      <span className="experience-period">{exp.period}</span>
-                      <svg className="experience-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </div>
-                  </Link>
-                ) : exp.title === 'Non-Technical Head (Design & Coordination)' ? (
-                  <Link
-                    key={index}
-                    to="/experience/non-technical"
-                    className="experience-item experience-item-clickable"
-                  >
-                    <div className="experience-info">
-                      <h3 className="experience-title">{exp.title}</h3>
-                      <p className="experience-company">{exp.company}</p>
-                    </div>
-                    <div className="experience-right">
-                      <span className="experience-period">{exp.period}</span>
-                      <svg className="experience-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </div>
-                  </Link>
-                ) : exp.title === 'UX/UI Designer Intern' ? (
-                  <Link
-                    key={index}
-                    to="/experience/somvanshi"
+                    to={linkPath}
                     className="experience-item experience-item-clickable"
                   >
                     <div className="experience-info">
@@ -211,8 +182,8 @@ const About = () => {
                     </div>
                     <span className="experience-period">{exp.period}</span>
                   </div>
-                )
-              ))}
+                );
+              })}
             </div>
           </div>
 
@@ -225,14 +196,20 @@ const About = () => {
                   <h3 className="tools-category-title">{category.category}</h3>
                   <div className="tools-grid">
                     {category.tools.map((tool, toolIndex) => (
-                      tool.icon ? (
-                        <div key={toolIndex} className="tool-card">
+                      <div key={toolIndex} className="tool-card">
+                        {tool.icon ? (
                           <div className="tool-icon">
                             <img src={tool.icon} alt={`${tool.name} icon`} />
                           </div>
-                          <p className="tool-description">{tool.description}</p>
-                        </div>
-                      ) : null
+                        ) : (
+                          /* Placeholder or Name as styling if no icon */
+                          <div className="tool-icon-placeholder" style={{ marginBottom: '1rem', fontWeight: 'bold', fontSize: '1.2rem' }}>
+                            {tool.name.substring(0, 2).toUpperCase()}
+                          </div>
+                        )}
+                        <p className="tool-name">{tool.name}</p>
+                        <p className="tool-description">{tool.description}</p>
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -261,8 +238,8 @@ const About = () => {
                 <div className="award-placeholder">W</div>
               </div>
               <div className="award-feature-content">
-                <h2 className="award-feature-title">Awwards Winning - Independent of The Year</h2>
-                <p className="award-feature-subtitle">Ivan Kazarov - 2022</p>
+                <h2 className="award-feature-title">Awwwards Winning - Independent of The Year</h2>
+                <p className="award-feature-subtitle">Akash Gangurde - 2022</p>
                 <a href="#" className="award-link">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
