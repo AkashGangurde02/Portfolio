@@ -50,12 +50,30 @@
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 400;
-  transition: opacity 0.3s ease;
+  transition: all 0.3s ease;
   cursor: pointer;
+  position: relative;
+  padding: 0.25rem 0;
+}
+
+.navbar-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #000000;
+  transition: width 0.3s ease;
+}
+
+.navbar-links a:hover::after {
+  width: 100%;
 }
 
 .navbar-links a:hover {
-  opacity: 0.6;
+  font-weight: 700;
+  color: #000000 !important;
 }
 
 /* Hide Contact link on desktop (shown in mobile menu only) */
@@ -83,7 +101,7 @@
 
 .lets-talk-btn:hover {
   background-color: #000000;
-  color: #ffffff;
+  color: #ffffff !important;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
@@ -131,12 +149,7 @@
 
   /* Add padding to body for fixed navbar */
   body {
-    padding-top: 60px;
-    /* Height of fixed navbar */
-  }
-
-  .navbar-links {
-    display: none;
+    padding-top: 80px;
   }
 
   .navbar {
@@ -147,8 +160,16 @@
     width: 100%;
     background-color: #ffffff;
     z-index: 1000;
-    padding: 1rem 1.5rem;
+    padding: 1.25rem 1.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .navbar-container {
+    position: relative;
+  }
+
+  .navbar-links {
+    display: none;
   }
 
   .lets-talk-btn {
@@ -157,59 +178,101 @@
 
   .hamburger-menu {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 7px;
+    width: 40px;
+    height: 40px;
+    padding: 4px;
+    align-items: flex-end;
+    /* Align bars to the right if needed, though usually center */
+    align-items: center;
   }
 
-  /* Mobile Menu Dropdown */
+  .hamburger-menu span {
+    width: 32px;
+    height: 4px;
+    /* Thicker bars */
+    background-color: #000000;
+    border-radius: 4px;
+    /* Rounded corners */
+  }
+
+  /* Mobile Menu Dropdown Card Style */
   .navbar-links.mobile-menu-open {
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 60px;
-    /* Below navbar */
-    left: 0 !important;
-    /* Override desktop positioning */
-    right: 0;
-    transform: none !important;
-    /* Remove desktop transform */
+    top: 80px;
+    /* Offset from navbar */
+    right: 1.5rem;
+    left: auto !important;
+    width: 220px;
     background-color: #ffffff;
-    padding: 2rem 1.5rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    gap: 1.5rem;
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    border: 1px solid #f0f0f0;
+    gap: 0;
     z-index: 999;
-    animation: slideDown 0.3s ease-out;
-    width: 100%;
-    margin: 0;
+    transform-origin: top right;
+    animation: scaleIn 0.2s ease-out;
   }
 
-  @keyframes slideDown {
+  @keyframes scaleIn {
     from {
       opacity: 0;
-      transform: translateY(-10px);
+      transform: scale(0.95);
     }
 
     to {
       opacity: 1;
-      transform: translateY(0);
+      transform: scale(1);
     }
   }
 
   .navbar-links.mobile-menu-open li {
     width: 100%;
-    text-align: center;
     display: block !important;
-    /* Show all links including Contact in mobile menu */
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eeeeee;
+    text-align: left;
+  }
+
+  .navbar-links.mobile-menu-open li:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
   }
 
   .navbar-links.mobile-menu-open a {
     display: block;
-    padding: 0.75rem 0;
+    color: #000000 !important;
     font-size: 1.1rem;
     font-weight: 500;
+    padding: 0.5rem 0.5rem;
   }
 
-  /* Hamburger animation when open */
+  /* Style the "Let's Talk" link as a button */
+  .navbar-links.mobile-menu-open li:last-child a {
+    background-color: #000000;
+    color: #ffffff !important;
+    text-align: center;
+    border-radius: 50px;
+    padding: 12px 24px;
+    margin-top: 0.5rem;
+    font-weight: 600;
+  }
+
+  .navbar-links.mobile-menu-open li:last-child a:hover {
+    background-color: #333333;
+    opacity: 1;
+  }
+
+  /* Hamburger animation */
   .hamburger-menu.open span:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
+    transform: rotate(45deg) translate(8px, 8px);
   }
 
   .hamburger-menu.open span:nth-child(2) {
@@ -217,7 +280,7 @@
   }
 
   .hamburger-menu.open span:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
+    transform: rotate(-45deg) translate(8px, -8px);
   }
 }
 

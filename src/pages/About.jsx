@@ -3,6 +3,19 @@ import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import './About.css'
 import aboutProfile from '../images/profile/about-image.jpg'
+import dribbbleIcon from '../images/icons/Dribbble.svg'
+import pinterestIcon from '../images/icons/Pinterest.svg'
+import mediumIcon from '../images/icons/Medium.svg'
+import chatgptIcon from '../images/icons/Chatgpt.svg'
+import geminiIcon from '../images/icons/Gemini.svg'
+import uxpilotIcon from '../images/icons/UXpilot.svg'
+import slackIcon from '../images/icons/Slack.svg'
+import notionIcon from '../images/icons/Notion.svg'
+import trelloIcon from '../images/icons/Trello.svg'
+import framerIcon from '../images/icons/Framer.svg'
+import webflowIcon from '../images/icons/Webflow.svg'
+import canvaIcon from '../images/icons/Canva.svg'
+import figmaIcon from '../images/icons/Figma.svg'
 
 const About = () => {
   const heroRef = useRef(null)
@@ -17,36 +30,31 @@ const About = () => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
 
-      tl.fromTo(titleRef.current, {
+      tl.from(titleRef.current, {
         y: 80,
-        opacity: 0
-      }, {
-        y: 0,
-        opacity: 1,
+        opacity: 0,
         duration: 1,
-        delay: 0.3
+        delay: 0.3,
+        clearProps: "all"
       })
-        .fromTo(topSectionRef.current.children, {
+        .from(topSectionRef.current.children, {
           y: 50,
-          opacity: 0
-        }, {
-          y: 0,
-          opacity: 1,
+          opacity: 0,
           duration: 0.8,
-          stagger: 0.15
+          stagger: 0.15,
+          clearProps: "all"
         }, '-=0.5')
-        .fromTo([experienceRef.current, toolsRef.current, partnersRef.current, awardsRef.current], {
+        .from([experienceRef.current, toolsRef.current, partnersRef.current, awardsRef.current], {
           y: 60,
-          opacity: 0
-        }, {
-          y: 0,
-          opacity: 1,
+          opacity: 0,
           duration: 0.8,
-          stagger: 0.2
+          stagger: 0.2,
+          clearProps: "all"
         }, '-=0.4')
     }, heroRef)
 
-    return () => ctx.revert()
+    // Don't revert to preserve final animation state
+    return () => { }
   }, [])
 
   const experiences = [
@@ -59,25 +67,42 @@ const About = () => {
     {
       category: 'Design Inspiration',
       tools: [
-        { name: 'Dribbble', description: 'A space to track evolving UI trends and discover fresh interface styles that influence visual direction.' },
+        { name: 'Dribbble', description: 'A space to track evolving UI trends and discover fresh interface styles that influence visual direction.', icon: dribbbleIcon },
         { name: 'Behance', description: 'A reference library for studying complete design case studies and strong presentation storytelling.' },
         { name: 'Mobbin', description: 'A practical resource for analyzing real product UX flows and proven interface patterns.' },
         { name: 'Awwwards', description: 'A showcase of experimental web experiences that inspires bold interaction and motion design.' },
-        { name: 'Pinterest', description: 'A moodboard hub for shaping color systems, typography direction, and brand aesthetics.' }
+        { name: 'Pinterest', description: 'A moodboard hub for shaping color systems, typography direction, and brand aesthetics.', icon: pinterestIcon }
+      ]
+    },
+    {
+      category: 'Design Tools',
+      tools: [
+        { name: 'Figma', description: 'A collaborative interface design tool for creating UI/UX designs and interactive prototypes.', icon: figmaIcon },
+        { name: 'Framer', description: 'A powerful prototyping tool for creating interactive and high-fidelity design prototypes.', icon: framerIcon },
+        { name: 'Webflow', description: 'A visual web development platform for building responsive websites without code.', icon: webflowIcon },
+        { name: 'Canva', description: 'An easy-to-use design platform for creating graphics, presentations, and marketing materials.', icon: canvaIcon }
       ]
     },
     {
       category: 'AI & Productivity',
       tools: [
-        { name: 'UX Pilot', description: 'An AI-powered workspace for accelerating wireframes, ideation, and rapid UX exploration.' },
-        { name: 'ChatGPT', description: 'A creative partner for UX writing, structured thinking, and refining product concepts.' },
-        { name: 'Google Gemini', description: 'A research companion that supports brainstorming and expands product perspectives.' }
+        { name: 'UX Pilot', description: 'An AI-powered workspace for accelerating wireframes, ideation, and rapid UX exploration.', icon: uxpilotIcon },
+        { name: 'ChatGPT', description: 'A creative partner for UX writing, structured thinking, and refining product concepts.', icon: chatgptIcon },
+        { name: 'Google Gemini', description: 'A research companion that supports brainstorming and expands product perspectives.', icon: geminiIcon }
+      ]
+    },
+    {
+      category: 'Collaboration',
+      tools: [
+        { name: 'Slack', description: 'A powerful communication platform for team collaboration and project coordination.', icon: slackIcon },
+        { name: 'Notion', description: 'An all-in-one workspace for notes, docs, and project management.', icon: notionIcon },
+        { name: 'Trello', description: 'A visual project management tool for organizing tasks and workflows.', icon: trelloIcon }
       ]
     },
     {
       category: 'Learning & Research',
       tools: [
-        { name: 'Medium', description: 'A continuous stream of UX insights that keeps design decisions aligned with industry thinking.' }
+        { name: 'Medium', description: 'A continuous stream of UX insights that keeps design decisions aligned with industry thinking.', icon: mediumIcon }
       ]
     }
   ]
@@ -110,7 +135,7 @@ const About = () => {
 
             <div className="about-top-content">
               <p className="about-description">
-                As a Senior Designer with over 10 years of experience, I specialize in creating intuitive and user-centered interfaces for a wide range of digital products and experiences.
+                Junior UX/UI Designer with 1 year of experience — making digital experiences feel effortless (so users don’t have to work as hard as I do).
               </p>
 
               <Link to="/contact" className="about-cta-btn">
@@ -124,7 +149,7 @@ const About = () => {
 
           {/* Experience Section */}
           <div ref={experienceRef} className="experience-section">
-            <h2 className="section-title">My past work experience</h2>
+            <h2 className="section-title">My work experience</h2>
             <div className="experience-list">
               {experiences.map((exp, index) => (
                 exp.title === 'Software Team Member' ? (
@@ -200,10 +225,14 @@ const About = () => {
                   <h3 className="tools-category-title">{category.category}</h3>
                   <div className="tools-grid">
                     {category.tools.map((tool, toolIndex) => (
-                      <div key={toolIndex} className="tool-card">
-                        <h4 className="tool-name">{tool.name}</h4>
-                        <p className="tool-description">{tool.description}</p>
-                      </div>
+                      tool.icon ? (
+                        <div key={toolIndex} className="tool-card">
+                          <div className="tool-icon">
+                            <img src={tool.icon} alt={`${tool.name} icon`} />
+                          </div>
+                          <p className="tool-description">{tool.description}</p>
+                        </div>
+                      ) : null
                     ))}
                   </div>
                 </div>

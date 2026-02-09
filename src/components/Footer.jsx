@@ -15,6 +15,11 @@ const Footer = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Check if mobile or tablet - simplified check matching CSS breakpoint
+      if (window.innerWidth <= 968) {
+        return // Skip animations on mobile to ensure visibility
+      }
+
       gsap.from(headingRef.current, {
         scrollTrigger: {
           trigger: footerRef.current,
@@ -103,7 +108,17 @@ const Footer = () => {
       <div className="footer-container">
         {/* Tagline Section */}
         <div className="footer-tagline">
-          <p className="footer-subtitle">Have a nice works? lets talk with me.</p>
+          {/* Testimonial Card */}
+          <div className="footer-testimonial-top">
+            <div className="testimonial-card">
+              <div className="testimonial-header">
+                <div className="testimonial-avatar"></div>
+                <span className="testimonial-name">suggestionbox</span>
+              </div>
+              <p className="testimonial-text">Hover on the below heading and see the magic </p>
+            </div>
+          </div>
+
           <h2
             ref={headingRef}
             className="footer-heading"
@@ -143,17 +158,6 @@ const Footer = () => {
               </a>
             ))}
           </nav>
-
-          {/* Right: Testimonial Card */}
-          <div className="footer-testimonial">
-            <div className="testimonial-card">
-              <div className="testimonial-header">
-                <div className="testimonial-avatar"></div>
-                <span className="testimonial-name">Akash</span>
-              </div>
-              <p className="testimonial-text">Trust the people who trusted me for my work</p>
-            </div>
-          </div>
         </div>
 
         {/* Footer Bottom */}

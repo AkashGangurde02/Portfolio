@@ -59,7 +59,7 @@ const Navbar = () => {
           <li><Link to="/" onClick={() => setIsMobileMenuOpen(false)}>Home</Link></li>
           <li><Link to="/work" onClick={() => setIsMobileMenuOpen(false)}>Work</Link></li>
           <li><Link to="/about" onClick={() => setIsMobileMenuOpen(false)}>About</Link></li>
-          <li><Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link></li>
+          <li><Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>Let's Talk</Link></li>
           {/* <li><Link to="/blog">Blog</Link></li> */}
         </ul>
 

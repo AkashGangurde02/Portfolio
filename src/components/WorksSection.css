@@ -1,6 +1,7 @@
 .works-section {
-  padding: 6rem 2rem;
+  padding: 6rem 4rem;
   background-color: #ffffff;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .works-container {
@@ -291,20 +292,13 @@
   }
 
   .featured-work-card {
-    margin: 0 0 1rem 0;
-    /* Only bottom margin */
-    padding: 0 !important;
-    /* Force no padding */
-    gap: 1rem;
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
+    margin: 0 0 2rem 0;
+    /* Adjusted margin */
+    gap: 1.5rem;
+    /* Inherit card styles from desktop/tablet */
   }
 
-  .featured-work-card:hover {
-    transform: none;
-    box-shadow: none;
-  }
+
 
   .featured-image-wrapper {
     height: auto;
@@ -339,19 +333,10 @@
 
   .work-card {
     margin: 0;
-    /* No margin */
-    padding: 0 !important;
-    /* Force no padding */
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
+    /* Inherit card styles from desktop */
   }
 
-  .work-card:hover {
-    transform: none;
-    box-shadow: none;
-    border-color: transparent;
-  }
+
 
   .work-category-label {
     font-size: 0.75rem;
@@ -396,7 +381,7 @@
 
 @media (max-width: 480px) {
   .works-section {
-    padding: 3rem 1.25rem;
+    padding: 3rem 0;
   }
 
   .works-grid {

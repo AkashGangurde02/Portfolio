@@ -28,15 +28,18 @@
 
 /* Top Section */
 .about-top-section {
-  display: grid;
-  grid-template-columns: 400px 1fr;
+  display: flex;
+  flex-direction: row;
   gap: 4rem;
-  margin-bottom: 6rem;
-  align-items: start;
+  margin-bottom: 4rem;
+  align-items: center;
 }
 
 .about-profile-image {
+  flex: 1;
   width: 100%;
+  max-width: 600px;
+  aspect-ratio: 16 / 9;
   border-radius: 20px;
   overflow: hidden;
   background-color: #f5f5f5;
@@ -44,15 +47,17 @@
 
 .about-profile-image img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 
 .about-top-content {
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 2rem;
-  padding-top: 2rem;
+  padding-top: 0;
 }
 
 .about-description {
@@ -84,7 +89,7 @@
 
 /* Experience Section */
 .experience-section {
-  margin-bottom: 6rem;
+  margin-bottom: 4rem;
 }
 
 .section-title {
@@ -137,7 +142,7 @@
 
 /* Tools Section */
 .tools-section {
-  margin-bottom: 6rem;
+  margin-bottom: 4rem;
 }
 
 .tools-categories {
@@ -167,7 +172,7 @@
 }
 
 .tool-card {
-  padding: 2rem;
+  padding: 1.5rem;
   background-color: #f9f9f9;
   border-radius: 16px;
   border: 1px solid #e8e8e8;
@@ -180,6 +185,34 @@
   border-color: #000000;
   transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.tool-icon {
+  max-width: 170px;
+  width: 100%;
+  min-height: 40px;
+  margin-bottom: 1rem;
+  display: flex !important;
+  align-items: center;
+  justify-content: flex-start;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.tool-icon img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 50px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.tool-card:hover .tool-icon img {
+  transform: scale(1.1);
 }
 
 .tool-name {
@@ -199,7 +232,7 @@
 
 /* Partners Section */
 .partners-section {
-  margin-bottom: 6rem;
+  margin-bottom: 4rem;
 }
 
 .partners-grid {
@@ -355,12 +388,12 @@
 /* Responsive Design */
 @media (max-width: 1024px) {
   .about-top-section {
-    grid-template-columns: 1fr;
-    gap: 3rem;
+    flex-direction: column;
+    gap: 2.5rem;
   }
 
   .about-profile-image {
-    max-width: 400px;
+    max-width: 500px;
     margin: 0 auto;
   }
 

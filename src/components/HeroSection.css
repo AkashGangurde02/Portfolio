@@ -4,6 +4,7 @@
   align-items: center;
   padding: 8rem 2rem 4rem;
   background-color: #ffffff;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .hero-container {
