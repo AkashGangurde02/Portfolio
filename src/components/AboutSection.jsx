@@ -98,7 +98,7 @@ const AboutSection = () => {
           </h2>
 
           <p className="home-about-description">
-            From complex user journeys to product visuals & expanding your brand, and have launched products that your business is offering. Improve existing digital assets and debug as needed from the web.
+            Junior UX/UI Designer with <strong>1 year of experience</strong> — making digital experiences feel effortless <strong>(so users don’t have to work as hard as I do)</strong>.
           </p>
 
           <Link to="/about" className="about-secondary-btn" style={{ opacity: 1 }}>
@@ -113,7 +113,7 @@ const AboutSection = () => {
             {tools.map((tool, index) => (
               <div key={index} className="tool-icon-wrapper">
                 <img src={tool.icon} alt={tool.name} className="tool-icon-img" />
-                <span className="tool-name">{tool.name}</span>
+                {/* <span className="tool-name">{tool.name}</span> */}
               </div>
             ))}
           </div>

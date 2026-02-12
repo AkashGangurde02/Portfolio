@@ -6,6 +6,7 @@ import './Work.css'
 import contactFormImage from '../images/case-studies/case-study-1/contact-redesign.jpg'
 import hempHopImage from '../images/case-studies/case-study-2/hemp-hop-cover.png'
 import grubwalaImage from '../images/case-studies/case-study-3/grubwala-cover.png'
+import Footer from '../components/Footer'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -147,6 +148,7 @@ const Work = () => {
                     </Link>
                 </div>
             </section>
+            <Footer />
         </div>
     )
 }

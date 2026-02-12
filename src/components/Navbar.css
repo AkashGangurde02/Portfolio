@@ -88,8 +88,8 @@
   padding: 14px 28px;
   border: 2px solid #000000;
   border-radius: 50px;
-  background-color: transparent;
-  color: #000000 !important;
+  background-color: #000000;
+  color: #ffffff !important;
   font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
@@ -100,8 +100,8 @@
 }
 
 .lets-talk-btn:hover {
-  background-color: #000000;
-  color: #ffffff !important;
+  background-color: transparent;
+  color: #000000 !important;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }

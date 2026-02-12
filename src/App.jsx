@@ -12,7 +12,7 @@ import ExperienceRobotics from './pages/ExperienceRobotics'
 import ExperienceNonTechnical from './pages/ExperienceNonTechnical'
 import ExperienceSomvanshi from './pages/ExperienceSomvanshi'
 import DinoGame from './pages/DinoGame'
-import Footer from './components/Footer'
+
 import SmoothScroll from './components/SmoothScroll'
 import CursorFollower from './components/CursorFollower'
 import ScrollToTop from './components/ScrollToTop'
@@ -54,7 +54,6 @@ function App() {
             <Route path="/experience/somvanshi" element={<ExperienceSomvanshi />} />
             <Route path="/dino-game" element={<DinoGame />} />
           </Routes>
-          <Footer />
           <WhatsAppFloat />
         </div>
       </SmoothScroll>

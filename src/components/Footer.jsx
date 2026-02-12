@@ -104,70 +104,72 @@ const Footer = () => {
   ]
 
   return (
-    <footer ref={footerRef} className="footer">
-      <div className="footer-container">
-        {/* Tagline Section */}
-        <div className="footer-tagline">
-          {/* Testimonial Card */}
-          <div className="footer-testimonial-top">
-            <div className="testimonial-card">
-              <div className="testimonial-header">
-                <div className="testimonial-avatar"></div>
-                <span className="testimonial-name">suggestionbox</span>
-              </div>
-              <p className="testimonial-text">Hover on the below heading and see the magic </p>
+    <>
+      <div style={{ maxWidth: '1400px', margin: '2rem auto 0', padding: '0 2rem', display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
+        <div className="footer-testimonial-top">
+          <div className="testimonial-card">
+            <div className="testimonial-header">
+              <div className="testimonial-avatar"></div>
+              <span className="testimonial-name">suggestionbox</span>
             </div>
+            <p className="testimonial-text">Hover on the below heading and see the magic </p>
           </div>
-
-          <h2
-            ref={headingRef}
-            className="footer-heading"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-          >
-            <span className="heading-text-wrapper">
-              {currentText.split(' ').map((word, index) => (
-                <span
-                  key={`${word}-${index}`}
-                  className="word-wrapper"
-                  ref={(el) => (wordsRef.current[index] = el)}
-                >
-                  {word}
-                  {index < currentText.split(' ').length - 1 && ' '}
-                </span>
-              ))}
-            </span>
-          </h2>
-        </div>
-
-        {/* Main Footer Content */}
-        <div ref={contentRef} className="footer-main">
-          {/* Left: Avatar and Name */}
-          <div className="footer-brand">
-            <div className="footer-avatar">
-              <div className="avatar-circle"></div>
-            </div>
-            <p className="footer-name">Akash</p>
-          </div>
-
-          {/* Center: Navigation Links */}
-          <nav className="footer-nav">
-            {navLinks.map((link) => (
-              <a key={link.name} href={link.href} className="footer-nav-link">
-                {link.name}
-              </a>
-            ))}
-          </nav>
-        </div>
-
-        {/* Footer Bottom */}
-        <div className="footer-bottom">
-          <p className="footer-credits">
-            © 2025 Akash Gangurde. | Designed best so users don't have to think.
-          </p>
         </div>
       </div>
-    </footer>
+      <footer ref={footerRef} className="footer">
+        <div className="footer-container">
+          {/* Tagline Section */}
+          <div className="footer-tagline">
+            <h2
+              ref={headingRef}
+              className="footer-heading"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              <span className="heading-text-wrapper">
+                {currentText.split(' ').map((word, index) => (
+                  <span
+                    key={`${word}-${index}`}
+                    className="word-wrapper"
+                    ref={(el) => (wordsRef.current[index] = el)}
+                  >
+                    {word}
+                    {index < currentText.split(' ').length - 1 && ' '}
+                  </span>
+                ))}
+              </span>
+            </h2>
+          </div>
+
+          {/* Main Footer Content */}
+          <div ref={contentRef} className="footer-main">
+            {/* Left: Avatar and Name */}
+            <div className="footer-brand">
+              <div className="footer-avatar">
+                <div className="avatar-circle"></div>
+              </div>
+              <p className="footer-name">Akash</p>
+            </div>
+
+            {/* Center: Navigation Links */}
+            <nav className="footer-nav">
+              {navLinks.map((link) => (
+                <a key={link.name} href={link.href} className="footer-nav-link">
+                  {link.name}
+                </a>
+              ))}
+            </nav>
+          </div>
+
+          {/* Footer Bottom */}
+          <div className="footer-bottom">
+            <p className="footer-credits">
+              © 2025 Akash Gangurde. | Designed best so users don't have to think.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </>
   )
 }
 

@@ -2,9 +2,8 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 8rem 2rem 4rem;
+  padding: 4rem 2rem 0;
   background-color: #ffffff;
-  border-bottom: 1px solid #f0f0f0;
 }
 
 .hero-container {

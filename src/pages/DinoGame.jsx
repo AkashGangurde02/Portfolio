@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './DinoGame.css'
+import Footer from '../components/Footer'
 
 const DinoGame = () => {
     const iframeRef = useRef(null)
@@ -86,6 +87,7 @@ const DinoGame = () => {
                     Return to Portfolio
                 </Link>
             </div>
+            <Footer />
         </div>
     )
 }

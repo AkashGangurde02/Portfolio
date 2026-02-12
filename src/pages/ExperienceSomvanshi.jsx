@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import './ExperienceSomvanshi.css'
+import Footer from '../components/Footer'
 
 const ExperienceSomvanshi = () => {
     const heroRef = useRef(null)
@@ -144,6 +145,7 @@ const ExperienceSomvanshi = () => {
                     </div>
                 </div>
             </section>
+            <Footer />
         </div>
     )
 }

@@ -16,6 +16,8 @@ import framerIcon from '../images/icons/Framer.svg'
 import webflowIcon from '../images/icons/Webflow.svg'
 import canvaIcon from '../images/icons/Canva.svg'
 import figmaIcon from '../images/icons/Figma.svg'
+import Footer from '../components/Footer'
+import ExperienceSection from '../components/ExperienceSection'
 
 const About = () => {
   const heroRef = useRef(null)
@@ -57,11 +59,7 @@ const About = () => {
     return () => { }
   }, [])
 
-  const experiences = [
-    { title: 'UX/UI Designer Intern', company: 'Somvanshi Technologies', period: '2025 – Present' },
-    { title: 'Non-Technical Head (Design & Coordination)', company: 'VIIT Robotics Club', period: '2024 – 2025' },
-    { title: 'Software Team Member', company: 'VIIT Robotics Club', period: '2023 – 2024' }
-  ]
+
 
   const toolsCategories = [
     {
@@ -148,44 +146,7 @@ const About = () => {
           </div>
 
           {/* Experience Section */}
-          <div ref={experienceRef} className="experience-section">
-            <h2 className="section-title">My work experience</h2>
-            <div className="experience-list">
-              {experiences.map((exp, index) => {
-                let linkPath = null;
-                if (exp.title === 'Software Team Member') linkPath = '/experience/robotics';
-                else if (exp.title === 'Non-Technical Head (Design & Coordination)') linkPath = '/experience/non-technical';
-                else if (exp.title === 'UX/UI Designer Intern') linkPath = '/experience/somvanshi';
-
-                return linkPath ? (
-                  <Link
-                    key={index}
-                    to={linkPath}
-                    className="experience-item experience-item-clickable"
-                  >
-                    <div className="experience-info">
-                      <h3 className="experience-title">{exp.title}</h3>
-                      <p className="experience-company">{exp.company}</p>
-                    </div>
-                    <div className="experience-right">
-                      <span className="experience-period">{exp.period}</span>
-                      <svg className="experience-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </div>
-                  </Link>
-                ) : (
-                  <div key={index} className="experience-item">
-                    <div className="experience-info">
-                      <h3 className="experience-title">{exp.title}</h3>
-                      <p className="experience-company">{exp.company}</p>
-                    </div>
-                    <span className="experience-period">{exp.period}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+          <ExperienceSection ref={experienceRef} className="embedded" />
 
           {/* Tools Section */}
           <div ref={toolsRef} className="tools-section">
@@ -207,7 +168,7 @@ const About = () => {
                             {tool.name.substring(0, 2).toUpperCase()}
                           </div>
                         )}
-                        <p className="tool-name">{tool.name}</p>
+                        {/* <p className="tool-name">{tool.name}</p> */}
                         <p className="tool-description">{tool.description}</p>
                       </div>
                     ))}
@@ -266,6 +227,7 @@ const About = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   )
 }

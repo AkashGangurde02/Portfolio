@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import './CaseStudyContactForm.css'
+import Footer from '../components/Footer'
 
 const CaseStudyGrubwala = () => {
     const heroRef = useRef(null)
@@ -483,6 +484,7 @@ const CaseStudyGrubwala = () => {
                     </div>
                 </div>
             </section>
+            <Footer />
         </div>
     )
 }

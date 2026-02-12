@@ -35,3 +35,16 @@ button,
 .footer-social-link {
   font-family: 'Poppins', sans-serif;
 }
+
+/* Global Scrollbar Hiding */
+html {
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE/Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none;
+  /* Chrome/Safari/Opera */
+}

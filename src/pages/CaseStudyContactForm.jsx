@@ -5,6 +5,7 @@ import contactFormImage from '../images/case-studies/case-study-1/contact-redesi
 import beforeImage from '../images/case-studies/case-study-1/before.jpg'
 import wireframeImage from '../images/case-studies/case-study-1/wireframe.jpg'
 import afterImage from '../images/case-studies/case-study-1/after.jpg'
+import Footer from '../components/Footer'
 
 const CaseStudyContactForm = () => {
   const heroRef = useRef(null)
@@ -247,6 +248,7 @@ const CaseStudyContactForm = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   )
 }

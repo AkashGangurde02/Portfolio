@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import './ExperienceRobotics.css'
+import Footer from '../components/Footer'
 
 const ExperienceRobotics = () => {
     const heroRef = useRef(null)
@@ -105,41 +106,42 @@ const ExperienceRobotics = () => {
                             <p className="content-text">
                                 The skills I developed — from real-time control systems to rapid debugging under pressure — continue to influence how I approach technical challenges today. Most importantly, it reinforced my belief that the best solutions emerge when passion, curiosity, and teamwork come together.
                             </p>
-                        
-                        {/* Photo Gallery */}
-                        <div className="content-block gallery">
-                            <h2 className="content-title">Moments from the Journey</h2>
-                            <div className="photo-gallery">
-                                <div className="photo-item photo-1">
-                                    <div className="photo-placeholder">Team Photo</div>
-                                </div>
-                                <div className="photo-item photo-2">
-                                    <div className="photo-placeholder">Robot Build</div>
-                                </div>
-                                <div className="photo-item photo-3">
-                                    <div className="photo-placeholder">Competition</div>
-                                </div>
-                                <div className="photo-item photo-4">
-                                    <div className="photo-placeholder">Workshop</div>
-                                </div>
-                                <div className="photo-item photo-5">
-                                    <div className="photo-placeholder">Testing</div>
-                                </div>
-                                <div className="photo-item photo-6">
-                                    <div className="photo-placeholder">Team Work</div>
-                                </div>
-                                <div className="photo-item photo-7">
-                                    <div className="photo-placeholder">Robocon</div>
-                                </div>
-                                <div className="photo-item photo-8">
-                                    <div className="photo-placeholder">Celebration</div>
+
+                            {/* Photo Gallery */}
+                            <div className="content-block gallery">
+                                <h2 className="content-title">Moments from the Journey</h2>
+                                <div className="photo-gallery">
+                                    <div className="photo-item photo-1">
+                                        <div className="photo-placeholder">Team Photo</div>
+                                    </div>
+                                    <div className="photo-item photo-2">
+                                        <div className="photo-placeholder">Robot Build</div>
+                                    </div>
+                                    <div className="photo-item photo-3">
+                                        <div className="photo-placeholder">Competition</div>
+                                    </div>
+                                    <div className="photo-item photo-4">
+                                        <div className="photo-placeholder">Workshop</div>
+                                    </div>
+                                    <div className="photo-item photo-5">
+                                        <div className="photo-placeholder">Testing</div>
+                                    </div>
+                                    <div className="photo-item photo-6">
+                                        <div className="photo-placeholder">Team Work</div>
+                                    </div>
+                                    <div className="photo-item photo-7">
+                                        <div className="photo-placeholder">Robocon</div>
+                                    </div>
+                                    <div className="photo-item photo-8">
+                                        <div className="photo-placeholder">Celebration</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-</div>
                     </div>
                 </div>
             </section>
+            <Footer />
         </div>
     )
 }

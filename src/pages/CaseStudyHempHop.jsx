@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import './CaseStudyContactForm.css'
+import Footer from '../components/Footer'
 
 const CaseStudyHempHop = () => {
     const heroRef = useRef(null)
@@ -241,6 +242,7 @@ const CaseStudyHempHop = () => {
                     </div>
                 </div>
             </section>
+            <Footer />
         </div>
     )
 }
