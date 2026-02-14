@@ -1,5 +1,5 @@
 .works-section {
-  padding: 3rem 4rem;
+  padding: 4.5rem 4rem;
   background-color: #ffffff;
   border-bottom: 1px solid #f0f0f0;
 }
@@ -265,7 +265,7 @@
 
 @media (max-width: 768px) {
   .works-section {
-    padding: 1.5rem 0;
+    padding: 2.5rem 0;
     /* Small top/bottom padding, no sides */
   }
 

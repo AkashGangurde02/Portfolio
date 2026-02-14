@@ -95,8 +95,8 @@
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  opacity: 1 !important;
-  visibility: visible !important;
+  opacity: 1;
+  visibility: visible;
 }
 
 .lets-talk-btn:hover {

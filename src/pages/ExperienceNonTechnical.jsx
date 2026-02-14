@@ -104,29 +104,35 @@ const ExperienceNonTechnical = () => {
                         <div className="content-block gallery">
                             <h2 className="content-title">Moments from the Journey</h2>
                             <div className="photo-gallery">
-                                <div className="photo-item photo-1">
+                                <div className="photo-item item-7">
                                     <div className="photo-placeholder">Team Leadership</div>
                                 </div>
-                                <div className="photo-item photo-2">
+                                <div className="photo-item item-9">
                                     <div className="photo-placeholder">Event Planning</div>
                                 </div>
-                                <div className="photo-item photo-3">
+                                <div className="photo-item item-10">
                                     <div className="photo-placeholder">Presentation</div>
                                 </div>
-                                <div className="photo-item photo-4">
+                                <div className="photo-item item-3">
                                     <div className="photo-placeholder">Design Work</div>
                                 </div>
-                                <div className="photo-item photo-5">
+                                <div className="photo-item item-8">
                                     <div className="photo-placeholder">Team Coordination</div>
                                 </div>
-                                <div className="photo-item photo-6">
+                                <div className="photo-item item-1">
                                     <div className="photo-placeholder">Documentation</div>
                                 </div>
-                                <div className="photo-item photo-7">
+                                <div className="photo-item item-2">
                                     <div className="photo-placeholder">Mentoring</div>
                                 </div>
-                                <div className="photo-item photo-8">
+                                <div className="photo-item item-6">
                                     <div className="photo-placeholder">Club Activities</div>
+                                </div>
+                                <div className="photo-item item-5">
+                                    <div className="photo-placeholder">Collaboration</div>
+                                </div>
+                                <div className="photo-item item-4">
+                                    <div className="photo-placeholder">Impact</div>
                                 </div>
                             </div>
                         </div>

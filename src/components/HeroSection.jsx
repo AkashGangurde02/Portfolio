@@ -112,13 +112,13 @@ const HeroSection = () => {
                   <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </Link>
-              <button
+              {/* <button
                 onClick={() => setIsHireModalOpen(true)}
                 className="hero-cta-btn"
                 style={{ border: '2px solid black' }} // Ensure style consistency if needed, though class should handle it
               >
                 Hire Me
-              </button>
+              </button> */}
             </div>
           </div>
         </div>

@@ -13,6 +13,26 @@ const Navbar = () => {
   const btnRef = useRef(null)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
+  /* Scroll trigger logic for Home Page */
+  const [showLetsTalk, setShowLetsTalk] = useState(!isHomePage)
+
+  useEffect(() => {
+    if (!isHomePage) {
+      setShowLetsTalk(true)
+      return
+    }
+
+    const handleScroll = () => {
+      // Match the WhatsApp float button trigger
+      setShowLetsTalk(window.scrollY > 800)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    handleScroll() // Initial check
+
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [isHomePage])
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
@@ -29,7 +49,8 @@ const Navbar = () => {
           stagger: 0.1
         }, '-=0.4')
 
-      if (btnRef.current) {
+      /* Only run initial animation if NOT on home page (since home page handles visibility via scroll) */
+      if (btnRef.current && !isHomePage) {
         tl.from(btnRef.current, {
           x: 30,
           opacity: 0,
@@ -39,7 +60,7 @@ const Navbar = () => {
     }, navRef)
 
     return () => ctx.revert()
-  }, [location])
+  }, [location, isHomePage])
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId)
@@ -63,7 +84,17 @@ const Navbar = () => {
           {/* <li><Link to="/blog">Blog</Link></li> */}
         </ul>
 
-        <Link to="/contact" className="lets-talk-btn" style={{ opacity: 1 }}>
+        <Link
+          ref={btnRef}
+          to="/contact"
+          className="lets-talk-btn"
+          style={{
+            opacity: showLetsTalk ? 1 : 0,
+            visibility: showLetsTalk ? 'visible' : 'hidden',
+            pointerEvents: showLetsTalk ? 'auto' : 'none',
+            transform: showLetsTalk ? 'translateY(0)' : 'translateY(-10px)'
+          }}
+        >
           Let's Talk
           <svg className="arrow-icon" width="16" height="16" viewBox="0 0 20 20" fill="none">
             <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />

@@ -1,0 +1,199 @@
+.compact-cards-section {
+    padding: 4.5rem 2rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.compact-cards-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.compact-cards-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: flex-start;
+}
+
+.compact-cards-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.compact-section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: #000000;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.compact-section-description {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #666666;
+    margin: 0;
+    line-height: 1.6;
+    max-width: 500px;
+}
+
+.compact-cards-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+/* When hovering over the cards container, make all cards greyscale and move right */
+.compact-cards-right:hover .compact-card {
+    filter: grayscale(100%);
+    opacity: 0.5;
+    transform: translateX(50px);
+}
+
+.compact-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-left: 3px solid #d1d5db;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    max-width: 500px;
+}
+
+/* Remove greyscale, apply blue color, and move active card to the left */
+.compact-cards-right:hover .compact-card:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    background: #eff6ff;
+    border-color: #3b82f6;
+    border-left-color: #3b82f6;
+    transform: translateX(-20px);
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.2);
+}
+
+.compact-card-icon {
+    font-size: 2rem;
+    line-height: 1;
+    flex-shrink: 0;
+    user-select: none;
+}
+
+.compact-card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.compact-card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #000000;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.compact-card-description {
+    font-size: 0.875rem;
+    color: #666666;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Tablet View */
+@media (max-width: 968px) {
+    .compact-cards-wrapper {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .compact-cards-right {
+        gap: 1rem;
+    }
+
+    .compact-card {
+        padding: 1.25rem;
+    }
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+    .compact-cards-section {
+        padding: 3rem 1.5rem;
+    }
+
+    .compact-cards-wrapper {
+        gap: 2.5rem;
+    }
+
+    .compact-section-title {
+        font-size: clamp(1.75rem, 5vw, 2.5rem);
+    }
+
+    .compact-section-description {
+        font-size: 0.95rem;
+    }
+
+    .compact-cards-right {
+        gap: 0.875rem;
+    }
+
+    .compact-card {
+        padding: 1.25rem;
+        gap: 0.875rem;
+    }
+
+    .compact-card-icon {
+        font-size: 1.75rem;
+    }
+
+    .compact-card-title {
+        font-size: 0.95rem;
+    }
+
+    .compact-card-description {
+        font-size: 0.85rem;
+    }
+}
+
+/* Small Mobile View */
+@media (max-width: 480px) {
+    .compact-cards-section {
+        padding: 2.5rem 1.25rem;
+    }
+
+    .compact-cards-wrapper {
+        gap: 2rem;
+    }
+
+    .compact-section-title {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+    }
+
+    .compact-section-description {
+        font-size: 0.9rem;
+    }
+
+    .compact-card {
+        padding: 1rem;
+        gap: 0.75rem;
+    }
+
+    .compact-card-icon {
+        font-size: 1.5rem;
+    }
+
+    .compact-card-title {
+        font-size: 0.9rem;
+    }
+
+    .compact-card-description {
+        font-size: 0.8rem;
+    }
+}

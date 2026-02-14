@@ -1,12 +1,31 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import './ExperienceSomvanshi.css'
 import Footer from '../components/Footer'
+import chess1Image from '../images/experience/somvanshi/images/Chess_1.jpeg'
+import officeSpaceImage from '../images/experience/somvanshi/images/Office_Space.jpeg'
+import team2Image from '../images/experience/somvanshi/images/Team_2.jpeg'
+import bookGiftImage from '../images/experience/somvanshi/images/Book_gift.jpeg'
+import scenic2Image from '../images/experience/somvanshi/images/Scenic_2.jpeg'
+import team1Image from '../images/experience/somvanshi/images/Team_1.jpeg'
+import workplace1Image from '../images/experience/somvanshi/images/Workplace_1.jpeg'
+import workplace3Image from '../images/experience/somvanshi/images/Workplace_3.jpeg'
+import team5Image from '../images/experience/somvanshi/images/Team_5.jpeg'
+import team3Image from '../images/experience/somvanshi/images/Team_3.jpeg'
 
 const ExperienceSomvanshi = () => {
     const heroRef = useRef(null)
     const contentRef = useRef(null)
+    const [selectedImage, setSelectedImage] = useState(null)
+
+    const handleImageClick = (imageSrc, altText) => {
+        setSelectedImage({ src: imageSrc, alt: altText })
+    }
+
+    const closeModal = () => {
+        setSelectedImage(null)
+    }
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -29,6 +48,17 @@ const ExperienceSomvanshi = () => {
 
         return () => ctx.revert()
     }, [])
+
+    // Handle ESC key to close modal
+    useEffect(() => {
+        const handleEsc = (e) => {
+            if (e.key === 'Escape' && selectedImage) {
+                closeModal()
+            }
+        }
+        window.addEventListener('keydown', handleEsc)
+        return () => window.removeEventListener('keydown', handleEsc)
+    }, [selectedImage])
 
     return (
         <div className="experience-story-page">
@@ -111,40 +141,68 @@ const ExperienceSomvanshi = () => {
 
                         {/* Photo Gallery */}
                         <div className="content-block gallery">
-                            <h2 className="content-title">Moments from the Journey</h2>
+                            <h2 className="content-title">Wall Of Memories</h2>
                             <div className="photo-gallery">
-                                <div className="photo-item photo-1">
-                                    <img src="/src/images/experience/somvanshi/images/Workplace_1.jpeg" alt="Design Process" />
+                                <div className="photo-item item-7" onClick={() => handleImageClick(chess1Image, "Design Process")}>
+                                    {/* <span className="item-number">7</span> */}
+                                    <img src={chess1Image} alt="Design Process" />
                                 </div>
-                                <div className="photo-item photo-2">
-                                    <img src="/src/images/experience/somvanshi/images/Workplace_3.jpeg" alt="Wireframing" />
+                                <div className="photo-item item-9" onClick={() => handleImageClick(officeSpaceImage, "Wireframing")}>
+                                    {/* <span className="item-number">9</span> */}
+                                    <img src={officeSpaceImage} alt="Wireframing" />
                                 </div>
-                                <div className="photo-item photo-3">
-                                    <img src="/src/images/experience/somvanshi/images/Team_2.jpeg" alt="Team Collaboration" />
+                                <div className="photo-item item-10" onClick={() => handleImageClick(team2Image, "Team Collaboration")}>
+                                    {/* <span className="item-number">10</span> */}
+                                    <img src={team2Image} alt="Team Collaboration" />
                                 </div>
-                                <div className="photo-item photo-4">
-                                    <img src="/src/images/experience/somvanshi/images/Team_3.jpeg" alt="UX Research" />
+                                <div className="photo-item item-3" onClick={() => handleImageClick(bookGiftImage, "UX Research")}>
+                                    {/* <span className="item-number">3</span> */}
+                                    <img src={bookGiftImage} alt="UX Research" />
                                 </div>
-                                <div className="photo-item photo-5">
-                                    <img src="/src/images/experience/somvanshi/images/Team_1.jpeg" alt="Design Review" />
+                                <div className="photo-item item-8" onClick={() => handleImageClick(scenic2Image, "Design Review")}>
+                                    {/* <span className="item-number">8</span> */}
+                                    <img src={scenic2Image} alt="Design Review" />
                                 </div>
-                                <div className="photo-item photo-6">
-                                    <img src="/src/images/experience/somvanshi/images/Team_4.jpeg" alt="Prototyping" />
+                                <div className="photo-item item-1" onClick={() => handleImageClick(team1Image, "Prototyping")}>
+                                    {/* <span className="item-number">1</span> */}
+                                    <img src={team1Image} alt="Prototyping" />
                                 </div>
-                                <div className="photo-item photo-7">
-                                    <img src="/src/images/experience/somvanshi/images/Team_5.jpeg" alt="Developer Handoff" />
+                                <div className="photo-item item-2" onClick={() => handleImageClick(workplace1Image, "Developer Handoff")}>
+                                    {/* <span className="item-number">2</span> */}
+                                    <img src={workplace1Image} alt="Developer Handoff" />
                                 </div>
-                                <div className="photo-item photo-8">
-                                    <img src="/src/images/experience/somvanshi/images/Workplace_2.jpeg" alt="Learning" />
+                                <div className="photo-item item-6" onClick={() => handleImageClick(workplace3Image, "Learning")}>
+                                    {/* <span className="item-number">6</span> */}
+                                    <img src={workplace3Image} alt="Learning" />
                                 </div>
-                                <div className="photo-item photo-9">
-                                    <img src="/src/images/experience/somvanshi/images/Workplace_2.jpeg" alt="Workplace" />
+                                <div className="photo-item item-5" onClick={() => handleImageClick(team5Image, "Workplace")}>
+                                    {/* <span className="item-number">5</span> */}
+                                    <img src={team5Image} alt="Workplace" />
+                                </div>
+                                <div className="photo-item item-4" onClick={() => handleImageClick(team3Image, "Workplace")}>
+                                    {/* <span className="item-number">4</span> */}
+                                    <img src={team3Image} alt="Workplace" />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+
+            {/* Image Modal/Lightbox */}
+            {selectedImage && (
+                <div className="image-modal" onClick={closeModal}>
+                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                        <button className="modal-close" onClick={closeModal}>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </button>
+                        <img src={selectedImage.src} alt={selectedImage.alt} />
+                    </div>
+                </div>
+            )}
+
             <Footer />
         </div>
     )

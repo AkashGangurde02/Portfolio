@@ -1,7 +1,7 @@
 .marquee-container {
     position: relative;
     width: 100%;
-    padding: 1.5rem 0;
+    padding: 2.25rem 0;
     /* Add vertical space for the rotated strips */
     overflow: hidden;
     display: flex;

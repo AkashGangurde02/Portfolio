@@ -4,73 +4,67 @@ const TestimonialsSection = () => {
   const testimonials = [
     {
       id: 1,
-      quote: "I had the pleasure of working with Ivan on a recent project, and I was blown away by their creativity and attention to detail. I highly recommend them to anyone looking for a talented and professional designer.",
-      author: 'Richard Jonas',
-      position: 'CEO of Teamwork',
-      company: 'teamwork',
-      avatar: 'https://via.placeholder.com/50/333333/ffffff?text=RJ'
+      quote: "Embark on a literary journey like never before with our revolutionary library application.✨",
+      author: 'Name',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80'
     },
     {
       id: 2,
-      quote: "His professionalism, responsiveness, and dedication to delivering high-quality work have exceeded our expectations. We are incredibly grateful for Sarah's contributions and would highly recommend her to anyone in need of a talented and reliable designer.",
-      author: 'Savnnah Megan',
-      position: 'CEO of Django',
-      company: 'django',
-      avatar: 'https://via.placeholder.com/50/333333/ffffff?text=SM'
+      quote: "Embark on a literary journey like never before with our revolutionary library application.✨",
+      author: 'Name',
+      avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80'
     },
     {
       id: 3,
-      quote: "Ivan is an exceptionally talented designer who consistently exceeded our expectations. His ability to blend creativity and functionality resulted in visually stunning designs that perfectly captured our brand's essence.",
-      author: 'Rachel Vaskov',
-      position: 'CEO of Pipefy',
-      company: 'pipefy',
-      avatar: 'https://via.placeholder.com/50/333333/ffffff?text=RV'
+      quote: "Embark on a literary journey like never before with our revolutionary library application.✨",
+      author: 'Name',
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80'
     },
     {
       id: 4,
-      quote: "Working with Ivan was a game-changer for our business. His keen eye for detail and deep understanding of user experience resulted in designs that not only looked great but also enhanced the overall usability of our product.",
-      author: 'Jacob McDany',
-      position: 'CEO of Rackspace',
-      company: 'rackspace',
-      avatar: 'https://via.placeholder.com/50/333333/ffffff?text=JM'
+      quote: "Embark on a literary journey like never before with our revolutionary library application.✨",
+      author: 'Name',
+      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80'
     }
   ]
 
   return (
-    <section id="reviews" className="testimonials-section">
+    <section className="testimonials-section">
       <div className="testimonials-container">
         <div className="testimonials-header">
           <h2 className="testimonials-title">
-            Let's see what my clients say
+            What <span className="text-light">people says</span> about my work.
           </h2>
+          <p className="testimonials-subtitle">
+            Embark on a literary journey like never before with our revolutionary library application.✨
+          </p>
         </div>
 
         <div className="testimonials-scroll-wrapper">
           <div className="testimonials-list">
             {testimonials.map((testimonial) => (
               <div key={testimonial.id} className="testimonial-card">
-                <p className="testimonial-quote">"{testimonial.quote}"</p>
-                
-                <div className="testimonial-footer">
-                  <div className="testimonial-author-info">
-                    <img 
-                      src={testimonial.avatar} 
-                      alt={testimonial.author}
-                      className="testimonial-avatar"
-                    />
-                    <div className="testimonial-author-details">
-                      <h4 className="testimonial-author">{testimonial.author}</h4>
-                      <p className="testimonial-position">{testimonial.position}</p>
-                    </div>
+                <div className="testimonial-content">
+                  <img
+                    src={testimonial.avatar}
+                    alt={testimonial.author}
+                    className="testimonial-avatar"
+                  />
+                  <div className="testimonial-text">
+                    <h4 className="testimonial-author">{testimonial.author}</h4>
+                    <p className="testimonial-quote">{testimonial.quote}</p>
                   </div>
-                  
-                  <div className="testimonial-company">
-                    {testimonial.company}
+                  <div className="quote-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V11C14.017 11.5523 13.5693 12 13.017 12H12.017V5H22.017V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 8.44772 5.0166 9V11C5.0166 11.5523 4.56889 12 4.0166 12H3.0166V5H13.0166V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z" />
+                    </svg>
                   </div>
                 </div>
               </div>
             ))}
           </div>
+          <div className="scroll-fade-top"></div>
+          <div className="scroll-fade-bottom"></div>
         </div>
       </div>
     </section>

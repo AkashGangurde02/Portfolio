@@ -2,7 +2,7 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 4rem 2rem 0;
+  padding: 4rem 2rem 2rem;
   background-color: #ffffff;
 }
 
@@ -140,7 +140,7 @@
 
 @media (max-width: 968px) {
   .hero-section {
-    padding: 5rem 0 2rem;
+    padding: 5rem 0 2.5rem;
     /* Reduced bottom padding from 3rem to 2rem */
     min-height: auto;
   }
@@ -233,7 +233,7 @@
 
 @media (max-width: 640px) {
   .hero-section {
-    padding: 4rem 0 2.5rem;
+    padding: 4rem 0 2rem;
     /* Removed horizontal padding */
   }
 

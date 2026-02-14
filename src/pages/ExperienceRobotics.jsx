@@ -111,29 +111,35 @@ const ExperienceRobotics = () => {
                             <div className="content-block gallery">
                                 <h2 className="content-title">Moments from the Journey</h2>
                                 <div className="photo-gallery">
-                                    <div className="photo-item photo-1">
+                                    <div className="photo-item item-7">
                                         <div className="photo-placeholder">Team Photo</div>
                                     </div>
-                                    <div className="photo-item photo-2">
+                                    <div className="photo-item item-9">
                                         <div className="photo-placeholder">Robot Build</div>
                                     </div>
-                                    <div className="photo-item photo-3">
+                                    <div className="photo-item item-10">
                                         <div className="photo-placeholder">Competition</div>
                                     </div>
-                                    <div className="photo-item photo-4">
+                                    <div className="photo-item item-3">
                                         <div className="photo-placeholder">Workshop</div>
                                     </div>
-                                    <div className="photo-item photo-5">
+                                    <div className="photo-item item-8">
                                         <div className="photo-placeholder">Testing</div>
                                     </div>
-                                    <div className="photo-item photo-6">
+                                    <div className="photo-item item-1">
                                         <div className="photo-placeholder">Team Work</div>
                                     </div>
-                                    <div className="photo-item photo-7">
+                                    <div className="photo-item item-2">
                                         <div className="photo-placeholder">Robocon</div>
                                     </div>
-                                    <div className="photo-item photo-8">
+                                    <div className="photo-item item-6">
                                         <div className="photo-placeholder">Celebration</div>
+                                    </div>
+                                    <div className="photo-item item-5">
+                                        <div className="photo-placeholder">Innovation</div>
+                                    </div>
+                                    <div className="photo-item item-4">
+                                        <div className="photo-placeholder">Memories</div>
                                     </div>
                                 </div>
                             </div>
