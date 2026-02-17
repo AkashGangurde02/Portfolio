@@ -55,24 +55,24 @@ const WorksSection = () => {
   }
 
   const projects = [
-    {
-      id: 2,
-      title: 'Improving Product Discovery & Trust',
-      category: 'E-COMMERCE UX',
-      description: 'Redesigned the product and collection pages of a D2C wellness e-commerce platform to improve product discovery, information clarity, and purchase confidence.',
-      image: hempHopImage,
-      link: '/case-study/hemp-hop',
-      ctaText: 'View Case Study'
-    },
-    {
-      id: 3,
-      title: 'Rebuilding a Trust-First Food Ordering Experience',
-      category: 'MOBILE APP UX',
-      description: 'Led the end-to-end UX redesign of a food delivery platform, improving usability, strengthening user trust, and creating a more emotionally engaging ordering experience.',
-      image: grubwalaImage,
-      link: '/case-study/grubwala',
-      ctaText: 'View Case Study'
-    },
+    // {
+    //   id: 2,
+    //   title: 'Improving Product Discovery & Trust',
+    //   category: 'E-COMMERCE UX',
+    //   description: 'Redesigned the product and collection pages of a D2C wellness e-commerce platform to improve product discovery, information clarity, and purchase confidence.',
+    //   image: hempHopImage,
+    //   link: '/case-study/hemp-hop',
+    //   ctaText: 'View Case Study'
+    // },
+    // {
+    //   id: 3,
+    //   title: 'Rebuilding a Trust-First Food Ordering Experience',
+    //   category: 'MOBILE APP UX',
+    //   description: 'Led the end-to-end UX redesign of a food delivery platform, improving usability, strengthening user trust, and creating a more emotionally engaging ordering experience.',
+    //   image: grubwalaImage,
+    //   link: '/case-study/grubwala',
+    //   ctaText: 'View Case Study'
+    // },
     // {
     //   id: 4,
     //   title: 'Flexible build system',

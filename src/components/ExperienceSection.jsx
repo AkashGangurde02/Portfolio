@@ -54,7 +54,7 @@ const ExperienceSection = forwardRef((props, ref) => {
     ]
 
     return (
-        <div ref={ref} className={`experience-section ${props.className || ''}`}>
+        <section ref={ref} id="experience" className={`experience-section ${props.className || ''}`}>
             <h2 ref={titleRef} className="section-title">My work experience</h2>
             <div ref={listRef} className="experience-list">
                 {experiences.map((exp, index) => {
@@ -98,7 +98,7 @@ const ExperienceSection = forwardRef((props, ref) => {
                     );
                 })}
             </div>
-        </div>
+        </section>
     )
 })
 

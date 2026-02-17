@@ -16,6 +16,7 @@ import DinoGame from './pages/DinoGame'
 import SmoothScroll from './components/SmoothScroll'
 import CursorFollower from './components/CursorFollower'
 import ScrollToTop from './components/ScrollToTop'
+import ScrollToTopButton from './components/ScrollToTopButton'
 import PasswordProtectedRoute from './components/PasswordProtectedRoute'
 import WhatsAppFloat from './components/WhatsAppFloat'
 // import IntroOverlay from './components/IntroOverlay'
@@ -55,6 +56,7 @@ function App() {
             <Route path="/dino-game" element={<DinoGame />} />
           </Routes>
           <WhatsAppFloat />
+          <ScrollToTopButton />
         </div>
       </SmoothScroll>
     </Router>

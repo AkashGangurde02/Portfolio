@@ -1,199 +1,314 @@
-.compact-cards-section {
-    padding: 4.5rem 2rem;
+/* Main Wrapper */
+.sumip-wrapper {
+    padding: 0 5%;
+    background-color: #f7f9f9;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding-top: 80px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 10;
+}
+
+.sumip-container {
     background-color: #ffffff;
-    border-bottom: 1px solid #f0f0f0;
-}
-
-.compact-cards-container {
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.compact-cards-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 4rem;
-    align-items: flex-start;
-}
-
-.compact-cards-left {
+    width: 100%;
+    max-width: 1600px;
+    border-radius: 20px;
+    border: 1.5px solid #cccccc;
+    padding: 4rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    height: calc(100vh - 140px);
+    min-height: 600px;
+    max-height: 900px;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    justify-content: center;
+    /* Center content vertically */
+    transition: all 0.4s ease;
 }
 
-.compact-section-title {
-    font-size: clamp(2rem, 4vw, 3rem);
+.sumip-container:hover {
+    border-color: #999999;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    /* increased left side width */
+    gap: 4rem;
+    height: 100%;
+    align-items: center;
+}
+
+/* --- Left Side Styling --- */
+.left-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    gap: 2rem;
+}
+
+.main-typography h1 {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    line-height: 1.2;
     font-weight: 700;
     color: #000000;
     margin: 0;
-    line-height: 1.2;
 }
 
-.compact-section-description {
-    font-size: 1rem;
+.sub-highlight {
+    color: #888;
     font-weight: 400;
-    color: #666666;
-    margin: 0;
-    line-height: 1.6;
+}
+
+.description-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
     max-width: 500px;
 }
 
-.compact-cards-right {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-}
-
-/* When hovering over the cards container, make all cards greyscale and move right */
-.compact-cards-right:hover .compact-card {
-    filter: grayscale(100%);
-    opacity: 0.5;
-    transform: translateX(50px);
-}
-
-.compact-card {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 1.5rem;
-    background: #ffffff;
-    border: 1px solid #e0e0e0;
-    border-left: 3px solid #d1d5db;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    max-width: 500px;
-}
-
-/* Remove greyscale, apply blue color, and move active card to the left */
-.compact-cards-right:hover .compact-card:hover {
-    filter: grayscale(0%);
-    opacity: 1;
-    background: #eff6ff;
-    border-color: #3b82f6;
-    border-left-color: #3b82f6;
-    transform: translateX(-20px);
-    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.2);
-}
-
-.compact-card-icon {
-    font-size: 2rem;
-    line-height: 1;
-    flex-shrink: 0;
-    user-select: none;
-}
-
-.compact-card-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-}
-
-.compact-card-title {
+.description-text {
     font-size: 1rem;
-    font-weight: 600;
-    color: #000000;
+    color: #444;
+    line-height: 1.6;
     margin: 0;
-    line-height: 1.3;
 }
 
-.compact-card-description {
-    font-size: 0.875rem;
-    color: #666666;
-    margin: 0;
-    line-height: 1.5;
+/* --- Right Side Styling --- */
+.right-carousel-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    position: relative;
+    /* Removed the transform to match the clean contained look requested */
 }
 
-/* Tablet View */
-@media (max-width: 968px) {
-    .compact-cards-wrapper {
+.carousel-window {
+    background-color: #1a1a1a;
+    /* Dark background */
+    border-radius: 30px;
+    /* Rounded corners */
+    padding: 3rem 0 3rem 3rem;
+    /* Padding with 0 on right for scroll feel */
+    height: auto;
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-track {
+    display: flex;
+    gap: 2rem;
+    width: max-content;
+    height: 100%;
+    align-items: center;
+    padding-right: 4rem;
+    /* End padding */
+}
+
+/* --- New Card Styling --- */
+.testimonial-card {
+    background: linear-gradient(145deg, #2a2a2a, #222);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 2rem;
+    width: 320px;
+    height: 380px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+
+    /* Golden Glow at bottom */
+    border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    border-bottom-color: rgba(255, 215, 0, 0.6);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 10px 20px rgba(255, 215, 0, 0.05);
+    /* Glow effect */
+}
+
+.card-header h3 {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 500;
+    margin: 0;
+}
+
+.card-body p {
+    font-size: 0.95rem;
+    color: #ccc;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.card-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.star-icon {
+    color: #ffd700;
+    /* Gold header */
+    font-size: 1.2rem;
+}
+
+.rating-text {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+    .sumip-container {
+        height: auto;
+        padding: 2rem;
+        max-height: none;
+    }
+
+    .content-grid {
         grid-template-columns: 1fr;
         gap: 3rem;
     }
 
-    .compact-cards-right {
-        gap: 1rem;
-    }
-
-    .compact-card {
-        padding: 1.25rem;
+    .carousel-window {
+        width: 100%;
+        margin-top: 2rem;
     }
 }
 
-/* Mobile View */
 @media (max-width: 768px) {
-    .compact-cards-section {
-        padding: 3rem 1.5rem;
+    .sumip-wrapper {
+        padding: 1rem;
+        height: auto;
+        padding-top: 100px;
     }
 
-    .compact-cards-wrapper {
-        gap: 2.5rem;
+    .sumip-container {
+        padding: 1.5rem;
+        border-radius: 20px;
     }
 
-    .compact-section-title {
-        font-size: clamp(1.75rem, 5vw, 2.5rem);
-    }
-
-    .compact-section-description {
-        font-size: 0.95rem;
-    }
-
-    .compact-cards-right {
-        gap: 0.875rem;
-    }
-
-    .compact-card {
-        padding: 1.25rem;
-        gap: 0.875rem;
-    }
-
-    .compact-card-icon {
-        font-size: 1.75rem;
-    }
-
-    .compact-card-title {
-        font-size: 0.95rem;
-    }
-
-    .compact-card-description {
-        font-size: 0.85rem;
+    .main-typography h1 {
+        font-size: 2.2rem;
     }
 }
 
-/* Small Mobile View */
-@media (max-width: 480px) {
-    .compact-cards-section {
-        padding: 2.5rem 1.25rem;
-    }
+/* --- Text Truncation --- */
+.card-body p {
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    /* Limits text to ~6 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
-    .compact-cards-wrapper {
-        gap: 2rem;
-    }
+.testimonial-card {
+    cursor: pointer;
+}
 
-    .compact-section-title {
-        font-size: clamp(1.5rem, 6vw, 2rem);
-    }
+/* --- Modal Styles --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+}
 
-    .compact-section-description {
-        font-size: 0.9rem;
-    }
+.modal-content {
+    background: linear-gradient(145deg, #2a2a2a, #222);
+    padding: 3rem;
+    border-radius: 24px;
+    max-width: 600px;
+    width: 90%;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+    position: relative;
+    transform: scale(0.95);
+    animation: scaleUp 0.3s forwards;
+}
 
-    .compact-card {
-        padding: 1rem;
-        gap: 0.75rem;
-    }
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1rem;
+}
 
-    .compact-card-icon {
-        font-size: 1.5rem;
-    }
+.modal-header h3 {
+    font-size: 1.8rem;
+    color: #fff;
+    margin: 0;
+}
 
-    .compact-card-title {
-        font-size: 0.9rem;
-    }
+.modal-close-btn {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+}
 
-    .compact-card-description {
-        font-size: 0.8rem;
+.modal-close-btn:hover {
+    color: #fff;
+}
+
+.modal-body p {
+    font-size: 1.1rem;
+    color: #e0e0e0;
+    line-height: 1.8;
+}
+
+.modal-footer {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleUp {
+    to {
+        transform: scale(1);
     }
 }

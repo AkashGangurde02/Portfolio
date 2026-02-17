@@ -107,7 +107,7 @@ const Footer = () => {
     <>
       <div style={{ maxWidth: '1400px', margin: '2rem auto 0', padding: '0 2rem', display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
         <div className="footer-testimonial-top">
-          <div className="testimonial-card">
+          <div className="suggestion-box">
             <div className="testimonial-header">
               <div className="testimonial-avatar"></div>
               <span className="testimonial-name">suggestionbox</span>

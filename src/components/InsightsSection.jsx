@@ -31,7 +31,7 @@ const InsightsSection = () => {
   }, [])
 
   return (
-    <section className="insights-section">
+    <section className="insights-section" id="insights">
       <div className="insights-container">
         <div className="insights-header">
           <h2 className="insights-title">Latest UX/UI Design Insights</h2>

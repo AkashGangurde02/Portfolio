@@ -8,6 +8,7 @@ import ExperienceSection from '../components/ExperienceSection'
 import CompactCardsSection from '../components/CompactCardsSection'
 import InsightsSection from '../components/InsightsSection'
 import Footer from '../components/Footer'
+import HomeSubNavbar from '../components/HomeSubNavbar'
 
 const Home = () => {
   return (
@@ -22,6 +23,7 @@ const Home = () => {
       <CompactCardsSection />
       <InsightsSection />
       <Footer />
+      <HomeSubNavbar />
     </>
   )
 }

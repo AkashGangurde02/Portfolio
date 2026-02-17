@@ -4,8 +4,10 @@
     right: 30px;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.7rem 1.2rem;
+    justify-content: center;
+    padding: 0;
+    width: 60px;
+    height: 60px;
     background-color: #25D366;
     color: #ffffff;
     text-decoration: none;
@@ -13,26 +15,41 @@
     font-size: 0.95rem;
     font-weight: 600;
     box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
-    transition: all 0.3s ease;
+    transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s ease;
     z-index: 999;
     animation: float-bounce 2s ease-in-out infinite;
+    overflow: hidden;
 }
 
 .whatsapp-float:hover {
+    width: 210px;
     background-color: #20ba5a;
-    transform: translateY(-4px);
-    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+    justify-content: flex-start;
+    padding-left: 17px;
+    padding-right: 20px;
+    animation-play-state: paused;
+    /* Pause bounce on hover to read text easily */
 }
 
 .whatsapp-float-icon {
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
     flex-shrink: 0;
 }
 
 .whatsapp-float-text {
     color: #ffffff;
     white-space: nowrap;
+    opacity: 0;
+    max-width: 0;
+    margin-left: 0;
+    transition: all 0.4s ease;
+}
+
+.whatsapp-float:hover .whatsapp-float-text {
+    opacity: 1;
+    max-width: 150px;
+    margin-left: 10px;
 }
 
 /* Subtle bounce animation */
@@ -81,6 +98,7 @@
         height: 28px;
     }
 }
+
 /* Visibility states */
 .whatsapp-float.hidden {
     opacity: 0;

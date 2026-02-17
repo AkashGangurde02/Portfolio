@@ -71,7 +71,7 @@ const HeroSection = () => {
 
   return (
     <>
-      <section ref={heroRef} className="hero-section">
+      <section ref={heroRef} id="home" className="hero-section">
         <div className="hero-container">
           <div className="hero-content">
             <h1 ref={titleRef} className="hero-title">

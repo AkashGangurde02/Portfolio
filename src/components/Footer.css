@@ -331,44 +331,71 @@
 
 
 
-/* Testimonial Card at Top */
+/* Testimonial Card at Top (Now Suggestion Box) */
 .footer-testimonial-top {
   margin-bottom: 1rem;
   display: flex;
   justify-content: flex-end;
 }
 
-.footer-testimonial-top .testimonial-card {
+.suggestion-box {
   background-color: #1a1a1a;
+  /* Black shade */
+  color: #ffffff;
+  padding: 1.5rem 2rem;
   border: 1px solid #333333;
-  border-radius: 12px;
-  padding: 1rem;
+  /* Adding border for visibility */
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  /* Hug content */
+  width: max-content;
   max-width: 400px;
+
+  transition: transform 0.3s ease;
 }
 
-.footer-testimonial-top .testimonial-header {
+.suggestion-box:hover {
+  transform: translateY(-2px);
+  background-color: #222;
+  border-color: #444;
+}
+
+.suggestion-box .testimonial-header {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
 }
 
-.footer-testimonial-top .testimonial-avatar {
-  width: 40px;
-  height: 40px;
+.suggestion-box .testimonial-avatar {
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #333;
+  /* Lighter dark for avatar bg */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.footer-testimonial-top .testimonial-name {
+.suggestion-box .testimonial-avatar::after {
+  content: '👤';
+  font-size: 16px;
+}
+
+.suggestion-box .testimonial-name {
   font-size: 1rem;
   font-weight: 600;
   color: #ffffff;
 }
 
-.footer-testimonial-top .testimonial-text {
+.suggestion-box .testimonial-text {
   font-size: 0.95rem;
-  line-height: 1.6;
+  line-height: 1.5;
   color: #cccccc;
+  /* Light grey text */
   margin: 0;
 }
