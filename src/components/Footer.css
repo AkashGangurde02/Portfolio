@@ -51,6 +51,8 @@
   cursor: pointer;
   overflow: hidden;
   line-height: 1.2;
+  /* Ensure visible by default — GSAP animates from 0 on scroll */
+  opacity: 1;
 }
 
 .heading-text-wrapper {
@@ -74,6 +76,8 @@
   padding-bottom: 1.5rem;
   border-top: 1px solid #333333;
   align-items: center;
+  /* Always visible — GSAP animates children from 0 on scroll */
+  opacity: 1;
 }
 
 /* Left: Avatar and Name */

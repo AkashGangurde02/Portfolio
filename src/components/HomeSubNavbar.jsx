@@ -3,12 +3,12 @@ import './HomeSubNavbar.css'
 
 const HomeSubNavbar = () => {
     const [activeSection, setActiveSection] = useState('home')
+    const [isVisible, setIsVisible] = useState(false)
     const navContainerRef = useRef(null)
     const indicatorRef = useRef(null)
     const itemRefs = useRef({})
 
     const navItems = [
-        { id: 'home', label: 'Overview' },
         { id: 'about', label: 'About' },
         { id: 'experience', label: 'Experience' },
         { id: 'work', label: 'Case Studies' },
@@ -37,6 +37,9 @@ const HomeSubNavbar = () => {
 
     useEffect(() => {
         const handleScroll = () => {
+            // Show sub-navbar at same trigger as WhatsApp float button
+            setIsVisible(window.scrollY > 800)
+
             const sections = navItems.map(item => {
                 const el = document.getElementById(item.id)
                 if (el) return { id: item.id, top: el.getBoundingClientRect().top }
@@ -88,7 +91,7 @@ const HomeSubNavbar = () => {
     }
 
     return (
-        <div className="home-sub-navbar">
+        <div className={`home-sub-navbar ${isVisible ? 'sub-nav-visible' : 'sub-nav-hidden'}`}>
             <div className="sub-nav-container" ref={navContainerRef}>
                 {navItems.map((item) => (
                     <button

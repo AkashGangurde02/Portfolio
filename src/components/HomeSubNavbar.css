@@ -15,6 +15,22 @@
     padding: 0;
     height: 60px;
     /* Increased height for the subnav */
+    transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+}
+
+/* Visibility states — triggered by scroll (same as WhatsApp button) */
+.home-sub-navbar.sub-nav-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    pointer-events: none;
+}
+
+.home-sub-navbar.sub-nav-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 .sub-nav-container {

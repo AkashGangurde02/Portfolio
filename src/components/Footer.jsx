@@ -14,6 +14,17 @@ const Footer = () => {
   const [currentText, setCurrentText] = useState('Good design disappears. Great UX remains.')
 
   useEffect(() => {
+    // Safety fallback: ensure content is always visible if animation doesn't fire
+    const ensureVisible = setTimeout(() => {
+      if (headingRef.current) headingRef.current.style.opacity = '1'
+      if (contentRef.current) {
+        Array.from(contentRef.current.children).forEach(child => {
+          child.style.opacity = '1'
+          child.style.transform = 'none'
+        })
+      }
+    }, 800)
+
     const ctx = gsap.context(() => {
       // Check if mobile or tablet - simplified check matching CSS breakpoint
       if (window.innerWidth <= 968) {
@@ -23,8 +34,8 @@ const Footer = () => {
       gsap.from(headingRef.current, {
         scrollTrigger: {
           trigger: footerRef.current,
-          start: 'top 95%',
-          toggleActions: 'play none none reverse'
+          start: 'top bottom', // Fire as soon as footer enters viewport
+          toggleActions: 'play none none none' // Don't reverse
         },
         y: 50,
         opacity: 0,
@@ -32,21 +43,26 @@ const Footer = () => {
         ease: 'power3.out'
       })
 
-      gsap.from(contentRef.current.children, {
-        scrollTrigger: {
-          trigger: footerRef.current,
-          start: 'top 95%',
-          toggleActions: 'play none none reverse'
-        },
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: 'power3.out'
-      })
+      if (contentRef.current && contentRef.current.children.length > 0) {
+        gsap.from(contentRef.current.children, {
+          scrollTrigger: {
+            trigger: footerRef.current,
+            start: 'top bottom', // Fire as soon as footer enters viewport
+            toggleActions: 'play none none none'
+          },
+          y: 30,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: 'power3.out'
+        })
+      }
     }, footerRef)
 
-    return () => ctx.revert()
+    return () => {
+      clearTimeout(ensureVisible)
+      ctx.revert()
+    }
   }, [])
 
   // Word slide-up animation on hover
