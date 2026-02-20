@@ -90,4 +90,3 @@ const InsightsSection = () => {
 }
 
 export default InsightsSection
-

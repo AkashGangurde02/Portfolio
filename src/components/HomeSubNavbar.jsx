@@ -1,8 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './HomeSubNavbar.css'
 
 const HomeSubNavbar = () => {
     const [activeSection, setActiveSection] = useState('home')
+    const navContainerRef = useRef(null)
+    const indicatorRef = useRef(null)
+    const itemRefs = useRef({})
 
     const navItems = [
         { id: 'home', label: 'Overview' },
@@ -12,6 +15,25 @@ const HomeSubNavbar = () => {
         { id: 'feedback', label: 'Feedback' },
         { id: 'insights', label: 'Insights' }
     ]
+
+    // Update indicator position when activeSection changes
+    useEffect(() => {
+        const activeButton = itemRefs.current[activeSection]
+        const container = navContainerRef.current
+        const indicator = indicatorRef.current
+
+        if (activeButton && container && indicator) {
+            const containerRect = container.getBoundingClientRect()
+            const buttonRect = activeButton.getBoundingClientRect()
+
+            const left = buttonRect.left - containerRect.left
+            const width = buttonRect.width
+
+            indicator.style.left = `${left}px`
+            indicator.style.width = `${width}px`
+            indicator.style.opacity = '1'
+        }
+    }, [activeSection])
 
     useEffect(() => {
         const handleScroll = () => {
@@ -37,6 +59,26 @@ const HomeSubNavbar = () => {
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
+    // Recalculate indicator on resize
+    useEffect(() => {
+        const handleResize = () => {
+            const activeButton = itemRefs.current[activeSection]
+            const container = navContainerRef.current
+            const indicator = indicatorRef.current
+
+            if (activeButton && container && indicator) {
+                const containerRect = container.getBoundingClientRect()
+                const buttonRect = activeButton.getBoundingClientRect()
+
+                indicator.style.left = `${buttonRect.left - containerRect.left}px`
+                indicator.style.width = `${buttonRect.width}px`
+            }
+        }
+
+        window.addEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize', handleResize)
+    }, [activeSection])
+
     const scrollToSection = (id) => {
         const section = document.getElementById(id)
         if (section) {
@@ -47,16 +89,19 @@ const HomeSubNavbar = () => {
 
     return (
         <div className="home-sub-navbar">
-            <div className="sub-nav-container">
+            <div className="sub-nav-container" ref={navContainerRef}>
                 {navItems.map((item) => (
                     <button
                         key={item.id}
+                        ref={(el) => (itemRefs.current[item.id] = el)}
                         className={`sub-nav-item ${activeSection === item.id ? 'active' : ''}`}
                         onClick={() => scrollToSection(item.id)}
                     >
                         {item.label}
                     </button>
                 ))}
+                {/* Sliding indicator */}
+                <div className="sub-nav-indicator" ref={indicatorRef}></div>
             </div>
         </div>
     )

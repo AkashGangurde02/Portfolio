@@ -2,6 +2,9 @@
   padding: 4.5rem 2rem;
   background-color: #ffffff;
   border-bottom: 1px solid #f0f0f0;
+  position: relative;
+  /* Lower than CompactCardsSection so it scrolls up FROM BELOW the pinned curtain */
+  z-index: 1;
 }
 
 .insights-container {
