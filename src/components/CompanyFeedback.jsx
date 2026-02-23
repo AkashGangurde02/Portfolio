@@ -1,13 +1,14 @@
 import React, { useRef, useLayoutEffect, useState } from 'react'
 import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import './CompactCardsSection.css'
+import './CompanyFeedback.css'
 
-gsap.registerPlugin(ScrollTrigger)
+// ─── No ScrollTrigger needed anymore ───────────────────────────────────────
+// Cards now respond to mouse-wheel ONLY when the cursor is over the
+// dark carousel-window. Page scrolls normally everywhere else.
 
-const CompactCardsSection = () => {
-    const sectionRef = useRef(null)
+const CompanyFeedback = () => {
     const trackRef = useRef(null)
+    const carouselWindowRef = useRef(null)
     const [selectedCard, setSelectedCard] = useState(null)
 
     const testimonials = [
@@ -44,120 +45,105 @@ const CompactCardsSection = () => {
     ]
 
     useLayoutEffect(() => {
-        const track = trackRef.current
-        const section = sectionRef.current
-        if (!track || !section) return
+        const track = carouselWindowRef.current
+            ? carouselWindowRef.current.querySelector('.carousel-track')
+            : null
+        const carouselWindow = carouselWindowRef.current
+        if (!track || !carouselWindow) return
 
-        const mm = gsap.matchMedia()
+        // ── Compute how far the track can travel ────────────────────────────
+        const getScrollDistance = () => {
+            const lastCard = track.lastElementChild
+            if (!lastCard) return 0
+            const style = window.getComputedStyle(track)
+            const paddingRight = parseFloat(style.paddingRight) || 0
+            const gap = parseFloat(style.columnGap) || parseFloat(style.gap) || 0
+            return Math.max(0, track.scrollWidth - paddingRight - lastCard.offsetWidth - gap)
+        }
 
-        mm.add('(min-width: 769px)', () => {
-            const getScrollDistance = () => {
-                const lastCard = track.lastElementChild
-                if (!lastCard) return 0
-                const trackStyle = window.getComputedStyle(track)
-                const paddingRight = parseFloat(trackStyle.paddingRight) || 0
-                const gap = parseFloat(trackStyle.columnGap) || parseFloat(trackStyle.gap) || 0
-                const distance = track.scrollWidth - paddingRight - lastCard.offsetWidth - gap
-                return Math.max(0, distance)
-            }
+        // ── GSAP paused tween driven by the ticker ──────────────────────────
+        const tween = gsap.to(track, {
+            x: () => -getScrollDistance(),
+            ease: 'none',
+            paused: true,
+        })
 
-            // Paused tween — we drive it manually (no scrub)
-            const tween = gsap.to(track, {
-                x: () => -getScrollDistance(),
-                ease: 'none',
-                paused: true,
-            })
+        // targetProgress  — what we want to reach (updated on wheel)
+        // currentProgress — where we actually are (smoothly lerped every frame)
+        let targetProgress = 0
+        let currentProgress = 0
 
-            let maxProgress = 0      // only ever increases — cards never go backward
-            let currentProgress = 0  // lerped toward maxProgress each frame
-            let animComplete = false
-
-            // Smooth ticker replaces scrub: 1
-            // Lerps currentProgress toward maxProgress each animation frame
-            const ticker = gsap.ticker.add(() => {
-                if (currentProgress !== maxProgress) {
-                    currentProgress += (maxProgress - currentProgress) * 0.12
-                    // Snap when very close to avoid infinite loop
-                    if (Math.abs(maxProgress - currentProgress) < 0.001) {
-                        currentProgress = maxProgress
-                    }
-                    tween.progress(currentProgress)
-                }
-            })
-
-            const st = ScrollTrigger.create({
-                trigger: section,
-                start: 'top top',
-                end: () => '+=' + getScrollDistance(),
-                pin: true,
-                pinSpacing: true,
-                anticipatePin: 1,
-                invalidateOnRefresh: true,
-                // Only advance maxProgress when scrolling DOWN
-                onUpdate: (self) => {
-                    if (self.direction === 1) {
-                        maxProgress = Math.max(maxProgress, self.progress)
-                    }
-                    // Scrolling UP: do nothing — maxProgress stays frozen
-                    // Ticker will hold tween at current position
-                },
-                onLeave: () => {
-                    // Horizontal scroll complete — snap to end and disable trigger
-                    // so scrolling back UP won't re-pin this section
-                    maxProgress = 1
-                    currentProgress = 1
-                    tween.progress(1)
-                    gsap.set(track, { x: -getScrollDistance() })
-                    animComplete = true
-                    // Disable the trigger: removes pin so section scrolls normally upward
-                    st.disable()
-                },
-                onLeaveBack: () => {
-                    // User scrolled all the way back BEFORE the trigger (going up past start)
-                    // Only reset if animation hasn't completed yet
-                    if (!animComplete) {
-                        maxProgress = 0
-                        currentProgress = 0
-                        tween.progress(0)
-                        gsap.set(track, { x: 0 })
-                    }
-                },
-                onRefresh: () => {
-                    tween.invalidate()
-                }
-            })
-
-            // ─── Reset on scroll-to-top or page refresh ───
-            const handleScrollReset = () => {
-                if (window.scrollY < 5 && animComplete) {
-                    animComplete = false
-                    maxProgress = 0
-                    currentProgress = 0
-                    gsap.set(track, { x: 0 })
-                    tween.progress(0)
-                    st.enable()
-                    ScrollTrigger.refresh()
-                }
-            }
-            window.addEventListener('scroll', handleScrollReset, { passive: true })
-
-            // Cleanup
-            return () => {
-                gsap.ticker.remove(ticker)
-                window.removeEventListener('scroll', handleScrollReset)
-                st.kill()
-                tween.kill()
-                gsap.set(track, { x: 0 })
+        // ── Smooth lerp ticker (runs every rAF) ─────────────────────────────
+        // Gives the carousel natural inertia / coast-to-stop feel.
+        const ticker = gsap.ticker.add(() => {
+            const diff = targetProgress - currentProgress
+            if (Math.abs(diff) > 0.0005) {
+                currentProgress += diff * 0.10          // 0.10 = easing speed
+                tween.progress(Math.max(0, Math.min(1, currentProgress)))
+            } else if (currentProgress !== targetProgress) {
+                currentProgress = targetProgress
+                tween.progress(Math.max(0, Math.min(1, currentProgress)))
             }
         })
 
-        return () => mm.revert()
+        // ── Wheel handler — attached only to the carousel-window ────────────
+        // Intercepts wheel events ONLY while the carousel still has room to move.
+        // Once all cards have reached the left end  → scroll DOWN passes to the page.
+        // When the carousel is at the start again   → scroll UP  passes to the page.
+        const handleWheel = (e) => {
+            const scrollingDown = e.deltaY > 0
+            const scrollingUp = e.deltaY < 0
+
+            // ── Boundary pass-through ────────────────────────────────────────
+            // At the rightmost position (start): let the page scroll up
+            if (targetProgress <= 0 && scrollingUp) return
+
+            // At the leftmost position (all cards visible / end reached):
+            // let the page continue scrolling down
+            if (targetProgress >= 1 && scrollingDown) return
+
+            // ── Intercept: move the carousel ─────────────────────────────────
+            e.preventDefault()
+            e.stopPropagation()
+
+            const dist = getScrollDistance()
+            if (dist === 0) return
+
+            // Normalise delta across devices:
+            //   deltaMode 0 = pixels  (trackpad, high-DPI mouse)
+            //   deltaMode 1 = lines   (typical mouse wheel on Windows)
+            //   deltaMode 2 = pages
+            let rawDelta = e.deltaY
+            if (e.deltaMode === 1) rawDelta *= 30   // lines → pixels
+            if (e.deltaMode === 2) rawDelta *= 300  // pages → pixels
+
+            // scroll DOWN (rawDelta > 0) → cards slide LEFT  (progress ↑)
+            // scroll UP   (rawDelta < 0) → cards slide RIGHT (progress ↓)
+            const delta = rawDelta / dist
+            targetProgress = Math.max(0, Math.min(1, targetProgress + delta))
+        }
+
+        // passive: false is required so that e.preventDefault() is allowed
+        carouselWindow.addEventListener('wheel', handleWheel, { passive: false })
+
+        // Invalidate tween dimensions on resize
+        const handleResize = () => { tween.invalidate() }
+        window.addEventListener('resize', handleResize, { passive: true })
+
+        // ── Cleanup ─────────────────────────────────────────────────────────
+        return () => {
+            gsap.ticker.remove(ticker)
+            carouselWindow.removeEventListener('wheel', handleWheel)
+            window.removeEventListener('resize', handleResize)
+            tween.kill()
+            gsap.set(track, { x: 0 })
+        }
     }, [])
 
 
     return (
         <>
-            <section className="sumip-wrapper" ref={sectionRef} id="feedback">
+            <section className="sumip-wrapper" id="feedback">
                 <div className="sumip-container">
                     <div className="content-grid">
                         {/* Left Side: Typography & Info */}
@@ -172,12 +158,14 @@ const CompactCardsSection = () => {
                                 <p className="description-text">
                                     Performance evaluations highlighting my growth in UI/UX, design thinking, leadership, and execution across live projects.
                                 </p>
+                                <p className="scroll-hint">↔ Scroll inside the panel to browse</p>
                             </div>
                         </div>
 
                         {/* Right Side: Dark Carousel Container */}
                         <div className="right-carousel-container">
-                            <div className="carousel-window">
+                            {/* ref is on the window — wheel fires only when cursor is here */}
+                            <div className="carousel-window" ref={carouselWindowRef}>
                                 <div className="carousel-track" ref={trackRef}>
                                     {testimonials.map((item) => (
                                         <div
@@ -226,4 +214,4 @@ const CompactCardsSection = () => {
     )
 }
 
-export default CompactCardsSection
+export default CompanyFeedback

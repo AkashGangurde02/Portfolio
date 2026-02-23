@@ -107,8 +107,8 @@ const About = () => {
 
   const partners = [
     { name: 'Somvanshi Technologies Pvt Ltd', category: 'UI/UX & Branding', year: '2025' },
-    { name: 'Grubwala', category: 'UI/UX & Branding', year: '2025' },
-    { name: 'Hemphop Store', category: 'UI/UX & Branding', year: '2024' }
+    // { name: 'Grubwala', category: 'UI/UX & Branding', year: '2025' },
+    // { name: 'Hemphop Store', category: 'UI/UX & Branding', year: '2024' }
   ]
 
   const awards = [
@@ -180,7 +180,7 @@ const About = () => {
 
           {/* Partners Section */}
           <div ref={partnersRef} className="partners-section">
-            <h2 className="section-title">A visual partner for brands, companies, and agencies</h2>
+            <h2 className="section-title">A visual partner for company</h2>
             <div className="partners-grid">
               {partners.map((partner, index) => (
                 <div key={index} className="partner-card">

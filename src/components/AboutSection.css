@@ -1,5 +1,5 @@
 .about-section {
-  padding: 4.5rem 2rem;
+  padding: 5rem 2rem;
   background-color: #ffffff;
   border-bottom: 1px solid #f0f0f0;
 }
@@ -9,7 +9,7 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: 500px 1fr;
-  gap: 8rem;
+  gap: 10rem;
   align-items: stretch;
 }
 
@@ -35,7 +35,7 @@
   font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 700;
   line-height: 1.2;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   color: #000000;
 }
 
@@ -88,8 +88,8 @@
 
 /* Tools I Use Section */
 .tools-section-home {
-  margin-top: 4rem;
-  padding: 3rem 0 0 0;
+  margin-top: 3rem;
+  padding: 2.5rem 0 0 0;
   border-top: 1px solid #e8e8e8;
 }
 
@@ -106,7 +106,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
-  margin-top: 3.5rem;
+  margin-top: 2.5rem;
   margin-bottom: 0;
   align-items: flex-start;
   border-top: 1px solid #e8e8e8;
@@ -212,8 +212,7 @@
 
 @media (max-width: 768px) {
   .about-section {
-    padding: 2.5rem 0;
-    /* Small top/bottom padding, no sides */
+    padding: 4rem 1.5rem;
   }
 
   .about-container {
@@ -307,7 +306,7 @@
 
 @media (max-width: 480px) {
   .about-section {
-    padding: 3rem 1.25rem;
+    padding: 3rem 1rem;
   }
 
   .about-container {

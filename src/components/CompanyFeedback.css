@@ -1,18 +1,15 @@
 /* Main Wrapper */
 .sumip-wrapper {
-    padding: 0 5%;
+    padding: 5rem 5%;
     background-color: #f7f9f9;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* IMPORTANT: Do NOT set overflow:hidden here — GSAP ScrollTrigger pin needs to read scroll position */
     overflow: visible;
-    padding-top: 80px;
     box-sizing: border-box;
     position: relative;
-    /* Higher than InsightsSection so it sits ON TOP while pinned (curtain effect) */
-    z-index: 30;
+    z-index: 1;
 }
 
 .sumip-container {
@@ -21,15 +18,14 @@
     max-width: 1600px;
     border-radius: 20px;
     border: 1.5px solid #cccccc;
-    padding: 4rem;
+    padding: 3.5rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    height: calc(100vh - 140px);
+    height: calc(100vh - 160px);
     min-height: 600px;
     max-height: 900px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* Center content vertically */
     transition: all 0.4s ease;
 }
 
@@ -41,8 +37,7 @@
 .content-grid {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
-    /* increased left side width */
-    gap: 4rem;
+    gap: 3.5rem;
     height: 100%;
     align-items: center;
 }
@@ -53,7 +48,7 @@
     flex-direction: column;
     justify-content: center;
     height: 100%;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .main-typography h1 {
@@ -72,7 +67,7 @@
 .description-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
     max-width: 500px;
 }
 
@@ -81,6 +76,15 @@
     color: #444;
     line-height: 1.6;
     margin: 0;
+}
+
+/* Subtle hint telling users to scroll inside the panel */
+.scroll-hint {
+    font-size: 0.82rem;
+    color: #aaa;
+    margin: 0;
+    letter-spacing: 0.02em;
+    user-select: none;
 }
 
 /* --- Right Side Styling --- */
@@ -101,11 +105,17 @@
     min-height: 450px;
     display: flex;
     align-items: center;
-    /* This clips the horizontally moving track */
+    /* Clips the horizontally moving track */
     overflow: hidden;
     position: relative;
     width: 100%;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    /* Signals that the carousel is scrollable */
+    cursor: grab;
+}
+
+.carousel-window:active {
+    cursor: grabbing;
 }
 
 .carousel-track {
@@ -202,9 +212,8 @@
 
 @media (max-width: 768px) {
     .sumip-wrapper {
-        padding: 1rem;
+        padding: 4rem 1.5rem;
         height: auto;
-        padding-top: 100px;
     }
 
     .sumip-container {

@@ -1,5 +1,5 @@
 .works-section {
-  padding: 4.5rem 4rem;
+  padding: 3rem 4rem 0;
   background-color: #ffffff;
   border-bottom: 1px solid #f0f0f0;
 }
@@ -13,16 +13,16 @@
 .works-title {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
   color: #000000;
 }
 
 /* Featured Project */
 .featured-work-card {
-  margin-bottom: 5rem;
+  margin-bottom: 4rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 3.5rem;
   align-items: center;
   padding: 3rem;
   background-color: #fafafa;
@@ -116,7 +116,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 3rem;
-  margin-bottom: 4rem;
+  margin-bottom: 0;
 }
 
 .work-card {
@@ -208,7 +208,7 @@
 /* View All Works */
 .view-all-wrapper {
   text-align: center;
-  padding-top: 2rem;
+  padding: 0 0 2.5rem 0;
 }
 
 .view-all-link {
@@ -265,8 +265,7 @@
 
 @media (max-width: 768px) {
   .works-section {
-    padding: 2.5rem 0;
-    /* Small top/bottom padding, no sides */
+    padding: 4rem 1.5rem;
   }
 
   .works-container {
@@ -367,7 +366,7 @@
   }
 
   .view-all-wrapper {
-    padding-top: 5rem;
+    padding: 3rem 0;
     text-align: center;
   }
 
@@ -381,7 +380,7 @@
 
 @media (max-width: 480px) {
   .works-section {
-    padding: 3rem 0;
+    padding: 3rem 1rem;
   }
 
   .works-grid {

@@ -1,5 +1,5 @@
 .experience-section {
-    padding: 4.5rem 2rem;
+    padding: 5rem 2rem;
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
@@ -15,7 +15,7 @@
     font-size: clamp(1.75rem, 3vw, 2.5rem);
     font-weight: 700;
     color: #000000;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
 }
 
 .experience-list {
