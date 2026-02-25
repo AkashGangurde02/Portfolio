@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './CaseStudyContactForm.css'
@@ -11,54 +12,56 @@ import Footer from '../components/Footer'
 gsap.registerPlugin(ScrollTrigger)
 
 const processSteps = [
-  { icon: '🔍', label: 'Empathize', desc: 'Understood user pain points through heuristic review' },
-  { icon: '📌', label: 'Define', desc: 'Pinpointed interaction mismatches in the form flow' },
-  { icon: '💡', label: 'Ideate', desc: 'Explored standard UX patterns for phone inputs' },
-  { icon: '✏️', label: 'Design', desc: 'Refined the UI in Figma within brand constraints' },
-  { icon: '✅', label: 'Test', desc: 'Validated with peer review and heuristic checklist' },
+  { num: '01', label: 'Empathize', desc: 'Understood user pain points through heuristic evaluation and mental model analysis of the existing form.' },
+  { num: '02', label: 'Define', desc: 'Pinpointed interaction-pattern mismatches in the phone input flow causing friction and invalid submissions.' },
+  { num: '03', label: 'Ideate', desc: 'Explored standard UX patterns for phone inputs — text fields, masked inputs, country code selectors.' },
+  { num: '04', label: 'Design', desc: 'Refined the UI in Figma within existing brand constraints — no visual disruption to the product identity.' },
 ]
 
 const solutions = [
-  { icon: '📞', text: 'Replaced increment/decrement control with a standard text input for phone numbers' },
-  { icon: '🌍', text: 'Added country code selector to support global users and clarify input format' },
-  { icon: '🚫', text: 'Applied input constraints preventing negative values and invalid characters' },
-  { icon: '📐', text: 'Improved field grouping and spacing to strengthen visual hierarchy' },
-  { icon: '🔒', text: 'Maintained brand colors, typography, and layout — zero visual disruption' },
-]
-
-const impacts = [
-  { icon: '⚡', stat: 'Error Prevention', detail: 'Invalid phone entries eliminated at input level' },
-  { icon: '🌐', stat: 'Global Inclusivity', detail: 'Added country code support for international users' },
-  { icon: '🧠', stat: 'Cognitive Load ↓', detail: 'Familiar patterns reduced user confusion in a high-intent flow' },
+  { title: 'Standard Phone Input', text: 'Replaced the broken number-stepper control with a standard text input aligned to real-world mental models.' },
+  { title: 'Country Code Selector', text: 'Added a country code dropdown to support international users and clarify the expected input format.' },
+  { title: 'Input Constraints', text: 'Applied validation preventing negative values, letters, and invalid characters at the input level.' },
+  { title: 'Visual Hierarchy', text: 'Improved field grouping and label spacing to reduce cognitive load and strengthen scan patterns.' },
+  { title: 'Brand Consistency', text: 'Maintained existing brand colors, typography, and layout — zero visual disruption to the product.' },
+  { title: 'Heuristic Validation', text: 'Validated improvements using Nielsen\'s heuristics and structured peer review checklist.' },
 ]
 
 const CaseStudyContactForm = () => {
   const heroRef = useRef(null)
-  const titleRef = useRef(null)
-  const subtitleRef = useRef(null)
-  const metaRef = useRef(null)
-  const imageRef = useRef(null)
   const sectionsRef = useRef([])
 
-  /* ── Entrance animations ── */
   useEffect(() => {
     const ctx = gsap.context(() => {
-      /* Hero */
-      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
-      tl.from(titleRef.current, { y: 60, opacity: 0, duration: 1, delay: 0.2 })
-        .from(subtitleRef.current, { y: 30, opacity: 0, duration: 0.7 }, '-=0.5')
-        .from(metaRef.current?.children || [], { y: 20, opacity: 0, duration: 0.5, stagger: 0.08 }, '-=0.4')
-        .from(imageRef.current, { scale: 0.96, opacity: 0, duration: 1 }, '-=0.5')
+      // Hero stagger entrance
+      gsap.from('.cs2-hero-tag, .cs2-hero-title, .cs2-hero-sub, .cs2-meta-row', {
+        y: 40, opacity: 0, duration: 0.9, stagger: 0.12, ease: 'power3.out', delay: 0.1,
+      })
+      gsap.from('.cs2-hero-image', {
+        y: 60, opacity: 0, duration: 1.1, ease: 'power3.out', delay: 0.3,
+      })
 
-      /* Scroll-triggered sections */
+      // Scroll sections
       sectionsRef.current.forEach((el) => {
         if (!el) return
         gsap.from(el, {
-          scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' },
-          y: 40, opacity: 0, duration: 0.8, ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
+          y: 50, opacity: 0, duration: 0.85, ease: 'power3.out',
         })
       })
-    }, heroRef)
+
+      // Process cards staggered
+      gsap.from('.cs2-step', {
+        scrollTrigger: { trigger: '.cs2-steps', start: 'top 85%' },
+        y: 60, opacity: 0, duration: 0.7, stagger: 0.15, ease: 'power3.out',
+      })
+
+      // Solution cards staggered
+      gsap.from('.cs2-sol-card', {
+        scrollTrigger: { trigger: '.cs2-sol-grid', start: 'top 85%' },
+        y: 40, opacity: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out',
+      })
+    })
 
     return () => ctx.revert()
   }, [])
@@ -66,133 +69,163 @@ const CaseStudyContactForm = () => {
   const addSection = (el) => { if (el && !sectionsRef.current.includes(el)) sectionsRef.current.push(el) }
 
   return (
-    <div className="cs-page">
+    <div className="cs2-page">
 
-      {/* ── Sticky minimal header ── */}
-      <header className="cs-sticky-header">
-        <span className="cs-sticky-tag">Case Study</span>
-        <span className="cs-sticky-title">Improving Contact Form Usability</span>
-      </header>
+      {/* ── BREADCRUMB NAV ── */}
+      <div className="cs2-breadcrumb">
+        <Link to="/work" className="cs2-breadcrumb-link">← Back to Work</Link>
+        <span className="cs2-breadcrumb-sep">/</span>
+        <span className="cs2-breadcrumb-current">Contact Form Usability</span>
+      </div>
 
       {/* ══════════════════════════════════
           HERO
       ══════════════════════════════════ */}
-      <section ref={heroRef} className="cs-hero">
-        <div className="cs-hero-inner">
+      <section ref={heroRef} className="cs2-hero">
+        <div className="cs2-hero-inner">
 
-          {/* Left */}
-          <div className="cs-hero-left">
-            <span className="cs-tag">UX / UI Redesign</span>
-            <h1 ref={titleRef} className="cs-hero-title">
-              Improving Contact<br />Form Usability
+          <div className="cs2-hero-left">
+            <span className="cs2-hero-tag">UX / UI Redesign</span>
+            <h1 className="cs2-hero-title">
+              Improving<br />Contact Form<br />Usability
             </h1>
-            <p ref={subtitleRef} className="cs-hero-sub">
-              A focused UX audit and redesign of a SaaS contact form — fixing interaction mismatches within existing brand constraints.
+            <p className="cs2-hero-sub">
+              A focused audit and redesign of a SaaS contact form —
+              fixing interaction mismatches within existing brand constraints.
             </p>
 
-            <div ref={metaRef} className="cs-meta">
-              <div className="cs-meta-item">
-                <span className="cs-meta-label">Role</span>
-                <span className="cs-meta-value">UI/UX Designer</span>
+            <div className="cs2-meta-row">
+              <div className="cs2-meta-item">
+                <span className="cs2-meta-label">Role</span>
+                <span className="cs2-meta-val">UI/UX Designer</span>
               </div>
-              <div className="cs-meta-item">
-                <span className="cs-meta-label">Timeline</span>
-                <span className="cs-meta-value">1–2 Days</span>
+              <div className="cs2-meta-item">
+                <span className="cs2-meta-label">Timeline</span>
+                <span className="cs2-meta-val">1–2 Days</span>
               </div>
-              <div className="cs-meta-item">
-                <span className="cs-meta-label">Tools</span>
-                <span className="cs-meta-value">Figma</span>
+              <div className="cs2-meta-item">
+                <span className="cs2-meta-label">Tools</span>
+                <span className="cs2-meta-val">Figma</span>
               </div>
-              <div className="cs-meta-item">
-                <span className="cs-meta-label">Platform</span>
-                <span className="cs-meta-value">Web</span>
+              <div className="cs2-meta-item">
+                <span className="cs2-meta-label">Platform</span>
+                <span className="cs2-meta-val">Web</span>
               </div>
             </div>
           </div>
 
-          {/* Right — mockup */}
-          <div ref={imageRef} className="cs-hero-right">
-            <div className="cs-hero-mockup">
-              <img src={contactFormImage} alt="Contact Form Redesign Mockup" />
+          <div className="cs2-hero-right">
+            <div className="cs2-hero-image">
+              <img src={contactFormImage} alt="Contact Form Redesign" />
             </div>
           </div>
         </div>
       </section>
 
       {/* ══════════════════════════════════
-          OVERVIEW
+          DARK STAT BAND
       ══════════════════════════════════ */}
-      <section ref={addSection} className="cs-section cs-overview">
-        <div className="cs-container cs-two-col">
-          <div className="cs-overview-images">
-            <div className="cs-thumb">
-              <img src={beforeImage} alt="Before" />
-              <span className="cs-thumb-label">Before</span>
-            </div>
-            <div className="cs-thumb cs-thumb-offset">
-              <img src={afterImage} alt="After" />
-              <span className="cs-thumb-label">After</span>
-            </div>
+      <section ref={addSection} className="cs2-stat-band">
+        <div className="cs2-stat-inner">
+          <div className="cs2-stat-item">
+            <span className="cs2-stat-num">3</span>
+            <span className="cs2-stat-label">UX Issues Identified</span>
           </div>
-          <div className="cs-overview-text">
-            <span className="cs-section-label">Overview</span>
-            <h2 className="cs-section-heading">A high-intent flow with small but impactful friction</h2>
-            <p className="cs-body">
-              During interview preparation for a SaaS startup, I audited their Contact Us form and discovered interaction-pattern mismatches that introduced friction in a critical conversion touchpoint — without changing the brand's visual identity.
+          <div className="cs2-stat-divider" />
+          <div className="cs2-stat-item">
+            <span className="cs2-stat-num">5</span>
+            <span className="cs2-stat-label">Design Solutions Delivered</span>
+          </div>
+          <div className="cs2-stat-divider" />
+          <div className="cs2-stat-item">
+            <span className="cs2-stat-num">0</span>
+            <span className="cs2-stat-label">Brand Inconsistencies</span>
+          </div>
+          <div className="cs2-stat-divider" />
+          <div className="cs2-stat-item">
+            <span className="cs2-stat-num">100%</span>
+            <span className="cs2-stat-label">Heuristic Compliance</span>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════
+          OVERVIEW — two col
+      ══════════════════════════════════ */}
+      <section ref={addSection} className="cs2-section cs2-overview">
+        <div className="cs2-container cs2-two-col">
+          <div className="cs2-overview-left">
+            <h2 className="cs2-heading">A high-intent flow with friction in the wrong place</h2>
+            <p className="cs2-body">
+              During interview preparation for a SaaS startup, I audited their Contact Us form and discovered
+              interaction-pattern mismatches that introduced unnecessary friction at a critical conversion
+              touchpoint.
+            </p>
+            <p className="cs2-body">
+              The phone field used a number-stepper control — a pattern designed for quantity inputs, not phone
+              numbers. Users could increment to negative values, no country code was available, and no constraints
+              prevented invalid submissions.
             </p>
           </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════
-          PROBLEM STATEMENT
-      ══════════════════════════════════ */}
-      <section ref={addSection} className="cs-section cs-problem">
-        <div className="cs-container cs-two-col cs-two-col-reverse">
-          <div className="cs-problem-text">
-            <span className="cs-section-label">Problem Statement</span>
-            <h2 className="cs-section-heading">Unnecessary friction in a motivated user flow</h2>
-            <ul className="cs-bullet-list">
-              <li>
-                <span className="cs-bullet-icon">⚠️</span>
-                <span>Phone field used a number-stepper control — users could enter negative values, violating real-world mental models</span>
-              </li>
-              <li>
-                <span className="cs-bullet-icon">⚠️</span>
-                <span>No country code selector created ambiguity for international users</span>
-              </li>
-              <li>
-                <span className="cs-bullet-icon">⚠️</span>
-                <span>Insufficient input constraints allowed invalid submissions, increasing cognitive load</span>
-              </li>
-            </ul>
-          </div>
-          <div className="cs-problem-illustration">
-            <div className="cs-illustration-card">
-              <span className="cs-illustration-icon">😕</span>
-              <p>Users reaching a contact form are highly motivated. Every friction point risks losing them.</p>
+          <div className="cs2-overview-right">
+            <div className="cs2-image-stack">
+              <div className="cs2-img-card cs2-img-card--top">
+                <img src={beforeImage} alt="Before" />
+                <span className="cs2-img-badge">Before</span>
+              </div>
+              <div className="cs2-img-card cs2-img-card--bottom">
+                <img src={afterImage} alt="After" />
+                <span className="cs2-img-badge cs2-badge-after">After</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ══════════════════════════════════
-          DESIGN PROCESS STEPPER
+          PROBLEM — full-width dark
       ══════════════════════════════════ */}
-      <section ref={addSection} className="cs-section cs-process">
-        <div className="cs-container">
-          <span className="cs-section-label cs-label-center">Design Process</span>
-          <h2 className="cs-section-heading cs-heading-center">Double Diamond approach</h2>
+      <section ref={addSection} className="cs2-section cs2-problem-band">
+        <div className="cs2-container">
+          <h2 className="cs2-heading cs2-heading--light cs2-heading--center">
+            Unnecessary friction<br />in a motivated user flow
+          </h2>
+          <div className="cs2-problem-grid">
+            <div className="cs2-problem-card">
+              <span className="cs2-problem-num">01</span>
+              <h3>Wrong Input Control</h3>
+              <p>Phone field used a number-stepper — users could enter negative values, violating real-world mental models.</p>
+            </div>
+            <div className="cs2-problem-card">
+              <span className="cs2-problem-num">02</span>
+              <h3>No Country Code</h3>
+              <p>No country code selector created ambiguity for international users with no guidance on expected format.</p>
+            </div>
+            <div className="cs2-problem-card">
+              <span className="cs2-problem-num">03</span>
+              <h3>Zero Validation</h3>
+              <p>Insufficient input constraints allowed invalid submissions and increased cognitive load on an already motivated user.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-          <div className="cs-stepper">
+      {/* ══════════════════════════════════
+          DESIGN PROCESS
+      ══════════════════════════════════ */}
+      <section ref={addSection} className="cs2-section cs2-process">
+        <div className="cs2-container">
+          <h2 className="cs2-heading cs2-center">How I approached the problem</h2>
+
+          <div className="cs2-steps">
             {processSteps.map((step, i) => (
-              <div key={i} className="cs-step">
-                <div className="cs-step-circle">
-                  <span>{step.icon}</span>
+              <div key={i} className="cs2-step">
+                <div className="cs2-step-top">
+                  <span className="cs2-step-num">{step.num}</span>
+                  {i < processSteps.length - 1 && <div className="cs2-step-connector" />}
                 </div>
-                {i < processSteps.length - 1 && <div className="cs-step-line" />}
-                <p className="cs-step-label">{step.label}</p>
-                <p className="cs-step-desc">{step.desc}</p>
+                <h3 className="cs2-step-label">{step.label}</h3>
+                <p className="cs2-step-desc">{step.desc}</p>
               </div>
             ))}
           </div>
@@ -200,18 +233,22 @@ const CaseStudyContactForm = () => {
       </section>
 
       {/* ══════════════════════════════════
-          SOLUTIONS
+          SOLUTION HIGHLIGHTS
       ══════════════════════════════════ */}
-      <section ref={addSection} className="cs-section cs-solutions">
-        <div className="cs-container">
-          <span className="cs-section-label cs-label-center">Solutions</span>
-          <h2 className="cs-section-heading cs-heading-center">Solution Highlights</h2>
+      <section ref={addSection} className="cs2-section cs2-solutions">
+        <div className="cs2-container">
+          <h2 className="cs2-heading cs2-center">Solution Highlights</h2>
 
-          <div className="cs-solution-grid">
+          <div className="cs2-sol-grid">
             {solutions.map((s, i) => (
-              <div key={i} className="cs-solution-card">
-                <span className="cs-solution-icon">{s.icon}</span>
-                <p className="cs-solution-text">{s.text}</p>
+              <div key={i} className="cs2-sol-card">
+                <div className="cs2-sol-icon-wrap">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M4 10l4 4 8-8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <h3 className="cs2-sol-title">{s.title}</h3>
+                <p className="cs2-sol-text">{s.text}</p>
               </div>
             ))}
           </div>
@@ -219,74 +256,104 @@ const CaseStudyContactForm = () => {
       </section>
 
       {/* ══════════════════════════════════
-          BEFORE vs AFTER
+          BEFORE & AFTER
       ══════════════════════════════════ */}
-      <section ref={addSection} className="cs-section cs-comparison">
-        <div className="cs-container">
-          <span className="cs-section-label cs-label-center">Visual Comparison</span>
-          <h2 className="cs-section-heading cs-heading-center">Before &amp; After</h2>
+      <section ref={addSection} className="cs2-section cs2-compare">
+        <div className="cs2-container">
+          <h2 className="cs2-heading cs2-center">Before &amp; After</h2>
 
-          <div className="cs-compare-grid">
-            <div className="cs-compare-card">
-              <div className="cs-compare-badge cs-badge-before">Before</div>
+          <div className="cs2-compare-grid">
+            <div className="cs2-compare-card">
+              <div className="cs2-compare-label cs2-label-before">Before</div>
               <img src={beforeImage} alt="Before Redesign" />
-              <p className="cs-compare-caption">Number stepper for phone — allows invalid input, poor mental model mapping</p>
+              <p className="cs2-compare-cap">Number stepper — allows invalid input, breaks real-world mental models</p>
             </div>
-            <div className="cs-compare-divider" />
-            <div className="cs-compare-card cs-compare-card-after">
-              <div className="cs-compare-badge cs-badge-after">After</div>
+            <div className="cs2-compare-arrow">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <path d="M8 20h24M24 14l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+            <div className="cs2-compare-card cs2-compare-card--after">
+              <div className="cs2-compare-label cs2-label-after">After</div>
               <img src={afterImage} alt="After Redesign" />
-              <p className="cs-compare-caption">Standard text input + country code selector — clear, constrained, globally inclusive</p>
+              <p className="cs2-compare-cap">Standard text input + country code — clear, constrained, globally inclusive</p>
             </div>
           </div>
 
-          {/* Wireframe */}
-          <div className="cs-wireframe-wrap">
-            <p className="cs-wireframe-label">Wireframe — annotated interaction improvements</p>
+          <div className="cs2-wireframe">
+            <p className="cs2-wireframe-label">Annotated Wireframe — Interaction Improvements</p>
             <img src={wireframeImage} alt="Wireframe" />
           </div>
         </div>
       </section>
 
       {/* ══════════════════════════════════
-          IMPACT
+          IMPACT — dark band
       ══════════════════════════════════ */}
-      <section ref={addSection} className="cs-section cs-impact">
-        <div className="cs-container">
-          <span className="cs-section-label cs-label-center">Outcome</span>
-          <h2 className="cs-section-heading cs-heading-center">Impact &amp; Reflection</h2>
+      <section ref={addSection} className="cs2-section cs2-impact-band">
+        <div className="cs2-container">
+          <h2 className="cs2-heading cs2-heading--light cs2-center">Impact &amp; Reflection</h2>
 
-          <div className="cs-impact-grid">
-            {impacts.map((item, i) => (
-              <div key={i} className="cs-impact-card">
-                <span className="cs-impact-icon">{item.icon}</span>
-                <p className="cs-impact-stat">{item.stat}</p>
-                <p className="cs-impact-detail">{item.detail}</p>
-              </div>
-            ))}
+          <div className="cs2-impact-grid">
+            <div className="cs2-impact-card">
+              <span className="cs2-impact-icon">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                  <circle cx="14" cy="14" r="12" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M9 14l3.5 3.5L19 10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+              <h3>Error Prevention</h3>
+              <p>Invalid phone entries eliminated at the input level — no post-submission validation needed.</p>
+            </div>
+            <div className="cs2-impact-card">
+              <span className="cs2-impact-icon">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                  <circle cx="14" cy="14" r="12" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M14 8v6l4 2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                </svg>
+              </span>
+              <h3>Global Inclusivity</h3>
+              <p>Country code selector added — international users can now submit without format ambiguity.</p>
+            </div>
+            <div className="cs2-impact-card">
+              <span className="cs2-impact-icon">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                  <circle cx="14" cy="14" r="12" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M10 17c0-3 8-3 8 0" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                  <circle cx="11" cy="12" r="1.5" fill="currentColor" />
+                  <circle cx="17" cy="12" r="1.5" fill="currentColor" />
+                </svg>
+              </span>
+              <h3>Cognitive Load ↓</h3>
+              <p>Familiar patterns reduced confusion during a high-intent, conversion-critical interaction flow.</p>
+            </div>
           </div>
 
-          <p className="cs-reflection">
-            This project reinforced that strong UX design is not about introducing complexity — it is about understanding user intent, identifying friction, and resolving it with clarity and restraint. Good UX quietly removes obstacles.
-          </p>
+          <blockquote className="cs2-reflection">
+            "Strong UX design is not about introducing complexity — it's about identifying friction and
+            resolving it with clarity and restraint. Good UX quietly removes obstacles."
+          </blockquote>
         </div>
       </section>
 
       {/* ══════════════════════════════════
           CTA
       ══════════════════════════════════ */}
-      <section ref={addSection} className="cs-section cs-cta">
-        <div className="cs-container cs-cta-inner">
-          <h2 className="cs-cta-heading">Want to see the full Figma file?</h2>
-          <p className="cs-cta-sub">Includes annotated screens, interaction notes, and design rationale.</p>
-          <a
-            href="https://www.figma.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="cs-cta-btn"
-          >
-            👉 View Full Case Study
-          </a>
+      <section ref={addSection} className="cs2-section cs2-cta">
+        <div className="cs2-container cs2-cta-inner">
+          <h2 className="cs2-cta-heading">Want to see the full Figma file?</h2>
+          <p className="cs2-cta-sub">Includes annotated screens, interaction notes, and full design rationale.</p>
+          <div className="cs2-cta-actions">
+            <Link to="/work" className="cs2-btn cs2-btn-ghost">← Back to Work</Link>
+            <a
+              href="https://www.figma.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cs2-btn cs2-btn-primary"
+            >
+              View on Figma →
+            </a>
+          </div>
         </div>
       </section>
 

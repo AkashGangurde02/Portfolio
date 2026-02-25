@@ -65,7 +65,7 @@ const Work = () => {
             category: 'UX/UI REDESIGN',
             description: 'Redesigned the contact form to enhance user experience with improved field validation, clear error messaging, and a streamlined layout that increased form completion rates by 40%.',
             image: contactFormImage,
-            link: '/case-study/contact-form',
+            link: '/case-study',
             ctaText: 'View Case Study'
         },
         // {

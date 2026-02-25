@@ -39,7 +39,7 @@ function App() {
             <Route path="/work" element={<Work />} />
             {/* <Route path="/blog" element={<Blog />} /> */}
             <Route path="/contact" element={<Contact />} />
-            <Route path="/case-study/contact-form" element={<CaseStudyContactForm />} />
+            <Route path="/case-study" element={<CaseStudyContactForm />} />
             <Route path="/case-study/hemp-hop" element={
               <PasswordProtectedRoute>
                 <CaseStudyHempHop />
