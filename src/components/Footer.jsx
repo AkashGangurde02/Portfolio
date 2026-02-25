@@ -126,7 +126,7 @@ const Footer = () => {
           <div className="suggestion-box">
             <div className="testimonial-header">
               <div className="testimonial-avatar"></div>
-              <span className="testimonial-name">suggestionbox</span>
+              <span className="testimonial-name">suggestion-heading</span>
             </div>
             <p className="testimonial-text">Hover on the below heading and see the magic </p>
           </div>

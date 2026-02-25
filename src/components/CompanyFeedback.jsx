@@ -3,8 +3,8 @@ import { gsap } from 'gsap'
 import './CompanyFeedback.css'
 
 // ─── No ScrollTrigger needed anymore ───────────────────────────────────────
-// Cards now respond to mouse-wheel ONLY when the cursor is over the
-// dark carousel-window. Page scrolls normally everywhere else.
+// Cards now respond to mouse-wheel whenever the cursor is anywhere inside
+// the full .sumip-wrapper section. Page scrolls normally everywhere else.
 
 const CompanyFeedback = () => {
     const trackRef = useRef(null)
@@ -15,31 +15,41 @@ const CompanyFeedback = () => {
         {
             id: 1,
             date: 'September 2025',
-            text: '"Akash played a key role in developing HempHop\u2019s user interface and contributed meaningful improvements to Grubwala\u2019s UI. His strong grasp of UI/UX fundamentals, creative problem-solving, and ability to translate requirements into practical design solutions positively influenced overall usability and project outcomes." \u2014 Ms. Shraddha Nagrani, Head of Human Resources | Somvanshi Technologies Pvt. Ltd.',
+            text: '\u201cAkash played a key role in developing HempHop\u2019s user interface and contributed meaningful improvements to Grubwala\u2019s UI. His strong grasp of UI/UX fundamentals, creative problem-solving, and ability to translate requirements into practical design solutions positively influenced overall usability and project outcomes.\u201d',
+            // author: 'Ms. Shraddha Nagrani, Head of Human Resources | Somvanshi Technologies Pvt. Ltd.',
+            author: 'Somvanshi Technologies Pvt. Ltd.',
             rating: '5/5'
         },
         {
             id: 2,
             date: 'October 2025',
-            text: '"Akash delivered outstanding performance across HempHop UI modules and the digital reconstruction of the Somvanshi Technologies homepage. He combined strong technical understanding with creativity and attention to detail, effectively implementing feedback to produce high-quality results. His in-depth research on IT leaders, hemp industries, and consumer behavior added strategic value to the team\u2019s approach, demonstrating initiative, cognitive strength, and professionalism." \u2014 Ms. Shraddha Nagrani, Head of Human Resources | Somvanshi Technologies Private Limited',
+            text: '\u201cAkash delivered outstanding performance across HempHop UI modules and the digital reconstruction of the Somvanshi Technologies homepage. He combined strong technical understanding with creativity and attention to detail, effectively implementing feedback to produce high-quality results. His in-depth research on IT leaders, hemp industries, and consumer behavior added strategic value to the team\u2019s approach, demonstrating initiative, cognitive strength, and professionalism.\u201d',
+            author: 'Somvanshi Technologies Pvt. Ltd.',
+            // author: 'Ms. Shraddha Nagrani, Head of Human Resources | Somvanshi Technologies Private Limited',
             rating: '10/10'
         },
         {
             id: 3,
             date: 'November 2025',
-            text: '"Akash significantly contributed to major Routematic wireframe modules and led user experience development for key Somvanshi Technologies website pages, including Home, Solutions, and Healthcare. His strong ownership, stakeholder communication, and attention to detail reflect maturity and the ability to handle complex tasks with minimal supervision." \u2014 Ms. Shraddha Nagrani, Head of Human Resources | Somvanshi Technologies',
+            text: '\u201cAkash significantly contributed to major Routematic wireframe modules and led user experience development for key Somvanshi Technologies website pages, including Home, Solutions, and Healthcare. His strong ownership, stakeholder communication, and attention to detail reflect maturity and the ability to handle complex tasks with minimal supervision.\u201d',
+            // author: 'Ms. Shraddha Nagrani, Head of Human Resources | Somvanshi Technologies',
+            author: 'Somvanshi Technologies Pvt. Ltd.',
             rating: '4.5/5'
         },
         {
             id: 4,
             date: 'December 2025',
-            text: '"Akash consistently delivered high-quality UI/UX work across the Somvanshi Technologies website and Grubwala applications. By engineering and implementing cohesive UI components across multiple modules, he strengthened visual consistency and usability while demonstrating reliability, initiative, and growing leadership capabilities." \u2014 Ms. Shraddha Nagrani, Head of Human Resources | Somvanshi Technologies',
+            text: '\u201cAkash consistently delivered high-quality UI/UX work across the Somvanshi Technologies website and Grubwala applications. By engineering and implementing cohesive UI components across multiple modules, he strengthened visual consistency and usability while demonstrating reliability, initiative, and growing leadership capabilities.\u201d',
+            // author: 'Ms. Shraddha Nagrani, Head of Human Resources | Somvanshi Technologies',
+            author: 'Somvanshi Technologies Pvt. Ltd.',
             rating: '5/5'
         },
         {
             id: 5,
             date: 'January 2026',
-            text: '"Akash maintained excellent professionalism and delivered refined, user-centered interfaces for both the Somvanshi Technologies website and Grubwala applications. His ability to ensure design consistency, responsiveness, and usability across projects\u2014combined with his receptiveness to feedback\u2014positions him strongly for higher-impact design responsibilities." \u2014 Ms. Shraddha Nagrani, Head of Human Resources | Somvanshi Technologies',
+            text: '\u201cAkash maintained excellent professionalism and delivered refined, user-centered interfaces for both the Somvanshi Technologies website and Grubwala applications. His ability to ensure design consistency, responsiveness, and usability across projects\u2014combined with his receptiveness to feedback\u2014positions him strongly for higher-impact design responsibilities.\u201d',
+            // author: 'Ms. Shraddha Nagrani, Head of Human Resources | Somvanshi Technologies',
+            author: 'Somvanshi Technologies Pvt. Ltd.',
             rating: '5/5'
         }
     ]
@@ -86,20 +96,28 @@ const CompanyFeedback = () => {
             }
         })
 
-        // ── Wheel handler — attached only to the carousel-window ────────────
-        // Intercepts wheel events ONLY while the carousel still has room to move.
-        // Once all cards have reached the left end  → scroll DOWN passes to the page.
-        // When the carousel is at the start again   → scroll UP  passes to the page.
+        // ── Wheel handler ────────────────────────────────────────────────────
+        // Only intercepts wheel events when sumip-container is centred in the
+        // viewport (within ±25 % of the container's height as tolerance).
+        // Outside that band the wheel event passes straight to the page.
         const handleWheel = (e) => {
+            // ── Centre-of-viewport guard ─────────────────────────────────────
+            const rect = carouselWindow.getBoundingClientRect()
+            const containerCentre = rect.top + rect.height / 2
+            const viewportCentre = window.innerHeight / 2
+            const tolerance = rect.height * 0.10          // ±10 % of height
+
+            // If the container is NOT centred yet → let the page scroll normally
+            if (Math.abs(containerCentre - viewportCentre) > tolerance) return
+
             const scrollingDown = e.deltaY > 0
             const scrollingUp = e.deltaY < 0
 
             // ── Boundary pass-through ────────────────────────────────────────
-            // At the rightmost position (start): let the page scroll up
+            // At the start (rightmost): let the page scroll up
             if (targetProgress <= 0 && scrollingUp) return
 
-            // At the leftmost position (all cards visible / end reached):
-            // let the page continue scrolling down
+            // At the end (all cards seen): let the page continue scrolling down
             if (targetProgress >= 1 && scrollingDown) return
 
             // ── Intercept: move the carousel ─────────────────────────────────
@@ -124,6 +142,7 @@ const CompanyFeedback = () => {
         }
 
         // passive: false is required so that e.preventDefault() is allowed
+        // Listener is on the full sumip-wrapper so the hit-zone covers the whole section
         carouselWindow.addEventListener('wheel', handleWheel, { passive: false })
 
         // Invalidate tween dimensions on resize
@@ -144,7 +163,7 @@ const CompanyFeedback = () => {
     return (
         <>
             <section className="sumip-wrapper" id="feedback">
-                <div className="sumip-container">
+                <div className="sumip-container" ref={carouselWindowRef}>
                     <div className="content-grid">
                         {/* Left Side: Typography & Info */}
                         <div className="left-content">
@@ -164,8 +183,8 @@ const CompanyFeedback = () => {
 
                         {/* Right Side: Dark Carousel Container */}
                         <div className="right-carousel-container">
-                            {/* ref is on the window — wheel fires only when cursor is here */}
-                            <div className="carousel-window" ref={carouselWindowRef}>
+                            {/* ref on sumip-container — wheel fires anywhere inside the container */}
+                            <div className="carousel-window">
                                 <div className="carousel-track" ref={trackRef}>
                                     {testimonials.map((item) => (
                                         <div

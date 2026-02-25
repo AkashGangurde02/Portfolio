@@ -125,17 +125,8 @@ const Work = () => {
                 </div>
             </section>
 
-            <section className="work-footer-nav">
-                <div className="work-container">
-                    <div className="footer-nav-links">
-                        <Link to="/about" className="footer-nav-link">ABOUT ME</Link>
-                        <Link to="/work" className="footer-nav-link active">WORKS</Link>
-                        <Link to="/contact" className="footer-nav-link">SERVICES</Link>
-                    </div>
-                </div>
-            </section>
 
-            <section ref={ctaRef} className="work-cta">
+            <section ref={ctaRef} className="work-page-cta">
                 <div className="work-container">
                     <h2 className="work-cta-title">
                         Want to create something <span className="title-highlight">awesome?</span>
