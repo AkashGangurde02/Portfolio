@@ -115,8 +115,7 @@ const Footer = () => {
   const navLinks = [
     { name: 'Home', href: '#home' },
     { name: 'About me', href: '#about' },
-    { name: 'Works', href: '#works' },
-    { name: 'Insights', href: '#insights' }
+    { name: 'Works', href: '#works' }
   ]
 
   return (
@@ -126,7 +125,6 @@ const Footer = () => {
           <div className="suggestion-box">
             <div className="testimonial-header">
               <div className="testimonial-avatar"></div>
-              <span className="testimonial-name">suggestion-heading</span>
             </div>
             <p className="testimonial-text">Hover on the below heading and see the magic </p>
           </div>

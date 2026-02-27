@@ -85,17 +85,6 @@ const Navbar = () => {
           <li><Link to="/" onClick={() => setIsMobileMenuOpen(false)}>Home</Link></li>
           <li><Link to="/about" onClick={() => setIsMobileMenuOpen(false)}>About me</Link></li>
           <li><Link to="/work" onClick={() => setIsMobileMenuOpen(false)}>Works</Link></li>
-          <li>
-            {isHomePage ? (
-              <a href="#insights" onClick={(e) => {
-                e.preventDefault();
-                setIsMobileMenuOpen(false);
-                scrollToSection('insights');
-              }}>Insights</a>
-            ) : (
-              <a href="/#insights" onClick={() => setIsMobileMenuOpen(false)}>Insights</a>
-            )}
-          </li>
           <li><Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>Let's Talk</Link></li>
         </ul>
 

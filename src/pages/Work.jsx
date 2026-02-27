@@ -145,7 +145,7 @@ const Work = () => {
             </section>
 
             {/* Projects Grid */}
-            <section className="work-grid-section">
+            {/* <section className="work-grid-section">
                 <div className="work-container">
                     <div className="modern-work-grid" ref={gridRef}>
                         {projects.map((project) => (
@@ -170,7 +170,7 @@ const Work = () => {
                         ))}
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             {/* Bottom CTA Section */}
             <section className="work-bottom-cta">
