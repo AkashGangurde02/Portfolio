@@ -11,6 +11,7 @@ const Footer = () => {
   const contentRef = useRef(null)
   const wordsRef = useRef([])
   const [isHovered, setIsHovered] = useState(false)
+  const [showBanner, setShowBanner] = useState(true)
   const [currentText, setCurrentText] = useState('Good design disappears. Great UX remains.')
 
   useEffect(() => {
@@ -120,16 +121,22 @@ const Footer = () => {
 
   return (
     <>
-      <div style={{ maxWidth: '1400px', margin: '2rem auto 0', padding: '0 2rem', display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
-        <div className="footer-testimonial-top">
-          <div className="suggestion-box">
-            <div className="testimonial-header">
-              <div className="testimonial-avatar"></div>
-            </div>
-            <p className="testimonial-text">Hover on the below heading and see the magic </p>
-          </div>
+      {showBanner && (
+        <div className="footer-magic-banner">
+          <span className="magic-banner-text">
+            ✨ Hover on the below heading and see the magic
+          </span>
+          <button
+            className="magic-banner-close"
+            onClick={() => setShowBanner(false)}
+            aria-label="Close"
+          >
+            <svg width="12" height="12" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13 1L1 13M1 1L13 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
         </div>
-      </div>
+      )}
       <footer ref={footerRef} className="footer">
         <div className="footer-container">
           {/* Tagline Section */}

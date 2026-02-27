@@ -74,18 +74,20 @@ const Work = () => {
             })
 
             // Grid items staggered reveal
-            gsap.from(gridRef.current.children, {
-                scrollTrigger: {
-                    trigger: gridRef.current,
-                    start: 'top 85%',
-                    toggleActions: 'play none none reverse'
-                },
-                y: 40,
-                opacity: 0,
-                duration: 0.6,
-                stagger: 0.15,
-                ease: 'power3.out'
-            })
+            if (gridRef.current) {
+                gsap.from(gridRef.current.children, {
+                    scrollTrigger: {
+                        trigger: gridRef.current,
+                        start: 'top 85%',
+                        toggleActions: 'play none none reverse'
+                    },
+                    y: 40,
+                    opacity: 0,
+                    duration: 0.6,
+                    stagger: 0.15,
+                    ease: 'power3.out'
+                })
+            }
 
             // CTA section animation
             gsap.from(ctaRef.current.children, {
