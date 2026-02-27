@@ -159,13 +159,7 @@ const Footer = () => {
 
           {/* Main Footer Content */}
           <div ref={contentRef} className="footer-main">
-            {/* Left: Avatar and Name */}
-            <div className="footer-brand">
-              <div className="footer-avatar">
-                <div className="avatar-circle"></div>
-              </div>
-              <p className="footer-name">Akash</p>
-            </div>
+
 
             {/* Center: Navigation Links */}
             <nav className="footer-nav">

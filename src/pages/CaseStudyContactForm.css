@@ -28,6 +28,8 @@
   color: var(--cs2-black);
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
+  padding-top: 80px;
+  /* Account for fixed navbar */
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -37,7 +39,7 @@
   display: flex;
   align-items: center;
   gap: .6rem;
-  padding: 1.2rem 3rem;
+  padding: 1.2rem 2rem;
   border-bottom: 1px solid var(--cs2-border);
   background: var(--cs2-white);
   font-size: .82rem;
@@ -67,13 +69,13 @@
    SHARED LAYOUT
 ══════════════════════════════════════════════════════════════ */
 .cs2-container {
-  max-width: 1140px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 2.5rem;
+  padding: 0 2rem;
 }
 
 .cs2-section {
-  padding: 6rem 0;
+  padding: 5rem 0;
 }
 
 .cs2-two-col {
@@ -130,12 +132,12 @@
 ══════════════════════════════════════════════════════════════ */
 .cs2-hero {
   background: var(--cs2-white);
-  padding: 5rem 2.5rem 6rem;
+  padding: 5rem 2rem;
   border-bottom: 1px solid var(--cs2-border);
 }
 
 .cs2-hero-inner {
-  max-width: 1140px;
+  max-width: 1400px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1.05fr;
@@ -178,7 +180,7 @@
 .cs2-meta-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.25rem 2.5rem;
+  gap: 1.25rem 2rem;
   padding-top: 2rem;
   border-top: 1px solid var(--cs2-border);
 }
@@ -233,11 +235,11 @@
 ══════════════════════════════════════════════════════════════ */
 .cs2-stat-band {
   background: var(--cs2-black);
-  padding: 4rem 2.5rem;
+  padding: 4rem 2rem;
 }
 
 .cs2-stat-inner {
-  max-width: 1140px;
+  max-width: 1400px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
@@ -344,7 +346,7 @@
 ══════════════════════════════════════════════════════════════ */
 .cs2-problem-band {
   background: var(--cs2-dark);
-  padding: 6rem 2.5rem;
+  padding: 5rem 2rem;
 }
 
 .cs2-problem-grid {
@@ -607,7 +609,7 @@
 ══════════════════════════════════════════════════════════════ */
 .cs2-impact-band {
   background: var(--cs2-black);
-  padding: 6rem 2.5rem;
+  padding: 5rem 2rem;
 }
 
 .cs2-impact-grid {

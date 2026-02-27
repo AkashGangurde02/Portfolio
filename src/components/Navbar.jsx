@@ -12,19 +12,24 @@ const Navbar = () => {
   const linksRef = useRef(null)
   const btnRef = useRef(null)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
 
   /* Scroll trigger logic for Home Page */
   const [showLetsTalk, setShowLetsTalk] = useState(!isHomePage)
 
   useEffect(() => {
-    if (!isHomePage) {
-      setShowLetsTalk(true)
-      return
+    const handleScroll = () => {
+      // Setup scrolled state for background transparency
+      setIsScrolled(window.scrollY > 50)
+
+      // Setup Let's Talk button visibility
+      if (isHomePage) {
+        setShowLetsTalk(window.scrollY > 800)
+      }
     }
 
-    const handleScroll = () => {
-      // Match the WhatsApp float button trigger
-      setShowLetsTalk(window.scrollY > 800)
+    if (!isHomePage) {
+      setShowLetsTalk(true)
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -70,7 +75,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav ref={navRef} className="navbar">
+    <nav ref={navRef} className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <Link ref={logoRef} to="/" className="navbar-logo">
           Akash <span className="logo-year">2026</span>
@@ -78,10 +83,20 @@ const Navbar = () => {
 
         <ul ref={linksRef} className={`navbar-links ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
           <li><Link to="/" onClick={() => setIsMobileMenuOpen(false)}>Home</Link></li>
-          <li><Link to="/work" onClick={() => setIsMobileMenuOpen(false)}>Work</Link></li>
-          <li><Link to="/about" onClick={() => setIsMobileMenuOpen(false)}>About</Link></li>
+          <li><Link to="/about" onClick={() => setIsMobileMenuOpen(false)}>About me</Link></li>
+          <li><Link to="/work" onClick={() => setIsMobileMenuOpen(false)}>Works</Link></li>
+          <li>
+            {isHomePage ? (
+              <a href="#insights" onClick={(e) => {
+                e.preventDefault();
+                setIsMobileMenuOpen(false);
+                scrollToSection('insights');
+              }}>Insights</a>
+            ) : (
+              <a href="/#insights" onClick={() => setIsMobileMenuOpen(false)}>Insights</a>
+            )}
+          </li>
           <li><Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>Let's Talk</Link></li>
-          {/* <li><Link to="/blog">Blog</Link></li> */}
         </ul>
 
         <Link

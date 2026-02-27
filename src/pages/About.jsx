@@ -193,7 +193,7 @@ const About = () => {
           </div>
 
           {/* Awards Section */}
-          <div ref={awardsRef} className="awards-section">
+          {/* <div ref={awardsRef} className="awards-section">
             <div className="awards-featured">
               <div className="award-image">
                 <div className="award-placeholder">W</div>
@@ -224,7 +224,7 @@ const About = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
       <Footer />

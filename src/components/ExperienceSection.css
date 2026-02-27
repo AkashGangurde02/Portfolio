@@ -1,13 +1,13 @@
 .experience-section {
     padding: 5rem 2rem;
-    max-width: 1200px;
+    max-width: 1400px;
     width: 100%;
     margin: 0 auto;
 }
 
 .experience-section.embedded {
     padding: 0 2rem;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 4rem auto;
 }
 
