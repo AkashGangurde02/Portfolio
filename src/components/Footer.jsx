@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './Footer.css'
@@ -114,9 +115,9 @@ const Footer = () => {
   }, [isHovered])
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About me', href: '#about' },
-    { name: 'Works', href: '#works' }
+    { name: 'Home', href: '/' },
+    { name: 'About me', href: '/about' },
+    { name: 'Works', href: '/work' }
   ]
 
   return (
@@ -169,9 +170,9 @@ const Footer = () => {
             {/* Center: Navigation Links */}
             <nav className="footer-nav">
               {navLinks.map((link) => (
-                <a key={link.name} href={link.href} className="footer-nav-link">
+                <Link key={link.name} to={link.href} className="footer-nav-link">
                   {link.name}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>

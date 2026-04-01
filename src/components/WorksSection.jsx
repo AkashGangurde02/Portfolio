@@ -47,9 +47,9 @@ const WorksSection = () => {
 
   const featuredProject = {
     id: 1,
-    title: 'Improving Contact Form Usability',
+    title: 'Reducing friction in lead capture workflows (B2B website)',
     category: 'UX/UI REDESIGN',
-    description: 'Redesigned the contact form to enhance user experience with improved field validation, clear error messaging, and a streamlined layout that increased form completion rates by 40%.',
+    description: 'Users were abandoning a critical contact form mid-way due to unclear field labels, confusing error states, and a fragmented layout. Redesigned the end-to-end form experience — improving validation logic, error messaging, and visual hierarchy — resulting in a 40% increase in completion rates.',
     image: contactFormImage,
     link: '/case-study'
   }

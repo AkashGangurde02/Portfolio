@@ -74,19 +74,43 @@ const HeroSection = () => {
       <section ref={heroRef} id="home" className="hero-section">
         <div className="hero-container">
           <div className="hero-content">
-            <h1 ref={titleRef} className="hero-title">
-              Designing experiences—{' '}
-              <span className="hero-title-highlight">so users don't have to think</span>
+          <h1 ref={titleRef} className="hero-title">
+              Designing scalable UX systems{' '}
+              <span className="hero-title-highlight">for real-world products.</span>
             </h1>
 
             <div ref={imageRef} className="hero-profile-image">
               <img src={profileImage} alt="Akash Gangurde" />
             </div>
 
-            <p ref={descRef} className="hero-description">
-              I'm <strong>Akash Gangurde</strong>, a <strong>UX/UI Designer Intern</strong> at <strong>Somvanshi Technologies Pvt. Ltd.</strong>,
-              focused on designing clear, user-centered digital experiences through research, strategy, and thoughtful design.
-            </p>
+            {/* Proof strip — visible above the fold */}
+            <div ref={descRef} className="hero-stats-desc-block">
+              <p className="hero-description">
+                Worked on SaaS, mobility, and consumer apps used by 2000+ users —
+                turning complex product problems into clean, developer-ready UX.
+              </p>
+            </div>
+
+            <div className="hero-impact-stats">
+              <div className="impact-stat-item">
+                <h3 className="impact-stat-number">2000+</h3>
+                <div className="impact-stat-divider"></div>
+                <h4 className="impact-stat-title">Users Impacted</h4>
+                <p className="impact-stat-desc">Designed for a product serving 2000+<br/>users</p>
+              </div>
+              <div className="impact-stat-item">
+                <h3 className="impact-stat-number">4+</h3>
+                <div className="impact-stat-divider"></div>
+                <h4 className="impact-stat-title">Products Delivered</h4>
+                <p className="impact-stat-desc">Real-world products designed across<br/>mobile & web</p>
+              </div>
+              <div className="impact-stat-item">
+                <h3 className="impact-stat-number">100%</h3>
+                <div className="impact-stat-divider"></div>
+                <h4 className="impact-stat-title">End-to-End UX</h4>
+                <p className="impact-stat-desc">From research → workflows →<br/>developer-ready UI</p>
+              </div>
+            </div>
           </div>
 
           <div className="hero-footer">

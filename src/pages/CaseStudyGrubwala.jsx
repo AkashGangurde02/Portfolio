@@ -108,8 +108,8 @@ const CaseStudyGrubwala = () => {
                         </div>
                     </div>
 
-                    <div className="cs2-hero-right">
-                        <div className="cs2-hero-image">
+                    <div className="cs2-hero-right" style={{ display: 'flex', justifyContent: 'center' }}>
+                        <div className="cs2-hero-image" style={{ maxWidth: '400px', width: '100%' }}>
                             <img src={grubwalaImage} alt="Grubwala Mobile UX" />
                         </div>
                     </div>
@@ -159,7 +159,7 @@ const CaseStudyGrubwala = () => {
                     </div>
                     <div className="cs2-overview-right">
                         <div className="cs2-image-stack" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            <div className="cs2-img-card" style={{ transform: 'none', position: 'relative', width: '100%' }}>
+                            <div className="cs2-img-card" style={{ transform: 'none', position: 'relative', width: '100%', maxWidth: '400px' }}>
                                 <img src={grubwalaImage} alt="Grubwala Mobile Screens" />
                             </div>
                         </div>

@@ -21,7 +21,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 1000px;
+  width: 100%;
 }
 
 .hero-title {
@@ -42,7 +42,80 @@
   font-size: 20px;
   line-height: 1.7;
   color: #333333;
+  margin-bottom: 0;
+}
+
+/* Stat pills + description wrapper */
+.hero-stats-desc-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
   margin-bottom: 4rem;
+}
+
+.hero-stat-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.hero-stat-pill {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #000000;
+  background: #f4f4f4;
+  border: 1px solid #e0e0e0;
+  border-radius: 999px;
+  padding: 0.35rem 1rem;
+}
+
+/* New Impact Stats block */
+.hero-impact-stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.impact-stat-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.impact-stat-number {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: #000000;
+  margin: 0 0 1rem 0;
+  width: 100%;
+}
+
+.impact-stat-divider {
+  width: 100%;
+  height: 2px;
+  background-color: #000000;
+  margin-bottom: 1rem;
+}
+
+.impact-stat-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #000000;
+  margin: 0 0 0.5rem 0;
+}
+
+.impact-stat-desc {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #666666;
+  margin: 0;
 }
 
 .hero-footer {
@@ -185,6 +258,13 @@
     margin-bottom: 2rem;
     text-align: center;
     /* Center align on mobile */
+  }
+
+  .hero-impact-stats {
+    flex-direction: column;
+    gap: 2.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2.5rem;
   }
 
   .hero-footer {

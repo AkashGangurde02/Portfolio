@@ -108,6 +108,13 @@ const AboutSection = () => {
             </svg>
           </Link>
 
+          {/* Strength tags */}
+          <div className="about-strength-tags">
+            <span className="about-strength-tag">System thinking</span>
+            <span className="about-strength-tag">Business alignment</span>
+            <span className="about-strength-tag">Developer collaboration</span>
+          </div>
+
           {/* Tools Icons Grid */}
           <div ref={toolsRef} className="tools-grid-home">
             {tools.map((tool, index) => (

@@ -1,0 +1,218 @@
+/* ══════════════════════════════════════════════════════════════
+   Impact Section — Matching Home Page Design System
+   BG: #ffffff  |  Text: #000  |  Muted: #666  |  Border: #e8e8e8
+══════════════════════════════════════════════════════════════ */
+
+/* ── Section Wrapper ── */
+.impact-section {
+  padding: 5rem 2rem;
+  background-color: #ffffff;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* ── Inner Layout ── */
+.impact-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 8rem;
+  align-items: center;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   LEFT — Label + Title + Bullets
+══════════════════════════════════════════════════════════════ */
+.impact-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.impact-eyebrow {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #666666;
+  margin-bottom: 1rem;
+}
+
+.impact-title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: #000000;
+  margin-bottom: 1.5rem;
+}
+
+.impact-divider {
+  width: 40px;
+  height: 2px;
+  background: #000000;
+  border-radius: 99px;
+  margin-bottom: 2rem;
+}
+
+.impact-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e8e8e8;
+}
+
+.impact-bullet {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #666666;
+  line-height: 1.5;
+}
+
+.impact-bullet-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #000000;
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RIGHT — Metric Cards
+══════════════════════════════════════════════════════════════ */
+.impact-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+/* ── Base Card ── */
+.impact-card {
+  background: #fafafa;
+  border: 1px solid #e8e8e8;
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+              border-color 0.25s ease;
+  cursor: default;
+  will-change: transform;
+}
+
+.impact-card:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.1);
+  border-color: #cccccc;
+}
+
+/* ── Card Number ── */
+.impact-card-number {
+  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #000000;
+  margin-bottom: 0.5rem;
+}
+
+/* ── Card Label ── */
+.impact-card-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.6;
+  color: #666666;
+  margin: 0;
+}
+
+/* ── Highlight / Dark Card ── */
+.impact-card--dark {
+  background: #000000;
+  border-color: #000000;
+}
+
+.impact-card--dark:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.28);
+}
+
+.impact-card--dark .impact-card-number {
+  color: #ffffff;
+}
+
+.impact-card--dark .impact-card-label {
+  color: #999999;
+}
+
+/* Small top tag on highlighted card */
+.impact-card-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #666666;
+  margin-bottom: 0.5rem;
+}
+
+.impact-card--dark .impact-card-tag {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .impact-inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .impact-left {
+    max-width: 560px;
+  }
+
+  .impact-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .impact-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .impact-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .impact-card--dark {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .impact-section {
+    padding: 3rem 1rem;
+  }
+
+  .impact-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .impact-card--dark {
+    grid-column: span 1;
+  }
+
+  .impact-card {
+    padding: 2rem 1.5rem;
+  }
+}

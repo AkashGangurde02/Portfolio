@@ -9,6 +9,7 @@ import CompanyFeedback from '../components/CompanyFeedback'
 import InsightsSection from '../components/InsightsSection'
 import Footer from '../components/Footer'
 import HomeSubNavbar from '../components/HomeSubNavbar'
+import ImpactSection from '../components/ImpactSection'
 
 const Home = () => {
   return (
@@ -18,10 +19,14 @@ const Home = () => {
       <AboutSection />
       <ExperienceSection />
       <WorksSection />
+      {/* <ImpactSection /> */}
       {/* <SkillsSection /> */}
       {/* <ProcessSection /> */}
       <CompanyFeedback />
-      <InsightsSection />
+      {/* Blog / Insights — minimized, low priority */}
+      <div className="insights-minimized-wrapper">
+        <InsightsSection />
+      </div>
       <Footer />
       <HomeSubNavbar />
     </>

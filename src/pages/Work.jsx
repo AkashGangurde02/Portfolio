@@ -18,7 +18,7 @@ const Work = () => {
 
     const featuredProject = {
         id: 'featured',
-        title: 'Improving Contact Form Usability',
+        title: 'Reducing friction in lead capture workflows (B2B website)',
         category: 'UX/UI REDESIGN',
         description: 'Redesigned the entire contact flow to drastically enhance user experience through better field validation, intelligent error messaging, and a streamlined layout resulting in a 40% increase in completion rates.',
         image: contactFormImage,
@@ -73,19 +73,19 @@ const Work = () => {
                 ease: 'power3.out'
             })
 
-            // Grid items staggered reveal
-            if (gridRef.current) {
-                gsap.from(gridRef.current.children, {
-                    scrollTrigger: {
-                        trigger: gridRef.current,
-                        start: 'top 85%',
-                        toggleActions: 'play none none reverse'
-                    },
-                    y: 40,
-                    opacity: 0,
+            // Grid items — simple timed animation, no ScrollTrigger
+            // (avoids cards getting stuck at opacity:0 if trigger never fires)
+            if (gridRef.current && gridRef.current.children.length > 0) {
+                // Ensure cards start visible, then animate in
+                gsap.set(gridRef.current.children, { opacity: 0, y: 40 })
+                gsap.to(gridRef.current.children, {
+                    opacity: 1,
+                    y: 0,
                     duration: 0.6,
                     stagger: 0.15,
-                    ease: 'power3.out'
+                    ease: 'power3.out',
+                    delay: 0.5,
+                    clearProps: 'all'
                 })
             }
 
@@ -104,7 +104,12 @@ const Work = () => {
             })
         })
 
-        return () => ctx.revert()
+        // Refresh ScrollTrigger after layout has settled
+        const timer = setTimeout(() => ScrollTrigger.refresh(), 300)
+        return () => {
+            clearTimeout(timer)
+            ctx.revert()
+        }
     }, [])
 
     return (
@@ -147,7 +152,7 @@ const Work = () => {
             </section>
 
             {/* Projects Grid */}
-            {/* <section className="work-grid-section">
+            <section className="work-grid-section">
                 <div className="work-container">
                     <div className="modern-work-grid" ref={gridRef}>
                         {projects.map((project) => (
@@ -172,7 +177,7 @@ const Work = () => {
                         ))}
                     </div>
                 </div>
-            </section> */}
+            </section>
 
             {/* Bottom CTA Section */}
             <section className="work-bottom-cta">

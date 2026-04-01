@@ -27,15 +27,18 @@
   padding: 3rem;
   background-color: #fafafa;
   border-radius: 24px;
-  border: 1.5px solid #cccccc;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: all 0.4s ease;
+  border: 1.5px solid #dddddd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+              border-color 0.25s ease;
+  will-change: transform;
 }
 
 .featured-work-card:hover {
-  border-color: #999999;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
-  transform: translateY(-4px);
+  border-color: #888888;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.13);
+  transform: translateY(-6px);
 }
 
 .featured-image-wrapper {
@@ -50,11 +53,12 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
 }
 
 .featured-work-card:hover .featured-image {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 .featured-content {
@@ -125,15 +129,18 @@
   background-color: #ffffff;
   padding: 2.5rem;
   border-radius: 20px;
-  border: 1.5px solid #cccccc;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: all 0.4s ease;
+  border: 1.5px solid #dddddd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+              border-color 0.25s ease;
+  will-change: transform;
 }
 
 .work-card:hover {
-  border-color: #999999;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
-  transform: translateY(-4px);
+  border-color: #888888;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.13);
+  transform: translateY(-6px);
 }
 
 .work-category-label {
@@ -174,11 +181,12 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
 }
 
 .work-card:hover .work-image {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 .work-cta {
