@@ -3,6 +3,9 @@ import gsap from 'gsap'
 import './CursorFollower.css'
 
 const CursorFollower = () => {
+    // Don't render on touch/mobile devices — they have no cursor
+    if (window.matchMedia('(pointer: coarse)').matches) return null
+
     const dotRef = useRef(null)
     const ringRef = useRef(null)
     const dotPos = useRef({ x: 0, y: 0 })

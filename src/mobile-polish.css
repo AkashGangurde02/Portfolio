@@ -21,31 +21,7 @@
         font-size: 0.9rem;
     }
 
-    /* Hero section mobile polish */
-    .hero-section {
-        padding: 5rem 1.5rem 3rem;
-    }
-
-    .hero-title {
-        line-height: 1.2;
-        margin-bottom: 1.5rem;
-    }
-
-    .hero-description {
-        font-size: 1rem;
-        line-height: 1.65;
-        margin-bottom: 2rem;
-    }
-
-    .hero-footer {
-        padding-top: 2rem;
-        gap: 1.5rem;
-    }
-
-    .social-links {
-        flex-wrap: wrap;
-        gap: 1rem;
-    }
+    /* Hero section — all responsive rules now in HeroSection.css (mobile-first) */
 
     /* Works section mobile improvements */
     .works-section {
@@ -241,25 +217,7 @@
         font-size: 0.8rem;
     }
 
-    /* Hero compact */
-    .hero-section {
-        padding: 4rem 1.25rem 2.5rem;
-    }
-
-    .hero-title {
-        font-size: clamp(1.5rem, 8vw, 2rem);
-        margin-bottom: 1.25rem;
-    }
-
-    .hero-description {
-        font-size: 0.95rem;
-        margin-bottom: 1.75rem;
-    }
-
-    .hero-cta-btn {
-        padding: 1rem 1.5rem;
-        font-size: 0.9rem;
-    }
+    /* Hero compact — all rules now in HeroSection.css (mobile-first) */
 
     /* Works ultra-compact */
     .works-section {
@@ -465,10 +423,10 @@
     }
 }
 
-/* Sticky elements on mobile */
+/* Sticky elements on mobile — navbar stays fixed (set in Navbar.css) */
 @media (max-width: 768px) {
     .navbar {
-        position: sticky;
+        position: fixed;
         top: 0;
         z-index: 1000;
     }

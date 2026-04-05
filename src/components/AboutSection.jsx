@@ -98,7 +98,7 @@ const AboutSection = () => {
           </h2>
 
           <p className="home-about-description">
-            Junior UX/UI Designer with <strong>1 year of experience</strong> — making digital experiences feel effortless <strong>(so users don’t have to work as hard as I do)</strong>.
+            UX Designer building <strong>end-to-end product experiences</strong> — from research to developer-ready flows, across SaaS, mobility, and consumer apps <strong>(so users don't have to work as hard as I do)</strong>.
           </p>
 
           <Link to="/about" className="about-secondary-btn" style={{ opacity: 1 }}>

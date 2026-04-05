@@ -137,8 +137,7 @@ const BlogPage = () => {
             <div className="author-content">
               <img src={blogHeroImage} alt="Akash Gangurde" className="author-image" />
               <p>
-                Akash Gangurde is a Junior UX/UI Designer passionate about building meaningful digital
-                experiences through user-centered design.
+                Akash Gangurde is a UX Designer focused on building end-to-end product experiences that reduce friction and ship clean, developer-ready UI.
               </p>
             </div>
           </section>

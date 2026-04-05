@@ -23,6 +23,7 @@ import WhatsAppFloat from './components/WhatsAppFloat'
 import './App.css'
 import './mobile-enhancements.css'
 import './mobile-polish.css'
+import './responsive.css'
 
 function App() {
   return (

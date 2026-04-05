@@ -133,7 +133,7 @@ const About = () => {
 
             <div className="about-top-content">
               <p className="about-description">
-                Junior UX/UI Designer with 1 year of experience — making digital experiences feel effortless (so users don’t have to work as hard as I do).
+                I design systems, not screens. Across SaaS, mobility, and consumer apps, I've owned the full UX process — research, information architecture, interaction design, and developer handoff — building products used by 2000+ users. I work closest to the problem, closest to the user, and closest to the team shipping the product.
               </p>
 
               <Link to="/contact" className="about-cta-btn">

@@ -193,38 +193,168 @@
 
 /* --- Responsive --- */
 @media (max-width: 1024px) {
+    .sumip-wrapper {
+        height: auto;
+        overflow-x: hidden;
+    }
+
     .sumip-container {
         height: auto;
         padding: 2rem;
         max-height: none;
+        /* Don't clip — allows carousel scrollbar to show */
+        overflow: visible;
     }
 
     .content-grid {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 2.5rem;
     }
 
     .carousel-window {
         width: 100%;
-        margin-top: 2rem;
+        margin-top: 1.5rem;
     }
 }
 
 @media (max-width: 768px) {
+    /* ── Wrapper & Container ── */
     .sumip-wrapper {
-        padding: 4rem 1.5rem;
+        padding: 3rem 1rem;
         height: auto;
+        overflow-x: hidden;
     }
 
     .sumip-container {
-        padding: 1.5rem;
-        border-radius: 20px;
+        padding: 1.25rem;
+        border-radius: 16px;
+        width: 100%;
+        box-sizing: border-box;
+        /* Must NOT be hidden — would clip the carousel scrollbar */
+        overflow: visible;
     }
 
+    /* ── Layout: stack vertically ── */
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .left-content {
+        gap: 0.75rem;
+    }
+
+    /* ── Heading ── */
     .main-typography h1 {
-        font-size: 2.2rem;
+        font-size: 1.7rem;
+        line-height: 1.25;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
+    }
+
+    /* ── Description block ── */
+    .description-wrapper {
+        max-width: 100%;
+        gap: 0.5rem;
+    }
+
+    .description-text {
+        font-size: 0.92rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .scroll-hint {
+        font-size: 0.78rem;
+    }
+
+    /* ── Right carousel container ── */
+    .right-carousel-container {
+        height: auto;
+        width: 100%;
+    }
+
+    /* ── Carousel window: native horizontal scroll ── */
+    .carousel-window {
+        /* Override base overflow: hidden with !important */
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        padding: 1.5rem 1rem 1.25rem;
+        border-radius: 20px;
+        min-height: unset;
+        width: 100%;
+        box-sizing: border-box;
+        /* Native momentum scroll on iOS */
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+        cursor: default;
+        /* Scrollbar always visible so user knows it's scrollable */
+        scrollbar-gutter: stable;
+    }
+
+    .carousel-window:active {
+        cursor: default;
+    }
+
+    /* ── Scrollbar styling (inside carousel, not full-page) ── */
+    .carousel-window::-webkit-scrollbar {
+        height: 5px;
+    }
+
+    .carousel-window::-webkit-scrollbar-track {
+        background: #1a1a1a;
+        border-radius: 10px;
+    }
+
+    .carousel-window::-webkit-scrollbar-thumb {
+        background: #555;
+        border-radius: 10px;
+    }
+
+    .carousel-window::-webkit-scrollbar-thumb:hover {
+        background: #777;
+    }
+
+    /* Firefox scrollbar */
+    .carousel-window {
+        scrollbar-width: thin;
+        scrollbar-color: #555 #1a1a1a;
+    }
+
+    /* ── Track: flex row, do NOT translate ── */
+    .carousel-track {
+        /* Reset any GSAP transform residue */
+        transform: none !important;
+        display: flex;
+        flex-direction: row;
+        gap: 14px;
+        width: max-content;
+        padding-right: 1rem;
+        align-items: flex-start;
+        will-change: auto;
+    }
+
+    /* ── Cards: fixed width, no squish ── */
+    .testimonial-card {
+        width: 270px;
+        min-width: 270px;
+        height: auto;
+        min-height: 280px;
+        flex-shrink: 0;
+        padding: 1.25rem;
+    }
+
+    .card-header h3 {
+        font-size: 1rem;
+    }
+
+    .card-body p {
+        font-size: 0.88rem;
+        line-height: 1.55;
     }
 }
+
 
 /* --- Text Truncation --- */
 .card-body p {

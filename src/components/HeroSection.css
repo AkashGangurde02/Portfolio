@@ -1,35 +1,66 @@
+/* ============================================================
+   HERO SECTION — Mobile-First Responsive
+   Single unified component across all breakpoints
+   ============================================================ */
+
+/* ── Section wrapper ── */
 .hero-section {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 4rem 2rem 2rem;
   background-color: #ffffff;
+  padding: 2rem 1.25rem 2.5rem;
+  overflow-x: hidden;
 }
 
+/* ── Container ── */
 .hero-container {
   max-width: 1400px;
   margin: 0 auto;
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: calc(100vh - 16rem);
+  gap: 2rem;
 }
 
+/* ── Content block ──
+   Individual child spacing is controlled per-element on desktop.
+   Gap here handles mobile default. ── */
 .hero-content {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  gap: 1.5rem;   /* 24px — mobile default */
   width: 100%;
 }
 
+/* ============================================================
+   PROFILE IMAGE
+   Shown on mobile ABOVE headline, hidden on desktop
+   ============================================================ */
+.hero-profile-image {
+  display: block;
+  width: 100%;
+  max-height: 280px;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  order: -1; /* Pushes image above headline */
+}
+
+.hero-profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* ============================================================
+   HEADLINE
+   ============================================================ */
 .hero-title {
-  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-size: clamp(2rem, 8vw, 3.25rem);
   font-weight: 700;
   line-height: 1.15;
-  margin-bottom: 3rem;
   color: #000000;
+  margin: 0;
 }
 
 .hero-title-highlight {
@@ -37,127 +68,145 @@
   font-weight: 700;
 }
 
-.hero-description {
-  max-width: 680px;
-  font-size: 20px;
-  line-height: 1.7;
-  color: #333333;
-  margin-bottom: 0;
-}
-
-/* Stat pills + description wrapper */
+/* ============================================================
+   DESCRIPTION + STAT PILLS
+   ============================================================ */
 .hero-stats-desc-block {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  margin-bottom: 4rem;
+  gap: 1.25rem;
 }
 
 .hero-stat-pills {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
+  gap: 0.5rem;
 }
 
 .hero-stat-pill {
   display: inline-block;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   color: #000000;
   background: #f4f4f4;
   border: 1px solid #e0e0e0;
   border-radius: 999px;
-  padding: 0.35rem 1rem;
+  padding: 0.3rem 0.85rem;
+  white-space: nowrap;
 }
 
-/* New Impact Stats block */
+.hero-description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #333333;
+  margin: 0;
+  max-width: 600px; /* keeps measure tight on wide mobile */
+}
+
+/* ============================================================
+   IMPACT STATS — Mobile: 2-column grid
+   ============================================================ */
 .hero-impact-stats {
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem 1.5rem;
   width: 100%;
+  /* Thin divider above stats — visual grouping */
+  border-top: 1px solid #eaeaea;
+  padding-top: 1.5rem;  /* 24px — mobile */
+  margin-top: 1rem;     /* 16px — extra space after description on mobile */
 }
 
 .impact-stat-item {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* Last item spans full width on mobile 2-col grid */
+.impact-stat-item:last-child {
+  grid-column: 1 / -1;
 }
 
 .impact-stat-number {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.75rem, 6vw, 2.5rem);
   font-weight: 700;
   color: #000000;
-  margin: 0 0 1rem 0;
+  margin: 0 0 0.6rem 0;
   width: 100%;
+  line-height: 1;
 }
 
 .impact-stat-divider {
   width: 100%;
   height: 2px;
   background-color: #000000;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .impact-stat-title {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 700;
   color: #000000;
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.35rem 0;
 }
 
 .impact-stat-desc {
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   line-height: 1.5;
   color: #666666;
   margin: 0;
 }
 
+/* ============================================================
+   HERO FOOTER — Social links + CTA
+   ============================================================ */
 .hero-footer {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 2rem;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding-top: 1.5rem;
   border-top: 1px solid #f0f0f0;
 }
 
+/* ── Social Links ── */
 .social-links {
   display: flex;
-  gap: 2.5rem;
-  opacity: 1;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
 }
 
 .social-link {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.5px;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   color: #000000;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease;
+  padding: 0.5rem 0;
   position: relative;
 }
 
 .social-link::after {
   content: '';
   position: absolute;
-  bottom: -4px;
+  bottom: 0;
   left: 0;
   width: 0;
-  height: 2px;
+  height: 1.5px;
   background-color: #000000;
   transition: width 0.3s ease;
 }
 
 .social-link:hover::after {
-  width: calc(100% - 20px);
+  width: 100%;
 }
 
 .social-link:hover {
@@ -166,22 +215,37 @@
 
 .external-icon {
   flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+}
+
+/* ── CTA Group ── */
+.hero-cta-group {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .hero-cta-btn {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 1.25rem 2.5rem;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
   border: none;
   border-radius: 50px;
   background-color: #000000;
   color: #ffffff;
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 0.95rem;
+  font-weight: 600;
   cursor: pointer;
+  text-decoration: none;
   transition: all 0.3s ease;
-  opacity: 1;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 120px;
+  max-width: 220px;
 }
 
 .hero-cta-btn:hover {
@@ -192,168 +256,190 @@
 
 .hero-cta-btn .arrow-icon {
   transition: transform 0.3s ease;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
 }
 
 .hero-cta-btn:hover .arrow-icon {
-  transform: translateX(5px);
+  transform: translateX(4px);
 }
 
-/* Hero Profile Image */
-.hero-profile-image {
-  display: none;
-  /* Hidden on desktop by default */
-}
-
-.hero-profile-image img {
-  width: 100%;
-  height: auto;
-  border-radius: 16px;
-  display: block;
-}
-
-@media (max-width: 968px) {
+/* ============================================================
+   TABLET — md (min-width: 640px)
+   ============================================================ */
+@media (min-width: 640px) {
   .hero-section {
-    padding: 5rem 0 2.5rem;
-    /* Reduced bottom padding from 3rem to 2rem */
-    min-height: auto;
-  }
-
-  .hero-container {
-    min-height: auto;
-    padding: 0 !important;
-    /* Force no padding */
-    margin: 0;
-    /* No margin */
-  }
-
-  .hero-content {
-    padding: 0 !important;
-    /* Force no padding */
-    margin: 0;
-    /* No margin */
+    padding: 2.5rem 1.75rem 3rem;
   }
 
   .hero-title {
-    font-size: clamp(1.75rem, 6vw, 2.5rem);
-    margin-bottom: 2rem;
-    line-height: 1.2;
-    text-align: center;
-    /* Center align on mobile */
+    font-size: clamp(2.5rem, 6vw, 3.75rem);
   }
 
-  /* Show profile image on mobile */
   .hero-profile-image {
-    display: block;
-    margin: 0 0 2rem 0;
-    width: 100%;
-  }
-
-  .hero-profile-image img {
-    border-radius: 12px;
+    max-height: 340px;
+    border-radius: 20px;
   }
 
   .hero-description {
-    font-size: 1rem;
-    line-height: 1.7;
-    margin-bottom: 2rem;
-    text-align: center;
-    /* Center align on mobile */
+    font-size: 1.05rem;
   }
 
   .hero-impact-stats {
-    flex-direction: column;
-    gap: 2.5rem;
-    margin-top: 1.5rem;
-    margin-bottom: 2.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* Reset the last-child span override at tablet+ */
+  .impact-stat-item:last-child {
+    grid-column: auto;
   }
 
   .hero-footer {
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     gap: 1.5rem;
-    align-items: center;
-    /* Center align footer items */
-    padding-top: 1.5rem;
-  }
-
-  .social-links {
-    gap: 0;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: center;
-    /* Center social links */
-  }
-
-  .social-link {
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    padding: 0;
-  }
-
-  /* Add separator between social links on mobile */
-  .social-link:not(:last-child)::after {
-    content: '|';
-    margin: 0 0.75rem;
-    color: #cccccc;
-    font-weight: 400;
-  }
-
-  /* Hide external icons on mobile */
-  .social-link .external-icon {
-    display: none;
+    padding-top: 2rem;
   }
 
   .hero-cta-btn {
-    padding: 1rem 2rem;
-    font-size: 0.95rem;
-    width: 100%;
-    justify-content: center;
+    flex: unset;
+    max-width: unset;
   }
 }
 
-@media (max-width: 640px) {
+/* ============================================================
+   DESKTOP — lg (min-width: 968px)
+   ============================================================ */
+@media (min-width: 968px) {
   .hero-section {
-    padding: 4rem 0 2rem;
-    /* Removed horizontal padding */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 4rem 2rem 2rem;
+  }
+
+  .hero-container {
+    min-height: calc(100vh - 16rem);
+    gap: 2.5rem;
+  }
+
+  .hero-content {
+    flex: 1;
+    justify-content: center;
+    gap: 0; /* Desktop: spacing controlled per-element below */
+  }
+
+  /* Hide profile image on desktop — desktop is text-only hero */
+  .hero-profile-image {
+    display: none;
   }
 
   .hero-title {
-    font-size: clamp(1.5rem, 7vw, 2rem);
-    margin-bottom: 1.5rem;
-  }
-
-  .hero-profile-image {
-    margin-bottom: 1.75rem;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    margin-bottom: 1.75rem; /* 28px — headline → description */
+    line-height: 1.12;
   }
 
   .hero-description {
-    font-size: 0.95rem;
-    margin-bottom: 1.75rem;
+    max-width: 640px;  /* tighter measure — more intentional */
+    font-size: 1.2rem;
+    line-height: 1.7;
   }
 
-  .social-links {
-    width: 100%;
+  .hero-stats-desc-block {
+    gap: 1rem;           /* 16px internal gap */
+    margin-bottom: 1.5rem;  /* 24px — space between description and stats divider */
+  }
+
+  /* Desktop: 3-column horizontal row */
+  .hero-impact-stats {
+    display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    gap: 0;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: 0;          /* divider handles the visual break */
+    margin-bottom: 3rem;    /* 48px — stats → CTA (on 8px grid) */
+    width: 100%;
+    border-top: 1px solid #eaeaea;  /* consistent with mobile */
+    padding-top: 2rem;      /* 32px — breathing room after divider */
+  }
+
+  .impact-stat-item {
+    flex: 1;
+    align-items: flex-start;
+  }
+
+  .impact-stat-item:last-child {
+    grid-column: auto;
+  }
+
+  .impact-stat-number {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1rem;
+  }
+
+  .impact-stat-title {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .impact-stat-desc {
+    font-size: 0.85rem;
+  }
+
+  /* Desktop footer */
+  .hero-footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2rem;
+    gap: 2rem;
+  }
+
+  /* Desktop social links */
+  .social-links {
+    gap: 2.5rem;
+    flex-wrap: nowrap;
   }
 
   .social-link {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    padding: 0.25rem 0;
   }
 
-  .social-link:not(:last-child)::after {
-    margin: 0 0.6rem;
+  .external-icon {
+    width: 16px;
+    height: 16px;
   }
 
-  .hero-footer {
-    padding-top: 1.25rem;
-    gap: 1.25rem;
-  }
-
+  /* Desktop CTA */
   .hero-cta-btn {
-    width: 100%;
-    padding: 1rem 1.75rem;
-    font-size: 0.9rem;
+    padding: 1.15rem 2.5rem;
+    font-size: 1rem;
+    flex: unset;
+    max-width: unset;
+    justify-content: center;
+  }
+
+  .hero-cta-btn .arrow-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* ============================================================
+   LARGE DESKTOP — xl (min-width: 1280px)
+   ============================================================ */
+@media (min-width: 1280px) {
+  .hero-section {
+    padding: 4rem 2rem 2rem;
+  }
+
+  .hero-title {
+    font-size: clamp(3.5rem, 5vw, 5rem);
   }
 }

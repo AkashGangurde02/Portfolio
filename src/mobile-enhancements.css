@@ -213,8 +213,8 @@ body {
 /* Fix common mobile layout issues */
 @media (max-width: 768px) {
 
-    /* Prevent overflow from large margins */
-    * {
+    /* Prevent overflow from large margins on block elements */
+    div, section, article, main, aside, header, footer, nav {
         max-width: 100%;
     }
 

@@ -91,7 +91,7 @@
   cursor: pointer;
   overflow: hidden;
   line-height: 1.2;
-  white-space: nowrap;
+  /* Allow wrapping on smaller screens */
   /* Ensure visible by default — GSAP animates from 0 on scroll */
   opacity: 1;
 }

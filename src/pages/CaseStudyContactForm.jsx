@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -28,6 +28,7 @@ const solutions = [
 ]
 
 const CaseStudyContactForm = () => {
+  const [activeView, setActiveView] = useState('after') // 'before' | 'after'
   const heroRef = useRef(null)
   const sectionsRef = useRef([])
 
@@ -150,6 +151,92 @@ const CaseStudyContactForm = () => {
       </section>
 
       {/* ══════════════════════════════════
+          BEFORE & AFTER — Toggle (moved to top)
+      ══════════════════════════════════ */}
+      <section ref={addSection} className="cs2-section cs2-toggle-compare">
+        <div className="cs2-container">
+
+          {/* Section header */}
+          <div className="cs2-toggle-header">
+            <div className="cs2-toggle-label-group">
+              <span className="cs2-eyebrow">The result</span>
+              <h2 className="cs2-heading">Before &amp; After</h2>
+              <p className="cs2-toggle-subtitle">
+                See how replacing a broken number-stepper with a standard phone input eliminated friction and improved form completion.
+              </p>
+            </div>
+
+            {/* Toggle pill buttons */}
+            <div className="cs2-toggle-btns" role="group" aria-label="View before or after design">
+              <button
+                className={`cs2-toggle-btn ${activeView === 'before' ? 'cs2-toggle-btn--active' : ''}`}
+                onClick={() => setActiveView('before')}
+                aria-pressed={activeView === 'before'}
+              >
+                Before
+              </button>
+              <button
+                className={`cs2-toggle-btn ${activeView === 'after' ? 'cs2-toggle-btn--active cs2-toggle-btn--after' : ''}`}
+                onClick={() => setActiveView('after')}
+                aria-pressed={activeView === 'after'}
+              >
+                After
+              </button>
+            </div>
+          </div>
+
+          {/* Image display area */}
+          <div className="cs2-toggle-stage">
+            <div className="cs2-toggle-badge-bar">
+              <span className={`cs2-toggle-badge ${activeView === 'after' ? 'cs2-toggle-badge--after' : ''}`}>
+                {activeView === 'before' ? '❌ Problem' : '✅ Solution'}
+              </span>
+              <span className="cs2-toggle-hint">
+                {activeView === 'before'
+                  ? 'Number-stepper input — allows negative values, no country code, zero validation'
+                  : 'Standard text input + country code selector — clear, constrained, globally inclusive'}
+              </span>
+            </div>
+
+            <div className="cs2-toggle-image-wrap">
+              <img
+                key={activeView}
+                src={activeView === 'before' ? beforeImage : afterImage}
+                alt={activeView === 'before' ? 'Before redesign' : 'After redesign'}
+                className="cs2-toggle-image cs2-toggle-image--fade"
+              />
+            </div>
+
+            {/* Side-by-side strip below for quick reference */}
+            <div className="cs2-sidebyside">
+              <div
+                className={`cs2-sbs-thumb ${activeView === 'before' ? 'cs2-sbs-thumb--active' : ''}`}
+                onClick={() => setActiveView('before')}
+                role="button"
+                tabIndex={0}
+                aria-label="View before"
+              >
+                <img src={beforeImage} alt="Before" />
+                <span>Before</span>
+              </div>
+              <div className="cs2-sbs-arrow">→</div>
+              <div
+                className={`cs2-sbs-thumb ${activeView === 'after' ? 'cs2-sbs-thumb--active cs2-sbs-thumb--after' : ''}`}
+                onClick={() => setActiveView('after')}
+                role="button"
+                tabIndex={0}
+                aria-label="View after"
+              >
+                <img src={afterImage} alt="After" />
+                <span>After</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════
           OVERVIEW — two col
       ══════════════════════════════════ */}
       <section ref={addSection} className="cs2-section cs2-overview">
@@ -256,30 +343,10 @@ const CaseStudyContactForm = () => {
       </section>
 
       {/* ══════════════════════════════════
-          BEFORE & AFTER
+          ANNOTATED WIREFRAME
       ══════════════════════════════════ */}
       <section ref={addSection} className="cs2-section cs2-compare">
         <div className="cs2-container">
-          <h2 className="cs2-heading cs2-center">Before &amp; After</h2>
-
-          <div className="cs2-compare-grid">
-            <div className="cs2-compare-card">
-              <div className="cs2-compare-label cs2-label-before">Before</div>
-              <img src={beforeImage} alt="Before Redesign" />
-              <p className="cs2-compare-cap">Number stepper — allows invalid input, breaks real-world mental models</p>
-            </div>
-            <div className="cs2-compare-arrow">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                <path d="M8 20h24M24 14l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </div>
-            <div className="cs2-compare-card cs2-compare-card--after">
-              <div className="cs2-compare-label cs2-label-after">After</div>
-              <img src={afterImage} alt="After Redesign" />
-              <p className="cs2-compare-cap">Standard text input + country code — clear, constrained, globally inclusive</p>
-            </div>
-          </div>
-
           <div className="cs2-wireframe">
             <p className="cs2-wireframe-label">Annotated Wireframe — Interaction Improvements</p>
             <img src={wireframeImage} alt="Wireframe" />

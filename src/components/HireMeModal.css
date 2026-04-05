@@ -167,10 +167,35 @@
 
 @media (max-width: 768px) {
     .hire-me-modal-content {
-        padding: 1.5rem;
+        padding: 2rem 1.5rem;
     }
 
     .hire-me-modal-title {
         font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hire-me-modal-overlay {
+        padding: 0.75rem;
+        align-items: flex-end;
+    }
+
+    .hire-me-modal-content {
+        padding: 1.75rem 1.25rem;
+        border-radius: 20px 20px 16px 16px;
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .hire-me-modal-title {
+        font-size: 1.35rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .hire-me-form input,
+    .hire-me-form textarea {
+        font-size: 16px; /* prevent iOS zoom */
+        padding: 0.875rem;
     }
 }

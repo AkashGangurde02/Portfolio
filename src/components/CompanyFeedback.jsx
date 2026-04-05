@@ -55,6 +55,9 @@ const CompanyFeedback = () => {
     ]
 
     useLayoutEffect(() => {
+        // ── Skip GSAP carousel entirely on mobile — native scroll handles it ──
+        if (window.innerWidth <= 768) return
+
         const track = carouselWindowRef.current
             ? carouselWindowRef.current.querySelector('.carousel-track')
             : null
@@ -177,7 +180,7 @@ const CompanyFeedback = () => {
                                 <p className="description-text">
                                     Performance evaluations highlighting my growth in UI/UX, design thinking, leadership, and execution across live projects.
                                 </p>
-                                <p className="scroll-hint">↔ Scroll inside the panel to browse</p>
+                                <p className="scroll-hint">↔ Swipe cards to browse</p>
                             </div>
                         </div>
 
