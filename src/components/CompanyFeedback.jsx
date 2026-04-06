@@ -55,112 +55,127 @@ const CompanyFeedback = () => {
     ]
 
     useLayoutEffect(() => {
-        // ── Skip GSAP carousel entirely on mobile — native scroll handles it ──
-        if (window.innerWidth <= 768) return
+        const mq = window.matchMedia('(max-width: 768px)')
 
-        const track = carouselWindowRef.current
-            ? carouselWindowRef.current.querySelector('.carousel-track')
-            : null
-        const carouselWindow = carouselWindowRef.current
-        if (!track || !carouselWindow) return
+        // Refs to the live GSAP objects so we can tear them down from resize handler
+        let tween = null
+        let ticker = null
+        let carouselWindow = null
 
-        // ── Compute how far the track can travel ────────────────────────────
-        const getScrollDistance = () => {
-            const lastCard = track.lastElementChild
-            if (!lastCard) return 0
-            const style = window.getComputedStyle(track)
-            const paddingRight = parseFloat(style.paddingRight) || 0
-            const gap = parseFloat(style.columnGap) || parseFloat(style.gap) || 0
-            return Math.max(0, track.scrollWidth - paddingRight - lastCard.offsetWidth - gap)
-        }
+        const setup = () => {
+            carouselWindow = carouselWindowRef.current
+            const track = carouselWindow
+                ? carouselWindow.querySelector('.carousel-track')
+                : null
+            if (!track || !carouselWindow) return
 
-        // ── GSAP paused tween driven by the ticker ──────────────────────────
-        const tween = gsap.to(track, {
-            x: () => -getScrollDistance(),
-            ease: 'none',
-            paused: true,
-        })
-
-        // targetProgress  — what we want to reach (updated on wheel)
-        // currentProgress — where we actually are (smoothly lerped every frame)
-        let targetProgress = 0
-        let currentProgress = 0
-
-        // ── Smooth lerp ticker (runs every rAF) ─────────────────────────────
-        // Gives the carousel natural inertia / coast-to-stop feel.
-        const ticker = gsap.ticker.add(() => {
-            const diff = targetProgress - currentProgress
-            if (Math.abs(diff) > 0.0005) {
-                currentProgress += diff * 0.10          // 0.10 = easing speed
-                tween.progress(Math.max(0, Math.min(1, currentProgress)))
-            } else if (currentProgress !== targetProgress) {
-                currentProgress = targetProgress
-                tween.progress(Math.max(0, Math.min(1, currentProgress)))
+            // Compute how far the track can travel
+            const getScrollDistance = () => {
+                const lastCard = track.lastElementChild
+                if (!lastCard) return 0
+                const style = window.getComputedStyle(track)
+                const paddingRight = parseFloat(style.paddingRight) || 0
+                const gap = parseFloat(style.columnGap) || parseFloat(style.gap) || 0
+                return Math.max(0, track.scrollWidth - paddingRight - lastCard.offsetWidth - gap)
             }
-        })
 
-        // ── Wheel handler ────────────────────────────────────────────────────
-        // Only intercepts wheel events when sumip-container is centred in the
-        // viewport (within ±25 % of the container's height as tolerance).
-        // Outside that band the wheel event passes straight to the page.
-        const handleWheel = (e) => {
-            // ── Centre-of-viewport guard ─────────────────────────────────────
-            const rect = carouselWindow.getBoundingClientRect()
-            const containerCentre = rect.top + rect.height / 2
-            const viewportCentre = window.innerHeight / 2
-            const tolerance = rect.height * 0.10          // ±10 % of height
+            // GSAP paused tween driven by the ticker
+            tween = gsap.to(track, {
+                x: () => -getScrollDistance(),
+                ease: 'none',
+                paused: true,
+            })
 
-            // If the container is NOT centred yet → let the page scroll normally
-            if (Math.abs(containerCentre - viewportCentre) > tolerance) return
+            let targetProgress = 0
+            let currentProgress = 0
 
-            const scrollingDown = e.deltaY > 0
-            const scrollingUp = e.deltaY < 0
+            ticker = gsap.ticker.add(() => {
+                const diff = targetProgress - currentProgress
+                if (Math.abs(diff) > 0.0005) {
+                    currentProgress += diff * 0.10
+                    tween.progress(Math.max(0, Math.min(1, currentProgress)))
+                } else if (currentProgress !== targetProgress) {
+                    currentProgress = targetProgress
+                    tween.progress(Math.max(0, Math.min(1, currentProgress)))
+                }
+            })
 
-            // ── Boundary pass-through ────────────────────────────────────────
-            // At the start (rightmost): let the page scroll up
-            if (targetProgress <= 0 && scrollingUp) return
+            const handleWheel = (e) => {
+                // Guard: if we're somehow on mobile, do nothing
+                if (window.innerWidth <= 768) return
 
-            // At the end (all cards seen): let the page continue scrolling down
-            if (targetProgress >= 1 && scrollingDown) return
+                const rect = carouselWindow.getBoundingClientRect()
+                const containerCentre = rect.top + rect.height / 2
+                const viewportCentre = window.innerHeight / 2
+                const tolerance = rect.height * 0.10
 
-            // ── Intercept: move the carousel ─────────────────────────────────
-            e.preventDefault()
-            e.stopPropagation()
+                if (Math.abs(containerCentre - viewportCentre) > tolerance) return
 
-            const dist = getScrollDistance()
-            if (dist === 0) return
+                const scrollingDown = e.deltaY > 0
+                const scrollingUp = e.deltaY < 0
 
-            // Normalise delta across devices:
-            //   deltaMode 0 = pixels  (trackpad, high-DPI mouse)
-            //   deltaMode 1 = lines   (typical mouse wheel on Windows)
-            //   deltaMode 2 = pages
-            let rawDelta = e.deltaY
-            if (e.deltaMode === 1) rawDelta *= 30   // lines → pixels
-            if (e.deltaMode === 2) rawDelta *= 300  // pages → pixels
+                if (targetProgress <= 0 && scrollingUp) return
+                if (targetProgress >= 1 && scrollingDown) return
 
-            // scroll DOWN (rawDelta > 0) → cards slide LEFT  (progress ↑)
-            // scroll UP   (rawDelta < 0) → cards slide RIGHT (progress ↓)
-            const delta = rawDelta / dist
-            targetProgress = Math.max(0, Math.min(1, targetProgress + delta))
+                e.preventDefault()
+                e.stopPropagation()
+
+                const dist = getScrollDistance()
+                if (dist === 0) return
+
+                let rawDelta = e.deltaY
+                if (e.deltaMode === 1) rawDelta *= 30
+                if (e.deltaMode === 2) rawDelta *= 300
+
+                const delta = rawDelta / dist
+                targetProgress = Math.max(0, Math.min(1, targetProgress + delta))
+            }
+
+            carouselWindow.addEventListener('wheel', handleWheel, { passive: false })
+
+            // Store cleanup on carouselWindow so teardown() can reach it
+            carouselWindow._wheelHandler = handleWheel
         }
 
-        // passive: false is required so that e.preventDefault() is allowed
-        // Listener is on the full sumip-wrapper so the hit-zone covers the whole section
-        carouselWindow.addEventListener('wheel', handleWheel, { passive: false })
+        const teardown = () => {
+            const track = carouselWindowRef.current
+                ? carouselWindowRef.current.querySelector('.carousel-track')
+                : null
 
-        // Invalidate tween dimensions on resize
-        const handleResize = () => { tween.invalidate() }
-        window.addEventListener('resize', handleResize, { passive: true })
+            if (ticker) { gsap.ticker.remove(ticker); ticker = null }
+            if (tween) { tween.kill(); tween = null }
+            if (track) gsap.set(track, { x: 0, clearProps: 'transform' })
+            if (carouselWindow && carouselWindow._wheelHandler) {
+                carouselWindow.removeEventListener('wheel', carouselWindow._wheelHandler)
+                delete carouselWindow._wheelHandler
+            }
+        }
 
-        // ── Cleanup ─────────────────────────────────────────────────────────
+        const handleBreakpoint = (e) => {
+            if (e.matches) {
+                // Entered mobile — kill everything
+                teardown()
+            } else {
+                // Entered desktop — start up
+                teardown()   // clear any old state first
+                setup()
+            }
+        }
+
+        // Initial state
+        if (!mq.matches) {
+            setup()
+        }
+
+        // Listen for viewport crossing 768px in either direction
+        mq.addEventListener('change', handleBreakpoint)
+
         return () => {
-            gsap.ticker.remove(ticker)
-            carouselWindow.removeEventListener('wheel', handleWheel)
-            window.removeEventListener('resize', handleResize)
-            tween.kill()
-            gsap.set(track, { x: 0 })
+            mq.removeEventListener('change', handleBreakpoint)
+            teardown()
         }
     }, [])
+
 
 
     return (
