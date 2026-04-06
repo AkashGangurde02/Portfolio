@@ -101,13 +101,6 @@ const AboutSection = () => {
             UX Designer building <strong>end-to-end product experiences</strong> — from research to developer-ready flows, across SaaS, mobility, and consumer apps <strong>(so users don't have to work as hard as I do)</strong>.
           </p>
 
-          <Link to="/about" className="about-secondary-btn" style={{ opacity: 1 }}>
-            Know More
-            <svg className="arrow-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </Link>
-
           {/* Strength tags */}
           <div className="about-strength-tags">
             <span className="about-strength-tag">System thinking</span>
@@ -115,12 +108,21 @@ const AboutSection = () => {
             <span className="about-strength-tag">Developer collaboration</span>
           </div>
 
+          {/* "Know More" — hidden on mobile via CSS */}
+          <Link to="/about" className="about-secondary-btn" style={{ opacity: 1 }}>
+            Know More
+            <svg className="arrow-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </Link>
+
           {/* Tools Icons Grid */}
           <div ref={toolsRef} className="tools-grid-home">
+            {/* Label — shown only on mobile */}
+            <span className="tools-grid-label">Tools &amp; Platforms</span>
             {tools.map((tool, index) => (
               <div key={index} className="tool-icon-wrapper">
                 <img src={tool.icon} alt={tool.name} className="tool-icon-img" />
-                {/* <span className="tool-name">{tool.name}</span> */}
               </div>
             ))}
           </div>

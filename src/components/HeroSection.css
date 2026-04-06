@@ -6,7 +6,7 @@
 /* ── Section wrapper ── */
 .hero-section {
   background-color: #ffffff;
-  padding: 2rem 1.25rem 2.5rem;
+  padding: 24px 16px 32px; /* 8pt grid: 24px top, 16px sides, 32px bottom */
   overflow-x: hidden;
 }
 
@@ -17,7 +17,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 32px; /* 8pt grid section gap */
 }
 
 /* ── Content block ──
@@ -26,7 +26,7 @@
 .hero-content {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;   /* 24px — mobile default */
+  gap: 16px; /* 8pt grid — element spacing */
   width: 100%;
 }
 
@@ -56,9 +56,9 @@
    HEADLINE
    ============================================================ */
 .hero-title {
-  font-size: clamp(2rem, 8vw, 3.25rem);
+  font-size: clamp(1.75rem, 7vw, 2rem); /* mobile: 28–32px */
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.2;
   color: #000000;
   margin: 0;
 }
@@ -74,7 +74,7 @@
 .hero-stats-desc-block {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 12px; /* 8pt grid */
 }
 
 .hero-stat-pills {
@@ -97,25 +97,24 @@
 }
 
 .hero-description {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: #333333;
+  font-size: 0.9rem;    /* mobile: 14–16px */
+  line-height: 1.6;
+  color: #444444;
   margin: 0;
-  max-width: 600px; /* keeps measure tight on wide mobile */
+  max-width: 340px;     /* tighter measure for single-column mobile */
 }
 
 /* ============================================================
    IMPACT STATS — Mobile: 2-column grid
    ============================================================ */
 .hero-impact-stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.25rem 1.5rem;
+  display: flex;              /* vertical stack on mobile */
+  flex-direction: column;
+  gap: 20px;                  /* 20–24px between each stat block */
   width: 100%;
-  /* Thin divider above stats — visual grouping */
-  border-top: 1px solid #eaeaea;
-  padding-top: 1.5rem;  /* 24px — mobile */
-  margin-top: 1rem;     /* 16px — extra space after description on mobile */
+  border-top: 1px solid #ebebeb; /* thin 1px light gray divider */
+  padding-top: 24px;          /* 8pt grid */
+  margin-top: 8px;
 }
 
 .impact-stat-item {
@@ -125,38 +124,40 @@
   text-align: left;
 }
 
-/* Last item spans full width on mobile 2-col grid */
+/* No grid-column override needed on mobile — flex column */
 .impact-stat-item:last-child {
-  grid-column: 1 / -1;
+  grid-column: auto;
 }
 
 .impact-stat-number {
-  font-size: clamp(1.75rem, 6vw, 2.5rem);
+  font-size: clamp(1.875rem, 8vw, 2.25rem); /* large, prominent number */
   font-weight: 700;
   color: #000000;
-  margin: 0 0 0.6rem 0;
+  margin: 0 0 6px 0; /* 8pt grid */
   width: 100%;
   line-height: 1;
 }
 
 .impact-stat-divider {
   width: 100%;
-  height: 2px;
-  background-color: #000000;
-  margin-bottom: 0.75rem;
+  height: 1px;                /* thin 1px divider */
+  background-color: #e0e0e0; /* light gray — subtle separator */
+  margin-bottom: 8px;         /* 8pt grid */
 }
 
 .impact-stat-title {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #000000;
-  margin: 0 0 0.35rem 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #555555;    /* lighter label color */
+  margin: 0 0 4px 0;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 .impact-stat-desc {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   line-height: 1.5;
-  color: #666666;
+  color: #888888; /* lighter for hierarchy */
   margin: 0;
 }
 
@@ -166,9 +167,9 @@
 .hero-footer {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid #f0f0f0;
+  gap: 16px;             /* 8pt grid */
+  padding-top: 24px;     /* 8pt grid: space above footer */
+  border-top: 1px solid #ebebeb;
 }
 
 /* ── Social Links ── */
@@ -222,9 +223,9 @@
 /* ── CTA Group ── */
 .hero-cta-group {
   display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-direction: column; /* stack on mobile */
+  gap: 12px;
+  margin-top: 8px;        /* 8pt grid gap above button */
 }
 
 .hero-cta-btn {
@@ -232,7 +233,9 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.875rem 1.75rem;
+  padding: 0;
+  height: 50px;           /* mobile: 48–52px button height */
+  width: 100%;            /* full-width on mobile */
   border: none;
   border-radius: 50px;
   background-color: #000000;
@@ -243,9 +246,6 @@
   text-decoration: none;
   transition: all 0.3s ease;
   white-space: nowrap;
-  flex: 1;
-  min-width: 120px;
-  max-width: 220px;
 }
 
 .hero-cta-btn:hover {
@@ -287,13 +287,22 @@
   }
 
   .hero-impact-stats {
+    display: grid;                    /* switch back to grid at tablet */
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
+    flex-direction: unset;
   }
 
   /* Reset the last-child span override at tablet+ */
   .impact-stat-item:last-child {
     grid-column: auto;
+  }
+
+  .hero-cta-group {
+    flex-direction: row;     /* restore row layout */
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 0;
   }
 
   .hero-footer {
@@ -305,6 +314,9 @@
   }
 
   .hero-cta-btn {
+    width: auto;          /* restore auto-width at tablet+ */
+    height: auto;
+    padding: 0.875rem 1.75rem;
     flex: unset;
     max-width: unset;
   }

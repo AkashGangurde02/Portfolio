@@ -105,12 +105,24 @@
 .tools-grid-home {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 1.5rem;
   margin-top: 2.5rem;
   margin-bottom: 0;
   align-items: flex-start;
   border-top: 1px solid #e8e8e8;
   padding-top: 1.5rem;
+}
+
+/* Tools label — shown only on mobile via media query override */
+.tools-grid-label {
+  display: none; /* hidden on desktop by default */
+  width: 100%;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #999999;
+  margin-bottom: 4px;
 }
 
 .tool-item-home {
@@ -199,21 +211,21 @@
 .about-strength-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
+  gap: 8px;
   margin-top: 4rem;
   margin-bottom: 1rem;
 }
 
 .about-strength-tag {
   display: inline-block;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.03em;
   color: #000000;
   background: #f4f4f4;
   border: 1px solid #e0e0e0;
   border-radius: 999px;
-  padding: 0.35rem 1rem;
+  padding: 0.3rem 0.85rem;
   transition: background 0.2s ease, border-color 0.2s ease;
 }
 
@@ -240,18 +252,19 @@
 }
 
 @media (max-width: 768px) {
+  /* ── Section wrapper ── */
   .about-section {
-    padding: 4rem 1.5rem;
+    padding: 32px 16px;   /* 8pt grid: 32px top/bottom, 16px sides */
+    border-bottom: 1px solid #f2f2f2;
   }
 
+  /* ── Single column, left-aligned ── */
   .about-container {
     grid-template-columns: 1fr;
-    gap: 2rem;
-    text-align: center;
-    padding: 0 !important;
-    /* Force no padding */
+    gap: 0;
+    text-align: left;
+    padding: 0;
     margin: 0;
-    /* No margin */
   }
 
   /* Hide profile image on mobile (shown in hero instead) */
@@ -259,95 +272,153 @@
     display: none;
   }
 
+  /* ── Content block ── */
   .about-content {
     max-width: 100%;
-    text-align: center;
-    /* Center align on mobile */
+    text-align: left;
     background-color: transparent;
-    /* Ensure no conflicting background */
     padding: 0;
-    /* Remove all padding */
+    display: flex;
+    flex-direction: column;
+    gap: 0;              /* spacing controlled per-element below */
   }
 
+  /* ── Heading: max 2 lines, strong hierarchy ── */
   .about-title {
-    font-size: clamp(1.75rem, 6vw, 2.25rem);
-    margin-bottom: 1.5rem;
-    line-height: 1.25;
+    font-size: clamp(1.5rem, 6.5vw, 2rem); /* 24–32px */
+    font-weight: 700;
+    line-height: 1.2;
     color: #000000;
-    /* Ensure visible text */
-  }
-
-  /* Style the title - first part bold, second part gray */
-  .about-title {
-    display: block;
+    margin: 0 0 12px 0;   /* heading → description: 12px */
   }
 
   .about-title .title-highlight {
     color: #b8b8b8;
-    /* Gray highlight */
   }
 
+  /* ── Description: scannable, 14–16px ── */
   .home-about-description {
-    font-size: 1rem;
-    line-height: 1.7;
-    margin-bottom: 2rem;
-    color: #1a1a1a;
-    /* Ensure visible text */
+    font-size: 0.9rem;   /* 14–16px */
+    line-height: 1.6;
+    color: #444444;
+    margin: 0 0 16px 0;  /* description → chips: 16px */
+    max-width: 340px;    /* tighter measure for readability */
   }
 
+  /* ── Hide "Know More" button on mobile ── */
   .about-secondary-btn {
     display: none;
-    /* Hide "Know More" button on mobile */
   }
 
-  /* Tools Section Mobile */
+  /* ── Skill chips: compact, 2-row aligned ── */
+  .about-strength-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;             /* 8–12px consistent gap */
+    margin-top: 0;
+    margin-bottom: 24px;  /* chips → tools: 24px */
+  }
+
+  .about-strength-tag {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 5px 12px;    /* compact height */
+    border-radius: 999px;
+    background: #f4f4f4;
+    border: 1px solid #e4e4e4;
+    color: #111111;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── Tools grid: structured, labelled, 2-row max ── */
+  .tools-grid-home {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns → max 2 rows for 7 icons */
+    gap: 12px;            /* 12–16px equal spacing */
+    margin-top: 0;
+    padding-top: 16px;
+    border-top: 1px solid #eeeeee; /* subtle, light gray divider */
+    align-items: center;
+    justify-items: center;
+  }
+
+  /* Show tools label on mobile */
+  .tools-grid-label {
+    display: block;
+    grid-column: 1 / -1;  /* full-width label row */
+    margin-bottom: 4px;
+  }
+
+  /* ── Tool icon: consistent 36×36px ── */
+  .tool-icon-wrapper {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tool-icon-img {
+    width: 36px;           /* consistent 32–40px */
+    height: 36px;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+  }
+
+  .tool-icon-wrapper:hover .tool-icon-img {
+    transform: scale(1.12);
+  }
+
+  /* ── Unused desktop tool styles — no-op on mobile ── */
   .tools-section-home {
-    margin-top: 3rem;
-    padding: 2rem 1.5rem 0 1.5rem;
+    margin-top: 0;
+    padding: 0;
   }
 
   .tools-heading {
-    text-align: left;
-    margin-bottom: 1.5rem;
-  }
-
-  .tools-grid-home {
-    justify-content: flex-start;
-    gap: 1.5rem;
-  }
-
-  .tool-icon-home,
-  .tool-icon-placeholder-home {
-    width: 50px;
-    height: 50px;
-    padding: 10px;
-  }
-
-  .tool-label-home {
-    font-size: 0.75rem;
+    display: none;   /* replaced by tools-grid-label */
   }
 
   .tools-summary {
-    font-size: 0.9rem;
-    text-align: left;
+    display: none;
   }
 }
 
 @media (max-width: 480px) {
   .about-section {
-    padding: 3rem 1rem;
-  }
-
-  .about-container {
-    gap: 1.5rem;
+    padding: 24px 16px;  /* tight 8pt grid on small screens */
   }
 
   .about-title {
-    font-size: clamp(1.35rem, 6vw, 1.75rem);
+    font-size: clamp(1.35rem, 6vw, 1.65rem); /* 21–26px — fits 2 lines */
+    margin-bottom: 10px;
   }
 
   .home-about-description {
-    font-size: 0.85rem;
+    font-size: 0.875rem; /* solid 14px on small screens */
+    margin-bottom: 14px;
+  }
+
+  .about-strength-tags {
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+
+  .about-strength-tag {
+    font-size: 0.68rem;
+    padding: 4px 10px;
+  }
+
+  /* Tighter 3-column grid on very small screens */
+  .tools-grid-home {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  .tool-icon-wrapper,
+  .tool-icon-img {
+    width: 32px;
+    height: 32px;
   }
 }
 
