@@ -218,22 +218,23 @@
 }
 
 @media (max-width: 768px) {
-    /* ── Wrapper ── */
+    /* ── Wrapper — clip-x only so page doesn't bleed horizontally ── */
     .sumip-wrapper {
         padding: 2rem 1rem;
         height: auto;
-        overflow: hidden;
+        overflow-x: clip;
+        overflow-y: visible;
     }
 
-    /* ── Container — overflow:hidden stops text bleeding,
-       but does NOT affect child carousel-window's internal scrollbar ── */
+    /* ── Container — must NOT be overflow:hidden or it clips
+       the carousel-window scrollbar and blocks touch scroll ── */
     .sumip-container {
         padding: 1.25rem;
         border-radius: 16px;
         width: 100%;
         max-width: 100%;
         box-sizing: border-box;
-        overflow: hidden;
+        overflow: visible;
     }
 
     /* ── Stack layout ── */
@@ -291,50 +292,52 @@
         position: static;
     }
 
-    /* ── Dark carousel box — the scroll container ── */
+    /* ── Dark carousel box — THE scroll container on mobile ── */
     .carousel-window {
-        /* Use scroll (not auto) so the scrollbar always shows */
         overflow-x: scroll !important;
         overflow-y: hidden !important;
-        /* Switch to block so align-items from flex doesn't constrain height */
+        /* Block so flex align-items does not constrain card height */
         display: block !important;
-        /* Bottom padding gives the scrollbar thumb visible space */
-        padding: 1.25rem 1rem 1.25rem;
+        /* Extra bottom padding = space for the scrollbar thumb */
+        padding: 1.25rem 1rem 2rem 1rem !important;
         border-radius: 16px;
         min-height: unset;
         width: 100%;
         box-sizing: border-box;
+        /* Momentum scroll on iOS */
         -webkit-overflow-scrolling: touch;
         scroll-behavior: smooth;
         cursor: default !important;
+        /* Ensure nothing above clips this element */
+        position: relative;
+        z-index: 1;
     }
 
-    /* ── Scrollbar: 8px, Jet Stream thumb, clearly visible on dark bg ── */
+    /* ── Scrollbar: matching the provided image style ── */
     .carousel-window::-webkit-scrollbar {
-        height: 8px;
-        display: block;
+        height: 6px !important;
+        display: block !important;
     }
 
     .carousel-window::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.1);
         border-radius: 10px;
-        margin: 0 12px;
+        margin: 0 1.25rem; /* Insets the track to align nicely inside the dark window */
     }
 
     .carousel-window::-webkit-scrollbar-thumb {
-        /* Jet Stream — light teal, clearly visible on Chinese Black */
-        background: #BBC9C7;
+        background: #888888;
         border-radius: 10px;
     }
 
     .carousel-window::-webkit-scrollbar-thumb:hover {
-        background: #DFEAE8;
+        background: #a0a0a0;
     }
 
     /* Firefox */
     .carousel-window {
         scrollbar-width: thin;
-        scrollbar-color: #BBC9C7 rgba(255,255,255,0.08);
+        scrollbar-color: #888888 rgba(255, 255, 255, 0.1);
     }
 
     /* ── Track: flex row, no GSAP transform ── */
