@@ -168,7 +168,7 @@
 }
 
 .impact-stat-desc {
-  display: block;
+  display: none; /* Hidden on mobile */
   font-size: 12px; /* 11-12px */
   color: #6B6B6B;
   margin: 0;
@@ -180,9 +180,11 @@
    ============================================================ */
 .hero-footer {
   display: flex;
-  flex-direction: column; /* Stack vertically on small screens */
-  gap: 12px; /* Add spacing between elements */
-  padding-top: 32px;
+  flex-direction: row; /* Single horizontal alignment */
+  justify-content: space-between; /* push links left, cta right */
+  align-items: center;
+  gap: 8px; /* Decreased spacing */
+  padding-top: 24px;
 }
 
 /* ── Social Links (Left Side) ── */
@@ -190,7 +192,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 20px;
+  gap: 12px; /* Decreased spacing */
 }
 
 .social-link {
@@ -217,21 +219,21 @@
 /* ── CTA Group (Right Side) ── */
 .hero-cta-group {
   display: flex;
-  width: 100%; /* Full width on mobile */
+  width: auto; /* Match content width */
 }
 
 .hero-cta-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 12px 24px;
-  width: 100%; /* Make "Let's Talk" button full width on mobile */
+  gap: 6px;
+  padding: 10px 16px; /* Decreased padding to fit on smaller screens */
+  width: auto; /* Auto width */
   border: none;
   border-radius: 999px; /* Pill-shaped */
   background-color: #000000;
   color: #ffffff;
-  font-size: 14px;
+  font-size: 13px; /* Slightly smaller text */
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
@@ -293,6 +295,11 @@
   .hero-cta-btn {
     width: auto;
     padding: 12px 24px;
+  }
+
+  /* Show impact stats description on tablet+ */
+  .impact-stat-desc {
+    display: block;
   }
 }
 
