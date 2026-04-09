@@ -17,7 +17,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 32px; /* 8pt grid section gap */
+  gap: 16px; /* Decreased from 32px */
 }
 
 /* ── Content block ──
@@ -26,7 +26,7 @@
 .hero-content {
   display: flex;
   flex-direction: column;
-  gap: 16px; /* 8pt grid — element spacing */
+  gap: 8px; /* Decreased from 16px */
   width: 100%;
 }
 
@@ -74,7 +74,7 @@
 .hero-stats-desc-block {
   display: flex;
   flex-direction: column;
-  gap: 12px; /* 8pt grid */
+  gap: 8px; /* Decreased from 12px */
 }
 
 .hero-stat-pills {
@@ -112,8 +112,12 @@
   grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
   gap: 0;
   width: 100%;
-  padding-top: 16px;
-  margin-top: 8px;
+  padding-top: 16px; /* Padding for top border */
+  padding-bottom: 16px; /* Padding for bottom border */
+  margin-top: 12px; 
+  margin-bottom: 12px;
+  border-top: 1px solid #b4b4b4;
+  border-bottom: 1px solid #b4b4b4;
 }
 
 .impact-stat-item {
@@ -122,7 +126,6 @@
   align-items: flex-start;
   text-align: left;
   padding: 0 16px;
-  border-right: 1px solid #E5E5E5; /* Vertical separators */
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
@@ -136,7 +139,6 @@
 }
 
 .impact-stat-item:last-child {
-  border-right: none; /* Remove border on last item */
   padding-right: 0;
 }
 
@@ -151,7 +153,7 @@
 .impact-stat-divider {
   display: block;
   height: 1px;
-  width: 70%; /* 60-80% of container */
+  width: 90%; /* Expanded to match image closer */
   background-color: #222; /* Darker line */
   margin-top: 6px;
   margin-bottom: 10px; /* 8-10px */
@@ -184,7 +186,7 @@
   justify-content: space-between; /* push links left, cta right */
   align-items: center;
   gap: 8px; /* Decreased spacing */
-  padding-top: 24px;
+  padding-top: 12px; /* Decreased from 24px */
 }
 
 /* ── Social Links (Left Side) ── */
@@ -285,7 +287,7 @@
     justify-content: space-between;
     align-items: center;
     gap: 0;
-    padding-top: 48px;
+    padding-top: 24px; /* Decreased from 48px */
   }
 
   .hero-cta-group {
@@ -316,7 +318,7 @@
 
   .hero-container {
     min-height: calc(100vh - 16rem);
-    gap: 2.5rem;
+    gap: 1.25rem; /* Decreased from 2.5rem */
   }
 
   .hero-content {
@@ -332,7 +334,7 @@
 
   .hero-title {
     font-size: clamp(2.5rem, 6vw, 5rem);
-    margin-bottom: 1.75rem; /* 28px — headline → description */
+    margin-bottom: 1rem; /* Decreased from 1.75rem */
     line-height: 1.12;
   }
 
@@ -343,17 +345,17 @@
   }
 
   .hero-stats-desc-block {
-    gap: 1rem;           /* 16px internal gap */
-    margin-bottom: 1.5rem;  /* 24px — space between description and stats divider */
+    gap: 0.5rem; /* Decreased from 1rem */
+    margin-bottom: 0.75rem; /* Decreased from 1.5rem */
   }
 
   .hero-impact-stats {
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem; /* Decreased from 3rem */
   }
 
   /* Desktop footer */
   .hero-footer {
-    padding-top: 3rem;
+    padding-top: 1.5rem; /* Decreased from 3rem */
   }
 }
 
