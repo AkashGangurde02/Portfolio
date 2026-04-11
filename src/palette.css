@@ -108,7 +108,8 @@ body {
 
 /* Dividers */
 .hero-impact-stats {
-  border-top-color: var(--border-subtle) !important;
+  border-top-color: var(--border) !important;
+  border-bottom-color: var(--border) !important;
 }
 
 .hero-footer {
@@ -159,7 +160,8 @@ body {
 }
 
 .tools-grid-home {
-  border-top-color: var(--border-subtle) !important;
+  border-top-color: var(--border) !important;
+  border-bottom-color: var(--border) !important;
 }
 
 .tool-icon-home {
@@ -574,7 +576,7 @@ body {
 }
 
 .impact-stat-divider {
-  background-color: var(--text-primary) !important;
+  background-color: var(--border) !important;
 }
 
 /* Impact section metric card numbers */

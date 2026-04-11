@@ -92,7 +92,7 @@ const CompanyFeedback = () => {
             ticker = gsap.ticker.add(() => {
                 const diff = targetProgress - currentProgress
                 if (Math.abs(diff) > 0.0005) {
-                    currentProgress += diff * 0.10
+                    currentProgress += diff * 0.25 // Increased from 0.10 for snappier, faster response time
                     tween.progress(Math.max(0, Math.min(1, currentProgress)))
                 } else if (currentProgress !== targetProgress) {
                     currentProgress = targetProgress
@@ -123,7 +123,7 @@ const CompanyFeedback = () => {
                 const dist = getScrollDistance()
                 if (dist === 0) return
 
-                let rawDelta = e.deltaY
+                let rawDelta = e.deltaY * 1.5 // Amplified scroll speed multiplier
                 if (e.deltaMode === 1) rawDelta *= 30
                 if (e.deltaMode === 2) rawDelta *= 300
 

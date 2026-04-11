@@ -300,37 +300,36 @@
 
   .featured-work-card {
     margin: 0 0 2rem 0;
-    /* Adjusted margin */
-    gap: 1.5rem;
-    /* Inherit card styles from desktop/tablet */
+    gap: 1.25rem;
+    padding: 1.5rem; /* Compressed padding */
+    border-radius: 16px; /* Scaled down border radius */
   }
 
-
-
   .featured-image-wrapper {
-    height: auto;
-    min-height: 200px;
-    border-radius: 12px;
+    height: 240px; /* Compressed locked height instead of auto */
+    min-height: auto;
+    border-radius: 10px;
   }
 
   .featured-content {
     padding: 0;
+    gap: 0; /* Remove flex gap so margins control spacing tightly */
   }
 
   .featured-category {
     font-size: 0.75rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
   }
 
   .featured-title {
-    font-size: clamp(1.35rem, 4vw, 1.75rem);
-    margin-bottom: 0.75rem;
+    font-size: clamp(1.25rem, 5vw, 1.5rem); /* Compressed heading size */
+    margin-bottom: 0.5rem;
   }
 
   .featured-description {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 1.25rem;
+    font-size: 0.9rem; /* Smaller text for compact mobile fit */
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
   }
 
   .featured-cta {
@@ -340,7 +339,8 @@
 
   .work-card {
     margin: 0;
-    /* Inherit card styles from desktop */
+    padding: 1.5rem; /* Compress regular card padding too */
+    border-radius: 16px;
   }
 
 
@@ -396,36 +396,36 @@
   }
 
   .featured-work-card {
-    margin-bottom: 2.5rem;
-    padding: 1.5rem;
-    gap: 1.5rem;
-    border-radius: 20px;
+    margin-bottom: 1.5rem;
+    padding: 1rem; /* Ultra tight padding */
+    gap: 1rem;
+    border-radius: 16px;
   }
 
   .featured-image-wrapper {
-    height: 280px;
-    border-radius: 12px;
+    height: 180px; /* Smallest image frame */
+    border-radius: 8px;
   }
 
   .featured-category {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
 
   .featured-title {
-    font-size: clamp(1.25rem, 5vw, 1.75rem);
+    font-size: clamp(1.1rem, 5vw, 1.3rem); /* Shrunk sharply */
   }
 
   .featured-description {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    line-height: 1.4;
   }
 
   .featured-cta {
-    padding: 0.7rem 1.5rem;
-    font-size: 0.9rem;
+    display: none; /* Hide for consistency with 768px */
   }
 
   .work-card {
-    padding: 1.5rem;
+    padding: 1rem;
   }
 
   .work-category-label {

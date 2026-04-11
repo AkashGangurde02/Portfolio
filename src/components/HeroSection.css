@@ -6,7 +6,7 @@
 /* ── Section wrapper ── */
 .hero-section {
   background-color: #ffffff;
-  padding: 24px 16px 32px; /* 8pt grid: 24px top, 16px sides, 32px bottom */
+  padding: 24px 16px 8px; /* Further decreased bottom padding */
   overflow-x: hidden;
 }
 
@@ -101,7 +101,8 @@
   line-height: 1.6;
   color: #444444;
   margin: 0;
-  max-width: 340px;     /* tighter measure for single-column mobile */
+  max-width: 100%;     /* unrestricted flexible width for mobile */
+  width: 100%;
 }
 
 /* ============================================================
@@ -154,7 +155,7 @@
   display: block;
   height: 1px;
   width: 90%; /* Expanded to match image closer */
-  background-color: #222; /* Darker line */
+  background-color: #b4b4b4; /* perfectly matched border colors */
   margin-top: 6px;
   margin-bottom: 10px; /* 8-10px */
 }
@@ -187,6 +188,8 @@
   align-items: center;
   gap: 8px; /* Decreased spacing */
   padding-top: 12px; /* Decreased from 24px */
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 /* ── Social Links (Left Side) ── */
@@ -200,12 +203,14 @@
 .social-link {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 13px; /* ~13px */
-  font-weight: 500; /* Medium weight */
+  gap: 8px; /* Slightly wider gap */
+  font-size: 15px; /* Scaled up text */
+  font-weight: 600; /* Matched Let's Talk button weight */
   color: #000000;
-  text-decoration: none;
-  transition: opacity 0.2s ease;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition: opacity 0.2s ease, color 0.2s ease;
 }
 
 .social-link:hover {
@@ -214,8 +219,8 @@
 
 .external-icon {
   flex-shrink: 0;
-  width: 12px;
-  height: 12px;
+  width: 15px; /* Scaled up icon */
+  height: 15px;
 }
 
 /* ── CTA Group (Right Side) ── */
@@ -229,13 +234,13 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding: 10px 16px; /* Decreased padding to fit on smaller screens */
+  padding: 14px 24px; /* Stepped up padding for larger size */
   width: auto; /* Auto width */
   border: none;
   border-radius: 999px; /* Pill-shaped */
   background-color: #000000;
   color: #ffffff;
-  font-size: 13px; /* Slightly smaller text */
+  font-size: 15px; /* Increased text size */
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
@@ -251,8 +256,8 @@
 
 .hero-cta-btn .arrow-icon {
   transition: transform 0.3s ease;
-  width: 16px;
-  height: 16px;
+  width: 18px; /* Scaled up icon */
+  height: 18px;
   flex-shrink: 0;
 }
 
@@ -265,7 +270,7 @@
    ============================================================ */
 @media (min-width: 640px) {
   .hero-section {
-    padding: 2.5rem 1.75rem 3rem;
+    padding: 2.5rem 1.75rem 1rem; /* Further decreased bottom padding */
   }
 
   .hero-title {
@@ -296,7 +301,17 @@
 
   .hero-cta-btn {
     width: auto;
-    padding: 12px 24px;
+    padding: 16px 36px; /* Enlarged desktop bounds */
+    font-size: 17px; /* Enlarged desktop text */
+  }
+
+  .social-link {
+    font-size: 17px; /* Scaled up text for desktop */
+  }
+
+  .external-icon {
+    width: 17px; /* Scaled up icon for desktop */
+    height: 17px;
   }
 
   /* Show impact stats description on tablet+ */
@@ -310,14 +325,14 @@
    ============================================================ */
 @media (min-width: 968px) {
   .hero-section {
-    min-height: 100vh;
+    min-height: auto;
     display: flex;
     align-items: center;
-    padding: 4rem 2rem 2rem;
+    padding: 6.5rem 2rem 1rem; /* Further decreased bottom padding */
   }
 
   .hero-container {
-    min-height: calc(100vh - 16rem);
+    min-height: auto;
     gap: 1.25rem; /* Decreased from 2.5rem */
   }
 
@@ -364,7 +379,7 @@
    ============================================================ */
 @media (min-width: 1280px) {
   .hero-section {
-    padding: 4rem 2rem 2rem;
+    padding: 8rem 2rem 2rem; /* Further decreased bottom padding */
   }
 
   .hero-title {
