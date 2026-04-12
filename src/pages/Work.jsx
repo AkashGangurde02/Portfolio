@@ -11,27 +11,23 @@ import Footer from '../components/Footer'
 gsap.registerPlugin(ScrollTrigger)
 
 const Work = () => {
-    const heroRef = useRef(null)
-    const featuredRef = useRef(null)
-    const gridRef = useRef(null)
-    const ctaRef = useRef(null)
+    const heroRef    = useRef(null)
+    const cardsRef   = useRef(null)
+    const ctaRef     = useRef(null)
 
-    const featuredProject = {
-        id: 'featured',
-        title: 'Reducing friction in lead capture workflows (B2B website)',
-        category: 'UX/UI REDESIGN',
-        description: 'Redesigned the entire contact flow to drastically enhance user experience through better field validation, intelligent error messaging, and a streamlined layout resulting in a 40% increase in completion rates.',
-        image: contactFormImage,
-        link: '/case-study',
-        ctaText: 'View Case Study',
-        tag: 'Featured'
-    }
-
+    // All projects — featured first, rest follow
     const projects = [
+        {
+            id: 1,
+            title: 'Reducing friction in lead capture workflows (B2B website)',
+            description: 'Users were abandoning a critical contact form mid-way due to unclear field labels, confusing error states, and a fragmented layout.',
+            image: contactFormImage,
+            link: '/case-study',
+            ctaText: 'View Case Study'
+        },
         {
             id: 2,
             title: 'Improving Product Discovery & Trust',
-            category: 'E-COMMERCE UX',
             description: 'Redesigned the product and collection pages of a D2C wellness e-commerce platform to improve product discovery, information clarity, and purchase confidence.',
             image: hempHopImage,
             link: '/case-study/hemp-hop',
@@ -40,7 +36,6 @@ const Work = () => {
         {
             id: 3,
             title: 'Rebuilding a Trust-First Food Ordering Experience',
-            category: 'MOBILE APP UX',
             description: 'Led the end-to-end UX redesign of a food delivery platform, improving usability, strengthening user trust, and creating a more emotionally engaging ordering experience.',
             image: grubwalaImage,
             link: '/case-study/grubwala',
@@ -50,7 +45,7 @@ const Work = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            // Hero text animation
+            // Hero
             gsap.from(heroRef.current.children, {
                 y: 40,
                 opacity: 0,
@@ -60,36 +55,21 @@ const Work = () => {
                 delay: 0.2
             })
 
-            // Featured project animation
-            gsap.from(featuredRef.current, {
-                scrollTrigger: {
-                    trigger: featuredRef.current,
-                    start: 'top 85%',
-                    toggleActions: 'play none none reverse'
-                },
-                y: 60,
-                opacity: 0,
-                duration: 0.8,
-                ease: 'power3.out'
-            })
-
-            // Grid items — simple timed animation, no ScrollTrigger
-            // (avoids cards getting stuck at opacity:0 if trigger never fires)
-            if (gridRef.current && gridRef.current.children.length > 0) {
-                // Ensure cards start visible, then animate in
-                gsap.set(gridRef.current.children, { opacity: 0, y: 40 })
-                gsap.to(gridRef.current.children, {
+            // Cards
+            if (cardsRef.current && cardsRef.current.children.length > 0) {
+                gsap.set(cardsRef.current.children, { opacity: 0, y: 40 })
+                gsap.to(cardsRef.current.children, {
                     opacity: 1,
                     y: 0,
-                    duration: 0.6,
-                    stagger: 0.15,
+                    duration: 0.65,
+                    stagger: 0.12,
                     ease: 'power3.out',
-                    delay: 0.5,
+                    delay: 0.4,
                     clearProps: 'all'
                 })
             }
 
-            // CTA section animation
+            // CTA
             gsap.from(ctaRef.current.children, {
                 scrollTrigger: {
                     trigger: ctaRef.current,
@@ -104,7 +84,6 @@ const Work = () => {
             })
         })
 
-        // Refresh ScrollTrigger after layout has settled
         const timer = setTimeout(() => ScrollTrigger.refresh(), 300)
         return () => {
             clearTimeout(timer)
@@ -114,7 +93,8 @@ const Work = () => {
 
     return (
         <div className="work-page">
-            {/* Hero Section */}
+
+            {/* ── Hero ── */}
             <section className="work-hero-modern">
                 <div className="work-container-narrow" ref={heroRef}>
                     <h1 className="work-headline-modern">Featured UX Case Studies</h1>
@@ -124,54 +104,26 @@ const Work = () => {
                 </div>
             </section>
 
-            {/* Featured Project */}
-            <section className="work-featured-section">
-                <div className="work-container" ref={featuredRef}>
-                    <Link to={featuredProject.link} className="featured-card">
-                        <div className="featured-card-content">
-                            <div className="featured-card-header">
-                                <span className="pill-badge featured-badge">{featuredProject.tag}</span>
-                                <span className="pill-badge category-badge">{featuredProject.category}</span>
-                            </div>
-                            <h2 className="featured-title">{featuredProject.title}</h2>
-                            <p className="featured-description">{featuredProject.description}</p>
-                            <span className="primary-btn">
-                                {featuredProject.ctaText}
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                    <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </span>
-                        </div>
-                        <div className="featured-card-image">
-                            <div className="image-wrapper">
-                                <img src={featuredProject.image} alt={featuredProject.title} />
-                            </div>
-                        </div>
-                    </Link>
-                </div>
-            </section>
-
-            {/* Projects Grid */}
-            <section className="work-grid-section">
+            {/* ── Cards Grid ── */}
+            <section className="work-cards-section">
                 <div className="work-container">
-                    <div className="modern-work-grid" ref={gridRef}>
+                    <div className="wc-grid" ref={cardsRef}>
                         {projects.map((project) => (
-                            <Link key={project.id} to={project.link} className="modern-work-card">
-                                <div className="card-image-container">
-                                    <img src={project.image} alt={project.title} />
+                            <Link key={project.id} to={project.link} className="wc-card">
+                                {/* Image */}
+                                <div className="wc-image-wrap">
+                                    <img src={project.image} alt={project.title} className="wc-image" />
                                 </div>
-                                <div className="card-content">
-                                    <div className="card-tags">
-                                        <span className="pill-badge category-badge">{project.category}</span>
-                                    </div>
-                                    <h3 className="card-title">{project.title}</h3>
-                                    <p className="card-description">{project.description}</p>
-                                    <span className="text-cta">
-                                        {project.ctaText}
-                                        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
-                                            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                        </svg>
-                                    </span>
+
+                                {/* Body */}
+                                <div className="wc-body">
+                                    <h2 className="wc-title">{project.title}</h2>
+                                    <p className="wc-desc">{project.description}</p>
+                                </div>
+
+                                {/* CTA */}
+                                <div className="wc-footer">
+                                    <span className="wc-cta-btn">{project.ctaText}</span>
                                 </div>
                             </Link>
                         ))}
@@ -179,7 +131,7 @@ const Work = () => {
                 </div>
             </section>
 
-            {/* Bottom CTA Section */}
+            {/* ── Bottom CTA ── */}
             <section className="work-bottom-cta">
                 <div className="cta-container" ref={ctaRef}>
                     <h2 className="cta-headline">Have a project in mind?</h2>
