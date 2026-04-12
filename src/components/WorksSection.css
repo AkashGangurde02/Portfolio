@@ -220,7 +220,7 @@
 /* View All Works */
 .view-all-wrapper {
   text-align: center;
-  padding: 0 0 2.5rem 0;
+  padding: 0 0 1.5rem 0;
 }
 
 .view-all-link {
@@ -277,7 +277,7 @@
 
 @media (max-width: 768px) {
   .works-section {
-    padding: 4rem 1.5rem;
+    padding: 4rem 1.5rem 0;
   }
 
   .works-container {
@@ -381,7 +381,7 @@
   }
 
   .view-all-wrapper {
-    padding: 3rem 0;
+    padding: 1rem 0 2rem 0;
     text-align: center;
   }
 
@@ -395,7 +395,7 @@
 
 @media (max-width: 480px) {
   .works-section {
-    padding: 3rem 1rem;
+    padding: 3rem 1rem 0;
   }
 
   .works-grid {

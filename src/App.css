@@ -1,6 +1,9 @@
 html {
   scroll-padding-top: 80px;
-  overflow-x: hidden;
+  /* overflow-x: clip instead of hidden — 'hidden' on html creates a scroll
+     container that prevents children from having native horizontal scroll.
+     'clip' prevents page bleed without creating a scroll container. */
+  overflow-x: clip;
 }
 
 body {

@@ -1,5 +1,5 @@
 .about-section {
-  padding: 5rem 2rem;
+  padding: 3rem 2rem;
   background-color: #ffffff;
   border-bottom: 1px solid #f0f0f0;
 }
@@ -254,9 +254,8 @@
 }
 
 @media (max-width: 768px) {
-  /* ── Section wrapper ── */
   .about-section {
-    padding: 32px 16px;   /* 8pt grid: 32px top/bottom, 16px sides */
+    padding: 20px 16px;
     border-bottom: none;
   }
 
@@ -395,7 +394,7 @@
 
 @media (max-width: 480px) {
   .about-section {
-    padding: 24px 16px;
+    padding: 16px 16px;
   }
 
   .about-title {

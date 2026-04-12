@@ -1,18 +1,23 @@
-/* Main Wrapper */
-.sumip-wrapper {
-    padding: 5rem 5%;
+/* ═══════════════════════════════════════════════════════════════
+   CompanyFeedback.css  — v3 minimal redesign
+   Desktop  → white bg, title left, GSAP wheel-driven dark carousel
+   Mobile/Tablet → title top, native horizontal scroll + visible scrollbar
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── SECTION SHELL ─────────────────────────────────────────────── */
+.cf-section {
     background-color: #f7f9f9;
-    height: 100vh;
+    padding: 5rem 5%;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: visible;
     box-sizing: border-box;
     position: relative;
     z-index: 1;
 }
 
-.sumip-container {
+/* White rounded card that wraps everything */
+.cf-container {
     background-color: #ffffff;
     width: 100%;
     max-width: 1600px;
@@ -20,385 +25,297 @@
     border: 1.5px solid #cccccc;
     padding: 3.5rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    height: calc(100vh - 160px);
-    min-height: 600px;
-    max-height: 900px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    transition: all 0.4s ease;
+    gap: 2rem;
+    box-sizing: border-box;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
-.sumip-container:hover {
+.cf-container:hover {
     border-color: #999999;
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
 }
 
-.content-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 3.5rem;
-    height: 100%;
-    align-items: center;
+/* ── HEADER ────────────────────────────────────────────────────── */
+.cf-header {
+    flex-shrink: 0;
 }
 
-/* --- Left Side Styling --- */
-.left-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-    gap: 1.5rem;
-}
-
-.main-typography h1 {
-    font-size: clamp(2.5rem, 4vw, 3.5rem);
+.cf-title {
+    font-size: clamp(2rem, 4vw, 3rem);
     line-height: 1.2;
     font-weight: 700;
     color: #000000;
     margin: 0;
 }
 
-.sub-highlight {
-    color: #888;
+.cf-title-light {
+    color: #888888;
     font-weight: 400;
 }
 
-.description-wrapper {
+/* ── DARK CAROUSEL BLOCK ───────────────────────────────────────── */
+.cf-carousel-block {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    max-width: 500px;
+    gap: 0;                /* scrollbar track sits flush under window */
 }
 
-.description-text {
-    font-size: 1rem;
-    color: #444;
-    line-height: 1.6;
-    margin: 0;
-}
-
-/* Subtle hint telling users to scroll inside the panel */
-.scroll-hint {
-    font-size: 0.82rem;
-    color: #aaa;
-    margin: 0;
-    letter-spacing: 0.02em;
-    user-select: none;
-}
-
-/* --- Right Side Styling --- */
-.right-carousel-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: center;
-    position: relative;
-    /* Removed the transform to match the clean contained look requested */
-}
-
-.carousel-window {
+/* ── CAROUSEL WINDOW (scroll container) ────────────────────────── */
+.cf-window {
     background-color: #1a1a1a;
-    border-radius: 30px;
-    padding: 3rem 0 3rem 3rem;
-    height: auto;
-    min-height: 450px;
+    border-radius: 20px 20px 0 0;   /* flat bottom so scrollbar track looks connected */
+    padding: 2.5rem 0 2.5rem 2.5rem;
+    overflow: hidden;                 /* desktop: GSAP clips track */
+    cursor: grab;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+    min-height: 300px;
     display: flex;
     align-items: center;
-    /* Clips the horizontally moving track */
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    /* Signals that the carousel is scrollable */
-    cursor: grab;
 }
 
-.carousel-window:active {
+.cf-window:active {
     cursor: grabbing;
 }
 
-.carousel-track {
+/* ── TRACK ─────────────────────────────────────────────────────── */
+.cf-track {
     display: flex;
-    gap: 2rem;
-    /* width: max-content ensures the track is wider than the window */
+    gap: 1.75rem;
     width: max-content;
     flex-shrink: 0;
-    align-items: center;
-    padding-right: 3rem;
-    /* will-change: transform hints to the browser for GPU compositing */
+    align-items: stretch;
+    padding-right: 2.5rem;
     will-change: transform;
 }
 
-/* --- New Card Styling --- */
-.testimonial-card {
+/* ── CARDS ─────────────────────────────────────────────────────── */
+.cf-card {
     background: linear-gradient(145deg, #2a2a2a, #222);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
-    padding: 2rem;
-    width: 320px;
-    height: 380px;
+    border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+    border-radius: 14px;
+    padding: 1.75rem;
+    width: 300px;
+    height: 340px;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     position: relative;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease;
-
-    /* Golden Glow at bottom */
-    border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, border-bottom-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.testimonial-card:hover {
+.cf-card:hover {
     transform: translateY(-5px);
     border-bottom-color: rgba(255, 215, 0, 0.6);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 10px 20px rgba(255, 215, 0, 0.05);
-    /* Glow effect */
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
 }
 
-.card-header h3 {
-    font-size: 1.2rem;
-    color: #fff;
+.cf-card-header h3 {
+    font-size: 1.1rem;
+    color: #ffffff;
     font-weight: 500;
     margin: 0;
 }
 
-.card-body p {
-    font-size: 0.95rem;
-    color: #ccc;
+.cf-card-body p {
+    font-size: 0.9rem;
+    color: #cccccc;
     line-height: 1.6;
     margin: 0;
-}
-
-.card-footer {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.star-icon {
-    color: #ffd700;
-    /* Gold header */
-    font-size: 1.2rem;
-}
-
-.rating-text {
-    color: #fff;
-    font-size: 1.1rem;
-    font-weight: 500;
-}
-
-/* --- Responsive --- */
-@media (max-width: 1024px) {
-    .sumip-wrapper {
-        height: auto;
-        overflow-x: hidden;
-    }
-
-    .sumip-container {
-        height: auto;
-        padding: 2rem;
-        max-height: none;
-        /* Don't clip — allows carousel scrollbar to show */
-        overflow: visible;
-    }
-
-    .content-grid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-    }
-
-    .carousel-window {
-        width: 100%;
-        margin-top: 1.5rem;
-    }
-}
-
-@media (max-width: 768px) {
-    /* ── Wrapper: overflow-x MUST be hidden (not clip!) so child scroll
-       containers (.carousel-window) can still scroll horizontally.
-       overflow-x:clip creates a hard paint boundary that blocks ALL child
-       scrolling — that was the root cause of the broken carousel. ── */
-    .sumip-wrapper {
-        padding: 2rem 1rem;
-        height: auto;
-        overflow-x: hidden;
-        overflow-y: visible;
-    }
-
-    /* ── Container — must NOT be overflow:hidden or it clips
-       the carousel-window scrollbar and blocks touch scroll ── */
-    .sumip-container {
-        padding: 1.25rem;
-        border-radius: 16px;
-        width: 100%;
-        max-width: 100%;
-        box-sizing: border-box;
-        overflow: visible;
-    }
-
-    /* ── Stack layout ── */
-    .content-grid {
-        grid-template-columns: 1fr;
-        gap: 1.25rem;
-        width: 100%;
-        max-width: 100%;
-    }
-
-    /* ── Text block: constrained + no bleed ── */
-    .left-content {
-        gap: 0.75rem;
-        width: 100%;
-        max-width: 100%;
-        min-width: 0;
-        overflow: hidden;
-    }
-
-    .main-typography h1 {
-        font-size: 1.55rem;
-        line-height: 1.25;
-        word-break: break-word;
-        overflow-wrap: break-word;
-        white-space: normal;
-        max-width: 100%;
-    }
-
-    .description-wrapper {
-        max-width: 100%;
-        width: 100%;
-        gap: 0.5rem;
-    }
-
-    .description-text {
-        font-size: 0.9rem;
-        line-height: 1.6;
-        max-width: 100%;
-        width: 100%;
-        word-break: break-word;
-        overflow-wrap: break-word;
-        white-space: normal;
-        overflow: hidden;
-    }
-
-    .scroll-hint {
-        font-size: 0.78rem;
-    }
-
-    /* ── Right side: carousel ── */
-    .right-carousel-container {
-        width: 100%;
-        height: auto;
-        position: static;
-    }
-
-    /* ── Dark carousel box — THE native scroll container on mobile ──
-       GSAP is completely disabled on mobile (see useLayoutEffect).
-       This div handles all scrolling natively via overflow-x: scroll. ── */
-    .carousel-window {
-        overflow-x: scroll !important;
-        overflow-y: hidden !important;
-        display: block !important;
-        padding: 1.25rem 1rem 2.5rem 1rem !important;
-        border-radius: 16px;
-        min-height: unset;
-        width: 100%;
-        box-sizing: border-box;
-        -webkit-overflow-scrolling: touch;  /* momentum scroll on iOS */
-        scroll-behavior: smooth;
-        cursor: default !important;
-        position: relative;
-        z-index: 1;
-        touch-action: pan-x;            /* let browser know it's h-scroll */
-        overscroll-behavior-x: contain; /* don't trigger page scroll while swiping cards */
-    }
-
-    /* ── Visible scrollbar so users know it's scrollable ── */
-    .carousel-window::-webkit-scrollbar {
-        height: 5px;
-        display: block !important;
-    }
-
-    .carousel-window::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.12);
-        border-radius: 10px;
-    }
-
-    .carousel-window::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.45);
-        border-radius: 10px;
-    }
-
-    .carousel-window::-webkit-scrollbar-thumb:active {
-        background: rgba(255, 255, 255, 0.7);
-    }
-
-    /* Firefox */
-    .carousel-window {
-        scrollbar-width: thin;
-        scrollbar-color: rgba(255,255,255,0.45) rgba(255,255,255,0.12);
-    }
-
-    /* ── Track: plain flex row — NO GSAP transforms involved on mobile ── */
-    .carousel-track {
-        transform: none !important;
-        will-change: auto !important;
-        display: flex !important;
-        flex-direction: row !important;
-        gap: 12px;
-        width: max-content !important;  /* extends beyond the window = scrollable */
-        padding: 0 1rem 0 0;            /* trailing space so last card isn't flush */
-        align-items: stretch;
-        touch-action: pan-x;
-    }
-
-    /* ── Cards: explicit fixed width — not capped by any global rule ── */
-    .testimonial-card {
-        width: 260px !important;
-        min-width: 260px !important;
-        max-width: 260px !important;
-        height: auto !important;
-        min-height: 260px;
-        flex-shrink: 0 !important;
-        padding: 1.1rem;
-        overflow: visible !important;
-    }
-
-    .card-header h3 {
-        font-size: 0.95rem;
-    }
-
-    .card-body p {
-        font-size: 0.85rem;
-        line-height: 1.5;
-    }
-}
-
-
-
-/* --- Text Truncation --- */
-.card-body p {
     display: -webkit-box;
-    -webkit-line-clamp: 6;
-    line-clamp: 6;
+    -webkit-line-clamp: 7;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.testimonial-card {
-    cursor: pointer;
+.cf-card-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* --- Modal Styles --- */
+.cf-star {
+    color: #ffd700;
+    font-size: 1.1rem;
+}
+
+.cf-rating {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════
+   VISIBLE SCROLLBAR STRIP — always visible, sits under the window
+   ══════════════════════════════════════════════════════════════════ */
+
+/* Hidden on desktop — GSAP uses wheel, no scrollbar needed */
+.cf-window::-webkit-scrollbar          { display: none; }
+.cf-window                             { scrollbar-width: none; }
+
+
+/* ── TABLET (≤ 1024px) ─────────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .cf-section {
+        padding: 3.5rem 4%;
+    }
+
+    .cf-container {
+        padding: 2.5rem;
+        gap: 1.75rem;
+    }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════
+   MOBILE + TABLET SCROLL LAYOUT (≤ 768px)
+   Architecture:
+   • GSAP never runs (guarded in useLayoutEffect)
+   • .cf-window → overflow-x: auto  (native scroll)
+   • .cf-window has bottom border-radius so scrollbar track is
+     integrated inside the dark block
+   ══════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .cf-section {
+        padding: 1.5rem 0;
+    }
+
+    .cf-container {
+        width: calc(100% - 2rem);
+        margin: 0 1rem;
+        padding: 1.5rem 1.25rem 1.75rem;
+        border-radius: 16px;
+        gap: 1.25rem;
+        max-width: 100%;
+        min-height: unset;
+        box-sizing: border-box;
+        overflow: visible;     /* must NOT clip child scroll */
+    }
+
+    .cf-title {
+        font-size: clamp(1.4rem, 5.5vw, 1.9rem);
+        line-height: 1.25;
+    }
+
+    /* Make the dark block include the scrollbar at the bottom */
+    .cf-window {
+        /* Enable native horizontal scroll */
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+
+        /* Restore bottom radius so scrollbar is inside the dark panel */
+        border-radius: 14px;
+        padding: 1.5rem 0 0 1.25rem;   /* no bottom padding — scrollbar sits at bottom */
+        min-height: unset;
+        height: auto;
+        display: block;
+        cursor: default;
+
+        /* Scrollbar height & colours */
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.45) rgba(255, 255, 255, 0.1);
+    }
+
+    /* WebKit scrollbar — appears at bottom inside dark block */
+    .cf-window::-webkit-scrollbar {
+        display: block;
+        height: 5px;
+    }
+
+    .cf-window::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 0 0 14px 14px;
+        margin: 0 1.25rem;
+    }
+
+    .cf-window::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.45);
+        border-radius: 99px;
+    }
+
+    .cf-window::-webkit-scrollbar-thumb:active {
+        background: rgba(255, 255, 255, 0.75);
+    }
+
+    /* Track: no GSAP, just a plain flex row */
+    .cf-track {
+        gap: 10px;
+        width: max-content;
+        padding: 1.25rem 1.25rem 1rem 0;   /* bottom padding = space above scrollbar */
+        align-items: stretch;
+        transform: none !important;
+        will-change: auto;
+        touch-action: pan-x;
+    }
+
+    /* Cards */
+    .cf-card {
+        width: 76vw;
+        min-width: 220px;
+        max-width: 280px;
+        height: auto;
+        min-height: 220px;
+        padding: 1.1rem;
+        flex-shrink: 0;
+        scroll-snap-align: start;
+        transition: none;
+    }
+
+    .cf-card:hover {
+        transform: none;
+    }
+
+    .cf-card-header h3 {
+        font-size: 0.9rem;
+    }
+
+    .cf-card-body p {
+        font-size: 0.82rem;
+        line-height: 1.5;
+        -webkit-line-clamp: 7;
+    }
+
+    .cf-card-footer {
+        padding-top: 0.6rem;
+    }
+
+    .cf-star {
+        font-size: 1rem;
+    }
+
+    .cf-rating {
+        font-size: 0.95rem;
+    }
+}
+
+/* ── SMALL PHONES (≤ 480px) ────────────────────────────────────── */
+@media (max-width: 480px) {
+    .cf-card {
+        width: 80vw;
+        min-width: 200px;
+    }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   MODAL  (unchanged)
+   ═══════════════════════════════════════════════════════════════ */
 .modal-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    inset: 0;
     background: rgba(0, 0, 0, 0.8);
     display: flex;
     justify-content: center;
@@ -406,7 +323,7 @@
     z-index: 2000;
     backdrop-filter: blur(8px);
     opacity: 0;
-    animation: fadeIn 0.3s forwards;
+    animation: cfFadeIn 0.3s forwards;
 }
 
 .modal-content {
@@ -417,9 +334,8 @@
     width: 90%;
     border: 1px solid rgba(255, 215, 0, 0.2);
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
-    position: relative;
     transform: scale(0.95);
-    animation: scaleUp 0.3s forwards;
+    animation: cfScaleUp 0.3s forwards;
 }
 
 .modal-header {
@@ -464,14 +380,5 @@
     gap: 0.5rem;
 }
 
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes scaleUp {
-    to {
-        transform: scale(1);
-    }
-}
+@keyframes cfFadeIn  { to { opacity: 1; } }
+@keyframes cfScaleUp { to { transform: scale(1); } }

@@ -29,10 +29,8 @@
     position: relative;
     width: 100%;
     background-color: #000000;
-    /* Black */
     color: #ffffff;
-    /* White Text */
-    transform: none;
+    transform: translateX(4%);
     padding: 1rem 0;
     display: flex;
     align-items: center;
