@@ -270,10 +270,32 @@
     }
 
     .work-bottom-cta {
-        padding: 12px 0 40px;
+        padding: 40px 20px 48px;
+        background: #ffffff;
+        border-top: 1px solid var(--wc-border);
+        border-bottom: 1px solid var(--wc-border);
+    }
+
+    .cta-container {
+        padding: 0;
+    }
+
+    .cta-headline {
+        font-size: 2rem;
+        margin-bottom: 8px;
     }
 
     .cta-subheadline {
-        margin-bottom: 20px;
+        font-size: 1.05rem;
+        color: #4b5563; /* Darker gray to prevent it washing out */
+        margin-bottom: 24px;
+        line-height: 1.5;
+        opacity: 1 !important;
+    }
+
+    .cta-button-large {
+        width: 100%;
+        justify-content: center;
+        padding: 16px 0;
     }
 }
