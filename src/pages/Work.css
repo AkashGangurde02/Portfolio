@@ -243,6 +243,11 @@
 
 /* 1 column on mobile */
 @media (max-width: 640px) {
+    .wc-card {
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+
     .wc-grid {
         grid-template-columns: 1fr;
         gap: 18px;
@@ -253,7 +258,7 @@
     }
 
     .work-cards-section {
-        padding-bottom: 48px;
+        padding-bottom: 20px;
     }
 
     .wc-body {
@@ -265,6 +270,10 @@
     }
 
     .work-bottom-cta {
-        padding: 48px 0;
+        padding: 12px 0 40px;
+    }
+
+    .cta-subheadline {
+        margin-bottom: 20px;
     }
 }
