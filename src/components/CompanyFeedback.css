@@ -218,11 +218,14 @@
 }
 
 @media (max-width: 768px) {
-    /* ── Wrapper — clip-x only so page doesn't bleed horizontally ── */
+    /* ── Wrapper: overflow-x MUST be hidden (not clip!) so child scroll
+       containers (.carousel-window) can still scroll horizontally.
+       overflow-x:clip creates a hard paint boundary that blocks ALL child
+       scrolling — that was the root cause of the broken carousel. ── */
     .sumip-wrapper {
         padding: 2rem 1rem;
         height: auto;
-        overflow-x: clip;
+        overflow-x: hidden;
         overflow-y: visible;
     }
 
@@ -269,7 +272,6 @@
         gap: 0.5rem;
     }
 
-    /* ── THIS was the overflow culprit — base has max-width:500px ── */
     .description-text {
         font-size: 0.9rem;
         line-height: 1.6;
@@ -292,67 +294,67 @@
         position: static;
     }
 
-    /* ── Dark carousel box — THE scroll container on mobile ── */
+    /* ── Dark carousel box — THE native scroll container on mobile ──
+       GSAP is completely disabled on mobile (see useLayoutEffect).
+       This div handles all scrolling natively via overflow-x: scroll. ── */
     .carousel-window {
         overflow-x: scroll !important;
         overflow-y: hidden !important;
-        /* Block so flex align-items does not constrain card height */
         display: block !important;
-        /* Extra bottom padding = space for the scrollbar thumb */
-        padding: 1.25rem 1rem 2rem 1rem !important;
+        padding: 1.25rem 1rem 2.5rem 1rem !important;
         border-radius: 16px;
         min-height: unset;
         width: 100%;
         box-sizing: border-box;
-        /* Momentum scroll on iOS */
-        -webkit-overflow-scrolling: touch;
+        -webkit-overflow-scrolling: touch;  /* momentum scroll on iOS */
         scroll-behavior: smooth;
         cursor: default !important;
-        /* Ensure nothing above clips this element */
         position: relative;
         z-index: 1;
+        touch-action: pan-x;            /* let browser know it's h-scroll */
+        overscroll-behavior-x: contain; /* don't trigger page scroll while swiping cards */
     }
 
-    /* ── Scrollbar: matching the provided image style ── */
+    /* ── Visible scrollbar so users know it's scrollable ── */
     .carousel-window::-webkit-scrollbar {
-        height: 6px !important;
+        height: 5px;
         display: block !important;
     }
 
     .carousel-window::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.12);
         border-radius: 10px;
-        margin: 0 1.25rem; /* Insets the track to align nicely inside the dark window */
     }
 
     .carousel-window::-webkit-scrollbar-thumb {
-        background: #888888;
+        background: rgba(255, 255, 255, 0.45);
         border-radius: 10px;
     }
 
-    .carousel-window::-webkit-scrollbar-thumb:hover {
-        background: #a0a0a0;
+    .carousel-window::-webkit-scrollbar-thumb:active {
+        background: rgba(255, 255, 255, 0.7);
     }
 
     /* Firefox */
     .carousel-window {
         scrollbar-width: thin;
-        scrollbar-color: #888888 rgba(255, 255, 255, 0.1);
+        scrollbar-color: rgba(255,255,255,0.45) rgba(255,255,255,0.12);
     }
 
-    /* ── Track: flex row, no GSAP transform ── */
+    /* ── Track: plain flex row — NO GSAP transforms involved on mobile ── */
     .carousel-track {
         transform: none !important;
         will-change: auto !important;
         display: flex !important;
-        flex-direction: row;
+        flex-direction: row !important;
         gap: 12px;
-        width: max-content;
-        padding: 0 1rem 0 0;
-        align-items: flex-start;
+        width: max-content !important;  /* extends beyond the window = scrollable */
+        padding: 0 1rem 0 0;            /* trailing space so last card isn't flush */
+        align-items: stretch;
+        touch-action: pan-x;
     }
 
-    /* ── Cards: fixed width so they don't shrink ── */
+    /* ── Cards: explicit fixed width — not capped by any global rule ── */
     .testimonial-card {
         width: 260px !important;
         min-width: 260px !important;
@@ -361,6 +363,7 @@
         min-height: 260px;
         flex-shrink: 0 !important;
         padding: 1.1rem;
+        overflow: visible !important;
     }
 
     .card-header h3 {

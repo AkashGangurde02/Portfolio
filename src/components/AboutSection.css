@@ -257,7 +257,7 @@
   /* ── Section wrapper ── */
   .about-section {
     padding: 32px 16px;   /* 8pt grid: 32px top/bottom, 16px sides */
-    border-bottom: 1px solid #f2f2f2;
+    border-bottom: none;
   }
 
   /* ── Single column, left-aligned ── */

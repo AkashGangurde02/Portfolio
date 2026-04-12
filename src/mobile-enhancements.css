@@ -52,11 +52,14 @@ body {
     .work-card,
     .featured-work-card,
     .skill-category,
-    .tool-card,
-    .testimonial-card {
+    .tool-card {
         max-width: 100%;
         overflow: hidden;
     }
+
+    /* .testimonial-card is intentionally EXCLUDED — it lives inside a
+       horizontally-scrolling carousel track and must maintain its fixed
+       width to allow touch-scroll. CompanyFeedback.css handles it. */
 
     /* Better spacing for mobile sections */
     section {

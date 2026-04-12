@@ -88,6 +88,10 @@
   line-height: 1.7;
   color: #444444;
   margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .featured-cta {
@@ -317,8 +321,7 @@
   }
 
   .featured-category {
-    font-size: 0.75rem;
-    margin-bottom: 0.25rem;
+    display: none;
   }
 
   .featured-title {
@@ -327,14 +330,18 @@
   }
 
   .featured-description {
-    font-size: 0.9rem; /* Smaller text for compact mobile fit */
+    display: -webkit-box;
+    font-size: 0.9rem;
     line-height: 1.5;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    -webkit-line-clamp: 2;
   }
 
   .featured-cta {
-    display: none;
-    /* Hide CTA on featured card on mobile */
+    display: inline-flex;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    border: 1px solid #000000;
   }
 
   .work-card {
@@ -408,20 +415,27 @@
   }
 
   .featured-category {
-    font-size: 0.7rem;
+    display: none;
   }
 
   .featured-title {
     font-size: clamp(1.1rem, 5vw, 1.3rem); /* Shrunk sharply */
+    margin-bottom: 0.5rem;
   }
 
   .featured-description {
+    display: -webkit-box;
     font-size: 0.85rem;
     line-height: 1.4;
+    margin-bottom: 1rem;
+    -webkit-line-clamp: 2;
   }
 
   .featured-cta {
-    display: none; /* Hide for consistency with 768px */
+    display: inline-flex;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    border: 1px solid #000000;
   }
 
   .work-card {

@@ -59,7 +59,7 @@ img {
   }
 
   .about-strength-tags {
-    justify-content: center;
+    justify-content: flex-start;
     margin-top: 2.5rem;
   }
 
