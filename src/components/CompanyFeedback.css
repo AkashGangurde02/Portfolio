@@ -65,7 +65,7 @@
 /* ── CAROUSEL WINDOW (scroll container) ────────────────────────── */
 .cf-window {
     background-color: #1a1a1a;
-    border-radius: 20px 20px 0 0;   /* flat bottom so scrollbar track looks connected */
+    border-radius: 20px;
     padding: 2.5rem 0 2.5rem 2.5rem;
     overflow: hidden;                 /* desktop: GSAP clips track */
     cursor: grab;

@@ -97,7 +97,8 @@ const CompanyFeedback = () => {
 
                 const rect       = win.getBoundingClientRect()
                 const centreDiff = Math.abs((rect.top + rect.height / 2) - window.innerHeight / 2)
-                if (centreDiff > rect.height * 0.10) return
+                // Increased tolerance so horizontal scroll triggers earlier (25% of viewport height instead of tightly centering)
+                if (centreDiff > window.innerHeight * 0.25) return
 
                 const scrollingUp   = e.deltaY < 0
                 const scrollingDown = e.deltaY > 0

@@ -157,7 +157,7 @@ const About = () => {
                   <h3 className="tools-category-title">{category.category}</h3>
                   <div className="tools-grid">
                     {category.tools.map((tool, toolIndex) => (
-                      <div key={toolIndex} className="tool-card">
+                      <div key={toolIndex} className="tool-card" data-name={tool.name}>
                         {tool.icon ? (
                           <div className="tool-icon">
                             <img src={tool.icon} alt={`${tool.name} icon`} />
