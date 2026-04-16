@@ -102,8 +102,15 @@
 ───────────────────────────────────────────── */
 .tools-section {
   margin-bottom: 3rem;
+  /* overflow must be visible so portal tooltip can render outside marquee */
+  overflow: visible;
+}
+
+/* Only clip horizontal overflow — does NOT clip portal tooltips since they
+   are rendered at document.body, outside this DOM subtree entirely */
+.marquee-overflow-clip {
   overflow-x: clip;
-  /* Removed overflow clips entirely to maximize tooltip visibility */
+  overflow-y: visible;
 }
 
 .marquee-container {
@@ -217,42 +224,45 @@
   transform: scale(1.1);
 }
 
-.tool-tooltip {
-  position: absolute;
-  bottom: calc(100% + 15px); /* Position above the icon */
-  left: 50%;
-  transform: translateX(-50%) translateY(10px);
+/* ─────────────────────────────────────────────
+   Portal Tooltip — rendered at document.body
+   Positioned via inline JS (position: fixed).
+   Only visual / arrow styles live here.
+───────────────────────────────────────────── */
+.tool-tooltip-portal {
   background: #ffffff;
-  padding: 16px;
+  padding: 14px 16px;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.13);
   width: max-content;
   max-width: 240px;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s;
-  z-index: 9999; /* Forces it to sit strictly above everything else on page */
   border: 1px solid #f0f0f0;
-  pointer-events: none;
   text-align: center;
+  /* position, top, left, opacity, visibility, transform all set via inline style */
 }
 
-/* Tooltip Little Arrow */
-.tool-tooltip::after {
+/* Arrow pointing DOWN — tooltip sits ABOVE the card */
+.tool-tooltip-portal.tip-above::after {
   content: '';
   position: absolute;
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  border-width: 8px;
+  border-width: 7px;
   border-style: solid;
   border-color: #ffffff transparent transparent transparent;
 }
 
-.tool-bubble-wrapper:hover .tool-tooltip {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
+/* Arrow pointing UP — tooltip sits BELOW the card */
+.tool-tooltip-portal.tip-below::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 7px;
+  border-style: solid;
+  border-color: transparent transparent #ffffff transparent;
 }
 
 .tooltip-name {

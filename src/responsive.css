@@ -19,6 +19,7 @@ html {
 }
 body {
   overflow-x: hidden;
+  position: relative; /* Anchor for portal tooltips using position:absolute */
 }
 
 /* ── Ensure all images scale properly ── */
