@@ -289,10 +289,15 @@ const About = () => {
               <h2 className="section-title">A visual partner for company</h2>
               <div className="partners-grid">
                 {partners.map((partner, index) => (
-                  <div key={index} className="partner-card">
-                    <h3 className="partner-name">{partner.name}</h3>
-                    <p className="partner-category">{partner.category}</p>
-                    <p className="partner-year">{partner.year}</p>
+                  <div
+                    key={index}
+                    className="partner-card"
+                    data-index={String(index + 1).padStart(2, '0')}
+                  >
+                    <div className="partner-card-content">
+                      <h3 className="partner-name">{partner.name}</h3>
+                      <p className="partner-category">{partner.category}</p>
+                    </div>
                   </div>
                 ))}
               </div>

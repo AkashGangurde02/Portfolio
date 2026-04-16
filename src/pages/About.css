@@ -282,15 +282,18 @@
 }
 
 
-/* Partners Section */
+/* Partners Section — base (desktop) */
 .partners-section {
   margin-bottom: 4rem;
+  padding-top: 4rem;
+  border-top: 1px solid #e8e8e8;
 }
 
 .partners-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 3rem;
+  margin-top: 2rem;
 }
 
 .partner-card {
@@ -310,14 +313,21 @@
   font-weight: 600;
   color: #000000;
   margin-bottom: 0.25rem;
+  margin-top: 0;
+}
+
+.partner-card-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0; /* prevent text overflow */
 }
 
 .partner-year {
   font-size: 0.9rem;
   color: #666666;
   margin: 0;
-  display: none;
-  /* Year hidden */
+  display: none; /* Hidden by default */
 }
 
 /* Awards Section */
@@ -469,13 +479,65 @@
 
 
 
+  /* ── Partners: mobile card list ── */
+  .partners-section {
+    margin-bottom: 16px;   /* 8pt grid: tighter bottom */
+    padding-top: 16px;     /* 8pt grid: tighter top */
+    border-top: 1px solid #ebebeb;
+  }
+
+  .partners-section .section-title {
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 16px;
+  }
+
   .partners-grid {
-    grid-template-columns: 1fr;
-    gap: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;                /* divider borders replace gap */
+    margin-top: 0;
   }
 
   .partner-card {
-    padding: 1.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;       /* 8pt grid: 16px top + bottom */
+    border-top: 1px solid #ebebeb;
+    border-bottom: none;
+    gap: 16px;
+  }
+
+  /* Remove double border on first card */
+  .partner-card:first-child {
+    border-top: none;
+  }
+
+  .partner-name {
+    font-size: 1rem;       /* 16px — prominent but not oversized */
+    font-weight: 600;
+    color: #111111;        /* dark on mobile for better readability */
+    margin-bottom: 4px;    /* 8pt grid */
+    line-height: 1.3;
+  }
+
+  .partner-category {
+    font-size: 0.75rem;    /* 12px label */
+    font-weight: 500;
+    color: #888888;        /* lighter — secondary hierarchy */
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* Right-side index number */
+  .partner-card::after {
+    content: attr(data-index);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ebebeb;
+    flex-shrink: 0;
+    line-height: 1;
   }
 
   .awards-featured {
