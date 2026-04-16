@@ -225,8 +225,11 @@ body {
         max-width: 100%;
     }
 
-    /* Exception: carousel track must grow beyond viewport to create scroll range */
-    .carousel-track {
+    /* Exception: carousel track and marquee elements must grow beyond viewport to create scroll range */
+    .carousel-track,
+    .marquee-track,
+    .marquee-group,
+    .tool-bubble-wrapper {
         max-width: none;
     }
 

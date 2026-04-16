@@ -102,6 +102,7 @@
 ───────────────────────────────────────────── */
 .tools-section {
   margin-bottom: 3rem;
+  overflow-x: clip;
   /* Removed overflow clips entirely to maximize tooltip visibility */
 }
 
