@@ -88,6 +88,8 @@
         height: 60px;
         /* Adjusted for mobile */
         transform: translateY(-50%) rotate(-3deg);
+        width: 570px;
+        left: 0%;
     }
 
     .marquee-main-strip {

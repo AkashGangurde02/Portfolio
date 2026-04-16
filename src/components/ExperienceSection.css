@@ -6,9 +6,10 @@
 }
 
 .experience-section.embedded {
-    padding: 0 2rem;
+    padding: 5rem 0; /* Copied from main but removed horizontal padding so it doesn't double-pad inside About constraints */
     max-width: 1400px;
-    margin: 4rem auto;
+    width: 100%;
+    margin: 0 auto; /* Copied from main */
 }
 
 .section-title {

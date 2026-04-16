@@ -1,11 +1,10 @@
 .about-page {
-  background-color: #ffffff;
   min-height: 100vh;
 }
 
 .about-hero {
   padding: 8rem 2rem 6rem;
-  background-color: #ffffff;
+  background-color: transparent;
 }
 
 .about-page-container {
@@ -90,101 +89,185 @@
 
 
 .section-title {
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
   font-weight: 700;
   color: #000000;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 
 
-/* Tools Section */
+/* ─────────────────────────────────────────────
+   Tools Section — Animated Logo Cloud (Marquee)
+───────────────────────────────────────────── */
 .tools-section {
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
+  /* Removed overflow clips entirely to maximize tooltip visibility */
 }
 
-.tools-categories {
+.marquee-container {
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: 30px; /* Reduced gap between tracks */
+  width: 100%;
+  padding: 40px 0; /* Drastically reduced vertical height */
+  position: relative;
+  z-index: 10;
 }
 
-.tools-category {
+.marquee-track {
+  display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
+  animation: marquee-scroll 90s linear infinite; /* Increased from 45s to drastically slow the speed down */
+  will-change: transform;
+}
+
+.marquee-container:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+
+.marquee-group {
+  display: flex;
+  flex-wrap: nowrap;
+  flex: 0 0 auto;
+  align-items: center;
+  /* NO Gap here because we rely on margin-right to calculate width */
+}
+
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  /* -50% perfectly shifts one identical group if there are exactly 2 groups */
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track--reverse {
+  animation: marquee-scroll-reverse 100s linear infinite; /* Slightly slower on the reverse row for parallax effect */
+}
+
+@keyframes marquee-scroll-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.tool-bubble-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 40px; /* spacing between items */
+  flex: 0 0 auto;
+  transition: z-index 0s;
+  z-index: 1;
+}
+
+.tool-bubble-wrapper:hover {
+  z-index: 9999; /* Allows the hovered card and tooltip to proudly overflow/overlap all adjacent siblings */
+}
+
+.tool-card-square {
+  background-color: #ffffff;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+  width: 140px;
+  height: 125px; /* Noticeably reduced height to strip out the excess vertical empty space shown in the flexbox */
+  cursor: pointer;
+  padding: 16px;
+  gap: 8px;
 }
 
-.tools-category-title {
-  font-size: 1.1rem;
+.tool-card-inline-img {
+  width: 100%;
+  flex: 1; /* Pushes text to the bottom and takes up available vertical breathing room */
+  max-height: 65px; /* Crops/restricts the maximum vertical height of the logo */
+  object-fit: contain;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tool-card-placeholder {
+  font-weight: 700;
+  color: #555555;
+  font-size: 2rem; /* Increased to fill more of the available space */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1; /* Match the flex layout footprint of the actual images */
+}
+
+.tool-card-name {
+  font-size: 0.8rem;
   font-weight: 600;
   color: #666666;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  text-align: center;
 }
 
-.tools-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
+.tool-bubble-wrapper:hover .tool-card-square {
+  transform: translateY(-4px); 
+  box-shadow: 0 10px 24px rgba(0,0,0,0.1);
 }
 
-.tool-card {
-  padding: 1.5rem;
-  background-color: #f9f9f9;
-  border-radius: 16px;
-  border: 1px solid #e8e8e8;
-  transition: all 0.3s ease;
-  cursor: default;
-}
-
-.tool-card:hover {
-  background-color: #ffffff;
-  border-color: #000000;
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-}
-
-.tool-icon {
-  max-width: 170px;
-  width: 100%;
-  min-height: 40px;
-  margin-bottom: 1rem;
-  display: flex !important;
-  align-items: center;
-  justify-content: flex-start;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-.tool-icon img {
-  width: auto;
-  max-width: 100%;
-  height: auto;
-  max-height: 50px;
-  object-fit: contain;
-  transition: transform 0.3s ease;
-  display: block !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-.tool-card:hover .tool-icon img {
+.tool-bubble-wrapper:hover .tool-card-square .tool-card-inline-img {
   transform: scale(1.1);
 }
 
-.tool-name {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #000000;
-  margin-bottom: 0.75rem;
+.tool-tooltip {
+  position: absolute;
+  bottom: calc(100% + 15px); /* Position above the icon */
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  width: max-content;
+  max-width: 240px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s;
+  z-index: 9999; /* Forces it to sit strictly above everything else on page */
+  border: 1px solid #f0f0f0;
+  pointer-events: none;
+  text-align: center;
 }
 
-.tool-description {
+/* Tooltip Little Arrow */
+.tool-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px;
+  border-style: solid;
+  border-color: #ffffff transparent transparent transparent;
+}
+
+.tool-bubble-wrapper:hover .tool-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.tooltip-name {
+  display: block;
   font-size: 0.95rem;
-  line-height: 1.6;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 6px;
+}
+
+.tooltip-desc {
+  display: block;
+  font-size: 0.8rem;
   color: #666666;
-  margin: 0;
+  line-height: 1.5;
+  white-space: normal;
 }
 
 
@@ -388,85 +471,35 @@
     padding: 2rem;
   }
 
-  /* ── TOOLS: compact logo grid ─────────────────────────────── */
+  /* ── TOOLS: mobile marquee adjustments ── */
   .tools-section {
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
   }
-
-  .tools-categories {
-    gap: 2rem;
+  .marquee-container {
+    padding: 20px 0;
+    gap: 30px;
   }
-
-  .tools-category {
-    gap: 0.75rem;
+  .marquee-track {
+    animation-duration: 60s; /* slower mobile speed to match the decrease */
   }
-
-  .tools-category-title {
+  .tool-bubble-wrapper {
+    margin-right: 20px;
+  }
+  /* Scale down the square container naturally on smaller screens */
+  .tool-card-square {
+    width: 120px;
+    height: 120px;
+    border-radius: 12px;
+  }
+  .tool-tooltip {
+    max-width: 180px;
+    padding: 12px;
+  }
+  .tooltip-name {
+    font-size: 0.85rem;
+  }
+  .tooltip-desc {
     font-size: 0.75rem;
-    letter-spacing: 0.5px;
-    margin-bottom: 0.25rem;
-  }
-
-  .tools-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-  }
-
-  .tool-card {
-    padding: 12px 8px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 72px;
-    gap: 6px;
-  }
-
-  /* Hide description on mobile */
-  .tool-description {
-    display: none;
-  }
-
-  /* Hide name (already commented out in JSX) */
-  .tool-name {
-    display: none;
-  }
-
-  /* Centered, compact logo */
-  .tool-icon {
-    max-width: 100%;
-    width: 100%;
-    min-height: unset;
-    margin-bottom: 0;
-    justify-content: center;
-  }
-
-  .tool-icon img {
-    width: 36px;
-    height: 36px;
-    max-width: 36px;
-    max-height: 36px;
-    object-fit: contain;
-  }
-
-  /* Text-only placeholder for tools without an icon */
-  .tool-icon-placeholder {
-    font-size: 0.85rem !important;
-    font-weight: 700 !important;
-    margin-bottom: 0 !important;
-    color: #333;
-    text-align: center;
-  }
-
-  /* Small label under each logo */
-  .tool-card::after {
-    content: attr(data-name);
-    font-size: 10px;
-    color: #888;
-    text-align: center;
-    line-height: 1.2;
   }
 }
 
@@ -480,6 +513,6 @@
   }
 
   .tools-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }

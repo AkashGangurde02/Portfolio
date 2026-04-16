@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import './About.css'
@@ -28,6 +28,86 @@ const About = () => {
   const partnersRef = useRef(null)
   const awardsRef = useRef(null)
 
+  const toolsCategories = [
+    {
+      category: 'Design Inspiration',
+      tools: [
+        { name: 'Dribbble', description: 'Tracks evolving UI trends and fresh interface styles that influence visual direction.', icon: dribbbleIcon },
+        { name: 'Behance', description: 'Reference library for complete design case studies and strong presentation storytelling.' },
+        { name: 'Mobbin', description: 'Analyzes real product UX flows and proven interface patterns.' },
+        { name: 'Awwwards', description: 'Showcases experimental web experiences for bold interaction and motion design.' },
+        { name: 'Pinterest', description: 'Moodboard hub for color systems, typography direction, and brand aesthetics.', icon: pinterestIcon }
+      ]
+    },
+    {
+      category: 'Design Tools',
+      tools: [
+        { name: 'Figma', description: 'Collaborative interface design tool for UI/UX designs and interactive prototypes.', icon: figmaIcon },
+        { name: 'Framer', description: 'Powerful prototyping tool for interactive and high-fidelity design prototypes.', icon: framerIcon },
+        { name: 'Webflow', description: 'Visual web development platform for building responsive websites without code.', icon: webflowIcon },
+        { name: 'Canva', description: 'Easy-to-use design platform for graphics, presentations, and marketing materials.', icon: canvaIcon }
+      ]
+    },
+    {
+      category: 'AI & Productivity',
+      tools: [
+        { name: 'UX Pilot', description: 'AI-powered workspace for accelerating wireframes, ideation, and rapid UX exploration.', icon: uxpilotIcon },
+        { name: 'ChatGPT', description: 'Creative partner for UX writing, structured thinking, and refining product concepts.', icon: chatgptIcon },
+        { name: 'Google Gemini', description: 'Research companion that supports brainstorming and expands product perspectives.', icon: geminiIcon }
+      ]
+    },
+    {
+      category: 'Collaboration',
+      tools: [
+        { name: 'Slack', description: 'Powerful communication platform for team collaboration and project coordination.', icon: slackIcon },
+        { name: 'Notion', description: 'All-in-one workspace for notes, docs, and project management.', icon: notionIcon },
+        { name: 'Trello', description: 'Visual project management tool for organizing tasks and workflows.', icon: trelloIcon }
+      ]
+    },
+    {
+      category: 'Learning & Research',
+      tools: [
+        { name: 'Medium', description: 'Continuous stream of UX insights that keeps design decisions aligned with industry thinking.', icon: mediumIcon }
+      ]
+    }
+  ]
+
+  // Flatten all tools into a single array for the marquee
+  const allTools = toolsCategories.flatMap(cat => cat.tools);
+  const midPoint = Math.ceil(allTools.length / 2);
+  const row1ToolsBase = allTools.slice(0, midPoint);
+  const row2ToolsBase = allTools.slice(midPoint);
+  
+  // Double each row's items so it's wide enough to not end/snap early on large 4k desktop screens
+  const row1Tools = [...row1ToolsBase, ...row1ToolsBase, ...row1ToolsBase];
+  const row2Tools = [...row2ToolsBase, ...row2ToolsBase, ...row2ToolsBase];
+
+  const ToolNode = ({ tool, index }) => {
+    return (
+      <div className="tool-bubble-wrapper">
+        <div className="tool-card-square" aria-label={tool.name}>
+          {tool.icon ? (
+            <img src={tool.icon} alt={`${tool.name} icon`} className="tool-card-inline-img" />
+          ) : (
+            <span className="tool-card-placeholder">
+              {tool.name.substring(0, 2).toUpperCase()}
+            </span>
+          )}
+          <span className="tool-card-name">{tool.name}</span>
+        </div>
+        <div className="tool-tooltip">
+          <span className="tooltip-name">{tool.name}</span>
+          <span className="tooltip-desc">{tool.description}</span>
+        </div>
+      </div>
+    );
+  };
+
+  const partners = [
+    { name: 'Somvanshi Technologies Pvt Ltd', category: 'UI/UX & Branding', year: '2025' },
+    { name: 'Grubwala', category: 'Product Design', year: '2023' }
+  ]
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
@@ -46,7 +126,7 @@ const About = () => {
           stagger: 0.15,
           clearProps: "all"
         }, '-=0.5')
-        .from([experienceRef.current, toolsRef.current, partnersRef.current, awardsRef.current], {
+        .from([experienceRef.current, toolsRef.current, partnersRef.current].filter(Boolean), {
           y: 60,
           opacity: 0,
           duration: 0.8,
@@ -55,68 +135,8 @@ const About = () => {
         }, '-=0.4')
     }, heroRef)
 
-    // Don't revert to preserve final animation state
     return () => { }
   }, [])
-
-
-
-  const toolsCategories = [
-    {
-      category: 'Design Inspiration',
-      tools: [
-        { name: 'Dribbble', description: 'A space to track evolving UI trends and discover fresh interface styles that influence visual direction.', icon: dribbbleIcon },
-        { name: 'Behance', description: 'A reference library for studying complete design case studies and strong presentation storytelling.' },
-        { name: 'Mobbin', description: 'A practical resource for analyzing real product UX flows and proven interface patterns.' },
-        { name: 'Awwwards', description: 'A showcase of experimental web experiences that inspires bold interaction and motion design.' },
-        { name: 'Pinterest', description: 'A moodboard hub for shaping color systems, typography direction, and brand aesthetics.', icon: pinterestIcon }
-      ]
-    },
-    {
-      category: 'Design Tools',
-      tools: [
-        { name: 'Figma', description: 'A collaborative interface design tool for creating UI/UX designs and interactive prototypes.', icon: figmaIcon },
-        { name: 'Framer', description: 'A powerful prototyping tool for creating interactive and high-fidelity design prototypes.', icon: framerIcon },
-        { name: 'Webflow', description: 'A visual web development platform for building responsive websites without code.', icon: webflowIcon },
-        { name: 'Canva', description: 'An easy-to-use design platform for creating graphics, presentations, and marketing materials.', icon: canvaIcon }
-      ]
-    },
-    {
-      category: 'AI & Productivity',
-      tools: [
-        { name: 'UX Pilot', description: 'An AI-powered workspace for accelerating wireframes, ideation, and rapid UX exploration.', icon: uxpilotIcon },
-        { name: 'ChatGPT', description: 'A creative partner for UX writing, structured thinking, and refining product concepts.', icon: chatgptIcon },
-        { name: 'Google Gemini', description: 'A research companion that supports brainstorming and expands product perspectives.', icon: geminiIcon }
-      ]
-    },
-    {
-      category: 'Collaboration',
-      tools: [
-        { name: 'Slack', description: 'A powerful communication platform for team collaboration and project coordination.', icon: slackIcon },
-        { name: 'Notion', description: 'An all-in-one workspace for notes, docs, and project management.', icon: notionIcon },
-        { name: 'Trello', description: 'A visual project management tool for organizing tasks and workflows.', icon: trelloIcon }
-      ]
-    },
-    {
-      category: 'Learning & Research',
-      tools: [
-        { name: 'Medium', description: 'A continuous stream of UX insights that keeps design decisions aligned with industry thinking.', icon: mediumIcon }
-      ]
-    }
-  ]
-
-  const partners = [
-    { name: 'Somvanshi Technologies Pvt Ltd', category: 'UI/UX & Branding', year: '2025' },
-    // { name: 'Grubwala', category: 'UI/UX & Branding', year: '2025' },
-    // { name: 'Hemphop Store', category: 'UI/UX & Branding', year: '2024' }
-  ]
-
-  const awards = [
-    { title: 'Honorable Mention', organization: '2022 - AWWARDS', link: '#' },
-    { title: 'Site of The Day', organization: '2022 - CSS Winners', link: '#' },
-    { title: 'Best UI Design', organization: '2022 - CSS Design Awards', link: '#' },
-    { title: 'Site of The Day', organization: '2022 - AWWARDS', link: '#' }
-  ]
 
   return (
     <div className="about-page">
@@ -148,33 +168,38 @@ const About = () => {
           {/* Experience Section */}
           <ExperienceSection ref={experienceRef} className="embedded" />
 
-          {/* Tools Section */}
+          {/* Tools Section — Animated Logo Cloud */}
           <div ref={toolsRef} className="tools-section">
             <h2 className="section-title">Tools I use to craft experiences</h2>
-            <div className="tools-categories">
-              {toolsCategories.map((category, catIndex) => (
-                <div key={catIndex} className="tools-category">
-                  <h3 className="tools-category-title">{category.category}</h3>
-                  <div className="tools-grid">
-                    {category.tools.map((tool, toolIndex) => (
-                      <div key={toolIndex} className="tool-card" data-name={tool.name}>
-                        {tool.icon ? (
-                          <div className="tool-icon">
-                            <img src={tool.icon} alt={`${tool.name} icon`} />
-                          </div>
-                        ) : (
-                          /* Placeholder or Name as styling if no icon */
-                          <div className="tool-icon-placeholder" style={{ marginBottom: '1rem', fontWeight: 'bold', fontSize: '1.2rem' }}>
-                            {tool.name.substring(0, 2).toUpperCase()}
-                          </div>
-                        )}
-                        {/* <p className="tool-name">{tool.name}</p> */}
-                        <p className="tool-description">{tool.description}</p>
-                      </div>
-                    ))}
-                  </div>
+
+            <div className="marquee-container">
+              {/* Row 1 */}
+              <div className="marquee-track">
+                <div className="marquee-group">
+                  {row1Tools.map((tool, index) => (
+                    <ToolNode key={`r1-first-${index}`} tool={tool} index={index} />
+                  ))}
                 </div>
-              ))}
+                <div className="marquee-group" aria-hidden="true">
+                  {row1Tools.map((tool, index) => (
+                    <ToolNode key={`r1-second-${index}`} tool={tool} index={index} />
+                  ))}
+                </div>
+              </div>
+
+              {/* Row 2 */}
+              <div className="marquee-track marquee-track--reverse">
+                <div className="marquee-group">
+                  {row2Tools.map((tool, index) => (
+                    <ToolNode key={`r2-first-${index}`} tool={tool} index={index + 5} />
+                  ))}
+                </div>
+                <div className="marquee-group" aria-hidden="true">
+                  {row2Tools.map((tool, index) => (
+                    <ToolNode key={`r2-second-${index}`} tool={tool} index={index + 5} />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 
@@ -191,40 +216,6 @@ const About = () => {
               ))}
             </div>
           </div>
-
-          {/* Awards Section */}
-          {/* <div ref={awardsRef} className="awards-section">
-            <div className="awards-featured">
-              <div className="award-image">
-                <div className="award-placeholder">W</div>
-              </div>
-              <div className="award-feature-content">
-                <h2 className="award-feature-title">Awwwards Winning - Independent of The Year</h2>
-                <p className="award-feature-subtitle">Akash Gangurde - 2022</p>
-                <a href="#" className="award-link">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-            <div className="awards-list">
-              {awards.map((award, index) => (
-                <div key={index} className="award-item">
-                  <div className="award-info">
-                    <h4 className="award-title">{award.title}</h4>
-                    <p className="award-org">{award.organization}</p>
-                  </div>
-                  <a href={award.link} className="award-arrow">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                      <path d="M7 13L13 7M13 7H7M13 7V13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </a>
-                </div>
-              ))}
-            </div>
-          </div> */}
         </div>
       </section>
       <Footer />
