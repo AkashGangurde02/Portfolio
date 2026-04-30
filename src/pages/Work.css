@@ -7,7 +7,7 @@
     --wc-bg:        #f4f6f5;   /* page bg — light grey-green tint             */
     --wc-card:      #ffffff;   /* card surface                                */
     --wc-border:    #e4e7e6;   /* subtle border                               */
-    --wc-text:      #111827;   /* headings                                    */
+    --wc-text:      #000000;   /* headings                                    */
     --wc-muted:     #6b7280;   /* descriptions                                */
     --wc-radius:    18px;      /* card corner radius                          */
     --wc-shadow:    0 2px 12px rgba(0, 0, 0, 0.06);
@@ -48,7 +48,8 @@
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 800;
     letter-spacing: -0.02em;
-    color: var(--wc-text);
+    color: #000000;
+    opacity: 1;
     line-height: 1.1;
     margin-bottom: 20px;
 }

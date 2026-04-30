@@ -52,7 +52,8 @@ const Work = () => {
                 duration: 0.8,
                 stagger: 0.15,
                 ease: 'power3.out',
-                delay: 0.2
+                delay: 0.2,
+                clearProps: 'all'
             })
 
             // Cards

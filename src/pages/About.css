@@ -25,69 +25,125 @@
   font-weight: 700;
 }
 
-/* Top Section */
-.about-top-section {
+/* ─────────────────────────────────────────────
+   About Bento Grid Section
+───────────────────────────────────────────── */
+.about-bento-grid {
   display: flex;
-  flex-direction: row;
-  gap: 4rem;
-  margin-bottom: 4rem;
-  align-items: center;
-}
-
-.about-profile-image {
-  flex: 1;
-  width: 100%;
-  max-width: 600px;
-  aspect-ratio: 16 / 9;
-  border-radius: 20px;
-  overflow: hidden;
-  background-color: #f5f5f5;
-}
-
-.about-profile-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.about-top-content {
-  display: flex;
-  flex: 1;
   flex-direction: column;
-  gap: 2rem;
-  padding-top: 0;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.bento-row {
+  display: flex;
+  gap: 1.5rem;
+  min-height: 350px;
+  /* Hardware Acceleration: Isolate the layout calculations strictly to this row so the browser doesn't reflow the entire page during hover */
+  contain: layout;
+}
+
+.bento-card {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  padding: 2rem; /* 32px padding for clear layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-size: cover;
+  background-position: center;
+  transition: flex 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+  /* Hardware Acceleration: Force card into its own GPU layer to smoothly handle the flex resizing repaints */
+  transform: translateZ(0);
+  will-change: flex;
+  backface-visibility: hidden;
+}
+
+/* Background Colors & Overlays */
+.beige-bg {
+  background-color: #f2efe9;
+}
+
+.brown-bg {
+  background-color: #6a7457; /* using a dark green/brownish color matching the reference */
+  color: #ffffff;
+}
+
+/* Images are purely visual now, no overlay */
+.bento-card.has-image {
+  background-color: transparent;
+}
+
+/* Flex sizing config */
+.bento-wide {
+  flex: 1.8;
+}
+
+.bento-narrow {
+  flex: 1;
+}
+
+/* Hover Expanding Logic - Commented out by user request 
+.bento-row:hover .bento-card {
+  flex: 1; 
+}
+
+.bento-row .bento-card:hover {
+  flex: 2.5;
+}
+*/
+
+/* Content wrapper ensuring it sits above the image overlay */
+.bento-content {
+  position: relative;
+  z-index: 2;
+  transition: transform 0.5s ease;
+}
+
+.bento-card.has-image .bento-content {
+  color: #ffffff;
+}
+
+.bento-content h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.text-card-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  opacity: 0.9;
+  max-width: 90%; /* Optimize line length to prevent visual crowding */
+}
+
+.text-card-content strong {
+  font-weight: 700;
 }
 
 .about-description {
   font-size: 1.25rem;
   line-height: 1.8;
   color: #333333;
-  max-width: 500px;
+  width: 100%;
+  margin: 0;
 }
 
-.about-cta-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1.25rem 2.5rem;
-  border-radius: 50px;
-  background-color: #000000;
-  color: #ffffff;
-  font-size: 1rem;
-  font-weight: 500;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  width: fit-content;
+.about-description strong {
+  color: #000000;
+  font-weight: 700;
 }
 
-.about-cta-btn:hover {
-  background-color: #333333;
-  transform: translateY(-2px);
+/* Minimal Mobile Stack - Hidden on Desktop */
+.about-mobile-stack {
+  display: none;
 }
 
-
-
+/* ─────────────────────────────────────────────
+   Section Title 
+───────────────────────────────────────────── */
 .section-title {
   font-size: clamp(1.5rem, 2.5vw, 2rem);
   font-weight: 700;
@@ -449,14 +505,53 @@
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-  .about-top-section {
+  .about-bento-grid {
+    display: none;
+  }
+
+  .about-mobile-stack {
+    display: flex;
     flex-direction: column;
     gap: 2.5rem;
+    margin-bottom: 2rem;
   }
 
   .about-profile-image {
-    max-width: 500px;
-    margin: 0 auto;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #f5f5f5;
+  }
+
+  .about-profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .about-mobile-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .about-mobile-desc {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #333333;
+    margin: 0;
+  }
+
+  .about-mobile-desc strong {
+    color: #000000;
+  }
+
+  .about-mobile-cta {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    align-self: flex-start;
   }
 
   .partners-grid {
@@ -577,9 +672,6 @@
 }
 
 @media (max-width: 480px) {
-  .about-top-content {
-    padding-top: 0;
-  }
 
   .section-title {
     font-size: 1.5rem;

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import './About.css'
 import aboutProfile from '../images/profile/about-image.jpg'
+import aboutImage2 from '../images/experience/somvanshi/images/Workplace_1.jpeg'
 import dribbbleIcon from '../images/icons/Dribbble.svg'
 import pinterestIcon from '../images/icons/Pinterest.svg'
 import mediumIcon from '../images/icons/Medium.svg'
@@ -11,11 +12,7 @@ import chatgptIcon from '../images/icons/Chatgpt.svg'
 import geminiIcon from '../images/icons/Gemini.svg'
 import uxpilotIcon from '../images/icons/UXpilot.svg'
 import slackIcon from '../images/icons/Slack.svg'
-import notionIcon from '../images/icons/Notion.svg'
 import trelloIcon from '../images/icons/Trello.svg'
-import framerIcon from '../images/icons/Framer.svg'
-import webflowIcon from '../images/icons/Webflow.svg'
-import canvaIcon from '../images/icons/Canva.svg'
 import figmaIcon from '../images/icons/Figma.svg'
 import Footer from '../components/Footer'
 import ExperienceSection from '../components/ExperienceSection'
@@ -89,19 +86,13 @@ const About = () => {
       category: 'Design Inspiration',
       tools: [
         { name: 'Dribbble', description: 'Tracks evolving UI trends and fresh interface styles that influence visual direction.', icon: dribbbleIcon },
-        { name: 'Behance', description: 'Reference library for complete design case studies and strong presentation storytelling.' },
-        { name: 'Mobbin', description: 'Analyzes real product UX flows and proven interface patterns.' },
-        { name: 'Awwwards', description: 'Showcases experimental web experiences for bold interaction and motion design.' },
         { name: 'Pinterest', description: 'Moodboard hub for color systems, typography direction, and brand aesthetics.', icon: pinterestIcon }
       ]
     },
     {
       category: 'Design Tools',
       tools: [
-        { name: 'Figma', description: 'Collaborative interface design tool for UI/UX designs and interactive prototypes.', icon: figmaIcon },
-        { name: 'Framer', description: 'Powerful prototyping tool for interactive and high-fidelity design prototypes.', icon: framerIcon },
-        { name: 'Webflow', description: 'Visual web development platform for building responsive websites without code.', icon: webflowIcon },
-        { name: 'Canva', description: 'Easy-to-use design platform for graphics, presentations, and marketing materials.', icon: canvaIcon }
+        { name: 'Figma', description: 'Collaborative interface design tool for UI/UX designs and interactive prototypes.', icon: figmaIcon }
       ]
     },
     {
@@ -116,7 +107,6 @@ const About = () => {
       category: 'Collaboration',
       tools: [
         { name: 'Slack', description: 'Powerful communication platform for team collaboration and project coordination.', icon: slackIcon },
-        { name: 'Notion', description: 'All-in-one workspace for notes, docs, and project management.', icon: notionIcon },
         { name: 'Trello', description: 'Visual project management tool for organizing tasks and workflows.', icon: trelloIcon }
       ]
     },
@@ -200,22 +190,60 @@ const About = () => {
               <span className="title-light">About me,</span> my story and my experience
             </h1>
 
-            <div ref={topSectionRef} className="about-top-section">
-              <div className="about-profile-image">
-                <img src={aboutProfile} alt="Profile" />
+            <div ref={topSectionRef} className="about-top-wrapper">
+              <div className="about-bento-grid">
+                
+                <div className="bento-row">
+                  <div className="bento-card bento-wide has-image" style={{ backgroundImage: `url(${aboutProfile})` }}>
+                    {/* Image purely visual */}
+                  </div>
+                  
+                  <div className="bento-card bento-narrow beige-bg">
+                    <div className="bento-content text-card-content">
+                      <h3>Tech & Design</h3>
+                      <p>
+                        I’m a <strong>UX/UI Designer</strong> focused on creating simple, intuitive, and user-centered digital experiences that solve real-world problems. Currently pursuing <strong>B.Tech in Computer Science (AI)</strong>, I bring a strong blend of technical understanding and design thinking to my work.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bento-row">
+                  <div className="bento-card bento-narrow brown-bg">
+                    <div className="bento-content text-card-content">
+                      <h3>Experience & Impact</h3>
+                      <p>
+                        I have led teams as a <strong>Non-Technical Head at VIIT Robotics</strong>, building collaboration and leadership skills alongside my design journey. Recently, I completed my <strong>UX/UI internship at Somvanshi Technologies</strong>, where I worked on landing pages, user flows, and responsive interfaces using <strong>Figma</strong>. I strive to design meaningful, user-friendly experiences that create real impact.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="bento-card bento-wide has-image" style={{ backgroundImage: `url(${aboutImage2})` }}>
+                    {/* Image purely visual */}
+                  </div>
+                </div>
               </div>
 
-              <div className="about-top-content">
-                <p className="about-description">
-                  I design systems, not screens. Across SaaS, mobility, and consumer apps, I've owned the full UX process — research, information architecture, interaction design, and developer handoff — building products used by 2000+ users. I work closest to the problem, closest to the user, and closest to the team shipping the product.
-                </p>
+              {/* Minimal Mobile Layout */}
+              <div className="about-mobile-stack">
+                <div className="about-profile-image">
+                  <img src={aboutProfile} alt="Profile" />
+                </div>
+                
+                <div className="about-mobile-content">
+                  <p className="about-mobile-desc">
+                    I’m a <strong>UX/UI Designer</strong> focused on creating simple, intuitive, and <strong>user-centered digital experiences</strong> that solve real-world problems. Currently pursuing <strong>B.Tech in Computer Science (AI)</strong>, I bring a strong blend of <strong>technical understanding and design thinking</strong> to my work.
+                    <br /><br />
+                    I have also led teams as a <strong>Non-Technical Head at VIIT Robotics</strong>, building collaboration and leadership skills alongside my design journey. Recently, I completed my <strong>UX/UI internship at Somvanshi Technologies</strong>, where I worked on landing pages, user flows, and responsive interfaces using <strong>Figma</strong>. I continuously learn through hands-on projects and strive to design meaningful, user-friendly experiences that create <strong>real impact</strong>.
+                  </p>
 
-                <Link to="/contact" className="about-cta-btn">
-                  Let's Talk
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </Link>
+                  <Link to="/contact" className="bento-cta-btn about-mobile-cta">
+                    Let's Talk
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </Link>
+                </div>
               </div>
             </div>
 
