@@ -22,7 +22,7 @@ const CaseStudyContactForm = () => {
         gsap.from(el, {
           scrollTrigger: {
             trigger: el,
-            start: 'top 85%',
+            start: 'top 100%',
             toggleActions: 'play none none none'
           },
           y: 40,
@@ -37,13 +37,15 @@ const CaseStudyContactForm = () => {
       gsap.from('.cs3-timeline-step', {
         scrollTrigger: {
           trigger: '.cs3-timeline-chart',
-          start: 'top 80%',
+          start: 'top 95%',
+          toggleActions: 'play none none none'
         },
         y: 20,
         opacity: 0,
         stagger: 0.15,
         duration: 0.6,
-        ease: 'back.out(1.2)'
+        ease: 'back.out(1.2)',
+        clearProps: 'all'
       })
     }, pageRef)
 

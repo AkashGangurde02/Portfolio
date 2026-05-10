@@ -549,9 +549,40 @@
   }
 
   .about-mobile-cta {
-    background-color: #000000 !important;
-    color: #ffffff !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 999px;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
     align-self: flex-start;
+  }
+
+  .about-mobile-cta:hover {
+    background-color: #222222;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .about-mobile-cta .arrow-icon {
+    transition: transform 0.3s ease;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  .about-mobile-cta:hover .arrow-icon {
+    transform: translateX(4px);
   }
 
   .partners-grid {

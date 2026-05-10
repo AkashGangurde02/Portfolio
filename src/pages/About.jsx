@@ -237,9 +237,9 @@ const About = () => {
                     I have also led teams as a <strong>Non-Technical Head at VIIT Robotics</strong>, building collaboration and leadership skills alongside my design journey. Recently, I completed my <strong>UX/UI internship at Somvanshi Technologies</strong>, where I worked on landing pages, user flows, and responsive interfaces using <strong>Figma</strong>. I continuously learn through hands-on projects and strive to design meaningful, user-friendly experiences that create <strong>real impact</strong>.
                   </p>
 
-                  <Link to="/contact" className="bento-cta-btn about-mobile-cta">
+                  <Link to="/contact" className="about-mobile-cta">
                     Let's Talk
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <svg className="arrow-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </Link>

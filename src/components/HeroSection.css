@@ -56,7 +56,7 @@
    HEADLINE
    ============================================================ */
 .hero-title {
-  font-size: clamp(1.75rem, 7vw, 2rem); /* mobile: 28–32px */
+  font-size: clamp(1.35rem, 6vw, 1.65rem); /* mobile: 22–26px */
   font-weight: 700;
   line-height: 1.2;
   color: #000000;
@@ -113,10 +113,10 @@
   grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
   gap: 0;
   width: 100%;
-  padding-top: 16px; /* Padding for top border */
-  padding-bottom: 16px; /* Padding for bottom border */
-  margin-top: 12px; 
-  margin-bottom: 12px;
+  padding-top: 10px; /* Decreased padding */
+  padding-bottom: 10px; /* Decreased padding */
+  margin-top: 8px; 
+  margin-bottom: 8px;
   border-top: 1px solid #b4b4b4;
   border-bottom: 1px solid #b4b4b4;
 }
@@ -156,8 +156,8 @@
   height: 1px;
   width: 90%; /* Expanded to match image closer */
   background-color: #b4b4b4; /* perfectly matched border colors */
-  margin-top: 6px;
-  margin-bottom: 10px; /* 8-10px */
+  margin-top: 4px;
+  margin-bottom: 6px;
 }
 
 .impact-stat-title {
