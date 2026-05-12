@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './CaseStudyContactForm.css'
 import contactFormImage from '../images/case-studies/case-study-1/contact-redesign.jpg'
 import wireframeImage from '../images/case-studies/case-study-1/wireframe.jpg'
+import beforeImage from '../images/case-studies/case-study-1/before.jpg'
 import afterImage from '../images/case-studies/case-study-1/after.jpg'
 import Footer from '../components/Footer'
 
@@ -225,6 +226,13 @@ const CaseStudyContactForm = () => {
         </div>
       </section>
 
+      {/* ── BEFORE DESIGN IMAGE ── */}
+      <section className="cs3-full-image-section cs3-animate-up">
+        <div className="cs3-large-img-wrap">
+          <img src={beforeImage} alt="Before UI Design" />
+        </div>
+      </section>
+
       {/* ── FINAL DESIGN IMAGE ── */}
       <section className="cs3-full-image-section cs3-animate-up">
         <div className="cs3-large-img-wrap cs3-final-img">
@@ -235,7 +243,7 @@ const CaseStudyContactForm = () => {
       {/* ── FOOTER OUTRO ── */}
       <section className="cs3-footer-outro cs3-animate-up">
         <p className="cs3-outro-text">
-          Strong UX design is not always about reinventing the wheel. Sometimes, the most significant improvements in conversion rates come from subtle, disciplined refinements.
+          'Strong UX design is not always about reinventing the wheel. Sometimes, the most significant improvements in conversion rates come from subtle, disciplined refinements.'
         </p>
       </section>
 

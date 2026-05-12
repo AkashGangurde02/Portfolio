@@ -191,52 +191,38 @@ const About = () => {
             </h1>
 
             <div ref={topSectionRef} className="about-top-wrapper">
-              <div className="about-bento-grid">
-                
-                <div className="bento-row">
-                  <div className="bento-card bento-wide has-image" style={{ backgroundImage: `url(${aboutProfile})` }}>
-                    {/* Image purely visual */}
-                  </div>
-                  
-                  <div className="bento-card bento-narrow beige-bg">
-                    <div className="bento-content text-card-content">
-                      <h3>Tech & Design</h3>
-                      <p>
-                        I’m a <strong>UX/UI Designer</strong> focused on creating simple, intuitive, and user-centered digital experiences that solve real-world problems. Currently pursuing <strong>B.Tech in Computer Science (AI)</strong>, I bring a strong blend of technical understanding and design thinking to my work.
-                      </p>
-                    </div>
+              <div className="about-hero-2col">
+
+                {/* ── LEFT: Profile Image ── */}
+                <div className="about-hero-img-col">
+                  <div className="about-hero-img-frame">
+                    <img src={aboutProfile} alt="Akash Gangurde — UX/UI Designer" />
                   </div>
                 </div>
 
-                <div className="bento-row">
-                  <div className="bento-card bento-narrow brown-bg">
-                    <div className="bento-content text-card-content">
-                      <h3>Experience & Impact</h3>
-                      <p>
-                        I have led teams as a <strong>Non-Technical Head at VIIT Robotics</strong>, building collaboration and leadership skills alongside my design journey. Recently, I completed my <strong>UX/UI internship at Somvanshi Technologies</strong>, where I worked on landing pages, user flows, and responsive interfaces using <strong>Figma</strong>. I strive to design meaningful, user-friendly experiences that create real impact.
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="bento-card bento-wide has-image" style={{ backgroundImage: `url(${aboutImage2})` }}>
-                    {/* Image purely visual */}
-                  </div>
-                </div>
-              </div>
+                {/* ── RIGHT: Info Text ── */}
+                <div className="about-hero-info-col">
+                  <h2 className="about-hero-subheading">
+                    UX/UI Designer &amp; CS Student
+                  </h2>
 
-              {/* Minimal Mobile Layout */}
-              <div className="about-mobile-stack">
-                <div className="about-profile-image">
-                  <img src={aboutProfile} alt="Profile" />
-                </div>
-                
-                <div className="about-mobile-content">
-                  <p className="about-mobile-desc">
-                    I’m a <strong>UX/UI Designer</strong> focused on creating simple, intuitive, and <strong>user-centered digital experiences</strong> that solve real-world problems. Currently pursuing <strong>B.Tech in Computer Science (AI)</strong>, I bring a strong blend of <strong>technical understanding and design thinking</strong> to my work.
-                    <br /><br />
-                    I have also led teams as a <strong>Non-Technical Head at VIIT Robotics</strong>, building collaboration and leadership skills alongside my design journey. Recently, I completed my <strong>UX/UI internship at Somvanshi Technologies</strong>, where I worked on landing pages, user flows, and responsive interfaces using <strong>Figma</strong>. I continuously learn through hands-on projects and strive to design meaningful, user-friendly experiences that create <strong>real impact</strong>.
+                  <p className="about-hero-desc">
+                    I'm a <strong>UX/UI Designer</strong> focused on creating simple, intuitive, and{' '}
+                    <strong>user-centered digital experiences</strong> that solve real-world problems.
+                    Currently pursuing <strong>B.Tech in Computer Science (AI)</strong>, I bring a strong
+                    blend of <strong>technical understanding and design thinking</strong> to every project.
                   </p>
 
+                  <p className="about-hero-desc">
+                    I have led teams as <strong>Non-Technical Head at VIIT Robotics</strong> and
+                    completed a <strong>UX/UI internship at Somvanshi Technologies</strong>, where I
+                    designed landing pages, user flows, and responsive interfaces end-to-end in{' '}
+                    <strong>Figma</strong>.
+                  </p>
+
+                  {/* Quick-stat chips removed */}
+
+                  {/* CTA */}
                   <Link to="/contact" className="about-mobile-cta">
                     Let's Talk
                     <svg className="arrow-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -244,6 +230,7 @@ const About = () => {
                     </svg>
                   </Link>
                 </div>
+
               </div>
             </div>
 

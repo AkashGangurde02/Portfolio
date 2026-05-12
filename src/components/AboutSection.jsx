@@ -101,13 +101,7 @@ const AboutSection = () => {
             UX Designer building <strong>end-to-end product experiences</strong> — from research to developer-ready flows, across SaaS, mobility, and consumer apps <strong>(so users don't have to work as hard as I do)</strong>.
           </p>
 
-          {/* Strength tags */}
-          <div className="about-strength-tags">
-            <span className="about-strength-tag">System thinking</span>
-            <span className="about-strength-tag">Business alignment</span>
-            <span className="about-strength-tag">Developer collaboration</span>
-          </div>
-
+          {/* Strength tags removed as per request */}
           {/* "Know More" — hidden on mobile via CSS */}
           <Link to="/about" className="about-secondary-btn" style={{ opacity: 1 }}>
             Know More

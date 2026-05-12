@@ -1,0 +1,311 @@
+/* ============================================================
+   EXPERIENCE SNAPSHOT — homepage preview section
+   Matches existing portfolio visual language:
+   light bg, black type, subtle borders, rounded, soft shadows
+   ============================================================ */
+
+.exp-snap-section {
+  background-color: #f9f9f9;
+  padding: 5rem 4rem;
+  border-top: 1px solid #ebebeb;
+  border-bottom: 1px solid #ebebeb;
+  overflow: hidden;
+}
+
+.exp-snap-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+/* ── LEFT SIDE ── */
+.exp-snap-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Small label / tag */
+.exp-snap-label {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  color: #888888;
+  padding: 0.3rem 0.85rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 999px;
+  background: #ffffff;
+  width: fit-content;
+}
+
+/* Heading */
+.exp-snap-heading {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: #000000;
+  line-height: 1.15;
+  margin: 0;
+}
+
+/* Company + dates */
+.exp-snap-company {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #666666;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+/* Description */
+.exp-snap-desc {
+  font-size: 1rem;
+  line-height: 1.72;
+  color: #444444;
+  margin: 0;
+  max-width: 500px;
+}
+
+/* ── Pills ── */
+.exp-snap-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.exp-snap-pill {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #000000;
+  background: #ffffff;
+  border: 1.5px solid #d8d8d8;
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  white-space: nowrap;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.exp-snap-pill:hover {
+  border-color: #888;
+  background: #f4f4f4;
+}
+
+/* ── Metrics ── */
+.exp-snap-metrics {
+  display: flex;
+  gap: 2rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #e8e8e8;
+}
+
+.exp-snap-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.exp-snap-metric-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #000000;
+  line-height: 1;
+}
+
+.exp-snap-metric-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #888888;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ── CTA button ── */
+.exp-snap-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #000000;
+  text-decoration: none;
+  padding: 0.7rem 1.6rem;
+  border: 1.5px solid #000000;
+  border-radius: 999px;
+  width: fit-content;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.exp-snap-cta:hover {
+  background: #000000;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.exp-snap-cta .arrow-icon {
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+
+.exp-snap-cta:hover .arrow-icon {
+  transform: translateX(4px);
+}
+
+/* ── RIGHT SIDE — Carousel ── */
+.exp-snap-right {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+/* Fade edges */
+.exp-snap-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.exp-snap-fade--left {
+  left: 0;
+  background: linear-gradient(to right, #f9f9f9, transparent);
+}
+
+.exp-snap-fade--right {
+  right: 0;
+  background: linear-gradient(to left, #f9f9f9, transparent);
+}
+
+.exp-snap-carousel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 0.5rem 0;
+}
+
+/* ── Tracks ── */
+.exp-carousel-track {
+  display: flex;
+  gap: 0.85rem;
+  width: max-content;
+  will-change: transform;
+}
+
+.exp-carousel-track--fwd {
+  animation: expScrollFwd 32s linear infinite;
+}
+
+.exp-carousel-track--rev {
+  animation: expScrollRev 36s linear infinite;
+}
+
+@keyframes expScrollFwd {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes expScrollRev {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* ── Individual image cards ── */
+.exp-carousel-card {
+  width: 200px;
+  height: 140px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e8e8e8;
+  background: #f0f0f0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.exp-carousel-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(15%);
+  transition: filter 0.35s ease, transform 0.35s ease;
+}
+
+.exp-carousel-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.exp-carousel-card:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.04);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  .exp-snap-section {
+    padding: 4rem 2.5rem;
+  }
+
+  .exp-snap-container {
+    gap: 3rem;
+  }
+
+  .exp-carousel-card {
+    width: 170px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .exp-snap-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .exp-snap-container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .exp-snap-desc {
+    max-width: 100%;
+  }
+
+  .exp-snap-fade--left,
+  .exp-snap-fade--right {
+    width: 40px;
+  }
+
+  .exp-carousel-card {
+    width: 150px;
+    height: 105px;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .exp-snap-section {
+    padding: 2.5rem 1rem;
+  }
+
+  .exp-snap-heading {
+    font-size: clamp(1.4rem, 6vw, 1.75rem);
+  }
+
+  .exp-snap-metrics {
+    gap: 1.25rem;
+  }
+
+  .exp-carousel-card {
+    width: 130px;
+    height: 90px;
+  }
+}

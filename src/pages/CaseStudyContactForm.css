@@ -258,19 +258,21 @@
 
 /* Outro */
 .cs3-footer-outro {
-  background: #FFEBEB;
+  background: var(--bg-alt);
   padding: 4rem 2rem;
   margin-top: 4rem;
   text-align: center;
 }
 
 .cs3-outro-text {
-  max-width: 700px;
+  max-width: 900px;
   margin: 0 auto;
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: #333;
-  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 1.5;
+  color: #0A0A0A;
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: -0.01em;
 }
 
 /* Responsive */
