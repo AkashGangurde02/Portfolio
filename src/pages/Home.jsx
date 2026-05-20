@@ -8,24 +8,22 @@ import ExperienceSection from '../components/ExperienceSection'
 import CompanyFeedback from '../components/CompanyFeedback'
 // import ExperienceSnapshot from '../components/ExperienceSnapshot'
 import Footer from '../components/Footer'
-import HomeSubNavbar from '../components/HomeSubNavbar'
 import ImpactSection from '../components/ImpactSection'
 
 const Home = () => {
   return (
     <>
       <HeroSection />
-      <WorksSection />
-      {/* <ExperienceSnapshot /> */}
       <MarqueeStrip />
       <AboutSection />
+      <WorksSection />
+      {/* <ExperienceSnapshot /> */}
       <ExperienceSection />
       {/* <ImpactSection /> */}
       {/* <SkillsSection /> */}
       {/* <ProcessSection /> */}
       <CompanyFeedback />
       <Footer />
-      <HomeSubNavbar />
     </>
   )
 }

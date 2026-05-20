@@ -1,47 +1,39 @@
 /* ============================================================
-   HERO SECTION — Mobile-First Responsive
-   Single unified component across all breakpoints
+   HERO SECTION — Premium Light Portfolio
+   Light bg | Bold type | Orange accents only
    ============================================================ */
 
-/* ── Section wrapper ── */
 .hero-section {
-  background-color: #ffffff;
-  padding: 24px 16px 8px; /* Further decreased bottom padding */
+  background-color: #F7F7F5;
+  padding: 24px 16px 8px;
   overflow-x: hidden;
 }
 
-/* ── Container ── */
 .hero-container {
   max-width: 1400px;
   margin: 0 auto;
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 16px; /* Decreased from 32px */
+  gap: 8px;
 }
 
-/* ── Content block ──
-   Individual child spacing is controlled per-element on desktop.
-   Gap here handles mobile default. ── */
 .hero-content {
   display: flex;
   flex-direction: column;
-  gap: 8px; /* Decreased from 16px */
+  gap: 8px;
   width: 100%;
 }
 
-/* ============================================================
-   PROFILE IMAGE
-   Shown on mobile ABOVE headline, hidden on desktop
-   ============================================================ */
+/* ── Profile image (mobile only) ── */
 .hero-profile-image {
   display: block;
   width: 100%;
   max-height: 280px;
   border-radius: 16px;
   overflow: hidden;
-  background-color: #f5f5f5;
-  order: -1; /* Pushes image above headline */
+  background-color: #EAEAEA;
+  order: -1;
 }
 
 .hero-profile-image img {
@@ -52,29 +44,25 @@
   display: block;
 }
 
-/* ============================================================
-   HEADLINE
-   ============================================================ */
+/* ── Headline ── */
 .hero-title {
-  font-size: clamp(1.35rem, 6vw, 1.65rem); /* mobile: 22–26px */
+  font-size: clamp(1.35rem, 6vw, 1.65rem);
   font-weight: 700;
   line-height: 1.2;
-  color: #000000;
+  color: #0F0F0F;
   margin: 0;
 }
 
 .hero-title-highlight {
-  color: #b8b8b8;
+  color: var(--accent);
   font-weight: 700;
 }
 
-/* ============================================================
-   DESCRIPTION + STAT PILLS
-   ============================================================ */
+/* ── Stat pills + description ── */
 .hero-stats-desc-block {
   display: flex;
   flex-direction: column;
-  gap: 8px; /* Decreased from 12px */
+  gap: 8px;
 }
 
 .hero-stat-pills {
@@ -88,37 +76,35 @@
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: #000000;
-  background: #f4f4f4;
-  border: 1px solid #e0e0e0;
+  color: #666666;
+  background: #FFFFFF;
+  border: 1px solid #EAEAEA;
   border-radius: 999px;
   padding: 0.3rem 0.85rem;
   white-space: nowrap;
 }
 
 .hero-description {
-  font-size: 0.9rem;    /* mobile: 14–16px */
+  font-size: 0.9rem;
   line-height: 1.6;
-  color: #444444;
+  color: #666666;
   margin: 0;
-  max-width: 100%;     /* unrestricted flexible width for mobile */
+  max-width: 100%;
   width: 100%;
 }
 
-/* ============================================================
-   IMPACT STATS — 3 Equal width columns
-   ============================================================ */
+/* ── Impact stats ── */
 .hero-impact-stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  grid-template-columns: repeat(3, 1fr);
   gap: 0;
   width: 100%;
-  padding-top: 10px; /* Decreased padding */
-  padding-bottom: 10px; /* Decreased padding */
-  margin-top: 8px; 
-  margin-bottom: 8px;
-  border-top: 1px solid #b4b4b4;
-  border-bottom: 1px solid #b4b4b4;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 8px;
+  margin-bottom: 4px;
+  border-top: 1px solid #EAEAEA;
+  border-bottom: 1px solid #EAEAEA;
 }
 
 .impact-stat-item {
@@ -127,106 +113,108 @@
   align-items: flex-start;
   text-align: left;
   padding: 0 16px;
-  transition: transform 0.25s ease, opacity 0.25s ease;
+  transition: transform 0.25s ease;
 }
 
 .impact-stat-item:hover {
-  transform: scale(1.02); /* subtle hover effect */
-  opacity: 0.9;
+  transform: scale(1.02);
 }
 
-.impact-stat-item:first-child {
-  padding-left: 0;
-}
-
-.impact-stat-item:last-child {
-  padding-right: 0;
-}
+.impact-stat-item:first-child { padding-left: 0; }
+.impact-stat-item:last-child  { padding-right: 0; }
 
 .impact-stat-number {
-  font-size: clamp(28px, 4vw, 32px); /* 28-32px */
+  font-size: clamp(28px, 4vw, 32px);
   font-weight: 700;
-  color: #000000;
-  margin: 0;
+  color: #0F0F0F;
+  margin: 0 0 8px 0;
   line-height: 1.1;
+  display: inline-block;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 4px;
 }
 
 .impact-stat-divider {
-  display: block;
-  height: 1px;
-  width: 90%; /* Expanded to match image closer */
-  background-color: #b4b4b4; /* perfectly matched border colors */
-  margin-top: 4px;
-  margin-bottom: 6px;
+  display: none;
 }
 
 .impact-stat-title {
-  font-size: 13px; /* 12-13px */
-  font-weight: 600; /* 500-600 */
-  color: #000000;
+  font-size: 12px;
+  font-weight: 600;
+  color: #0F0F0F;
   margin: 0 0 4px 0;
-  letter-spacing: 0.5px; /* 0.5-1px */
+  letter-spacing: 0.5px;
   text-transform: uppercase;
   line-height: 1.3;
 }
 
 .impact-stat-desc {
-  display: none; /* Hidden on mobile */
-  font-size: 12px; /* 11-12px */
-  color: #6B6B6B;
+  display: none;
+  font-size: 12px;
+  color: #999999;
   margin: 0;
   line-height: 1.4;
 }
 
-/* ============================================================
-   HERO FOOTER — CTA Button Layout
-   ============================================================ */
+/* ── Hero footer — social + CTA ── */
 .hero-footer {
   display: flex;
-  flex-direction: row; /* Single horizontal alignment */
-  justify-content: space-between; /* push links left, cta right */
+  flex-direction: row;
+  justify-content: flex-end;
   align-items: center;
-  gap: 8px; /* Decreased spacing */
-  padding-top: 12px; /* Decreased from 24px */
-  padding-left: 16px;
-  padding-right: 16px;
+  gap: 8px;
+  padding-top: 8px;
+  padding-left: 0;
+  padding-right: 0;
 }
 
-/* ── Social Links (Left Side) ── */
+/* Social links */
 .social-links {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 12px; /* Decreased spacing */
+  gap: 12px;
 }
 
 .social-link {
   display: inline-flex;
   align-items: center;
-  gap: 8px; /* Slightly wider gap */
-  font-size: 15px; /* Scaled up text */
-  font-weight: 600; /* Matched Let's Talk button weight */
-  color: #000000;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  text-decoration-thickness: 1px;
-  transition: opacity 0.2s ease, color 0.2s ease;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0F0F0F;
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+  position: relative;
+  padding-bottom: 2px;
 }
 
-.social-link:hover {
-  opacity: 0.7;
+.social-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--accent);
+  transition: width 0.3s ease;
 }
+
+.social-link:hover::after { width: 100%; }
+.social-link:hover { color: var(--accent); }
 
 .external-icon {
   flex-shrink: 0;
-  width: 15px; /* Scaled up icon */
-  height: 15px;
+  width: 13px;
+  height: 13px;
 }
 
-/* ── CTA Group (Right Side) ── */
+/* CTA */
 .hero-cta-group {
   display: flex;
-  width: auto; /* Match content width */
+  width: auto;
 }
 
 .hero-cta-btn {
@@ -234,13 +222,13 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding: 14px 24px; /* Stepped up padding for larger size */
-  width: auto; /* Auto width */
-  border: none;
-  border-radius: 999px; /* Pill-shaped */
-  background-color: #000000;
+  padding: 13px 24px;
+  width: auto;
+  border: 2px solid var(--accent);
+  border-radius: 999px;
+  background-color: var(--accent);
   color: #ffffff;
-  font-size: 15px; /* Increased text size */
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
@@ -249,15 +237,16 @@
 }
 
 .hero-cta-btn:hover {
-  background-color: #222222;
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
 
 .hero-cta-btn .arrow-icon {
   transition: transform 0.3s ease;
-  width: 18px; /* Scaled up icon */
-  height: 18px;
+  width: 16px;
+  height: 16px;
   flex-shrink: 0;
 }
 
@@ -265,124 +254,84 @@
   transform: translateX(4px);
 }
 
-/* ============================================================
-   TABLET — md (min-width: 640px)
-   ============================================================ */
+/* ── Tablet ── */
 @media (min-width: 640px) {
-  .hero-section {
-    padding: 2.5rem 1.75rem 1rem; /* Further decreased bottom padding */
-  }
+  .hero-section { padding: 2.5rem 1.75rem 1rem; }
 
-  .hero-title {
-    font-size: clamp(2.5rem, 6vw, 3.75rem);
-  }
+  .hero-title { font-size: clamp(2.5rem, 6vw, 3.75rem); }
 
   .hero-profile-image {
     max-height: 340px;
     border-radius: 20px;
   }
 
-  .hero-description {
-    font-size: 1.05rem;
-  }
+  .hero-description { font-size: 1.05rem; }
 
-  /* Tablet Footer Layout */
   .hero-footer {
-    flex-direction: row; /* Single row */
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: flex-end;
     align-items: center;
     gap: 0;
-    padding-top: 24px; /* Decreased from 48px */
-  }
-
-  .hero-cta-group {
-    width: auto;
+    padding-top: 16px;
   }
 
   .hero-cta-btn {
-    width: auto;
-    padding: 16px 36px; /* Enlarged desktop bounds */
-    font-size: 17px; /* Enlarged desktop text */
+    padding: 14px 32px;
+    font-size: 16px;
   }
 
-  .social-link {
-    font-size: 17px; /* Scaled up text for desktop */
-  }
+  .social-link { font-size: 14px; }
+  .external-icon { width: 14px; height: 14px; }
 
-  .external-icon {
-    width: 17px; /* Scaled up icon for desktop */
-    height: 17px;
-  }
-
-  /* Show impact stats description on tablet+ */
-  .impact-stat-desc {
-    display: block;
-  }
+  .impact-stat-desc { display: block; }
 }
 
-/* ============================================================
-   DESKTOP — lg (min-width: 968px)
-   ============================================================ */
+/* ── Desktop ── */
 @media (min-width: 968px) {
   .hero-section {
     min-height: auto;
     display: flex;
     align-items: center;
-    padding: 6.5rem 2rem 1rem; /* Further decreased bottom padding */
+    padding: 6.5rem 2rem 1rem;
   }
 
   .hero-container {
     min-height: auto;
-    gap: 1.25rem; /* Decreased from 2.5rem */
+    gap: 0.75rem;
   }
 
   .hero-content {
     flex: 1;
     justify-content: center;
-    gap: 0; /* Desktop: spacing controlled per-element below */
+    gap: 0;
   }
 
-  /* Hide profile image on desktop — desktop is text-only hero */
-  .hero-profile-image {
-    display: none;
-  }
+  .hero-profile-image { display: none; }
 
   .hero-title {
     font-size: clamp(2.5rem, 6vw, 5rem);
-    margin-bottom: 1rem; /* Decreased from 1.75rem */
-    line-height: 1.12;
+    margin-bottom: 1rem;
+    line-height: 1.1;
   }
 
   .hero-description {
-    max-width: 640px;  /* tighter measure — more intentional */
-    font-size: 1.2rem;
+    max-width: 640px;
+    font-size: 1.15rem;
     line-height: 1.7;
   }
 
   .hero-stats-desc-block {
-    gap: 0.5rem; /* Decreased from 1rem */
-    margin-bottom: 0.75rem; /* Decreased from 1.5rem */
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
   }
 
-  .hero-impact-stats {
-    margin-bottom: 1.5rem; /* Decreased from 3rem */
-  }
+  .hero-impact-stats { margin-bottom: 0.75rem; }
 
-  /* Desktop footer */
-  .hero-footer {
-    padding-top: 1.5rem; /* Decreased from 3rem */
-  }
+  .hero-footer { padding-top: 0.75rem; }
 }
 
-/* ============================================================
-   LARGE DESKTOP — xl (min-width: 1280px)
-   ============================================================ */
+/* ── Large desktop ── */
 @media (min-width: 1280px) {
-  .hero-section {
-    padding: 8rem 2rem 2rem; /* Further decreased bottom padding */
-  }
-
-  .hero-title {
-    font-size: clamp(3.5rem, 5vw, 5rem);
-  }
+  .hero-section { padding: 8rem 2rem 2rem; }
+  .hero-title { font-size: clamp(3.5rem, 5vw, 5rem); }
 }

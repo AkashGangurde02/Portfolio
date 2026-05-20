@@ -116,7 +116,7 @@
   top: 0;
   bottom: 0;
   width: 4px;
-  background: linear-gradient(180deg, #7c3aed 0%, #a78bfa 100%);
+  background: var(--accent);
 }
 
 .testimonial-card:hover {

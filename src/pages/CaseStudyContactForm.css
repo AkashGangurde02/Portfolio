@@ -2,8 +2,8 @@
 
 .cs3-page {
   font-family: 'Inter', sans-serif;
-  background: linear-gradient(180deg, #FFFFFF 0%, #FFFDFD 20%, #FAFAFA 100%);
-  color: #1A1A1A;
+  background: var(--bg-page);
+  color: var(--text-body);
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
 }
@@ -26,12 +26,12 @@
   line-height: 1.1;
   letter-spacing: -0.03em;
   margin-bottom: 1.5rem;
-  color: #0A0A0A;
+  color: var(--text-primary);
 }
 
 .cs3-desc {
   font-size: 1.05rem;
-  color: #555;
+  color: var(--text-body);
   line-height: 1.7;
   margin-bottom: 2rem;
 }
@@ -39,7 +39,7 @@
 .cs3-meta-tag {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #1E66E1;
+  color: var(--text-muted);
   letter-spacing: 0.02em;
 }
 
@@ -70,7 +70,7 @@
 .cs3-section-heading {
   font-size: 1.25rem;
   font-weight: 800;
-  color: #0A0A0A;
+  color: var(--text-primary);
   margin-top: 5px;
   margin-bottom: 0.5rem;
 }
@@ -79,20 +79,20 @@
   font-size: 0.8rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  color: #888;
+  color: var(--text-faint);
 }
 
 .cs3-bold-text {
   font-size: 1rem;
   font-weight: 700;
-  color: #111;
+  color: var(--text-primary);
   margin-bottom: 0.8rem;
 }
 
 .cs3-text {
   font-size: 1rem;
   line-height: 1.6;
-  color: #555;
+  color: var(--text-body);
   margin-bottom: 1.5rem;
 }
 
@@ -102,12 +102,12 @@
 }
 .cs3-list li {
   font-size: 0.95rem;
-  color: #555;
+  color: var(--text-body);
   line-height: 1.8;
   margin-bottom: 0.4rem;
 }
 .cs3-list li::marker {
-  color: #A0A0A0;
+  color: var(--text-faint);
 }
 
 .cs3-margin-bottom {
@@ -127,8 +127,8 @@
 }
 
 .cs3-timeline-header {
-  background: #4F3272;
-  color: rgba(255,255,255,0.9);
+  background: var(--dark-bg);
+  color: var(--dark-text);
   padding: 1.2rem 2rem;
   border-radius: 8px;
   font-size: 0.95rem;
@@ -149,7 +149,7 @@
   bottom: 0;
   left: 50%;
   width: 1px;
-  background: #E0D7F5;
+  background: var(--border);
 }
 
 .cs3-timeline-chart {
@@ -163,21 +163,22 @@
 }
 
 .cs3-timeline-step {
-  background: #E8DFF5;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
   padding: 1rem 2rem;
   border-radius: 8px;
   font-weight: 700;
   font-size: 0.95rem;
-  color: #4F3272;
+  color: var(--text-primary);
   width: fit-content;
-  box-shadow: 0 4px 12px rgba(79, 50, 114, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .cs3-step-1 { margin-left: 0; }
 .cs3-step-2 { margin-left: 10%; }
-.cs3-step-3 { margin-left: 20%; background: #DECEFB; }
-.cs3-step-4 { margin-left: 30%; background: #D0B8F8; }
-.cs3-step-5 { margin-left: 40%; background: #C1A2F6; color: #321255; }
+.cs3-step-3 { margin-left: 20%; background: #EEEEEE; }
+.cs3-step-4 { margin-left: 30%; background: #DDDDDD; }
+.cs3-step-5 { margin-left: 40%; background: var(--dark-bg); color: var(--dark-text); }
 
 
 /* Discovery Cards Grid */
@@ -186,13 +187,13 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   margin-top: 2rem;
-  background: #EDEDEE;
+  background: var(--bg-alt);
   padding: 1rem;
   border-radius: 12px;
 }
 
 .cs3-phase-card {
-  background: #fff;
+  background: var(--bg-card);
   border-radius: 8px;
   padding: 1.2rem 1rem;
   box-shadow: 0 2px 8px rgba(0,0,0,0.03);
@@ -211,13 +212,16 @@
   font-weight: 700;
   line-height: 1.3;
   margin: 0;
-  color: #333;
+  color: var(--text-primary);
 }
 
-.cs3-card-purple .cs3-card-num { color: #C5A1FE; }
-.cs3-card-yellow .cs3-card-num { color: #EAD07C; }
-.cs3-card-pink .cs3-card-num { color: #E88BA4; }
-.cs3-card-green .cs3-card-num { color: #9FD0AC; }
+.cs3-card-purple .cs3-card-num,
+.cs3-card-yellow .cs3-card-num,
+.cs3-card-pink .cs3-card-num,
+.cs3-card-green .cs3-card-num {
+  color: var(--text-primary) !important;
+  opacity: 0.3;
+}
 
 
 /* Full Image Sections */
@@ -232,7 +236,7 @@
 }
 
 .cs3-large-img-wrap {
-  background: #F5F5F5;
+  background: var(--bg-alt);
   border-radius: 16px;
   padding: 3rem;
   display: flex;
@@ -269,7 +273,7 @@
   margin: 0 auto;
   font-size: 1.8rem;
   line-height: 1.5;
-  color: #0A0A0A;
+  color: var(--text-primary);
   font-weight: 600;
   font-style: italic;
   letter-spacing: -0.01em;

@@ -6,8 +6,8 @@
 
 /* ── SECTION SHELL ─────────────────────────────────────────────── */
 .cf-section {
-    background-color: #f7f9f9;
-    padding: 5rem 5%;
+    background-color: var(--bg-page);
+    padding: 2.5rem 5%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -18,23 +18,23 @@
 
 /* White rounded card that wraps everything */
 .cf-container {
-    background-color: #ffffff;
+    background-color: var(--bg-card);
     width: 100%;
     max-width: 1600px;
     border-radius: 20px;
-    border: 1.5px solid #cccccc;
-    padding: 3.5rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 1.5px solid var(--border);
+    padding: 2.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
     box-sizing: border-box;
     transition: border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 .cf-container:hover {
-    border-color: #999999;
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    border-color: var(--accent);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
 }
 
 /* ── HEADER ────────────────────────────────────────────────────── */
@@ -64,19 +64,16 @@
 
 /* ── CAROUSEL WINDOW (scroll container) ────────────────────────── */
 .cf-window {
-    background-color: #1a1a1a;
+    background-color: var(--dark-bg);
     border-radius: 20px;
-    padding: 2.5rem 0 2.5rem 2.5rem;
-    overflow: hidden;                 /* desktop: GSAP clips track */
-    cursor: grab;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+    padding: 2.5rem 0 1.5rem 2.5rem; /* Spacious padding for bottom scrollbar */
+    overflow-x: auto;
+    overflow-y: hidden;
+    cursor: default;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
     min-height: 300px;
     display: flex;
     align-items: center;
-}
-
-.cf-window:active {
-    cursor: grabbing;
 }
 
 /* ── TRACK ─────────────────────────────────────────────────────── */
@@ -92,9 +89,9 @@
 
 /* ── CARDS ─────────────────────────────────────────────────────── */
 .cf-card {
-    background: linear-gradient(145deg, #2a2a2a, #222);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+    background: linear-gradient(145deg, #181818, #111111);
+    border: 1px solid var(--dark-border);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.15);
     border-radius: 14px;
     padding: 1.75rem;
     width: 300px;
@@ -104,14 +101,14 @@
     flex-direction: column;
     justify-content: space-between;
     position: relative;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, border-bottom-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .cf-card:hover {
     transform: translateY(-5px);
-    border-bottom-color: rgba(255, 215, 0, 0.6);
-    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
+    border-bottom-color: var(--dark-text);
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
 }
 
 .cf-card-header h3 {
@@ -142,7 +139,7 @@
 }
 
 .cf-star {
-    color: #ffd700;
+    color: var(--dark-text);
     font-size: 1.1rem;
 }
 
@@ -154,12 +151,36 @@
 
 
 /* ══════════════════════════════════════════════════════════════════
-   VISIBLE SCROLLBAR STRIP — always visible, sits under the window
+   VISIBLE SLIM BLACK SCROLLBAR — Desktop & Mobile
    ══════════════════════════════════════════════════════════════════ */
 
-/* Hidden on desktop — GSAP uses wheel, no scrollbar needed */
-.cf-window::-webkit-scrollbar          { display: none; }
-.cf-window                             { scrollbar-width: none; }
+.cf-window {
+    scrollbar-width: thin;
+    scrollbar-color: #333333 #000000; /* Firefox styling: Charcoal thumb, black track */
+}
+
+/* Slim elegant Webkit scrollbar (Chrome, Safari, Edge) */
+.cf-window::-webkit-scrollbar {
+    display: block;
+    height: 8px; /* Elegant slim profile */
+}
+
+.cf-window::-webkit-scrollbar-track {
+    background: #000000; /* Pure black background to match panel */
+    border-radius: 10px;
+    margin: 0 2.5rem; /* Spacious inset bounds */
+}
+
+.cf-window::-webkit-scrollbar-thumb {
+    background: #333333; /* Dark charcoal color */
+    border-radius: 10px;
+    border: 2px solid #000000; /* Inset padding effect */
+    transition: background 0.3s ease;
+}
+
+.cf-window::-webkit-scrollbar-thumb:hover {
+    background: #555555; /* Highlights thumb on hover */
+}
 
 
 /* ── TABLET (≤ 1024px) ─────────────────────────────────────────── */
@@ -224,30 +245,16 @@
         display: block;
         cursor: default;
 
-        /* Scrollbar height & colours */
+        /* Let global sleek black scrollbar styles handle layout on mobile */
         scrollbar-width: thin;
-        scrollbar-color: rgba(255, 255, 255, 0.45) rgba(255, 255, 255, 0.1);
     }
 
-    /* WebKit scrollbar — appears at bottom inside dark block */
     .cf-window::-webkit-scrollbar {
-        display: block;
-        height: 5px;
+        height: 6px;
     }
 
     .cf-window::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.08);
-        border-radius: 0 0 14px 14px;
         margin: 0 1.25rem;
-    }
-
-    .cf-window::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.45);
-        border-radius: 99px;
-    }
-
-    .cf-window::-webkit-scrollbar-thumb:active {
-        background: rgba(255, 255, 255, 0.75);
     }
 
     /* Track: no GSAP, just a plain flex row */
@@ -327,13 +334,13 @@
 }
 
 .modal-content {
-    background: linear-gradient(145deg, #2a2a2a, #222);
+    background: linear-gradient(145deg, #181818, #111111);
     padding: 3rem;
     border-radius: 24px;
     max-width: 600px;
     width: 90%;
-    border: 1px solid rgba(255, 215, 0, 0.2);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+    border: 1px solid var(--dark-border);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
     transform: scale(0.95);
     animation: cfScaleUp 0.3s forwards;
 }

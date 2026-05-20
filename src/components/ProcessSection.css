@@ -39,7 +39,8 @@
 .step-number {
   font-size: 3rem;
   font-weight: 700;
-  color: #e0e0e0;
+  color: var(--accent);
+  opacity: 0.35;
   line-height: 1;
   margin-bottom: 1rem;
 }

@@ -1,12 +1,12 @@
 .experience-section {
-    padding: 5rem 2rem;
+    padding: 2.5rem 2rem;
     max-width: 1400px;
     width: 100%;
     margin: 0 auto;
 }
 
 .experience-section.embedded {
-    padding: 5rem 0; /* Copied from main but removed horizontal padding so it doesn't double-pad inside About constraints */
+    padding: 2.5rem 0; /* Copied from main but removed horizontal padding so it doesn't double-pad inside About constraints */
     max-width: 1400px;
     width: 100%;
     margin: 0 auto; /* Copied from main */

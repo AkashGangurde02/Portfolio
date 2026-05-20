@@ -4,8 +4,8 @@
     right: 30px;
     background-color: #ffffff;
     color: #333333;
-    width: 60px;
-    height: 60px;
+    width: 45.5px;
+    height: 45.5px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -39,6 +39,7 @@
     height: 24px;
     transition: transform 0.3s ease;
     stroke-width: 2.5px;
+    stroke: #ffffff !important;
 }
 
 .scroll-to-top-btn:hover .arrow-icon {
@@ -50,7 +51,7 @@
     .scroll-to-top-btn {
         bottom: 90px;
         right: 20px;
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
     }
 }

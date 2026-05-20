@@ -50,72 +50,44 @@ const CompanyFeedback = () => {
     useLayoutEffect(() => {
         const mq = window.matchMedia('(max-width: 768px)')
 
-        let tween        = null
-        let ticker       = null
         let wheelCleanup = null
 
         // ── DESKTOP SETUP ─────────────────────────────────────────────────────
         const setup = () => {
-            const win   = windowRef.current
-            const track = trackRef.current
-            if (!win || !track) return
-
-            // Hard-reset any leftover mobile state
-            gsap.set(track, { x: 0, clearProps: 'transform' })
-
-            const getScrollDistance = () => {
-                const last = track.lastElementChild
-                if (!last) return 0
-                const style    = window.getComputedStyle(track)
-                const padRight = parseFloat(style.paddingRight) || 0
-                const gap      = parseFloat(style.columnGap) || parseFloat(style.gap) || 0
-                return Math.max(0, track.scrollWidth - padRight - last.offsetWidth - gap)
-            }
-
-            tween = gsap.to(track, {
-                x: () => -getScrollDistance(),
-                ease: 'none',
-                paused: true,
-            })
-
-            let targetProgress  = 0
-            let currentProgress = 0
-
-            ticker = gsap.ticker.add(() => {
-                const diff = targetProgress - currentProgress
-                if (Math.abs(diff) > 0.0005) {
-                    currentProgress += diff * 0.25
-                    tween.progress(Math.max(0, Math.min(1, currentProgress)))
-                } else if (currentProgress !== targetProgress) {
-                    currentProgress = targetProgress
-                    tween.progress(Math.max(0, Math.min(1, currentProgress)))
-                }
-            })
+            const win = windowRef.current
+            if (!win) return
 
             const handleWheel = (e) => {
                 if (window.innerWidth <= 768) return
 
                 const rect       = win.getBoundingClientRect()
                 const centreDiff = Math.abs((rect.top + rect.height / 2) - window.innerHeight / 2)
-                // Increased tolerance so horizontal scroll triggers earlier (25% of viewport height instead of tightly centering)
+                
+                // Keep default scrolling if page section is not roughly centered in viewport
                 if (centreDiff > window.innerHeight * 0.25) return
 
                 const scrollingUp   = e.deltaY < 0
                 const scrollingDown = e.deltaY > 0
-                if (targetProgress <= 0 && scrollingUp)   return
-                if (targetProgress >= 1 && scrollingDown) return
+                const maxScroll     = win.scrollWidth - win.clientWidth
 
+                if (win.scrollLeft <= 0 && scrollingUp)   return
+                if (win.scrollLeft >= maxScroll && scrollingDown) return
+
+                // Intercept scroll wheel
                 e.preventDefault()
                 e.stopPropagation()
-
-                const dist = getScrollDistance()
-                if (dist === 0) return
 
                 let raw = e.deltaY * 1.5
                 if (e.deltaMode === 1) raw *= 30
                 if (e.deltaMode === 2) raw *= 300
 
-                targetProgress = Math.max(0, Math.min(1, targetProgress + raw / dist))
+                // Animate native scrollLeft smoothly using GSAP
+                gsap.to(win, {
+                    scrollLeft: win.scrollLeft + raw,
+                    duration: 0.45,
+                    ease: 'power2.out',
+                    overwrite: 'auto'
+                })
             }
 
             win.addEventListener('wheel', handleWheel, { passive: false })
@@ -124,19 +96,16 @@ const CompanyFeedback = () => {
 
         // ── TEARDOWN ──────────────────────────────────────────────────────────
         const teardown = () => {
-            if (ticker)       { gsap.ticker.remove(ticker); ticker = null }
-            if (tween)        { tween.kill(); tween = null }
-            if (trackRef.current) {
-                gsap.killTweensOf(trackRef.current)
-                gsap.set(trackRef.current, { clearProps: 'all' })
-            }
             if (wheelCleanup) { wheelCleanup(); wheelCleanup = null }
+            if (windowRef.current) {
+                gsap.killTweensOf(windowRef.current)
+            }
         }
 
         // ── BREAKPOINT LISTENER ───────────────────────────────────────────────
         const handleBreakpoint = (e) => {
             teardown()
-            if (!e.matches) setup()   // only run GSAP on desktop
+            if (!e.matches) setup()
         }
 
         // Initial boot

@@ -2,13 +2,15 @@
 /* This file handles the secondary (outlined) button variant only */
 
 .hero-cta-btn.secondary {
-  background-color: transparent;
-  color: #000000;
-  border: 2px solid #000000;
+  background-color: #ffffff;
+  color: #0D0D0D;
+  border: 1.5px solid rgba(0, 0, 0, 0.2);
 }
 
 .hero-cta-btn.secondary:hover {
-  background-color: #000000;
-  color: #ffffff;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  background-color: var(--accent-subtle);
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }

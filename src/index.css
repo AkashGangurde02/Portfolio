@@ -12,8 +12,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #F7F7F5;
+  color: #1A1A1A;
 }
 
 a {
@@ -36,14 +36,30 @@ button,
   font-family: 'Poppins', sans-serif;
 }
 
-/* Global Page Scrollbar Hiding — applies to the PAGE scrollbar only.
-   Scoped to body so internal scroll containers (e.g. .carousel-window)
-   can still display their own scrollbars. */
-body {
-  scrollbar-width: none;       /* Firefox */
-  -ms-overflow-style: none;    /* IE/Edge */
+/* Enable premium native smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  scrollbar-color: #E5E5E0 #F7F7F5;
+  scrollbar-width: thin;
 }
 
-body::-webkit-scrollbar {
-  display: none;               /* Chrome/Safari/Opera */
+/* Premium styled custom scrollbar for WebKit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F7F7F5; /* Sleek background matching body */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E5E5E0; /* Minimal premium gray thumb */
+  border-radius: 9999px;
+  border: 2.5px solid #F7F7F5; /* Elegant padding around thumb */
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D1D1CB; /* Refined hover state */
 }

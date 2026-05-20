@@ -1,97 +1,78 @@
 /* ═══════════════════════════════════════════════════════════════════
-   PALETTE — Light Version
-   Source palette (from image):
-     Vampire Black  #05090A  (5, 9, 10)
-     Chinese Black  #0E191E  (14, 25, 30)
-     Jet Stream     #BBC9C7  (187, 201, 199)
-     Platinum       #DFEAE8  (223, 234, 232)
-
-   Strategy:
-     • Dark colours → text, buttons, dark sections (footer, dark cards)
-     • Light colours → backgrounds, surfaces, borders
-     • Alternating sections use --bg-page / --bg-alt for visual rhythm
+   PALETTE — Premium Minimalist Black & White Portfolio
+   70% White (#FFFFFF) | 20% Black/Charcoal (#000000) | 10% Black Accent (#000000)
 ═══════════════════════════════════════════════════════════════════ */
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   DESIGN TOKENS
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 :root {
-  /* Backgrounds */
-  --bg-page:       #EDF4F2;   /* slightly lighter than Platinum — page body     */
-  --bg-alt:        #DFEAE8;   /* Platinum — alternating section backgrounds     */
-  --bg-card:       #F4F8F7;   /* near-white with teal whisper — cards           */
-  --bg-white:      #FFFFFF;   /* pure white — inputs, modals, image backgrounds */
+  /* ── Backgrounds ── */
+  --bg-page:       #FFFFFF;
+  --bg-alt:        #FFFFFF;
+  --bg-card:       #FFFFFF;
+  --bg-white:      #FFFFFF;
 
-  /* Borders */
-  --border:        #BBC9C7;   /* Jet Stream — prominent borders, separators     */
-  --border-subtle: #D1DCDA;   /* soft dividers, internal section rules          */
-  --border-faint:  #E4EEEC;   /* very subtle — inner card borders               */
+  /* ── Borders ── */
+  --border:        #E5E5E5;
+  --border-subtle: #EEEEEE;
+  --border-faint:  #F7F7F7;
 
-  /* Text */
-  --text-primary:  #05090A;   /* Vampire Black — headlines, bold text           */
-  --text-body:     #0E191E;   /* Chinese Black — body copy                      */
-  --text-muted:    #4A6460;   /* derived cool teal-grey — secondary labels      */
-  --text-faint:    #7A9490;   /* lightest muted — captions, hints               */
+  /* ── Text ── */
+  --text-primary:  #000000;
+  --text-body:     #1A1A1A;
+  --text-muted:    #666666;
+  --text-faint:    #999999;
 
-  /* Dark elements (footer, dark cards, dark carousel) */
-  --dark-bg:       #0E191E;   /* Chinese Black — footer background              */
-  --dark-surface:  #162028;   /* slightly elevated surface within dark          */
-  --dark-border:   #233038;   /* border inside dark sections                    */
-  --dark-text:     #DFEAE8;   /* Platinum — text on dark                        */
-  --dark-muted:    #BBC9C7;   /* Jet Stream — muted text on dark                */
+  /* ── Dark sections (navbar, footer, CTA band) ── */
+  --dark-bg:       #000000;
+  --dark-surface:  #111111;
+  --dark-border:   #222222;
+  --dark-text:     #FFFFFF;
+  --dark-muted:    #999999;
 
-  /* Accent / interactive */
-  --accent:        #05090A;   /* Vampire Black — primary CTA                    */
-  --accent-hover:  #0E191E;   /* Chinese Black — hover/active                   */
+  /* ── Accent Black — used sparingly ── */
+  --accent:        #000000;
+  --accent-hover:  #333333;
+  --accent-subtle: #EEEEEE;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   GLOBAL BASE
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* ── Global base ── */
 body {
   background-color: var(--bg-page) !important;
   color: var(--text-body);
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   NAVBAR
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-/* Mobile fixed bar */
+/* ═══════════════════════════════════════════════════════════════════
+   NAVBAR — stays dark
+═══════════════════════════════════════════════════════════════════ */
 @media (max-width: 968px) {
   .navbar {
-    background-color: var(--bg-page) !important;
-    box-shadow: 0 2px 8px rgba(14, 25, 30, 0.07) !important;
+    background-color: var(--dark-bg) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
   }
 }
 
-/* Desktop scrolled state */
-.navbar.scrolled {
-  background-color: rgba(237, 244, 242, 0.96) !important;
-  border-bottom-color: var(--border) !important;
-}
+/* Removed .navbar.scrolled override to let Navbar.css handle the light frosted background */
 
-/* Mobile dropdown card */
 .navbar-links.mobile-menu-open {
-  background-color: var(--bg-page) !important;
-  border-color: var(--border) !important;
-  box-shadow: 0 12px 40px rgba(14, 25, 30, 0.12) !important;
+  background-color: var(--dark-surface) !important;
+  border-color: var(--dark-border) !important;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5) !important;
 }
 
 .navbar-links.mobile-menu-open li {
-  border-bottom-color: var(--border-subtle) !important;
+  border-bottom-color: var(--dark-border) !important;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+/* ═══════════════════════════════════════════════════════════════════
    HOME SUB NAVBAR
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+═══════════════════════════════════════════════════════════════════ */
 .home-sub-navbar {
-  background: rgba(237, 244, 242, 0.96) !important;
+  background: rgba(255, 255, 255, 0.96) !important;
   border-bottom-color: var(--border) !important;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   HERO SECTION  (bg-page)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* ═══════════════════════════════════════════════════════════════════
+   HERO — light background
+═══════════════════════════════════════════════════════════════════ */
 .hero-section {
   background-color: var(--bg-page) !important;
 }
@@ -100,13 +81,11 @@ body {
   background-color: var(--bg-alt) !important;
 }
 
-/* Stat pills */
 .hero-stat-pill {
   background: var(--bg-alt) !important;
   border-color: var(--border) !important;
 }
 
-/* Dividers */
 .hero-impact-stats {
   border-top-color: var(--border) !important;
   border-bottom-color: var(--border) !important;
@@ -116,21 +95,22 @@ body {
   border-top-color: var(--border-subtle) !important;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   WORKS SECTION  (bg-alt)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* ═══════════════════════════════════════════════════════════════════
+   WORKS SECTION
+═══════════════════════════════════════════════════════════════════ */
 .works-section {
   background-color: var(--bg-alt) !important;
   border-bottom-color: var(--border) !important;
 }
 
 .featured-work-card {
-  background-color: var(--bg-card) !important;
+  background-color: var(--bg-page) !important;
   border-color: var(--border) !important;
 }
 
 .featured-work-card:hover {
-  border-color: var(--text-muted) !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 20px 48px rgba(0,0,0,0.08) !important;
 }
 
 .work-card {
@@ -139,115 +119,82 @@ body {
 }
 
 .work-card:hover {
-  border-color: var(--text-muted) !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.08) !important;
 }
 
 .featured-image-wrapper,
 .work-image-wrapper {
-  background-color: var(--bg-white) !important;
+  background-color: var(--bg-page) !important;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   ABOUT SECTION  (bg-page)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* ═══════════════════════════════════════════════════════════════════
+   ABOUT SECTION
+═══════════════════════════════════════════════════════════════════ */
 .about-section {
   background-color: var(--bg-page) !important;
   border-bottom-color: var(--border-subtle) !important;
 }
 
-.tools-section-home {
-  border-top-color: var(--border-subtle) !important;
-}
-
-.tools-grid-home {
-  border-top-color: var(--border) !important;
-  border-bottom-color: var(--border) !important;
-}
-
-.tool-icon-home {
-  background-color: var(--bg-alt) !important;
-  border-color: var(--border) !important;
-}
-
-.tool-item-home:hover .tool-icon-home {
-  background-color: var(--bg-card) !important;
-  border-color: var(--border) !important;
-}
-
+.tool-icon-home,
 .tool-icon-placeholder-home {
   background-color: var(--bg-alt) !important;
   border-color: var(--border) !important;
 }
 
-/* Strength tags */
 .about-strength-tag {
   background: var(--bg-alt) !important;
   border-color: var(--border) !important;
+  color: var(--text-body) !important;
 }
 
 .about-strength-tag:hover {
-  background: var(--accent) !important;
+  background: var(--accent-subtle) !important;
   border-color: var(--accent) !important;
-  color: var(--dark-text) !important;
+  color: var(--accent) !important;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   IMPACT SECTION  (bg-alt)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* ═══════════════════════════════════════════════════════════════════
+   IMPACT SECTION
+═══════════════════════════════════════════════════════════════════ */
 .impact-section {
   background-color: var(--bg-alt) !important;
   border-bottom-color: var(--border) !important;
 }
 
-.impact-bullets {
-  border-top-color: var(--border-subtle) !important;
-}
-
-/* Light metric cards */
 .impact-card {
-  background: var(--bg-card) !important;
+  background: var(--bg-page) !important;
   border-color: var(--border) !important;
 }
 
 .impact-card:hover {
-  border-color: var(--text-muted) !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.07) !important;
 }
 
-/* Dark accent card → Chinese Black */
 .impact-card--dark {
   background: var(--dark-bg) !important;
   border-color: var(--dark-bg) !important;
 }
 
-.impact-card--dark:hover {
-  box-shadow: 0 24px 56px rgba(14, 25, 30, 0.35) !important;
-}
-
-.impact-card--dark .impact-card-tag {
-  color: rgba(223, 234, 232, 0.4) !important;
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   MARQUEE / CLIENTS  (bg-alt)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* ═══════════════════════════════════════════════════════════════════
+   MARQUEE / CLIENTS
+═══════════════════════════════════════════════════════════════════ */
 .clients-section {
-  background-color: var(--bg-alt) !important;
+  background-color: var(--bg-page) !important;
 }
 
-
-/* Grey bg-strip → Jet Stream */
 .marquee-bg-strip {
   background-color: var(--border) !important;
 }
 
-/* Main black strip → Vampire Black (stays dark, intentional) */
 .marquee-main-strip {
-  background-color: var(--accent) !important;
+  background-color: var(--dark-bg) !important;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   COMPANY FEEDBACK  (bg-page + dark carousel)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* ═══════════════════════════════════════════════════════════════════
+   COMPANY FEEDBACK
+═══════════════════════════════════════════════════════════════════ */
 .sumip-wrapper {
   background-color: var(--bg-page) !important;
 }
@@ -257,149 +204,85 @@ body {
   border-color: var(--border) !important;
 }
 
-.sumip-container:hover {
-  border-color: var(--text-muted) !important;
-}
-
-/* Dark carousel stays dark — Chinese Black adds richness */
 .carousel-window {
   background-color: var(--dark-bg) !important;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   TESTIMONIALS SECTION  (bg-alt)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* ═══════════════════════════════════════════════════════════════════
+   TESTIMONIALS
+═══════════════════════════════════════════════════════════════════ */
 .testimonials-section {
-  background-color: var(--bg-alt) !important;
-  border-bottom-color: var(--border) !important;
+  background-color: var(--dark-bg) !important;
+  border-bottom-color: var(--dark-border) !important;
 }
 
-/* Testimonial cards within the main section (not footer) */
 .testimonials-section .testimonial-card {
-  background-color: var(--bg-card) !important;
-  border-color: var(--border-subtle) !important;
+  background-color: var(--dark-surface) !important;
+  border-color: var(--dark-border) !important;
 }
 
-/* Scroll fade gradients — match section bg */
-.testimonials-section .scroll-fade-top {
-  background: linear-gradient(to bottom, var(--bg-alt) 0%, rgba(223, 234, 232, 0) 100%) !important;
-}
-
-.testimonials-section .scroll-fade-bottom {
-  background: linear-gradient(to top, var(--bg-alt) 0%, rgba(223, 234, 232, 0) 100%) !important;
-}
-
-/* Scrollbar */
-.testimonials-scroll-wrapper {
-  scrollbar-color: var(--border) var(--bg-page) !important;
-}
-
-.testimonials-scroll-wrapper::-webkit-scrollbar-track {
-  background: var(--bg-page) !important;
-}
-
-.testimonials-scroll-wrapper::-webkit-scrollbar-thumb {
-  background: var(--border) !important;
-}
-
-.testimonials-scroll-wrapper::-webkit-scrollbar-thumb:hover {
-  background: var(--text-muted) !important;
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   EXPERIENCE SECTION  (bg-page)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* ═══════════════════════════════════════════════════════════════════
+   PROCESS / SKILLS / EXPERIENCE / AWARDS
+═══════════════════════════════════════════════════════════════════ */
+.process-section,
+.skills-section,
 .experience-section {
   background-color: var(--bg-page) !important;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   INSIGHTS SECTION  (bg-alt)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.awards-section,
 .insights-section {
   background-color: var(--bg-alt) !important;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   PROCESS SECTION  (bg-page)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.process-section {
-  background-color: var(--bg-page) !important;
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   AWARDS SECTION  (bg-alt)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.awards-section {
-  background-color: var(--bg-alt) !important;
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   SKILLS SECTION  (bg-page)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.skills-section {
-  background-color: var(--bg-page) !important;
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   CONTACT FORM  (bg-page)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* ═══════════════════════════════════════════════════════════════════
+   CONTACT FORM
+═══════════════════════════════════════════════════════════════════ */
 .contact-section {
   background-color: var(--bg-page) !important;
 }
 
 .contact-form {
   background-color: var(--bg-card) !important;
-  box-shadow: 0 2px 10px rgba(14, 25, 30, 0.06) !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05) !important;
 }
 
 .info-card {
   background-color: var(--bg-card) !important;
-  box-shadow: 0 2px 10px rgba(14, 25, 30, 0.05) !important;
+  border-color: var(--border) !important;
 }
 
 .info-icon {
-  background-color: var(--bg-alt) !important;
+  background-color: var(--bg-page) !important;
 }
 
 .form-group input,
 .form-group textarea {
-  background-color: var(--bg-alt) !important;
+  background-color: var(--bg-page) !important;
   border-color: var(--border) !important;
+  color: var(--text-body) !important;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   background-color: var(--bg-white) !important;
-  border-color: var(--text-primary) !important;
+  border-color: var(--accent) !important;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   MODALS (Hire Me, Password)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* ═══════════════════════════════════════════════════════════════════
+   MODALS
+═══════════════════════════════════════════════════════════════════ */
 .hire-me-modal,
-.hire-me-modal-content {
+.hire-me-modal-content,
+.password-modal,
+.password-modal-content {
   background-color: var(--bg-card) !important;
   border-color: var(--border) !important;
 }
 
-.password-modal,
-.password-modal-content {
-  background-color: var(--bg-card) !important;
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   SCROLL TO TOP BUTTON
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.scroll-top-btn,
-.scroll-to-top-btn {
-  background-color: var(--dark-bg) !important;
-  border-color: var(--dark-border) !important;
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   FOOTER — Chinese Black  (#0E191E)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* ═══════════════════════════════════════════════════════════════════
+   FOOTER — dark
+═══════════════════════════════════════════════════════════════════ */
 .footer {
   background-color: var(--dark-bg) !important;
 }
@@ -412,58 +295,28 @@ body {
   border-top-color: var(--dark-border) !important;
 }
 
-/* Suggestion / testimonial box in footer */
 .suggestion-box {
   background-color: var(--dark-surface) !important;
   border-color: var(--dark-border) !important;
 }
 
-.suggestion-box:hover {
-  background-color: #1D2E37 !important;
-  border-color: #2A4050 !important;
-}
-
-.suggestion-box .testimonial-avatar {
-  background: var(--dark-border) !important;
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   STANDALONE PAGES (Work, About, Case Study, Experience)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-/* Work page */
+/* ═══════════════════════════════════════════════════════════════════
+   STANDALONE PAGES
+═══════════════════════════════════════════════════════════════════ */
 .work-page,
-.work-page-section {
-  background-color: var(--bg-page) !important;
-}
-
-/* About page */
-.about-page {
-  background-color: var(--bg-page) !important;
-}
-
-/* Case Study pages */
+.work-page-section,
+.about-page,
 .case-study-page,
 .case-study-wrapper,
-.case-study-container {
-  background-color: var(--bg-page) !important;
-}
-
-/* Experience pages */
+.case-study-container,
 .experience-page,
 .experience-wrapper {
   background-color: var(--bg-page) !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-   TEXT, BUTTONS, DIVIDERS, SHADOWS — FULL PALETTE ROLLOUT
-   Replaces the previous greyscale (#000 / #333 / #666 / #999 / #b8b8b8)
-   with the four palette tones throughout every section.
+   TYPOGRAPHY
 ═══════════════════════════════════════════════════════════════════ */
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   HEADINGS — Vampire Black
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-/* All headings outside dark sections → Vampire Black */
 .hero-title,
 .works-title,
 .featured-title,
@@ -483,25 +336,22 @@ body {
   color: var(--text-primary) !important;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   TITLE HIGHLIGHTS — Jet Stream replaces #b8b8b8 grey
-   These are the lighter/greyed portions of split headings.
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* Orange only on highlighted keyword spans */
 .hero-title-highlight,
 .sub-highlight,
-.text-light,
 .title-highlight {
-  color: #7A9490 !important;   /* --text-faint: softer teal-grey, replaces #b8b8b8 */
+  color: var(--accent) !important;
 }
 
-/* Tool name labels use same faint teal */
+.text-light {
+  color: var(--text-muted) !important;
+}
+
 .tool-name {
   color: var(--text-faint) !important;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   BODY / DESCRIPTION TEXT — Chinese Black replaces #333 / #444
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* Body text */
 .hero-description,
 .featured-description,
 .work-description,
@@ -511,9 +361,7 @@ body {
   color: var(--text-body) !important;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   MUTED / SECONDARY TEXT — Cool teal-grey replaces #666 / #888
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* Muted/secondary */
 .featured-category,
 .work-category-label,
 .impact-eyebrow,
@@ -523,122 +371,148 @@ body {
 .tool-label-home,
 .testimonials-subtitle,
 .contact-subtitle,
-.description-text,
 .scroll-hint,
 .info-card p {
   color: var(--text-muted) !important;
 }
 
-/* Slightly lighter faint for captions and small notes */
 .impact-stat-desc,
 .footer-credits,
-.testimonial-quote,
 .testimonial-text {
   color: var(--text-faint) !important;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   NAVBAR TEXT — Vampire Black (already #000 in source, now scoped)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.navbar-logo,
-.logo-year,
-.navbar-links a {
-  color: var(--text-primary) !important;
+/* ═══════════════════════════════════════════════════════════════════
+   NAVBAR TEXT
+═══════════════════════════════════════════════════════════════════ */
+@media (max-width: 968px) {
+  .navbar-logo,
+  .logo-year,
+  .navbar-links a {
+    color: var(--dark-text) !important;
+  }
 }
 
-.navbar-links a::after,
-.social-link::after {
-  background-color: var(--text-primary) !important;
+.navbar-links a::after {
+  background-color: var(--accent) !important;
 }
 
-/* Hamburger lines */
 .hamburger-menu span {
-  background-color: var(--text-primary) !important;
+  background-color: var(--dark-text) !important;
 }
 
 .hamburger-menu:hover span {
-  background-color: var(--text-muted) !important;
+  background-color: var(--accent) !important;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+/* ═══════════════════════════════════════════════════════════════════
    SOCIAL LINKS
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+═══════════════════════════════════════════════════════════════════ */
 .social-link {
   color: var(--text-primary) !important;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   IMPACT STATS (Hero section inline stats)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.impact-stat-number,
-.impact-stat-title {
+.social-link:hover {
+  color: var(--accent) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   IMPACT STATS (Hero)
+═══════════════════════════════════════════════════════════════════ */
+.impact-stat-number {
   color: var(--text-primary) !important;
+}
+
+.impact-stat-title {
+  color: var(--text-muted) !important;
 }
 
 .impact-stat-divider {
   background-color: var(--border) !important;
 }
 
-/* Impact section metric card numbers */
 .impact-card-number {
   color: var(--text-primary) !important;
 }
 
-/* Impact divider rule */
 .impact-divider {
-  background: var(--text-primary) !important;
+  background: var(--accent) !important;
 }
 
-/* Bullet dots */
 .impact-bullet-dot {
-  background: var(--text-muted) !important;
+  background: var(--accent) !important;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   PRIMARY BUTTONS — Vampire Black bg, Platinum text
-   Hover → Chinese Black bg
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-/* Filled primary buttons */
+/* ═══════════════════════════════════════════════════════════════════
+   BUTTONS — Orange CTAs
+═══════════════════════════════════════════════════════════════════ */
 .hero-cta-btn,
-.lets-talk-btn,
-.submit-btn,
-.work-cta {
+.submit-btn {
   background-color: var(--accent) !important;
-  color: var(--dark-text) !important;
+  color: #FFFFFF !important;
   border-color: var(--accent) !important;
 }
 
 .hero-cta-btn:hover,
-.lets-talk-btn:hover,
-.submit-btn:hover,
-.work-cta:hover {
+.submit-btn:hover {
   background-color: var(--accent-hover) !important;
   border-color: var(--accent-hover) !important;
-  box-shadow: 0 8px 20px rgba(14, 25, 30, 0.22) !important;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1) !important;
 }
 
-/* Outlined buttons (transparent bg, dark border/text) */
-.featured-cta,
-.about-secondary-btn {
-  color: var(--text-primary) !important;
-  border-color: var(--text-primary) !important;
-  background-color: transparent !important;
+/* Secondary (Hire Me) — white fill, thin border, overrides the base rule */
+.hero-cta-btn.secondary {
+  background-color: #ffffff !important;
+  color: #0D0D0D !important;
+  border: 1.5px solid rgba(0, 0, 0, 0.2) !important;
 }
 
-.featured-work-card:hover .featured-cta,
-.work-card:hover .featured-cta,
-.about-secondary-btn:hover {
-  background-color: var(--accent) !important;
-  color: var(--dark-text) !important;
+.hero-cta-btn.secondary:hover {
+  background-color: var(--accent-subtle) !important;
   border-color: var(--accent) !important;
+  color: var(--accent) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
 }
 
-/* Let's Talk hover: outlined on hover */
+/* Lets talk — dark pill */
+.lets-talk-btn {
+  background-color: var(--dark-bg) !important;
+  color: #FFFFFF !important;
+  border-color: var(--dark-bg) !important;
+}
+
 .lets-talk-btn:hover {
-  background-color: transparent !important;
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1) !important;
+}
+
+/* Work CTA */
+.work-cta {
+  background-color: var(--dark-bg) !important;
+  color: #FFFFFF !important;
+  border-color: var(--dark-bg) !important;
+}
+
+.work-card:hover .work-cta {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #FFFFFF !important;
+}
+
+/* Outlined featured CTA */
+.featured-cta {
   color: var(--text-primary) !important;
   border-color: var(--text-primary) !important;
-  box-shadow: 0 4px 12px rgba(14, 25, 30, 0.12) !important;
+  background-color: transparent !important;
+}
+
+.featured-work-card:hover .featured-cta {
+  background-color: var(--accent) !important;
+  color: #FFFFFF !important;
+  border-color: var(--accent) !important;
 }
 
 /* View-all link */
@@ -646,79 +520,52 @@ body {
   color: var(--text-primary) !important;
 }
 
-.view-all-link::after {
-  background-color: var(--text-primary) !important;
+.view-all-link:hover {
+  color: var(--accent) !important;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   MOBILE NAV — last item "Let's Talk" pill
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.view-all-link::after {
+  background-color: var(--accent) !important;
+}
+
+/* Mobile nav CTA pill */
 .navbar-links.mobile-menu-open li:last-child a {
   background-color: var(--accent) !important;
-  color: var(--dark-text) !important;
+  color: #FFFFFF !important;
 }
 
 .navbar-links.mobile-menu-open li:last-child a:hover {
   background-color: var(--accent-hover) !important;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   STRENGTH TAGS, STAT PILLS, CATEGORY LABELS
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-/* Pill text color */
+/* ═══════════════════════════════════════════════════════════════════
+   PILLS / TAGS / LABELS
+═══════════════════════════════════════════════════════════════════ */
 .hero-stat-pill {
   color: var(--text-muted) !important;
 }
 
-/* Category labels */
 .featured-category,
 .work-category-label {
   color: var(--text-muted) !important;
   letter-spacing: 1.5px;
 }
 
-/* Strength tags text */
-.about-strength-tag {
-  color: var(--text-body) !important;
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   DIVIDERS / BORDERS (replacing #eaeaea / #e8e8e8 / #f0f0f0)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-/* Footer link underlines */
-.footer-nav-link::after {
-  background-color: var(--dark-text) !important;
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   FORM LABELS & PLACEHOLDER TEXT
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.form-group label {
-  color: var(--text-body) !important;
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-  color: var(--text-faint) !important;
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   CARD SHADOWS — warm teal shadow instead of neutral black
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* ═══════════════════════════════════════════════════════════════════
+   CARD SHADOWS
+═══════════════════════════════════════════════════════════════════ */
 .featured-work-card:hover,
 .work-card:hover {
-  box-shadow: 0 20px 48px rgba(14, 25, 30, 0.13) !important;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.08) !important;
 }
 
 .impact-card:hover {
-  box-shadow: 0 20px 48px rgba(14, 25, 30, 0.10) !important;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.07) !important;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   DARK SECTION TEXT — Platinum & Jet Stream replaces white/light-grey
-   (footer, dark carousel cards, suggestion box)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-/* Footer text */
+/* ═══════════════════════════════════════════════════════════════════
+   DARK SECTION TEXT
+═══════════════════════════════════════════════════════════════════ */
 .footer-subtitle,
 .footer-heading,
 .footer-nav-link,
@@ -730,12 +577,10 @@ body {
   color: var(--dark-text) !important;
 }
 
-/* Footer credits */
 .footer-credits {
   color: var(--dark-muted) !important;
 }
 
-/* Dark carousel card text already set in component — reinforce */
 .carousel-window .card-header h3 {
   color: var(--dark-text) !important;
 }
@@ -744,7 +589,6 @@ body {
   color: var(--dark-muted) !important;
 }
 
-/* Suggestion box text */
 .suggestion-box .testimonial-name {
   color: var(--dark-text) !important;
 }
@@ -753,3 +597,124 @@ body {
   color: var(--dark-muted) !important;
 }
 
+/* ═══════════════════════════════════════════════════════════════════
+   SCROLL TO TOP
+═══════════════════════════════════════════════════════════════════ */
+.scroll-top-btn,
+.scroll-to-top-btn {
+  background-color: var(--dark-bg) !important;
+  border-color: var(--dark-border) !important;
+}
+
+/* Footer link underlines */
+.footer-nav-link::after {
+  background-color: var(--accent) !important;
+}
+
+/* Form labels */
+.form-group label {
+  color: var(--text-body) !important;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--text-faint) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SECTION BLACK ACCENTS — consistent across all sections
+═══════════════════════════════════════════════════════════════════ */
+
+/* ── Eyebrow / category labels — orange ── */
+.impact-eyebrow,
+.tools-heading,
+.featured-category,
+.work-category-label,
+.section-eyebrow,
+.eyebrow-label {
+  color: var(--accent) !important;
+  letter-spacing: 1.5px;
+}
+
+/* ── Title highlight spans across ALL sections ── */
+.title-highlight,
+.sub-highlight,
+.hero-title-highlight {
+  color: var(--accent) !important;
+}
+
+/* ── Orange accent bar above section headings ── */
+.works-title::before,
+.impact-title::before,
+.process-title::before,
+.awards-title::before,
+.skills-title::before,
+.contact-title::before,
+.insights-title::before,
+.testimonials-title::before {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 3px;
+  background-color: var(--accent);
+  border-radius: 2px;
+  margin-bottom: 0.75rem;
+}
+
+/* ── Process step numbers — orange tint ── */
+.step-number {
+  color: var(--accent) !important;
+  opacity: 0.4;
+}
+
+.process-step:hover .step-number {
+  opacity: 0.7;
+}
+
+/* ── About title highlight ── */
+.about-title .title-highlight {
+  color: var(--accent) !important;
+}
+
+/* ── Strength tag hover ── */
+.about-strength-tag:hover {
+  background: var(--accent-subtle) !important;
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+}
+
+/* ── Awards accent ── */
+.award-number,
+.award-index,
+.award-year {
+  color: var(--accent) !important;
+}
+
+/* ── Hero stat dividers — orange bar ── */
+.impact-stat-divider {
+  background-color: var(--accent) !important;
+  height: 2px !important;
+  width: 28px !important;
+  border-radius: 2px !important;
+}
+
+/* ── Dark section B&W hover contrast overrides ── */
+.footer-nav-link:hover {
+  color: #FFFFFF !important;
+}
+
+.footer-nav-link::after {
+  background-color: #FFFFFF !important;
+}
+
+@media (max-width: 968px) {
+  .navbar-links.mobile-menu-open li:last-child a {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+    border: 1.5px solid #FFFFFF !important;
+  }
+  .navbar-links.mobile-menu-open li:last-child a:hover {
+    background-color: #EEEEEE !important;
+    color: #000000 !important;
+  }
+}

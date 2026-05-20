@@ -1,5 +1,5 @@
 .works-section {
-  padding: 3rem 4rem 0;
+  padding: 2rem 0 0;
   background-color: #ffffff;
   border-bottom: 1px solid #f0f0f0;
 }
@@ -36,9 +36,9 @@
 }
 
 .featured-work-card:hover {
-  border-color: #888888;
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.13);
-  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.08);
+  transform: translateY(-4px);
 }
 
 .featured-image-wrapper {
@@ -112,17 +112,18 @@
 
 .featured-work-card:hover .featured-cta,
 .work-card:hover .featured-cta {
-  background-color: #000000;
+  background-color: var(--accent);
   color: #ffffff;
+  border-color: var(--accent);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
 }
 
 
 /* Regular Projects Grid */
 .works-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 3rem;
   margin-bottom: 0;
 }
@@ -142,9 +143,9 @@
 }
 
 .work-card:hover {
-  border-color: #888888;
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.13);
-  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+  transform: translateY(-4px);
 }
 
 .work-category-label {
@@ -210,10 +211,11 @@
 }
 
 .work-card:hover .work-cta {
-  background-color: transparent;
-  color: #000000;
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
 }
 
 
@@ -242,7 +244,7 @@
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #000000;
+  background-color: var(--accent);
   transition: width 0.3s ease;
 }
 
@@ -256,6 +258,12 @@
 
 .view-all-link:hover .arrow-icon {
   transform: translateX(5px);
+}
+
+@media (max-width: 1200px) {
+  .works-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 968px) {

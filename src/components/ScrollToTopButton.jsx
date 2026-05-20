@@ -5,8 +5,8 @@ const ScrollToTopButton = () => {
     const [isVisible, setIsVisible] = useState(false)
 
     const toggleVisibility = () => {
-        // Trigger after scrolling past approx 3-4 sections (2500px)
-        if (window.scrollY > 2500) {
+        // Trigger at the same threshold as the WhatsApp button (800px)
+        if (window.scrollY > 800) {
             setIsVisible(true)
         } else {
             setIsVisible(false)

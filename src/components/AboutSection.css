@@ -1,5 +1,5 @@
 .about-section {
-  padding: 3rem 2rem;
+  padding: 2rem;
   background-color: #ffffff;
   border-bottom: 1px solid #f0f0f0;
 }
@@ -9,7 +9,7 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: 580px 1fr;
-  gap: 5rem;
+  gap: 4rem;
   align-items: stretch;
 }
 
@@ -40,7 +40,7 @@
 }
 
 .about-title .title-highlight {
-  color: #b8b8b8;
+  color: var(--accent);
   font-weight: 700;
 }
 
@@ -72,10 +72,11 @@
 }
 
 .about-secondary-btn:hover {
-  background-color: #000000;
+  background-color: var(--accent);
   color: #ffffff;
+  border-color: var(--accent);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
 }
 
 .about-secondary-btn .arrow-icon {
@@ -232,9 +233,9 @@
 }
 
 .about-strength-tag:hover {
-  background: #000000;
-  color: #ffffff;
-  border-color: #000000;
+  background: var(--accent-subtle);
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
 
@@ -296,7 +297,7 @@
   }
 
   .about-title .title-highlight {
-    color: #b8b8b8;
+    color: var(--accent);
   }
 
   /* ── Description: scannable, natural wide flow ── */

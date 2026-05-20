@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import './CaseStudyContactForm.css'
+import './CaseStudyHempHop.css'
 import hempHopImage from '../images/case-studies/case-study-2/hemp-hop-cover.png'
 import Footer from '../components/Footer'
 
@@ -66,12 +66,7 @@ const CaseStudyHempHop = () => {
     return (
         <div className="cs2-page">
 
-            {/* ── BREADCRUMB NAV ── */}
-            <div className="cs2-breadcrumb">
-                <Link to="/work" className="cs2-breadcrumb-link">← Back to Work</Link>
-                <span className="cs2-breadcrumb-sep">/</span>
-                <span className="cs2-breadcrumb-current">Hemp Hop Redesign</span>
-            </div>
+
 
             {/* ══════════════════════════════════
           HERO

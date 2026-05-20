@@ -7,14 +7,21 @@
   z-index: 1000;
   padding: 10px 2rem;
   border-bottom: 1px solid transparent;
-  transition: background-color 0.3s ease, border-color 0.3s ease, padding 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease, padding 0.3s ease, transform 0.35s ease, opacity 0.35s ease;
+}
+
+/* Hide navbar when sub-navbar takes over (scroll-down on case-study pages) */
+.navbar.nav-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .navbar.scrolled {
-  background-color: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid #f0f0f0;
   padding: 8px 2rem;
 }
 
@@ -29,14 +36,16 @@
 .navbar-logo {
   font-size: 1rem;
   font-weight: 600;
-  color: #000000 !important;
+  color: #0D0D0D !important;
   cursor: pointer;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .logo-year {
   font-weight: 400;
-  color: #000000 !important;
+  color: #666666 !important;
+  transition: color 0.3s ease;
 }
 
 .navbar-links {
@@ -55,7 +64,7 @@
 }
 
 .navbar-links a {
-  color: #000000 !important;
+  color: #0D0D0D !important;
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 400;
@@ -71,8 +80,8 @@
   bottom: 0;
   left: 0;
   width: 0;
-  height: 1px;
-  background-color: #000000;
+  height: 1.5px;
+  background-color: var(--accent);
   transition: width 0.3s ease;
 }
 
@@ -81,12 +90,12 @@
 }
 
 .navbar-links a:hover {
-  font-weight: 700;
-  color: #000000 !important;
+  color: var(--accent) !important;
 }
 
-/* Hide Contact link on desktop (shown in mobile menu only) */
-.navbar-links li:has(a[href="/contact"]) {
+/* Hide Contact, LinkedIn, and Resume links on desktop */
+.navbar-links li:has(a[href="/contact"]),
+.navbar-links li.mobile-only {
   display: none;
 }
 
@@ -95,24 +104,23 @@
   align-items: center;
   gap: 0.75rem;
   padding: 10px 24px;
-  border: 2px solid #000000;
+  border: 1.5px solid var(--accent);
   border-radius: 50px;
-  background-color: #000000;
+  background-color: var(--accent);
   color: #ffffff !important;
   font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  opacity: 1;
-  visibility: visible;
 }
 
 .lets-talk-btn:hover {
-  background-color: transparent;
-  color: #000000 !important;
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: #ffffff !important;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
 }
 
 .arrow-icon {
@@ -125,7 +133,85 @@
   transform: translateX(3px);
 }
 
-/* Hamburger Menu Icon - Untitled UI Style */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Plain link — same style as Home / About / Work nav items */
+.navbar-plain-link {
+  display: inline-flex;
+  align-items: center;
+  color: #0D0D0D !important;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 400;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  padding: 0.25rem 0;
+  background: none;
+  border: none;
+}
+
+.navbar-plain-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background-color: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.navbar-plain-link:hover::after {
+  width: 100%;
+}
+
+.navbar-plain-link:hover {
+  color: var(--accent) !important;
+}
+
+.navbar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar-btn.secondary {
+  background-color: #ffffff;
+  color: #0D0D0D !important;
+  border: 1.5px solid rgba(0, 0, 0, 0.2);
+}
+
+.navbar-btn.secondary:hover {
+  background-color: var(--accent-subtle);
+  border-color: var(--accent);
+  color: var(--accent) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-btn .external-icon {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.3s ease;
+}
+
+.navbar-btn:hover .external-icon {
+  transform: translate(2px, -2px);
+}
+
+
 .hamburger-menu {
   display: none;
   flex-direction: column;
@@ -145,18 +231,16 @@
   display: block;
   width: 20px;
   height: 1.5px;
-  background-color: #000000;
+  background-color: #FFFFFF;
   border-radius: 1px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hamburger-menu:hover span {
-  background-color: #666666;
+  background-color: var(--accent);
 }
 
 @media (max-width: 968px) {
-
-  /* Add padding to body for fixed navbar */
   body {
     padding-top: 65px;
   }
@@ -167,10 +251,10 @@
     left: 0 !important;
     right: 0 !important;
     width: 100%;
-    background-color: #ffffff;
+    background-color: #0D0D0D;
     z-index: 1000;
     padding: 0.75rem 1.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
   }
 
   .navbar-container {
@@ -181,9 +265,14 @@
     display: none;
   }
 
+  .navbar-actions {
+    display: none !important;
+  }
+
   .lets-talk-btn {
     display: none;
   }
+
 
   .hamburger-menu {
     display: flex;
@@ -193,35 +282,29 @@
     width: 40px;
     height: 40px;
     padding: 4px;
-    align-items: flex-end;
-    /* Align bars to the right if needed, though usually center */
     align-items: center;
   }
 
   .hamburger-menu span {
-    width: 32px;
-    height: 4px;
-    /* Thicker bars */
-    background-color: #000000;
-    border-radius: 4px;
-    /* Rounded corners */
+    width: 22px;
+    height: 2px;
+    background-color: #FFFFFF;
+    border-radius: 2px;
   }
 
-  /* Mobile Menu Dropdown Card Style */
   .navbar-links.mobile-menu-open {
     display: flex;
     flex-direction: column;
     position: fixed;
     top: 75px;
-    /* Offset from navbar */
     right: 1.5rem;
     left: auto !important;
     width: 220px;
-    background-color: #ffffff;
+    background-color: #1A1A1A;
     padding: 1.5rem;
     border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-    border: 1px solid #f0f0f0;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    border: 1px solid #2A2A2A;
     gap: 0;
     z-index: 999;
     transform-origin: top right;
@@ -229,15 +312,8 @@
   }
 
   @keyframes scaleIn {
-    from {
-      opacity: 0;
-      transform: scale(0.95);
-    }
-
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
+    from { opacity: 0; transform: scale(0.95); }
+    to   { opacity: 1; transform: scale(1); }
   }
 
   .navbar-links.mobile-menu-open li {
@@ -245,7 +321,7 @@
     display: block !important;
     margin-bottom: 1rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid #2A2A2A;
     text-align: left;
   }
 
@@ -257,15 +333,14 @@
 
   .navbar-links.mobile-menu-open a {
     display: block;
-    color: #000000 !important;
+    color: #FFFFFF !important;
     font-size: 1.1rem;
     font-weight: 500;
-    padding: 0.5rem 0.5rem;
+    padding: 0.5rem;
   }
 
-  /* Style the "Let's Talk" link as a button */
   .navbar-links.mobile-menu-open li:last-child a {
-    background-color: #000000;
+    background-color: var(--accent);
     color: #ffffff !important;
     text-align: center;
     border-radius: 50px;
@@ -275,57 +350,23 @@
   }
 
   .navbar-links.mobile-menu-open li:last-child a:hover {
-    background-color: #333333;
-    opacity: 1;
+    background-color: var(--accent-hover);
   }
 
-  /* Hamburger animation */
-  .hamburger-menu.open span:nth-child(1) {
-    transform: rotate(45deg) translate(8px, 8px);
-  }
-
-  .hamburger-menu.open span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .hamburger-menu.open span:nth-child(3) {
-    transform: rotate(-45deg) translate(8px, -8px);
-  }
+  .hamburger-menu.open span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
+  .hamburger-menu.open span:nth-child(2) { opacity: 0; }
+  .hamburger-menu.open span:nth-child(3) { transform: rotate(-45deg) translate(8px, -8px); }
 }
 
 @media (max-width: 768px) {
-  .navbar {
-    padding: 0.75rem 1.5rem;
-  }
-
-  .navbar-logo {
-    font-size: 0.9rem;
-  }
-
-  .lets-talk-btn {
-    padding: 10px 20px;
-    font-size: 0.8rem;
-  }
+  .navbar { padding: 0.75rem 1.5rem; }
+  .navbar-logo { font-size: 0.9rem; }
 }
 
 @media (max-width: 480px) {
-  .navbar {
-    padding: 0.95rem 1.25rem;
-  }
-
-  .navbar-logo {
-    font-size: 0.85rem;
-  }
-
-  .lets-talk-btn {
-    padding: 10px 20px;
-    font-size: 0.75rem;
-  }
-
-  .arrow-icon {
-    width: 14px;
-    height: 14px;
-  }
+  .navbar { padding: 0.95rem 1.25rem; }
+  .navbar-logo { font-size: 0.85rem; }
+  .arrow-icon { width: 14px; height: 14px; }
 }
 
 .logo-image {

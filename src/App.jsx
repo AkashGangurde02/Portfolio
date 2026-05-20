@@ -13,7 +13,6 @@ import ExperienceNonTechnical from './pages/ExperienceNonTechnical'
 import ExperienceSomvanshi from './pages/ExperienceSomvanshi'
 import DinoGame from './pages/DinoGame'
 
-import SmoothScroll from './components/SmoothScroll'
 import CursorFollower from './components/CursorFollower'
 import ScrollToTop from './components/ScrollToTop'
 import ScrollToTopButton from './components/ScrollToTopButton'
@@ -31,35 +30,33 @@ function App() {
       <ScrollToTop />
       {/* <IntroOverlay /> */}
       <CursorFollower />
-      <SmoothScroll>
-        <div className="App">
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/work" element={<Work />} />
-            {/* <Route path="/blog" element={<Blog />} /> */}
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/case-study" element={<CaseStudyContactForm />} />
-            <Route path="/case-study/hemp-hop" element={
-              <PasswordProtectedRoute>
-                <CaseStudyHempHop />
-              </PasswordProtectedRoute>
-            } />
-            <Route path="/case-study/grubwala" element={
-              <PasswordProtectedRoute>
-                <CaseStudyGrubwala />
-              </PasswordProtectedRoute>
-            } />
-            <Route path="/experience/robotics" element={<ExperienceRobotics />} />
-            <Route path="/experience/non-technical" element={<ExperienceNonTechnical />} />
-            <Route path="/experience/somvanshi" element={<ExperienceSomvanshi />} />
-            <Route path="/dino-game" element={<DinoGame />} />
-          </Routes>
-          <WhatsAppFloat />
-          <ScrollToTopButton />
-        </div>
-      </SmoothScroll>
+      <div className="App">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/work" element={<Work />} />
+          {/* <Route path="/blog" element={<Blog />} /> */}
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/case-study" element={<CaseStudyContactForm />} />
+          <Route path="/case-study/hemp-hop" element={
+            <PasswordProtectedRoute>
+              <CaseStudyHempHop />
+            </PasswordProtectedRoute>
+          } />
+          <Route path="/case-study/grubwala" element={
+            <PasswordProtectedRoute>
+              <CaseStudyGrubwala />
+            </PasswordProtectedRoute>
+          } />
+          <Route path="/experience/robotics" element={<ExperienceRobotics />} />
+          <Route path="/experience/non-technical" element={<ExperienceNonTechnical />} />
+          <Route path="/experience/somvanshi" element={<ExperienceSomvanshi />} />
+          <Route path="/dino-game" element={<DinoGame />} />
+        </Routes>
+        <WhatsAppFloat />
+        <ScrollToTopButton />
+      </div>
     </Router>
   )
 }

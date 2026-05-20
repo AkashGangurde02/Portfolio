@@ -3,144 +3,101 @@ import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './WorksSection.css'
+import '../pages/Work.css'
 import contactFormImage from '../images/case-studies/case-study-1/contact-redesign.jpg'
 import hempHopImage from '../images/case-studies/case-study-2/hemp-hop-cover.png'
-import grubwalaImage from '../images/case-studies/case-study-3/grubwala-cover.png'
+import grubwalaImage from '../images/case-studies/case-study-3/grubwala-cover.jpg'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const WorksSection = () => {
   const sectionRef = useRef(null)
-  const featuredRef = useRef(null)
   const projectsRef = useRef(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(featuredRef.current, {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 95%',
-          toggleActions: 'play none none reverse'
-        },
-        scale: 0.95,
-        opacity: 1,
-        duration: 0.8,
-        ease: 'power3.out'
-      })
-
       gsap.from(projectsRef.current.children, {
         scrollTrigger: {
           trigger: projectsRef.current,
-          start: 'top 100%',
+          start: 'top 95%',
           toggleActions: 'play none none reverse'
         },
         y: 40,
-        opacity: 1,
+        opacity: 0,
         duration: 0.6,
         stagger: 0.15,
-        ease: 'power3.out'
+        ease: 'power3.out',
+        clearProps: 'all'
       })
     }, sectionRef)
 
     return () => ctx.revert()
   }, [])
 
-  const featuredProject = {
-    id: 1,
-    title: 'Reducing friction in lead capture workflows (B2B website)',
-    category: 'UX/UI REDESIGN',
-    description: 'Users were abandoning a critical contact form mid-way due to unclear field labels, confusing error states, and a fragmented layout. Redesigned the end-to-end form experience — improving validation logic, error messaging, and visual hierarchy — resulting in a 40% increase in completion rates.',
-    image: contactFormImage,
-    link: '/case-study'
-  }
-
   const projects = [
-    // {
-    //   id: 2,
-    //   title: 'Improving Product Discovery & Trust',
-    //   category: 'E-COMMERCE UX',
-    //   description: 'Redesigned the product and collection pages of a D2C wellness e-commerce platform to improve product discovery, information clarity, and purchase confidence.',
-    //   image: hempHopImage,
-    //   link: '/case-study/hemp-hop',
-    //   ctaText: 'View Case Study'
-    // },
-    // {
-    //   id: 3,
-    //   title: 'Rebuilding a Trust-First Food Ordering Experience',
-    //   category: 'MOBILE APP UX',
-    //   description: 'Led the end-to-end UX redesign of a food delivery platform, improving usability, strengthening user trust, and creating a more emotionally engaging ordering experience.',
-    //   image: grubwalaImage,
-    //   link: '/case-study/grubwala',
-    //   ctaText: 'View Case Study'
-    // },
-    // {
-    //   id: 4,
-    //   title: 'Flexible build system',
-    //   category: 'BUILD',
-    //   description: 'Powered by Gradle, Android Studio\'s build system lets you customize your build to generate multiple build variants for different Android devices from a single project.',
-    //   image: 'https://via.placeholder.com/600x400/e8e8e8/666666?text=Estatery+Project',
-    //   link: '#',
-    //   ctaText: 'More about Android Build'
-    // },
-    // {
-    //   id: 5,
-    //   title: 'Easily emulate any device',
-    //   category: 'TEST',
-    //   description: 'The Android Emulator lets you to test your application on a variety of Android devices. Unlock the full potential of your apps by using responsive layouts.',
-    //   image: 'https://via.placeholder.com/600x400/e8e8e8/666666?text=Wepay+Project',
-    //   link: '#',
-    //   ctaText: 'Use Android Emulator'
-    // }
+    {
+      id: 1,
+      title: 'Reducing friction in lead capture workflows (B2B website)',
+      category: 'UX/UI REDESIGN',
+      description: 'Users were abandoning a critical contact form mid-way due to unclear field labels, confusing error states, and a fragmented layout. Redesigned the end-to-end form experience — improving validation logic, error messaging, and visual hierarchy — resulting in a 40% increase in completion rates.',
+      image: contactFormImage,
+      link: '/case-study',
+      ctaText: 'View Case Study'
+    },
+    {
+      id: 2,
+      title: 'Improving Product Discovery & Trust',
+      category: 'E-COMMERCE UX',
+      description: 'Redesigned the product and collection pages of a D2C wellness e-commerce platform to improve product discovery, information clarity, and purchase confidence.',
+      image: hempHopImage,
+      link: '/case-study/hemp-hop',
+      ctaText: 'View Case Study'
+    },
+    {
+      id: 3,
+      title: 'Rebuilding a Trust-First Food Ordering Experience',
+      category: 'MOBILE APP UX',
+      description: 'Led the end-to-end UX redesign of a food delivery platform, improving usability, strengthening user trust, and creating a more emotionally engaging ordering experience.',
+      image: grubwalaImage,
+      link: '/case-study/grubwala',
+      ctaText: 'View Case Study'
+    }
   ]
 
   return (
     <section ref={sectionRef} id="work" className="works-section">
-      <div className="works-container">
-        {/* Featured Project */}
-        <div ref={featuredRef} className="featured-work-card">
-          <div className="featured-image-wrapper">
-            <img
-              src={featuredProject.image}
-              alt={featuredProject.title}
-              className="featured-image"
-            />
-          </div>
-
-          <div className="featured-content">
-            <span className="featured-category">{featuredProject.category}</span>
-            <h2 className="featured-title">{featuredProject.title}</h2>
-            <p className="featured-description">{featuredProject.description}</p>
-            <Link to={featuredProject.link} className="featured-cta">
-              View Case Study
-            </Link>
-          </div>
-        </div>
-
-        {/* Regular Projects Grid */}
-        <div ref={projectsRef} className="works-grid">
+      <div className="work-container">
+        
+        {/* Projects Grid */}
+        <div ref={projectsRef} className="wc-grid">
           {projects.map((project) => (
-            <div key={project.id} className="work-card">
-              <span className="work-category-label">{project.category}</span>
-              <h3 className="work-title">{project.title}</h3>
-              <p className="work-description">{project.description}</p>
+            <Link key={project.id} to={project.link} className="wc-card">
+                {/* Image */}
+                <div className="wc-image-wrap">
+                    <img src={project.image} alt={project.title} className="wc-image" />
+                </div>
 
-              <Link to={project.link} className="featured-cta">
-                {project.ctaText}
-              </Link>
+                {/* Body */}
+                <div className="wc-body">
+                    <h3 className="wc-title">{project.title}</h3>
+                    <p className="wc-desc">{project.description}</p>
+                </div>
 
-              <div className="work-image-wrapper">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="work-image"
-                />
-              </div>
-            </div>
+                {/* CTA */}
+                <div className="wc-footer">
+                    <span className="wc-cta-link">
+                        {project.ctaText}
+                        <svg className="wc-cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </span>
+                </div>
+            </Link>
           ))}
         </div>
 
         {/* View All Works Link */}
-        <div className="view-all-wrapper">
+        <div className="view-all-wrapper" style={{ marginTop: '3rem' }}>
           <Link to="/work" className="view-all-link">
             View All Works
             <svg className="arrow-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">

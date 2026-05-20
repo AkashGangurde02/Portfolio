@@ -15,7 +15,7 @@
     padding: 0;
     height: 60px;
     /* Increased height for the subnav */
-    transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+    transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease, top 0.35s ease;
 }
 
 /* Visibility states — triggered by scroll (same as WhatsApp button) */
@@ -31,6 +31,12 @@
     visibility: visible;
     transform: translateY(0);
     pointer-events: auto;
+}
+
+/* When the main navbar slides away, promote sub-navbar to the top */
+.navbar.nav-hidden ~ * .home-sub-navbar.sub-nav-visible,
+body:has(.navbar.nav-hidden) .home-sub-navbar.sub-nav-visible {
+    top: 0;
 }
 
 .sub-nav-container {
@@ -73,20 +79,20 @@
 }
 
 .sub-nav-item.active {
-    color: #1a73e8;
-    /* Blue active color */
+    color: var(--accent);
+    /* Active color from design token */
     font-weight: 500;
     background: transparent;
     box-shadow: none;
 }
 
-/* Sliding Blue Indicator */
+/* Sliding Indicator */
 .sub-nav-indicator {
     position: absolute;
     bottom: 0;
     left: 0;
     height: 3px;
-    background-color: #1a73e8;
+    background-color: var(--accent);
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1),
