@@ -16,7 +16,7 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 8rem;
+  gap: clamp(3rem, 6vw, 8rem);
   align-items: center;
 }
 
@@ -170,7 +170,15 @@
 /* ══════════════════════════════════════════════════════════════
    RESPONSIVE
 ══════════════════════════════════════════════════════════════ */
+@media (max-width: 1280px) {
+  .impact-inner {
+    gap: 4rem;
+  }
+}
+
 @media (max-width: 1024px) {
+  .impact-section { padding: 5rem 2rem; }
+
   .impact-inner {
     grid-template-columns: 1fr;
     gap: 3rem;

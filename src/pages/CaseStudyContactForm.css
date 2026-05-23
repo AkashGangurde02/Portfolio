@@ -4,7 +4,7 @@
 .cfu-page { font-family:'Inter',sans-serif; background:var(--bg-page); color:var(--text-body); -webkit-font-smoothing:antialiased; }
 
 /* HERO */
-.cfu-hero { max-width:1400px; margin:0 auto; padding:8rem 0 5rem; display:grid; grid-template-columns:1fr 1.3fr; gap:4rem; align-items:center; min-height:90vh; }
+.cfu-hero { max-width:1400px; margin:0 auto; padding:8rem 2rem 5rem; display:grid; grid-template-columns:1fr 1.3fr; gap:4rem; align-items:center; min-height:90vh; }
 .cfu-hero-tag { display:inline-block; font-size:.7rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--text-faint); background:var(--bg-alt); border:1px solid var(--border); padding:.4rem 1rem; border-radius:100px; margin-bottom:1.75rem; }
 .cfu-title { font-size:clamp(2.4rem,4.5vw,3.8rem); font-weight:800; line-height:1.05; letter-spacing:-.04em; color:var(--text-primary); margin-bottom:1.25rem; }
 .cfu-accent { color:var(--text-muted); font-style:italic; }
@@ -25,7 +25,7 @@
 .cfu-main-content {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0;
+  padding: 0 2rem;
   display: grid;
   grid-template-columns: 255px 1fr;
   gap: 3rem;
@@ -466,6 +466,24 @@
   max-width: 460px;
 }
 
+/* Audit slider additional responsive */
+@media (max-width: 680px) {
+  .cfu-aud-root {
+    padding: 1.5rem 1rem;
+    gap: 2rem;
+    border-radius: 16px;
+  }
+  .cfu-aud-item-title {
+    font-size: 0.9rem;
+  }
+  .cfu-aud-content-title {
+    font-size: 1.1rem;
+  }
+  .cfu-aud-content-desc {
+    font-size: 0.88rem;
+  }
+}
+
 /* OUTCOME SECTION */
 .cfu-outcome-card {
   padding: 2rem;
@@ -483,31 +501,31 @@
 
 /* RESPONSIVE */
 @media(max-width:1024px){
-  .cfu-hero { grid-template-columns:1fr; min-height:auto; gap:3rem; padding: 2rem 1.5rem; }
+  .cfu-hero { grid-template-columns:1fr; min-height:auto; gap:3rem; padding: 6rem 2rem 4rem; }
   .cfu-hero-visual { justify-self: center; }
   .cfu-main-content { gap: 3.5rem; }
   .cfu-goals-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media(max-width:968px){
-  .cfu-main-content { grid-template-columns: 1fr; }
+  .cfu-main-content { grid-template-columns: 1fr; padding: 0 2rem; }
   .cfu-toc-area { display: none; }
   .cfu-ba-grid { grid-template-columns: 1fr; }
   .cfu-cards-grid { grid-template-columns: 1fr; }
 }
 
 @media(max-width:768px){
-  .cfu-hero { padding: 2.5rem 1rem 3rem; }
-  .cfu-title { font-size:2.2rem; }
+  .cfu-hero { padding: 4rem 1.5rem 3rem; }
+  .cfu-title { font-size: clamp(1.9rem, 6vw, 2.6rem); }
   .cfu-meta-row { flex-direction:column; }
   .cfu-meta-item { border-right:none; border-bottom:1px solid var(--border); }
   .cfu-meta-item:last-child { border-bottom:none; }
   
-  .cfu-main-content { padding: 0 1rem; }
+  .cfu-main-content { padding: 0 1.25rem; }
   .cfu-cta { padding: 4rem 1.5rem; }
   
-  .cfu-flow-section-title { font-size: 1.4rem; }
-  .cfu-body { font-size: 0.95rem; }
+  .cfu-flow-section-title { font-size: 1.35rem; }
+  .cfu-body { font-size: 0.92rem; }
   .cfu-metric { font-size: 2.5rem; }
   .cfu-aud-root { grid-template-columns: 1fr; gap: 2.5rem; padding: 2rem 1.5rem; }
   .cfu-aud-content-title { font-size: 1.25rem; }
@@ -517,8 +535,15 @@
   .cfu-improvements-grid { grid-template-columns: 1fr; }
 }
 
+@media(max-width:640px){
+  .cfu-ba-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .cfu-ba-panel { padding: 1.25rem; }
+  .cfu-goal-card { padding: 1.25rem 1rem; }
+}
+
 @media(max-width:480px){ 
-  .cfu-hero { padding: 2rem 1rem 3rem; }
-  .cfu-title { font-size:1.9rem; }
+  .cfu-hero { padding: 3rem 1rem 2.5rem; }
+  .cfu-title { font-size: clamp(1.6rem, 7vw, 2rem); }
+  .cfu-main-content { padding: 0 1rem; }
   .cfu-cta { padding: 3rem 1rem; }
 }

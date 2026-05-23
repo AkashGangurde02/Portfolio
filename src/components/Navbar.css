@@ -236,6 +236,11 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* When navbar is scrolled (white bg), make hamburger dark */
+.navbar.scrolled .hamburger-menu span {
+  background-color: #0D0D0D;
+}
+
 .hamburger-menu:hover span {
   background-color: var(--accent);
 }
@@ -255,6 +260,14 @@
     z-index: 1000;
     padding: 0.75rem 1.5rem;
     box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  }
+
+  .navbar-logo {
+    color: #FFFFFF !important;
+  }
+
+  .logo-year {
+    color: #999999 !important;
   }
 
   .navbar-container {
@@ -279,10 +292,13 @@
     flex-direction: column;
     justify-content: center;
     gap: 7px;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     padding: 4px;
     align-items: center;
+    /* Hamburger always dark on mobile dark navbar */
+    background: transparent;
+    border: none;
   }
 
   .hamburger-menu span {

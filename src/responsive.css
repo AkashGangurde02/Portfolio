@@ -1060,10 +1060,10 @@ img {
    GLOBAL SECTION PADDING NORMALIZATION
    ============================================================ */
 @media (max-width: 768px) {
-  /* Prevent any section from having too wide horizontal padding */
+  /* Prevent any section from having too wide horizontal padding.
+     Case study containers (gw-*, cfu-*) handle their own padding. */
   .hero-container,
   .works-container,
-  .about-container,
   .impact-inner,
   .testimonials-container,
   .insights-container,
@@ -1075,6 +1075,33 @@ img {
   .work-container {
     padding-left: 0;
     padding-right: 0;
+  }
+}
+
+/* ============================================================
+   ULTRA-WIDE SCREENS (≥1600px) — Prevent over-stretching
+   ============================================================ */
+@media (min-width: 1600px) {
+  /* Ensure case study pages have breathing room on huge monitors */
+  .gw-hero,
+  .cfu-hero,
+  .gw-main-content,
+  .cfu-main-content {
+    max-width: 1600px;
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  /* Works section ultra-wide */
+  .work-container {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  /* About section */
+  .about-section {
+    padding-left: 4rem;
+    padding-right: 4rem;
   }
 }
 
@@ -1097,7 +1124,14 @@ img {
   .cs2-problem-card:hover,
   .cs2-impact-card:hover,
   .modern-work-card:hover,
-  .featured-card:hover {
+  .featured-card:hover,
+  .wc-card:hover,
+  .gw-info-card:hover,
+  .ord-audit-card:hover,
+  .ord-goal-card:hover,
+  .ord-competitor-card:hover,
+  .cfu-audit-card:hover,
+  .cfu-goal-card:hover {
     transform: none !important;
   }
 }

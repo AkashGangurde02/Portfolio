@@ -259,19 +259,8 @@ body {
     }
 }
 
-/* Smooth transitions for mobile */
-@media (max-width: 768px) {
-    * {
-        transition-duration: 0.2s !important;
-    }
-
-    /* Faster animations on mobile */
-    [class*="animate"],
-    [class*="transition"] {
-        animation-duration: 0.3s !important;
-        transition-duration: 0.2s !important;
-    }
-}
+/* NOTE: Blanket transition-duration override removed — it killed GSAP & Framer Motion.
+   Animations are now handled per-component or via prefers-reduced-motion below. */
 
 /* iOS-specific fixes */
 @supports (-webkit-touch-callout: none) {

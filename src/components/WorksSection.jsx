@@ -48,7 +48,7 @@ const WorksSection = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Header fade-in
-      gsap.from('.wc-header', {
+      gsap.from('.wsc-header', {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top 90%',
@@ -91,18 +91,29 @@ const WorksSection = () => {
   const scrollCards = (dir) => {
     const el = cardsRef.current
     if (!el) return
-    el.scrollBy({ left: dir * 340, behavior: 'smooth' })
+    const firstCard = el.querySelector('.wsc-card')
+    const scrollAmount = firstCard ? firstCard.clientWidth : 340
+    el.scrollBy({ left: dir * scrollAmount, behavior: 'smooth' })
     setTimeout(updateScrollButtons, 400)
   }
+
+  useEffect(() => {
+    const timer = setTimeout(updateScrollButtons, 100)
+    window.addEventListener('resize', updateScrollButtons)
+    return () => {
+      clearTimeout(timer)
+      window.removeEventListener('resize', updateScrollButtons)
+    }
+  }, [])
 
   return (
     <section ref={sectionRef} id="work" className="works-section">
       <div className="work-container">
 
         {/* ── Header row ── */}
-        <div className="wc-header">
-          <h2 className="wc-section-title">Selected Works</h2>
-          <Link to="/work" className="wc-view-all-btn">
+        <div className="wsc-header">
+          <h2 className="wsc-section-title">Selected Works</h2>
+          <Link to="/work" className="wsc-view-all-btn">
             View all works
           </Link>
         </div>
@@ -110,26 +121,26 @@ const WorksSection = () => {
         {/* ── Cards grid ── */}
         <div
           ref={cardsRef}
-          className="wc-grid"
+          className="wsc-grid"
           onScroll={updateScrollButtons}
         >
           {projects.map((project) => (
-            <Link key={project.id} to={project.link} className="wc-card">
+            <Link key={project.id} to={project.link} className="wsc-card">
               {/* Thumbnail */}
-              <div className="wc-image-wrap">
-                <img src={project.image} alt={project.title} className="wc-image" />
+              <div className="wsc-image-wrap">
+                <img src={project.image} alt={project.title} className="wsc-image" />
               </div>
 
               {/* Info */}
-              <div className="wc-body">
-                <h3 className="wc-title">{project.title}</h3>
-                <div className="wc-meta">
-                  <span className="wc-date">{project.date}</span>
-                  <span className="wc-category">{project.category}</span>
+              <div className="wsc-body">
+                <h3 className="wsc-title">{project.title}</h3>
+                <div className="wsc-meta">
+                  <span className="wsc-date">{project.date}</span>
+                  <span className="wsc-category">{project.category}</span>
                 </div>
-                <span className="wc-cta-link">
+                <span className="wsc-cta-link">
                   View case study
-                  <svg className="wc-cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none">
+                  <svg className="wsc-cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none">
                     <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </span>
@@ -139,9 +150,9 @@ const WorksSection = () => {
         </div>
 
         {/* ── Scroll nav arrows (mobile) ── */}
-        <div className="wc-nav-arrows">
+        <div className="wsc-nav-arrows">
           <button
-            className={`wc-nav-btn ${!canScrollLeft ? 'wc-nav-btn--disabled' : ''}`}
+            className={`wsc-nav-btn ${!canScrollLeft ? 'wsc-nav-btn--disabled' : ''}`}
             onClick={() => scrollCards(-1)}
             aria-label="Scroll left"
           >
@@ -150,7 +161,7 @@ const WorksSection = () => {
             </svg>
           </button>
           <button
-            className={`wc-nav-btn ${!canScrollRight ? 'wc-nav-btn--disabled' : ''}`}
+            className={`wsc-nav-btn ${!canScrollRight ? 'wsc-nav-btn--disabled' : ''}`}
             onClick={() => scrollCards(1)}
             aria-label="Scroll right"
           >

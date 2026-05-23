@@ -250,7 +250,6 @@
     text-align: center;
   }
 
-
   /* Center nav links */
   .footer-nav {
     flex-direction: column;
@@ -301,9 +300,38 @@
   }
 
   .footer-main {
-    gap: 3rem;
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
+    gap: 2.5rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  /* On small mobile, use a 2-column grid for nav links */
+  .footer-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 2rem;
+    justify-items: center;
+    width: 100%;
+  }
+
+  .footer-nav-link {
+    font-size: 0.95rem;
+    padding: 0.4rem 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .footer {
+    padding: 2.5rem 1rem 1.5rem;
+  }
+
+  .footer-nav {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .footer-heading {
+    font-size: clamp(0.9rem, 5vw, 1.5rem);
   }
 }
 
