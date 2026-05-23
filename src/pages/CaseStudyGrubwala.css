@@ -711,10 +711,10 @@
 
 .aud-root {
   margin-top: 2.5rem;
-  padding: 2.5rem 2.5rem;
-  background: var(--border-faint);
-  border: 1px solid var(--border);
-  border-radius: 20px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
 }
 
 .aud-desktop-layout {
@@ -874,20 +874,7 @@
 
 /* Active Open Accordion Item styling matching client mockup */
 .aud-accordion-item.open {
-  border: 1.5px solid var(--accent); /* Brand accent border */
-  border-radius: 12px;
-  background: var(--bg-card);
-  padding: 0 1rem;
-  margin: 0.75rem 0;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.03);
-}
-
-.aud-accordion-item.open:first-child {
-  margin-top: 0;
-}
-
-.aud-accordion-item.open:last-child {
-  margin-bottom: 0;
+  background: transparent;
 }
 
 .aud-accordion-item.open .aud-accordion-header {
@@ -923,7 +910,7 @@
 /* Responsive */
 @media (max-width: 860px) {
   .aud-root {
-    padding: 1.5rem 1.25rem !important;
+    padding: 0 !important;
   }
   .aud-desktop-layout {
     display: none !important;
@@ -934,7 +921,7 @@
 }
 @media (max-width: 680px) {
   .aud-root {
-    padding: 1.25rem 1rem !important;
+    padding: 0 !important;
   }
   .aud-accordion-title {
     font-size: 0.92rem;
