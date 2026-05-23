@@ -1,5 +1,5 @@
 .contact-section {
-  padding: 8rem 2rem 4rem;
+  padding: 6rem 2rem;
   background-color: #fafafa;
   min-height: 100vh;
 }
@@ -229,7 +229,7 @@ submit-btn .arrow-icon {
 
 @media (max-width: 768px) {
   .contact-section {
-    padding: 6rem 1.5rem 3rem;
+    padding: 4rem 1.5rem;
   }
 
   .contact-header {
@@ -253,5 +253,11 @@ submit-btn .arrow-icon {
   .submit-btn {
     width: 100%;
     justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 3rem 1rem;
   }
 }

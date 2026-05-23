@@ -15,28 +15,22 @@ const MarqueeStrip = () => {
     const blockItems = [...items, ...items]
 
     return (
-        <div className="marquee-container">
-            {/* The Grey Strip Behind */}
-            <div className="marquee-bg-strip"></div>
-
-            {/* The Main Black Strip */}
-            <div className="marquee-main-strip">
-                <div className="marquee-content">
-                    {/* First block */}
-                    {blockItems.map((item, index) => (
-                        <div key={`original-${index}`} className="marquee-item">
-                            <span>{item}</span>
-                            <span className="marquee-separator">✻</span>
-                        </div>
-                    ))}
-                    {/* Duplicate block for seamless loop */}
-                    {blockItems.map((item, index) => (
-                        <div key={`duplicate-${index}`} className="marquee-item">
-                            <span>{item}</span>
-                            <span className="marquee-separator">✻</span>
-                        </div>
-                    ))}
-                </div>
+        <div className="marquee-main-strip">
+            <div className="marquee-content">
+                {/* First block */}
+                {blockItems.map((item, index) => (
+                    <div key={`original-${index}`} className="marquee-item">
+                        <span>{item}</span>
+                        <span className="marquee-separator">✻</span>
+                    </div>
+                ))}
+                {/* Duplicate block for seamless loop */}
+                {blockItems.map((item, index) => (
+                    <div key={`duplicate-${index}`} className="marquee-item">
+                        <span>{item}</span>
+                        <span className="marquee-separator">✻</span>
+                    </div>
+                ))}
             </div>
         </div>
     )

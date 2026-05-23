@@ -90,6 +90,10 @@
 }
 
 @media (max-width: 480px) {
+  .skills-section {
+    padding: 3rem 1rem;
+  }
+
   .skill-category {
     padding: 1.5rem;
   }

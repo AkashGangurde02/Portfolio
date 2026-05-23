@@ -57,7 +57,7 @@
     }
 
     .about-title {
-        font-size: clamp(1.75rem, 5vw, 2.25rem);
+        font-size: clamp(1.5rem, 6.5vw, 2.25rem);
         margin-bottom: 1.5rem;
     }
 
@@ -193,6 +193,11 @@
         margin-bottom: 1.25rem;
     }
 
+    .experience-section .section-title {
+        font-size: clamp(1.2rem, 5vw, 1.5rem);
+        margin-bottom: 1.25rem;
+    }
+
     .section-text,
     .overview-text {
         font-size: 1rem;
@@ -253,7 +258,7 @@
     }
 
     .about-title {
-        font-size: clamp(1.5rem, 6vw, 2rem);
+        font-size: clamp(1.35rem, 6vw, 1.65rem);
         margin-bottom: 1.25rem;
     }
 

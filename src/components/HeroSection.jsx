@@ -6,54 +6,77 @@ import './HeroSectionNewButtons.css'
 import resumePDF from '../images/Akash_Gangurde.pdf'
 import profileImage from '../images/profile/about-image.jpg'
 import HireMeModal from './HireMeModal'
+import { BackgroundBeamsWithCollision } from './BackgroundBeamsWithCollision'
 
 const HeroSection = () => {
   const [isHireModalOpen, setIsHireModalOpen] = useState(false)
+  const [mousePos, setMousePos] = useState({ x: -9999, y: -9999 })
   const heroRef = useRef(null)
   const titleRef = useRef(null)
   const imageRef = useRef(null)
   const descRef = useRef(null)
   const ctaRef = useRef(null)
+  const eyebrowRef = useRef(null)
+  const statsRef = useRef(null)
+  const orbRef = useRef(null)
 
+  // Mouse-follow ambient orb
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePos({ x: e.clientX, y: e.clientY })
+    }
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
+
+  // GSAP entrance animations
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
 
       tl.fromTo(titleRef.current, {
-        y: 80,
-        opacity: 0
-      }, {
-        y: 0,
-        opacity: 1,
-        duration: 1.1,
-        delay: 0.2
-      })
+          y: 60,
+          opacity: 0
+        }, {
+          y: 0,
+          opacity: 1,
+          duration: 1.0,
+          delay: 0.1
+        })
         .fromTo(imageRef.current, {
-          y: 40,
+          y: 30,
           opacity: 0,
-          scale: 0.97
+          scale: 0.95
         }, {
           y: 0,
           opacity: 1,
           scale: 1,
-          duration: 0.7
+          duration: 0.6
         }, '-=0.7')
         .fromTo(descRef.current, {
-          y: 40,
+          y: 30,
           opacity: 0
         }, {
           y: 0,
           opacity: 1,
           duration: 0.7
         }, '-=0.5')
-        .fromTo(ctaRef.current, {
-          scale: 0.9,
+        .fromTo(statsRef.current, {
+          y: 20,
           opacity: 0
         }, {
-          scale: 1,
+          y: 0,
+          opacity: 1,
+          duration: 0.6
+        }, '-=0.5')
+        .fromTo(ctaRef.current, {
+          y: 16,
+          opacity: 0
+        }, {
+          y: 0,
           opacity: 1,
           duration: 0.5
-        }, '-=0.3')
+        }, '-=0.4')
     }, heroRef)
 
     return () => ctx.revert()
@@ -61,57 +84,62 @@ const HeroSection = () => {
 
   return (
     <>
-      <section ref={heroRef} id="home" className="hero-section">
-        <div className="hero-container">
+      {/* Mouse-follow ambient orb */}
+      <div
+        ref={orbRef}
+        className="hero-ambient-orb"
+        style={{
+          left: mousePos.x,
+          top: mousePos.y,
+        }}
+      />
 
-          {/* ── Main content block ── */}
+      <section ref={heroRef} id="home" className="hero-section">
+        <BackgroundBeamsWithCollision />
+        <div className="hero-container">
           <div className="hero-content">
 
-            {/* Profile image — visible on mobile, hidden on desktop via CSS */}
+            {/* Profile image — mobile only */}
             <div ref={imageRef} className="hero-profile-image">
               <img src={profileImage} alt="Akash Gangurde — UX Designer" />
             </div>
 
             {/* Headline */}
             <h1 ref={titleRef} className="hero-title">
-              Designing scalable UX systems{' '}
-              <span className="hero-title-highlight">for real-world products.</span>
+              Designing scalable{' '}
+              <span className="hero-title-highlight">UX systems</span>{' '}
+              for real-world products.
             </h1>
 
-            {/* Subheadline description */}
+            {/* Subtitle */}
             <p ref={descRef} className="hero-subtitle">
-              Senior Product Designer building end-to-end user experiences. Empowering SaaS, fintech, and consumer products with strategic design systems and high-converting flow structures.
+              UI/UX Designer building clean, intuitive, and user-centric digital experiences.
             </p>
 
-            {/* Key UX Impact Stats Grid (New Premium Addition) */}
-            <div className="hero-impact-stats">
-              <div className="impact-stat-card">
-                <span className="impact-stat-number">32%</span>
-                <div className="impact-stat-divider"></div>
-                <h4 className="impact-stat-title">Bounce Drop</h4>
-                <p className="impact-stat-desc">Through micro-interaction clarity and onboarding audits</p>
+            {/* Stats */}
+            <div ref={statsRef} className="hero-impact-stats">
+              <div className="impact-stat-item">
+                <span className="impact-stat-number">2000+</span>
+                <div className="impact-stat-divider" />
+                <h4 className="impact-stat-title">Users Impacted</h4>
               </div>
-
-              <div className="impact-stat-card">
-                <span className="impact-stat-number">4.8★</span>
-                <div className="impact-stat-divider"></div>
-                <h4 className="impact-stat-title">User Rating</h4>
-                <p className="impact-stat-desc">Targeted feedback loops and workflow refinement cycles</p>
+              <div className="impact-stat-item">
+                <span className="impact-stat-number">4+</span>
+                <div className="impact-stat-divider" />
+                <h4 className="impact-stat-title">Products Delivered</h4>
               </div>
-
-              <div className="impact-stat-card">
-                <span className="impact-stat-number">SaaS</span>
-                <div className="impact-stat-divider"></div>
+              <div className="impact-stat-item">
+                <span className="impact-stat-number">100%</span>
+                <div className="impact-stat-divider" />
                 <h4 className="impact-stat-title">End-to-End UX</h4>
-                <p className="impact-stat-desc">From research → workflows → developer-ready UI</p>
               </div>
             </div>
+
           </div>
 
-          {/* ── Footer — CTA ── */}
+          {/* CTA */}
           <div className="hero-footer">
-            {/* CTA Buttons */}
-            <div className="hero-cta-group" ref={ctaRef} style={{ gap: '16px' }}>
+            <div className="hero-cta-group" ref={ctaRef}>
               <button
                 onClick={() => setIsHireModalOpen(true)}
                 className="hero-cta-btn secondary"

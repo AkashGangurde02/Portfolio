@@ -1,0 +1,84 @@
+/* ============================================================
+   BACKGROUND BEAMS WITH COLLISION — adapted from Aceternity UI
+   ============================================================ */
+
+.beams-background-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* The collision line/boundary at the bottom */
+.beams-collision-boundary {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--border-subtle, #EEEEEE);
+  pointer-events: none;
+}
+
+/* Individual laser ray */
+.beams-laser-ray {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 56px; /* h-14 */
+  width: 1.5px;
+  border-radius: 9999px;
+  /* Premium violet-indigo-neon beam gradient */
+  background: linear-gradient(to top, #63B3ED, #9F7AEA, transparent);
+  box-shadow: 0 0 8px rgba(99, 179, 237, 0.4), 0 0 15px rgba(159, 122, 234, 0.2);
+  pointer-events: none;
+}
+
+/* Variations for beam height */
+.beam-h-6 {
+  height: 24px;
+}
+.beam-h-12 {
+  height: 48px;
+}
+.beam-h-20 {
+  height: 80px;
+}
+
+/* Explosion Container */
+.beams-explosion-container {
+  position: absolute;
+  z-index: 50;
+  width: 8px;
+  height: 8px;
+  pointer-events: none;
+}
+
+/* Flare/Glow at collision point */
+.beams-explosion-flare {
+  position: absolute;
+  left: -40px;
+  right: -40px;
+  top: 0;
+  margin: auto;
+  height: 2px;
+  width: 80px;
+  border-radius: 9999px;
+  background: linear-gradient(to right, transparent, #63B3ED, #9F7AEA, transparent);
+  filter: blur(1.5px);
+}
+
+/* Spark particles */
+.beams-explosion-spark {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, #63B3ED, #9F7AEA);
+  box-shadow: 0 0 3px rgba(99, 179, 237, 0.5);
+}

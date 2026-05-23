@@ -1,16 +1,15 @@
-/* ── CTA Button Group — consolidated in HeroSection.css ── */
-/* This file handles the secondary (outlined) button variant only */
+/* ── Secondary hero button — dark glass variant ── */
 
 .hero-cta-btn.secondary {
-  background-color: #ffffff;
-  color: #0D0D0D;
-  border: 1.5px solid rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #F2F2F2;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .hero-cta-btn.secondary:hover {
-  background-color: var(--accent-subtle);
-  border-color: var(--accent);
-  color: var(--accent);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.28);
+  color: #FFFFFF;
+  transform: translateY(-1px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.06);
 }

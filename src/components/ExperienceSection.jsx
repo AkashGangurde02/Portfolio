@@ -55,48 +55,50 @@ const ExperienceSection = forwardRef((props, ref) => {
 
     return (
         <section ref={ref} id="experience" className={`experience-section ${props.className || ''}`}>
-            <h2 ref={titleRef} className="section-title">My work experience</h2>
-            <div ref={listRef} className="experience-list">
-                {experiences.map((exp, index) => {
-                    let linkPath = null;
-                    if (exp.title === 'Software Team Member') linkPath = '/experience/robotics';
-                    else if (exp.title === 'Non-Technical Head (Design & Coordination)') linkPath = '/experience/non-technical';
-                    else if (exp.title === 'UX/UI Designer Intern') linkPath = '/experience/somvanshi';
+            <div className="experience-container">
+                <h2 ref={titleRef} className="section-title">My work experience</h2>
+                <div ref={listRef} className="experience-list">
+                    {experiences.map((exp, index) => {
+                        let linkPath = null;
+                        if (exp.title === 'Software Team Member') linkPath = '/experience/robotics';
+                        else if (exp.title === 'Non-Technical Head (Design & Coordination)') linkPath = '/experience/non-technical';
+                        else if (exp.title === 'UX/UI Designer Intern') linkPath = '/experience/somvanshi';
 
-                    const content = (
-                        <>
-                            <div className="experience-left-group">
-                                <img src={exp.logo} alt={`${exp.company} logo`} className="experience-logo" />
-                                <div className="experience-info">
-                                    <h3 className="experience-title">{exp.title}</h3>
-                                    <p className="experience-company">{exp.company}</p>
+                        const content = (
+                            <>
+                                <div className="experience-left-group">
+                                    <img src={exp.logo} alt={`${exp.company} logo`} className="experience-logo" />
+                                    <div className="experience-info">
+                                        <h3 className="experience-title">{exp.title}</h3>
+                                        <p className="experience-company">{exp.company}</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="experience-right">
-                                <span className="experience-period">{exp.period}</span>
-                                {linkPath && (
-                                    <svg className="experience-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                        <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                    </svg>
-                                )}
-                            </div>
-                        </>
-                    );
+                                <div className="experience-right">
+                                    <span className="experience-period">{exp.period}</span>
+                                    {linkPath && (
+                                        <svg className="experience-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                        </svg>
+                                    )}
+                                </div>
+                            </>
+                        );
 
-                    return linkPath ? (
-                        <Link
-                            key={index}
-                            to={linkPath}
-                            className="experience-item experience-item-clickable"
-                        >
-                            {content}
-                        </Link>
-                    ) : (
-                        <div key={index} className="experience-item">
-                            {content}
-                        </div>
-                    );
-                })}
+                        return linkPath ? (
+                            <Link
+                                key={index}
+                                to={linkPath}
+                                className="experience-item experience-item-clickable"
+                            >
+                                {content}
+                            </Link>
+                        ) : (
+                            <div key={index} className="experience-item">
+                                {content}
+                            </div>
+                        );
+                    })}
+                </div>
             </div>
         </section>
     )

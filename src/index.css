@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 * {
   margin: 0;
@@ -7,12 +7,12 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #F7F7F5;
+  background-color: #FFFFFF;
   color: #1A1A1A;
 }
 
@@ -21,7 +21,7 @@ a {
   color: inherit;
 }
 
-/* Apply Poppins to all buttons and button-like links, plus nav/social links */
+/* Apply Inter to all buttons and button-like links, plus nav/social links */
 button,
 .btn,
 .button,
@@ -33,33 +33,33 @@ button,
 .social-link,
 .footer-nav-link,
 .footer-social-link {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 /* Enable premium native smooth scrolling */
 html {
   scroll-behavior: smooth;
-  scrollbar-color: #E5E5E0 #F7F7F5;
+  scrollbar-color: #E5E5E0 #FFFFFF;
   scrollbar-width: thin;
 }
 
-/* Premium styled custom scrollbar for WebKit (Chrome, Safari, Edge) */
+/* Light custom scrollbar for WebKit */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F7F7F5; /* Sleek background matching body */
+  background: #FFFFFF;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #E5E5E0; /* Minimal premium gray thumb */
+  background: #E5E5E0;
   border-radius: 9999px;
-  border: 2.5px solid #F7F7F5; /* Elegant padding around thumb */
+  border: 2.5px solid #FFFFFF;
   transition: background 0.2s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #D1D1CB; /* Refined hover state */
+  background: #D1D1CB;
 }

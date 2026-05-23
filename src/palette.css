@@ -184,12 +184,8 @@ body {
   background-color: var(--bg-page) !important;
 }
 
-.marquee-bg-strip {
-  background-color: var(--border) !important;
-}
-
 .marquee-main-strip {
-  background-color: var(--dark-bg) !important;
+  background-color: #000000 !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════════

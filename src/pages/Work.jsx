@@ -96,7 +96,7 @@ const Work = () => {
 
             {/* ── Hero ── */}
             <section className="work-hero-modern">
-                <div className="work-container-narrow" ref={heroRef}>
+                <div className="work-container" ref={heroRef}>
                     <h1 className="work-headline-modern">Featured UX Case Studies</h1>
                     <p className="work-subheadline-modern">
                         A selected showcase of projects exploring user-centered design, problem-solving, and seamless digital experiences.

@@ -22,7 +22,7 @@ const CompanyFeedback = () => {
             date: 'October 2025',
             text: '\u201cAkash delivered outstanding performance across HempHop UI modules and the digital reconstruction of the Somvanshi Technologies homepage. He combined strong technical understanding with creativity and attention to detail, effectively implementing feedback to produce high-quality results. His in-depth research on IT leaders, hemp industries, and consumer behavior added strategic value to the team\u2019s approach, demonstrating initiative, cognitive strength, and professionalism.\u201d',
             author: 'Somvanshi Technologies Pvt. Ltd.',
-            rating: '10/10'
+            rating: '5/5'
         },
         {
             id: 3,
@@ -125,7 +125,7 @@ const CompanyFeedback = () => {
                 {/* ── HEADER ── */}
                 <div className="cf-header">
                     <h2 className="cf-title">
-                        Monthly Feedback <span className="cf-title-light">By My<br />Current Company</span>
+                        Internship Feedback
                     </h2>
                 </div>
 
