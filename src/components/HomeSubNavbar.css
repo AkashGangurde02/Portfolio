@@ -57,6 +57,9 @@ body:has(.navbar.nav-hidden) .home-sub-navbar.sub-nav-visible {
 .sub-nav-item {
     background: transparent;
     border: none;
+    outline: none;
+    box-shadow: none;
+    -webkit-tap-highlight-color: transparent;
     color: #5f6368;
     /* Google grey */
     font-size: 0.95rem;
@@ -71,6 +74,14 @@ body:has(.navbar.nav-hidden) .home-sub-navbar.sub-nav-visible {
     display: flex;
     align-items: center;
     border-radius: 0;
+}
+
+.sub-nav-item:focus,
+.sub-nav-item:focus-visible,
+.sub-nav-item:active {
+    outline: none;
+    border: none;
+    box-shadow: none;
 }
 
 .sub-nav-item:hover {
