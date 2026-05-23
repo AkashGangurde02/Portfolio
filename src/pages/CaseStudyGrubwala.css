@@ -990,22 +990,6 @@
   color: var(--text-primary, #111827);
 }
 
-.gw-tool-used-card--text-only {
-  background: transparent;
-  border: 1px dashed var(--border, #e5e7eb);
-}
-
-.gw-tool-used-card--text-only:hover {
-  border-color: var(--text-muted, #4b5563);
-  box-shadow: none;
-  transform: none;
-}
-
-.gw-tool-used-card--text-only .gw-tool-used-name {
-  font-weight: 500;
-  color: var(--text-muted, #4b5563);
-}
-
 @media (max-width: 480px) {
   .gw-tools-used-grid {
     gap: 0.5rem;

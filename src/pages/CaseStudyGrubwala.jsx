@@ -346,9 +346,6 @@ const OnboardingFlow = () => (
           <img src={notionIcon} alt="Notion" className="gw-tool-used-icon" />
           <span className="gw-tool-used-name">Notion</span>
         </div>
-        <div className="gw-tool-used-card gw-tool-used-card--text-only">
-          <span className="gw-tool-used-name">and other blogs</span>
-        </div>
       </div>
     </FlowSection>
 
