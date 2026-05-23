@@ -458,6 +458,20 @@ const InteractiveAuditSection = () => {
     return () => clearInterval(intervalRef.current);
   }, [isPaused, goToNext, activeIndex]);
 
+  useEffect(() => {
+    const checkMobile = () => {
+      if (window.innerWidth <= 860) {
+        setIsPaused(true);
+      } else if (!hoveredRef.current) {
+        setIsPaused(false);
+      }
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const handleHoverIn = (index) => {
     hoveredRef.current = true;
     setIsPaused(true);
@@ -466,6 +480,7 @@ const InteractiveAuditSection = () => {
   };
 
   const handleHoverOut = () => {
+    if (window.innerWidth <= 860) return; // Don't unpause on mobile resize/hover out
     hoveredRef.current = false;
     setIsPaused(false);
     setProgressKey(k => k + 1);
@@ -473,75 +488,116 @@ const InteractiveAuditSection = () => {
 
   return (
     <div className="aud-root">
-      {/* LEFT — Menu list */}
-      <div className="aud-left">
-        {AUDIT_BUGS.map((bug, index) => {
-          const isActive = index === activeIndex;
-          return (
-            <div
-              key={index}
-              className="aud-item"
-              onMouseEnter={() => handleHoverIn(index)}
-              onMouseLeave={handleHoverOut}
-            >
-              <span className={`aud-item-title ${isActive ? 'aud-active' : 'aud-inactive'}`}>
-                {bug.title}
-              </span>
-              {/* Track line */}
-              <div className="aud-track">
-                {isActive && (
-                  <motion.div
-                    key={progressKey}
-                    className="aud-progress"
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: isPaused ? undefined : 1 }}
-                    transition={{ duration: DURATION / 1000, ease: 'linear' }}
-                    style={{ originX: 0 }}
-                  />
-                )}
+      {/* DESKTOP TIMER SLIDER (Hidden on mobile) */}
+      <div className="aud-desktop-layout">
+        {/* LEFT — Menu list */}
+        <div className="aud-left">
+          {AUDIT_BUGS.map((bug, index) => {
+            const isActive = index === activeIndex;
+            return (
+              <div
+                key={index}
+                className="aud-item"
+                onMouseEnter={() => handleHoverIn(index)}
+                onMouseLeave={handleHoverOut}
+              >
+                <span className={`aud-item-title ${isActive ? 'aud-active' : 'aud-inactive'}`}>
+                  {bug.title}
+                </span>
+                {/* Track line */}
+                <div className="aud-track">
+                  {isActive && (
+                    <motion.div
+                      key={progressKey}
+                      className="aud-progress"
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: isPaused ? undefined : 1 }}
+                      transition={{ duration: DURATION / 1000, ease: 'linear' }}
+                      style={{ originX: 0 }}
+                    />
+                  )}
+                </div>
               </div>
+            );
+          })}
+        </div>
+
+        {/* RIGHT — Content */}
+        <div className="aud-right">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeIndex}
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
+              className="aud-content"
+            >
+              <motion.span
+                className="aud-tag"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.1, duration: 0.3 }}
+              >
+                {AUDIT_BUGS[activeIndex]?.tag}
+              </motion.span>
+              <motion.h4
+                className="aud-content-title"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.15, duration: 0.4 }}
+              >
+                {AUDIT_BUGS[activeIndex]?.title}
+              </motion.h4>
+              <motion.p
+                className="aud-content-desc"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.22, duration: 0.4 }}
+              >
+                {AUDIT_BUGS[activeIndex]?.description}
+              </motion.p>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
+
+      {/* MOBILE ACCORDION LAYOUT (Visible only on mobile/tablet) */}
+      <div className="aud-mobile-accordion">
+        {AUDIT_BUGS.map((bug, index) => {
+          const isOpen = index === activeIndex;
+          return (
+            <div key={index} className={`aud-accordion-item ${isOpen ? 'open' : ''}`}>
+              <button
+                className="aud-accordion-header"
+                onClick={() => setActiveIndex(isOpen ? null : index)}
+                aria-expanded={isOpen}
+              >
+                <span className="aud-accordion-title">{bug.title}</span>
+                <span className="aud-accordion-icon">
+                  {isOpen ? '−' : '+'}
+                </span>
+              </button>
+              
+              <AnimatePresence initial={false}>
+                {isOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    className="aud-accordion-content"
+                  >
+                    <div className="aud-accordion-inner">
+                      <span className="aud-tag">{bug.tag}</span>
+                      <p className="aud-accordion-desc">{bug.description}</p>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           );
         })}
-      </div>
-
-      {/* RIGHT — Content */}
-      <div className="aud-right">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeIndex}
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
-            className="aud-content"
-          >
-            <motion.span
-              className="aud-tag"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.1, duration: 0.3 }}
-            >
-              {AUDIT_BUGS[activeIndex].tag}
-            </motion.span>
-            <motion.h4
-              className="aud-content-title"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15, duration: 0.4 }}
-            >
-              {AUDIT_BUGS[activeIndex].title}
-            </motion.h4>
-            <motion.p
-              className="aud-content-desc"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.22, duration: 0.4 }}
-            >
-              {AUDIT_BUGS[activeIndex].description}
-            </motion.p>
-          </motion.div>
-        </AnimatePresence>
       </div>
     </div>
   );

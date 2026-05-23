@@ -710,15 +710,19 @@
    ═══════════════════════════════════════════════════════════ */
 
 .aud-root {
-  display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: 4rem;
-  align-items: flex-start;
   margin-top: 2.5rem;
   padding: 2.5rem 2.5rem;
   background: var(--border-faint);
   border: 1px solid var(--border);
   border-radius: 20px;
+}
+
+.aud-desktop-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 4rem;
+  align-items: flex-start;
+  width: 100%;
 }
 
 /* LEFT */
@@ -815,29 +819,127 @@
   max-width: 460px;
 }
 
+/* MOBILE ACCORDION LAYOUT */
+.aud-mobile-accordion {
+  display: none;
+  width: 100%;
+}
+
+.aud-accordion-item {
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+  margin: 0;
+}
+
+.aud-accordion-item:last-child {
+  border-bottom: none;
+}
+
+.aud-accordion-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 1.25rem 0;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.aud-accordion-title {
+  font-size: 0.98rem;
+  font-weight: 550;
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+}
+
+.aud-accordion-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  font-weight: 400;
+  transition: all 0.3s ease;
+}
+
+/* Active Open Accordion Item styling matching client mockup */
+.aud-accordion-item.open {
+  border: 1.5px solid var(--accent); /* Brand accent border */
+  border-radius: 12px;
+  background: var(--bg-card);
+  padding: 0 1rem;
+  margin: 0.75rem 0;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+}
+
+.aud-accordion-item.open:first-child {
+  margin-top: 0;
+}
+
+.aud-accordion-item.open:last-child {
+  margin-bottom: 0;
+}
+
+.aud-accordion-item.open .aud-accordion-header {
+  padding: 1.25rem 0 0.75rem;
+}
+
+.aud-accordion-item.open .aud-accordion-title {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.aud-accordion-item.open .aud-accordion-icon {
+  background: var(--border-subtle);
+  border-color: var(--border);
+  color: var(--text-primary);
+}
+
+.aud-accordion-content {
+  overflow: hidden;
+}
+
+.aud-accordion-inner {
+  padding-bottom: 1.25rem;
+}
+
+.aud-accordion-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0.5rem 0 0;
+}
+
 /* Responsive */
 @media (max-width: 860px) {
   .aud-root {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-    padding: 2rem 1.5rem;
+    padding: 1.5rem 1.25rem !important;
   }
-  .aud-content-title {
-    font-size: 1.25rem;
+  .aud-desktop-layout {
+    display: none !important;
+  }
+  .aud-mobile-accordion {
+    display: block !important;
   }
 }
 @media (max-width: 680px) {
   .aud-root {
-    padding: 1.5rem 1rem;
-    gap: 2rem;
+    padding: 1.25rem 1rem !important;
   }
-  .aud-item-title {
-    font-size: 0.9rem;
+  .aud-accordion-title {
+    font-size: 0.92rem;
   }
-  .aud-content-title {
-    font-size: 1.1rem;
-  }
-  .aud-content-desc {
+  .aud-accordion-desc {
     font-size: 0.88rem;
   }
 }
