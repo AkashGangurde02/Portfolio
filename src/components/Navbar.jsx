@@ -26,7 +26,7 @@ const Navbar = () => {
       setIsScrolled(currentY > 50)
       setIsPastThreshold(currentY > 600)
 
-      if (subNav) {
+      if (subNav && window.innerWidth > 968) {
         // Scrolling down past the sub-navbar trigger → hide main navbar
         if (currentY > lastScrollY.current && currentY > 400) {
           setIsNavHidden(true)

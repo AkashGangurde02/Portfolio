@@ -589,7 +589,6 @@ const InteractiveAuditSection = () => {
                     className="aud-accordion-content"
                   >
                     <div className="aud-accordion-inner">
-                      <span className="aud-tag">{bug.tag}</span>
                       <p className="aud-accordion-desc">{bug.description}</p>
                     </div>
                   </motion.div>
