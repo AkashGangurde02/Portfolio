@@ -844,11 +844,21 @@
   background: none;
   border: none;
   outline: none;
+  box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
   padding: 1.25rem 0;
   cursor: pointer;
   text-align: left;
   font-family: inherit;
   transition: all 0.3s ease;
+}
+
+.aud-accordion-header:focus,
+.aud-accordion-header:focus-visible,
+.aud-accordion-header:active {
+  outline: none;
+  border: none;
+  box-shadow: none;
 }
 
 .aud-accordion-title {
