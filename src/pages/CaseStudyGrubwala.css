@@ -900,11 +900,16 @@
   padding-bottom: 1.25rem;
 }
 
+.aud-accordion-inner .aud-tag {
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
 .aud-accordion-desc {
   font-size: 0.92rem;
   color: var(--text-muted);
   line-height: 1.65;
-  margin: 0.5rem 0 0;
+  margin: 0;
 }
 
 /* Responsive */
