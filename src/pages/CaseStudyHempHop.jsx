@@ -1,5 +1,6 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { motion, AnimatePresence } from 'framer-motion'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './CaseStudyHempHop.css'
@@ -22,9 +23,16 @@ const solutions = [
     { title: 'Scalable System', text: 'Created reusable components ensuring predictability and faster developer handoff as the catalog grows.' },
 ]
 
+const HEMP_HOP_PROBLEMS = [
+    { number: '01', title: 'Hidden Benefits', description: 'Crucial information like usage guidance and benefits were buried deep within layouts, forcing users to actively search.' },
+    { number: '02', title: 'Poor Comparisons', description: 'The Product Listing Pages (PLP) lacked scannability, making it hard to efficiently compare different wellness items.' },
+    { number: '03', title: 'Weak Trust Signals', description: 'Reassurance at key conversion moments was presented inconsistently, failing to mitigate hesitation.' }
+]
+
 const CaseStudyHempHop = () => {
     const heroRef = useRef(null)
     const sectionsRef = useRef([])
+    const [activeProblemIndex, setActiveProblemIndex] = useState(0)
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -170,22 +178,56 @@ const CaseStudyHempHop = () => {
                     <h2 className="cs2-heading cs2-heading--light cs2-heading--center">
                         The friction of<br />information overload
                     </h2>
-                    <div className="cs2-problem-grid">
-                        <div className="cs2-problem-card">
-                            <span className="cs2-problem-num">01</span>
-                            <h3>Hidden Benefits</h3>
-                            <p>Crucial information like usage guidance and benefits were buried deep within layouts, forcing users to actively search.</p>
-                        </div>
-                        <div className="cs2-problem-card">
-                            <span className="cs2-problem-num">02</span>
-                            <h3>Poor Comparisons</h3>
-                            <p>The Product Listing Pages (PLP) lacked scannability, making it hard to efficiently compare different wellness items.</p>
-                        </div>
-                        <div className="cs2-problem-card">
-                            <span className="cs2-problem-num">03</span>
-                            <h3>Weak Trust Signals</h3>
-                            <p>Reassurance at key conversion moments was presented inconsistently, failing to mitigate hesitation.</p>
-                        </div>
+                    
+                    {/* DESKTOP LAYOUT (Hidden on mobile) */}
+                    <div className="cs2-problem-grid cs2-desktop-layout">
+                        {HEMP_HOP_PROBLEMS.map((prob, index) => (
+                            <div key={index} className="cs2-problem-card">
+                                <span className="cs2-problem-num">{prob.number}</span>
+                                <h3>{prob.title}</h3>
+                                <p>{prob.description}</p>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* MOBILE ACCORDION LAYOUT (Visible only on mobile/tablet) */}
+                    <div className="cs2-problem-accordion">
+                        {HEMP_HOP_PROBLEMS.map((prob, index) => {
+                            const isOpen = index === activeProblemIndex
+                            return (
+                                <div key={index} className={`cs2-accordion-item ${isOpen ? 'open' : ''}`}>
+                                    <button
+                                        className="cs2-accordion-header"
+                                        onClick={() => setActiveProblemIndex(isOpen ? null : index)}
+                                        aria-expanded={isOpen}
+                                    >
+                                        <span className="cs2-accordion-title">
+                                            <span className="cs2-accordion-num">{prob.number}</span>
+                                            {prob.title}
+                                        </span>
+                                        <span className="cs2-accordion-icon">
+                                            {isOpen ? '−' : '+'}
+                                        </span>
+                                    </button>
+                                    
+                                    <AnimatePresence initial={false}>
+                                        {isOpen && (
+                                            <motion.div
+                                                initial={{ height: 0, opacity: 0 }}
+                                                animate={{ height: 'auto', opacity: 1 }}
+                                                exit={{ height: 0, opacity: 0 }}
+                                                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                                                className="cs2-accordion-content"
+                                            >
+                                                <div className="cs2-accordion-inner">
+                                                    <p className="cs2-accordion-desc">{prob.description}</p>
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
+                            )
+                        })}
                     </div>
                 </div>
             </section>

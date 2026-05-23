@@ -549,7 +549,119 @@
   }
 }
 
+/* MOBILE ACCORDION FOR PROBLEMS */
+.cs2-problem-accordion {
+  display: none;
+  width: 100%;
+}
 
+.cs2-accordion-item {
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+  margin: 0;
+}
+
+.cs2-accordion-item:last-child {
+  border-bottom: none;
+}
+
+.cs2-accordion-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 1.25rem 0;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.cs2-accordion-title {
+  font-size: 0.98rem;
+  font-weight: 550;
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cs2-accordion-num {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.cs2-accordion-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  font-weight: 400;
+  transition: all 0.3s ease;
+}
+
+/* Active Open Accordion Item styling */
+.cs2-accordion-item.open {
+  background: transparent;
+}
+
+.cs2-accordion-item.open .cs2-accordion-header {
+  padding: 1.25rem 0 0.75rem;
+}
+
+.cs2-accordion-item.open .cs2-accordion-title {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.cs2-accordion-item.open .cs2-accordion-icon {
+  background: var(--border-subtle);
+  border-color: var(--border);
+  color: var(--text-primary);
+}
+
+.cs2-accordion-content {
+  overflow: hidden;
+}
+
+.cs2-accordion-inner {
+  padding-bottom: 1.25rem;
+}
+
+.cs2-accordion-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Responsive Overrides */
+@media (max-width: 860px) {
+  .cs2-desktop-layout {
+    display: none !important;
+  }
+  .cs2-problem-accordion {
+    display: block !important;
+  }
+}
+@media (max-width: 680px) {
+  .cs2-accordion-title {
+    font-size: 0.92rem;
+  }
+  .cs2-accordion-desc {
+    font-size: 0.88rem;
+  }
+}
 
 .cs2-conclusion { padding-bottom: 0 !important; }
-

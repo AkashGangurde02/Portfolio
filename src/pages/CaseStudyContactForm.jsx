@@ -165,6 +165,20 @@ const InteractiveAuditSection = () => {
     return () => clearInterval(intervalRef.current)
   }, [isPaused, goToNext, activeIndex])
 
+  useEffect(() => {
+    const checkMobile = () => {
+      if (window.innerWidth <= 860) {
+        setIsPaused(true)
+      } else if (!hoveredRef.current) {
+        setIsPaused(false)
+      }
+    }
+    
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
   const handleHoverIn = (index) => {
     hoveredRef.current = true
     setIsPaused(true)
@@ -173,6 +187,7 @@ const InteractiveAuditSection = () => {
   }
 
   const handleHoverOut = () => {
+    if (window.innerWidth <= 860) return // Don't unpause on mobile
     hoveredRef.current = false
     setIsPaused(false)
     setProgressKey(k => k + 1)
@@ -180,75 +195,116 @@ const InteractiveAuditSection = () => {
 
   return (
     <div className="cfu-aud-root">
-      {/* LEFT — Menu list */}
-      <div className="cfu-aud-left">
-        {AUDIT_BUGS.map((bug, index) => {
-          const isActive = index === activeIndex
-          return (
-            <div
-              key={index}
-              className="cfu-aud-item"
-              onMouseEnter={() => handleHoverIn(index)}
-              onMouseLeave={handleHoverOut}
-            >
-              <span className={`cfu-aud-item-title ${isActive ? 'cfu-aud-active' : 'cfu-aud-inactive'}`}>
-                {bug.title}
-              </span>
-              {/* Track line */}
-              <div className="cfu-aud-track">
-                {isActive && (
-                  <motion.div
-                    key={progressKey}
-                    className="cfu-aud-progress"
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: isPaused ? undefined : 1 }}
-                    transition={{ duration: DURATION / 1000, ease: 'linear' }}
-                    style={{ originX: 0 }}
-                  />
-                )}
+      {/* DESKTOP TIMER SLIDER (Hidden on mobile) */}
+      <div className="cfu-aud-desktop-layout">
+        {/* LEFT — Menu list */}
+        <div className="cfu-aud-left">
+          {AUDIT_BUGS.map((bug, index) => {
+            const isActive = index === activeIndex
+            return (
+              <div
+                key={index}
+                className="cfu-aud-item"
+                onMouseEnter={() => handleHoverIn(index)}
+                onMouseLeave={handleHoverOut}
+              >
+                <span className={`cfu-aud-item-title ${isActive ? 'cfu-aud-active' : 'cfu-aud-inactive'}`}>
+                  {bug.title}
+                </span>
+                {/* Track line */}
+                <div className="cfu-aud-track">
+                  {isActive && (
+                    <motion.div
+                      key={progressKey}
+                      className="cfu-aud-progress"
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: isPaused ? undefined : 1 }}
+                      transition={{ duration: DURATION / 1000, ease: 'linear' }}
+                      style={{ originX: 0 }}
+                    />
+                  )}
+                </div>
               </div>
+            )
+          })}
+        </div>
+
+        {/* RIGHT — Content */}
+        <div className="cfu-aud-right">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeIndex}
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
+              className="cfu-aud-content"
+            >
+              <motion.span
+                className="cfu-aud-tag"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.1, duration: 0.3 }}
+              >
+                {AUDIT_BUGS[activeIndex]?.tag}
+              </motion.span>
+              <motion.h4
+                className="cfu-aud-content-title"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.15, duration: 0.4 }}
+              >
+                {AUDIT_BUGS[activeIndex]?.title}
+              </motion.h4>
+              <motion.p
+                className="cfu-aud-content-desc"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.22, duration: 0.4 }}
+              >
+                {AUDIT_BUGS[activeIndex]?.description}
+              </motion.p>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
+
+      {/* MOBILE ACCORDION LAYOUT (Visible only on mobile/tablet) */}
+      <div className="cfu-aud-mobile-accordion">
+        {AUDIT_BUGS.map((bug, index) => {
+          const isOpen = index === activeIndex
+          return (
+            <div key={index} className={`cfu-aud-accordion-item ${isOpen ? 'open' : ''}`}>
+              <button
+                className="cfu-aud-accordion-header"
+                onClick={() => setActiveIndex(isOpen ? null : index)}
+                aria-expanded={isOpen}
+              >
+                <span className="cfu-aud-accordion-title">{bug.title}</span>
+                <span className="cfu-aud-accordion-icon">
+                  {isOpen ? '−' : '+'}
+                </span>
+              </button>
+              
+              <AnimatePresence initial={false}>
+                {isOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    className="cfu-aud-accordion-content"
+                  >
+                    <div className="cfu-aud-accordion-inner">
+                      <span className="cfu-aud-tag">{bug.tag}</span>
+                      <p className="cfu-aud-accordion-desc">{bug.description}</p>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           )
         })}
-      </div>
-
-      {/* RIGHT — Content */}
-      <div className="cfu-aud-right">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeIndex}
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
-            className="cfu-aud-content"
-          >
-            <motion.span
-              className="cfu-aud-tag"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.1, duration: 0.3 }}
-            >
-              {AUDIT_BUGS[activeIndex].tag}
-            </motion.span>
-            <motion.h4
-              className="cfu-aud-content-title"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15, duration: 0.4 }}
-            >
-              {AUDIT_BUGS[activeIndex].title}
-            </motion.h4>
-            <motion.p
-              className="cfu-aud-content-desc"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.22, duration: 0.4 }}
-            >
-              {AUDIT_BUGS[activeIndex].description}
-            </motion.p>
-          </motion.div>
-        </AnimatePresence>
       </div>
     </div>
   )

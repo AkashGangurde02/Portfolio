@@ -362,17 +362,21 @@
 .cfu-improvement-title { font-size:.9rem; font-weight:700; color:var(--text-primary); margin-bottom:.3rem; }
 .cfu-improvement-desc { font-size:.8rem; color:var(--text-muted); line-height:1.55; margin:0; }
 
-/* TIMED INTERACTIVE AUDIT SLIDER (cfu-aud-*) */
 .cfu-aud-root {
+  margin-top: 2.5rem;
+  width: 100%;
+}
+
+.cfu-aud-desktop-layout {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
   gap: 4rem;
   align-items: flex-start;
-  margin-top: 2.5rem;
   padding: 2.5rem 2.5rem;
   background: var(--border-faint);
   border: 1px solid var(--border);
   border-radius: 20px;
+  width: 100%;
 }
 
 .cfu-aud-left {
@@ -466,20 +470,120 @@
   max-width: 460px;
 }
 
+/* MOBILE ACCORDION LAYOUT */
+.cfu-aud-mobile-accordion {
+  display: none;
+  width: 100%;
+}
+
+.cfu-aud-accordion-item {
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+  margin: 0;
+}
+
+.cfu-aud-accordion-item:last-child {
+  border-bottom: none;
+}
+
+.cfu-aud-accordion-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 1.25rem 0;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.cfu-aud-accordion-title {
+  font-size: 0.98rem;
+  font-weight: 550;
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+}
+
+.cfu-aud-accordion-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  font-weight: 400;
+  transition: all 0.3s ease;
+}
+
+/* Active Open Accordion Item styling matching client mockup */
+.cfu-aud-accordion-item.open {
+  background: transparent;
+}
+
+.cfu-aud-accordion-item.open .cfu-aud-accordion-header {
+  padding: 1.25rem 0 0.75rem;
+}
+
+.cfu-aud-accordion-item.open .cfu-aud-accordion-title {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.cfu-aud-accordion-item.open .cfu-aud-accordion-icon {
+  background: var(--border-subtle);
+  border-color: var(--border);
+  color: var(--text-primary);
+}
+
+.cfu-aud-accordion-content {
+  overflow: hidden;
+}
+
+.cfu-aud-accordion-inner {
+  padding-bottom: 1.25rem;
+}
+
+.cfu-aud-accordion-inner .cfu-aud-tag {
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.cfu-aud-accordion-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
 /* Audit slider additional responsive */
-@media (max-width: 680px) {
+@media (max-width: 860px) {
   .cfu-aud-root {
-    padding: 1.5rem 1rem;
-    gap: 2rem;
-    border-radius: 16px;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    display: block !important;
   }
-  .cfu-aud-item-title {
-    font-size: 0.9rem;
+  .cfu-aud-desktop-layout {
+    display: none !important;
   }
-  .cfu-aud-content-title {
-    font-size: 1.1rem;
+  .cfu-aud-mobile-accordion {
+    display: block !important;
   }
-  .cfu-aud-content-desc {
+}
+@media (max-width: 680px) {
+  .cfu-aud-accordion-title {
+    font-size: 0.92rem;
+  }
+  .cfu-aud-accordion-desc {
     font-size: 0.88rem;
   }
 }
