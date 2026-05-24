@@ -218,26 +218,52 @@ submit-btn .arrow-icon {
 @media (max-width: 968px) {
   .contact-content {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2rem;
+  }
+
+  /* Move info cards BELOW the form on mobile */
+  .contact-form {
+    order: 1;
   }
 
   .contact-info {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    order: 2;
     flex-direction: row;
+    gap: 1rem;
+  }
+
+  .info-card {
+    flex: 1;
+    padding: 1.25rem;
   }
 }
 
 @media (max-width: 768px) {
   .contact-section {
-    padding: 4rem 1.5rem;
+    padding: 3rem 1.5rem 2rem;
   }
 
   .contact-header {
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
+    border-bottom: none;
+  }
+
+  .contact-title {
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-subtitle {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .contact-content {
+    gap: 1.5rem;
   }
 
   .contact-form {
-    padding: 2rem 1.5rem;
+    padding: 1.75rem 1.25rem;
   }
 
   .form-row {
@@ -245,9 +271,36 @@ submit-btn .arrow-icon {
     gap: 0;
   }
 
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .form-group textarea {
+    min-height: 100px;
+  }
+
   .contact-info {
-    grid-template-columns: 1fr;
-    flex-direction: column;
+    flex-direction: row;
+    gap: 0.75rem;
+  }
+
+  .info-card {
+    padding: 1rem;
+  }
+
+  .info-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0.65rem;
+  }
+
+  .info-card h3 {
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .info-card p {
+    font-size: 0.82rem;
   }
 
   .submit-btn {
@@ -258,6 +311,23 @@ submit-btn .arrow-icon {
 
 @media (max-width: 480px) {
   .contact-section {
-    padding: 3rem 1rem;
+    padding: 2.5rem 1rem 1.5rem;
+  }
+
+  .contact-header {
+    margin-bottom: 1.25rem;
+  }
+
+  .contact-form {
+    padding: 1.5rem 1rem;
+  }
+
+  .contact-info {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .info-card {
+    padding: 1rem;
   }
 }

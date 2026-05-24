@@ -4,7 +4,6 @@ import './HireMeModal.css'
 const HireMeModal = ({ isOpen, onClose }) => {
     const [formData, setFormData] = useState({
         fullName: '',
-        companyName: '',
         email: '',
         message: `Hi Akash,
 
@@ -40,7 +39,6 @@ Best,
     const validate = () => {
         const newErrors = {}
         if (!formData.fullName.trim()) newErrors.fullName = 'Full Name is required'
-        if (!formData.companyName.trim()) newErrors.companyName = 'Company Name is required'
         if (!formData.email.trim()) {
             newErrors.email = 'Email is required'
         } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
@@ -76,7 +74,7 @@ Best,
         try {
             const formBody = new FormData()
             Object.keys(formData).forEach(key => formBody.append(key, formData[key]))
-            formBody.append('subject', `New Hire Inquiry from ${formData.companyName}`) // Add subject for Formspree
+            formBody.append('subject', `New Hire Inquiry from ${formData.fullName}`) // Add subject for Formspree
 
             const response = await fetch('https://formspree.io/f/mwvveqgb', {
                 method: 'POST',
@@ -125,18 +123,7 @@ Best,
                                 {errors.fullName && <span className="error-text" style={{ color: 'red', fontSize: '0.8rem', marginTop: '4px', display: 'block' }}>{errors.fullName}</span>}
                             </div>
 
-                            <div className="form-group">
-                                <label htmlFor="companyName">Company Name</label>
-                                <input
-                                    type="text"
-                                    id="companyName"
-                                    name="companyName"
-                                    value={formData.companyName}
-                                    onChange={handleChange}
-                                    placeholder="Enter company name"
-                                />
-                                {errors.companyName && <span className="error-text" style={{ color: 'red', fontSize: '0.8rem', marginTop: '4px', display: 'block' }}>{errors.companyName}</span>}
-                            </div>
+
 
                             <div className="form-group">
                                 <label htmlFor="email">Work Email</label>

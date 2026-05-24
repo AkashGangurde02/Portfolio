@@ -258,23 +258,23 @@
 
 /* ── Mobile (horizontal scroll carousel) ── */
 @media (max-width: 680px) {
-  .works-section { padding: 3rem 0; }
+  .works-section { padding: 2.5rem 0; }
   .work-container { padding: 0 1.25rem; }
-  .wsc-header { margin-bottom: 1.5rem; padding-bottom: 1rem; }
-  .wsc-section-title { font-size: clamp(1.2rem, 5vw, 1.5rem); }
+  .wsc-header { margin-bottom: 1.25rem; padding-bottom: 0.75rem; }
+  .wsc-section-title { font-size: clamp(1.15rem, 4.5vw, 1.4rem); }
 
   .wsc-grid {
     display: flex;
     flex-direction: row;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    gap: 1rem;
-    padding-bottom: 1rem;
+    gap: 1.25rem;
+    padding-bottom: 0.75rem;
+    padding-left: 0.25rem;
     scrollbar-width: none;
     -ms-overflow-style: none;
     grid-template-columns: unset;
     margin: 0;
-    padding-left: 0;
     padding-right: 0;
   }
 
@@ -282,19 +282,43 @@
 
   .wsc-card {
     flex-shrink: 0;
-    width: 86vw; /* Increased mobile card width */
-    max-width: 350px; /* Increased max-width */
+    width: calc(100vw - 3rem);
+    max-width: 380px;
     scroll-snap-align: start;
     padding: 0 !important;
     border-right: none !important;
   }
 
-  .wsc-title { font-size: 1.1rem; }
-  .wsc-nav-arrows { display: flex; }
+  .wsc-image-wrap {
+    aspect-ratio: 16 / 10;
+    border-radius: 12px;
+  }
+
+  .wsc-body {
+    padding-top: 0.75rem;
+    gap: 4px;
+  }
+
+  .wsc-title { font-size: 1rem; line-height: 1.35; }
+  .wsc-meta { font-size: 0.75rem; margin-bottom: 2px; }
+  .wsc-cta-link { font-size: 0.78rem; margin-top: 2px; }
+  .wsc-nav-arrows { display: flex; margin-top: 1rem; }
 }
 
 @media (max-width: 480px) {
-  .wsc-section-title { font-size: clamp(1.1rem, 5vw, 1.35rem); }
-  .wsc-view-all-btn { font-size: 0.75rem; padding: 6px 14px; }
-  .wsc-card { width: 88vw; }
+  .works-section { padding: 2rem 0; }
+  .work-container { padding: 0 1rem; }
+  .wsc-section-title { font-size: clamp(1.05rem, 4.5vw, 1.25rem); }
+  .wsc-view-all-btn { font-size: 0.72rem; padding: 5px 12px; }
+
+  .wsc-card {
+    width: calc(100vw - 2.5rem);
+    max-width: 340px;
+  }
+
+  .wsc-image-wrap {
+    border-radius: 10px;
+  }
+
+  .wsc-title { font-size: 0.95rem; }
 }
