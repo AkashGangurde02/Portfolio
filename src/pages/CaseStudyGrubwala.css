@@ -1178,4 +1178,51 @@
   }
 }
 
+/* ═══════════════════════════════════════════════════════════
+   EDGE CASE MOCKUP ROW
+   ═══════════════════════════════════════════════════════════ */
+
+.gw-edge-mockups {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
+  margin: 2.5rem auto 1.5rem;
+  width: 100%;
+}
+
+/* Tablet: 3 columns */
+@media (max-width: 1024px) {
+  .gw-edge-mockups {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Mobile: horizontal snap scroll */
+@media (max-width: 640px) {
+  .gw-edge-mockups {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    max-width: 100%;
+    padding-bottom: 0.5rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .gw-edge-mockups::-webkit-scrollbar { display: none; }
+
+  .gw-edge-mockups .gw-mockup-col {
+    flex-shrink: 0;
+    width: 52vw;
+    max-width: 200px;
+    scroll-snap-align: center;
+  }
+}
+
 

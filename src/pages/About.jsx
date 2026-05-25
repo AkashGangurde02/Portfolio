@@ -203,7 +203,7 @@ const About = () => {
                 {/* ── RIGHT: Info Text ── */}
                 <div className="about-hero-info-col">
                   <h2 className="about-hero-subheading">
-                    UX/UI Designer &amp; CS Student
+                    UX/UI Designer
                   </h2>
 
                   <p className="about-hero-desc">

@@ -11,6 +11,11 @@ import signupMockup from '../images/case-studies/case-study-3/signup-mockup.png'
 import loginMockup from '../images/case-studies/case-study-3/login-mockup.png'
 import redesignLoginMockup from '../images/case-studies/case-study-3/redesign-login.png'
 import redesignOtpMockup from '../images/case-studies/case-study-3/redesign-otp.png'
+import edgeCartEmpty from '../images/case-studies/case-study-3/edge-cart-empty.png'
+import edgeKitchenClosed from '../images/case-studies/case-study-3/edge-kitchen-closed.png'
+import edgeNoMeals from '../images/case-studies/case-study-3/edge-no-meals.png'
+import edgeSubscriptionExpired from '../images/case-studies/case-study-3/edge-subscription-expired.png'
+import edgeCases from '../images/case-studies/case-study-3/edge-cases.png'
 import Footer from '../components/Footer'
 
 // Tool Icons
@@ -38,7 +43,7 @@ const TOC_DATA = {
   onboarding: ['Onboarding Flow', 'Tools used', 'Existing Authentication problem', 'Design Goals', 'UX Thinking', 'Redesigned UI', 'Final Outcome'],
   ordering: ['Intro', 'Existing Experience Audit', 'Research & Benchmarking', 'Design Goals', 'UX Thinking', 'Redesigned UI', 'Key Improvements', 'Final Outcome'],
   checkout: ['Overview', 'Existing Checkout Problems', 'Payment Friction', 'Hierarchy Improvements', 'Redesigned Checkout', 'Order Summary', 'Payment Experience', 'Outcome'],
-  edgecases: ['Overview', 'Common Food Delivery Edge Cases', 'UX Solutions', 'State Management', 'Outcome']
+  edgecases: ['Problem Context', 'Why Edge Cases Matter', 'UX Gaps & User Frustrations', 'Recovery UX Strategy', 'Designed Screens', 'CTA & Visual Design Thinking', 'Product Impact', 'Learnings']
 }
 
 const slugify = (text) => text.toLowerCase().replace(/\s+/g, '-')
@@ -237,6 +242,21 @@ const ThreeMockups = ({ mockups }) => (
 
 const TwoMockups = ({ mockups }) => (
   <div className="gw-two-mockups">
+    {mockups.map((m, i) => (
+      <div key={i} className="gw-mockup-col">
+        <div className="gw-mockup-device">
+          <div className={`gw-mockup-screen ${m.image ? 'has-image' : ''}`}>
+            {m.image && <img src={m.image} alt={m.caption} className="gw-mockup-img" />}
+          </div>
+        </div>
+        <p className="gw-mockup-caption">{m.caption}</p>
+      </div>
+    ))}
+  </div>
+)
+
+const EdgeMockups = ({ mockups }) => (
+  <div className="gw-edge-mockups">
     {mockups.map((m, i) => (
       <div key={i} className="gw-mockup-col">
         <div className="gw-mockup-device">
@@ -898,87 +918,173 @@ const EdgeCaseCard = ({ icon, title, problem, solution }) => (
 )
 
 const EdgeCaseFlow = () => (
-  <div className="gw-flow-wrapper">
-    <FlowSection title="Overview">
-      <p className="gw-body">
-        A stellar product design doesn't just focus on the "happy path" — it covers the edge cases where things go wrong.
-        For Grubwala, minimizing order drop-offs and maintaining user trust required a rigorous focus on handling state
-        failures, network issues, and inventory disruptions gracefully.
+  <div className="gw-flow-wrapper ord-premium-wrapper">
+
+    {/* ── SECTION 1: PROBLEM CONTEXT ── */}
+    <section id="problem-context" className="gw-flow-section ord-intro-section">
+      <div className="ord-intro-eyebrow">Edge Case UX Design</div>
+      <h3 className="ord-intro-headline">Designing Recovery<br />Experiences That Retain</h3>
+      <p className="ord-intro-sub">
+        Users don't abandon apps because of bugs. They abandon apps because dead-end screens offer no guidance, no clarity, and no next step. For Grubwala — a home-chef food delivery platform — I designed recovery experiences for six critical inactive states where users were silently dropping off.
       </p>
+
+      <div className="ord-context-cards">
+        <div className="ord-context-card">
+          <span className="ord-context-card-icon"><TrendingDownIcon /></span>
+          <div>
+            <strong>Silent Drop-offs</strong>
+            <p>Users hitting empty carts, closed kitchens, and expired subscriptions were leaving without any recovery prompt.</p>
+          </div>
+        </div>
+        <div className="ord-context-card">
+          <span className="ord-context-card-icon"><MessageIcon /></span>
+          <div>
+            <strong>Product Gap</strong>
+            <p>The existing app had no designed states for inactive, empty, or expired scenarios — every edge case was a dead end.</p>
+          </div>
+        </div>
+        <div className="ord-context-card">
+          <span className="ord-context-card-icon"><EyeIcon /></span>
+          <div>
+            <strong>Design Scope</strong>
+            <p>Six edge-case screens: Empty Cart, Kitchen Closed, No Active Orders, No Meals Scheduled, Subscription Expired, No Active Subscription.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ── SECTION 2: WHY EDGE CASES MATTER ── */}
+    <FlowSection title="Why Edge Cases Matter">
+      <p className="gw-body" style={{ marginBottom: '2rem' }}>
+        Most design portfolios show the happy path. But the moments that define product quality — and retention — are the ones where something goes wrong. A user opening an empty cart is not a design failure. Showing them a blank screen with no direction <em>is</em>.
+      </p>
+
+      <div className="ord-insights-grid">
+        <InsightCard question="Why do inactive states matter?" answer="Every empty or error screen is a fork in the road. Without guidance, users close the app. With a clear recovery action, they stay. These moments directly impact session depth, return rates, and lifetime value." />
+        <InsightCard question="Why not just show default screens?" answer="Default empty states feel impersonal and broken. Designed states with illustrations, context, and CTAs reframe the moment from 'something went wrong' to 'here's what you can do next' — preserving trust instead of eroding it." />
+        <InsightCard question="What's the retention risk?" answer="On food delivery platforms, a single bad experience during a high-intent moment (ordering, subscribing) can permanently shift a user to a competitor. Edge cases are retention-critical touchpoints." />
+        <InsightCard question="How do edge cases affect business metrics?" answer="Undesigned dead ends increase support tickets, lower NPS, reduce repeat orders, and inflate churn. Thoughtful recovery UX turns these into re-engagement opportunities instead." />
+      </div>
     </FlowSection>
 
-    <FlowSection title="Common Food Delivery Edge Cases">
-      <p className="gw-body" style={{ marginBottom: '2.5rem' }}>
-        We identified four high-friction edge cases that frequently lead to customer drop-offs and poor platform reviews:
+    {/* ── SECTION 3: UX GAPS & USER FRUSTRATIONS ── */}
+    <FlowSection title="UX Gaps & User Frustrations">
+      <p className="gw-body" style={{ marginBottom: '1rem' }}>
+        I audited six key surfaces in the Grubwala app where users encounter inactive or empty states. In every case, the existing experience was either a blank screen or a generic system message with no actionable guidance.
+      </p>
+      <p className="ord-section-sub" style={{ marginBottom: '2.5rem' }}>
+        Below are the six scenarios I identified, mapped against the user's emotional state and the product risk each one carries:
       </p>
 
       <div className="edge-case-grid">
         <EdgeCaseCard
-          icon={<WifiOffIcon />}
-          title="Network Connectivity Drops"
-          problem="Losing network connection during a transaction or search leads to blank screens, infinite loaders, or double billing."
-          solution="Graceful offline banners, transaction locking, auto-retrying background syncing, and local caching of the active cart."
-        />
-        <EdgeCaseCard
-          icon={<PackageXIcon />}
-          title="Out-of-Stock Ingredients"
-          problem="Home chefs running out of specific ingredients post-order forces cancellation, disappointing hungry users."
-          solution="Real-time stock indicators on cards, smart chef-suggested alternatives at checkout, and instant refund options."
-        />
-        <EdgeCaseCard
-          icon={<MapPinIcon />}
-          title="Out of Delivery Radius"
-          problem="Users spend time browsing and selecting a meal only to find at the checkout that the chef cannot deliver to their location."
-          solution="Pre-filtering chefs based on initial location, clear visual badges for out-of-radius home chefs, and recommending nearby alternatives."
+          icon={<SmartphoneIcon />}
+          title="Empty Cart"
+          problem="User taps the Cart tab with nothing added. Sees a blank white screen. No guidance, no warmth, no reason to keep browsing."
+          solution="A friendly illustration + conversational copy ('Your cart is empty — let's add something homemade and delicious!') with a single Explore CTA to reduce the distance back to browsing."
         />
         <EdgeCaseCard
           icon={<AlertTriangleIcon />}
-          title="Kitchen Delays & Weather Surge"
-          problem="Peak hours or bad weather cause severe delays. Users feel anxious when orders take 2x longer than estimated."
-          solution="Proactive surge pricing and weather warning banners on homepage, real-time live map tracking, and automatic late-delivery compensations."
+          title="Kitchen Closed"
+          problem="User finds a home chef they want to order from — but the kitchen is closed. No timing info, no alternative, no next step."
+          solution="Clear status messaging with exact reopening time ('Opens again at 7:00 AM'), two contextual CTAs: Schedule for later, or Notify Me when open — turning a dead end into a deferred conversion."
+        />
+        <EdgeCaseCard
+          icon={<LayersIcon />}
+          title="No Meals Scheduled"
+          problem="User opens the Schedule tab for the first time. Empty state with zero guidance reduces the chance they'll explore subscription plans."
+          solution="Warm illustration with onboarding-style copy ('No meals scheduled yet. Choose your meals to start your plan.') + direct Browse Plans CTA — framing emptiness as an invitation, not a failure."
+        />
+        <EdgeCaseCard
+          icon={<RocketIcon />}
+          title="Subscription Expired"
+          problem="Returning subscriber lands on the Subscription page to find their plan is gone. No renewal prompt, no context — just emptiness."
+          solution="Empathetic copy ('Your plan has expired. Renew to continue enjoying fresh homemade meals.') with a single Browse Plans CTA — making renewal the obvious and frictionless next step."
         />
       </div>
     </FlowSection>
 
-    <FlowSection title="UX Solutions">
+    {/* ── SECTION 4: RECOVERY UX STRATEGY ── */}
+    <FlowSection title="Recovery UX Strategy">
+      <p className="gw-body" style={{ marginBottom: '0.75rem' }}>
+        Every recovery screen was designed around a framework I call <strong>Acknowledge → Orient → Act</strong>:
+      </p>
       <p className="gw-body" style={{ marginBottom: '2rem' }}>
-        For each of these issues, we designed specific UI components and state transitions:
+        <strong>Acknowledge</strong> what happened (honest, plain-language messaging). <strong>Orient</strong> the user emotionally (warm illustration, no alarm). <strong>Act</strong> on a single clear next step (one primary CTA per screen).
       </p>
 
-      <div className="ord-improvements-grid">
-        <ImprovementCard
-          icon={<CheckIcon />}
-          title="Smart 'Replace Item' Workflow"
-          description="If an item goes out of stock, instead of cancelling the order, the system prompts the chef to suggest a substitute which the user can approve in 1 tap."
-        />
-        <ImprovementCard
-          icon={<CheckIcon />}
-          title="Offline Transaction Safeguard"
-          description="During checkout, if the connection drops, the UI disables the primary action and shows a retry counter, preventing accidental multiple submissions."
-        />
-        <ImprovementCard
-          icon={<CheckIcon />}
-          title="Location-Aware Delivery Badges"
-          description="Dish cards dynamically display a 'Not available at your location' pill if the delivery address is outside the chef's defined service zone."
-        />
-        <ImprovementCard
-          icon={<CheckIcon />}
-          title="Proactive Delay Compensation"
-          description="If preparation time exceeds the estimate by 10 minutes, the progress tracker updates with a complimentary credit voucher, mitigating user frustration."
-        />
+      <div className="ord-goals-grid">
+        <GoalCard icon={<ShieldIcon />} title="Honest Communication" description="No vague 'Something went wrong.' Every screen tells the user exactly what state they're in and why — building trust through transparency." />
+        <GoalCard icon={<SparklesIcon />} title="Emotional Warmth" description="Custom illustrations replace cold error layouts. The visual tone says 'this is normal' instead of 'this is broken' — reducing frustration at the subconscious level." />
+        <GoalCard icon={<LightningIcon />} title="Single Recovery Action" description="One primary CTA per screen. No decision paralysis at a frustrating moment. Explore, Browse Plans, Notify Me — each guides the user's next behavior." />
+        <GoalCard icon={<SearchIcon />} title="Contextual Alternatives" description="Kitchen Closed doesn't just say 'come back later.' It shows the exact reopening time and offers Schedule + Notify Me — converting dead ends into deferred intent." />
+        <GoalCard icon={<PaletteIcon />} title="Visual Continuity" description="All edge-case screens maintain the bottom tab bar, consistent type hierarchy, and brand styling — so users never feel like they've left the product experience." />
+        <GoalCard icon={<TargetIcon />} title="Retention-First Design" description="Every empty state is treated as a re-engagement surface, not a termination point. The goal is always: keep the user in the product funnel." />
       </div>
     </FlowSection>
 
-    <FlowSection title="State Management">
-      <p className="gw-body">
-        Designing for edge cases is ultimately about designing the system's states. We defined clear rules for loading, error, empty, offline, and success states to keep the experience predictable and transparent.
-      </p>
+    {/* ── SECTION 5: DESIGNED SCREENS ── */}
+    <FlowSection title="Designed Screens">
+      <p className="gw-body" style={{ marginBottom: '2.5rem' }}>Six purpose-built screens — each one a recovery moment designed to maintain trust, reduce uncertainty, and guide users toward their next action.</p>
+
+      <EdgeMockups mockups={[
+        { caption: 'Empty Cart', image: edgeCartEmpty },
+        { caption: 'Kitchen Closed', image: edgeKitchenClosed },
+        { caption: 'No Meals Scheduled', image: edgeNoMeals },
+        { caption: 'Subscription Expired', image: edgeSubscriptionExpired },
+        { caption: 'Kitchen Status', image: edgeCases },
+      ]} />
+
+      <h5 className="gw-sub-heading" style={{ marginTop: '3.5rem', marginBottom: '1.5rem', fontSize: '1.25rem', color: 'var(--text-primary)', fontWeight: 700 }}>Screen-by-Screen Rationale</h5>
+      <div className="ord-improvements-grid">
+        <ImprovementCard icon={<CheckIcon />} title="Empty Cart → Explore" description="Sad cart illustration + encouraging copy reframes emptiness as opportunity. Single 'Explore' CTA reduces distance back to browsing by eliminating navigation choices." />
+        <ImprovementCard icon={<CheckIcon />} title="Kitchen Closed → Schedule / Notify" description="Dual CTA strategy: Schedule captures committed intent, Notify Me captures passive interest. Reopening time ('7:00 AM') adds precision that builds trust." />
+        <ImprovementCard icon={<CheckIcon />} title="No Meals → Browse Plans" description="Onboarding-style framing guides first-time subscribers into the meal plan funnel. CTA language matches their intent stage — exploration, not commitment." />
+        <ImprovementCard icon={<CheckIcon />} title="Subscription Expired → Renew" description="Empathetic tone avoids blame. 'Renew to continue enjoying...' frames renewal as continuity, not re-purchase — reducing psychological friction for lapsed subscribers." />
+      </div>
     </FlowSection>
 
-    <FlowSection title="Outcome">
-      <h4 className="gw-metric">↓ 32%</h4>
-      <p className="gw-body">Reduction in order cancellation rates and a significant improvement in customer support satisfaction score.</p>
+    {/* ── SECTION 6: CTA & VISUAL DESIGN THINKING ── */}
+    <FlowSection title="CTA & Visual Design Thinking">
+      <p className="gw-body" style={{ marginBottom: '2rem' }}>
+        Every visual and interaction decision in these screens was driven by a specific behavioral goal. Nothing is decorative.
+      </p>
+
+      <div className="ord-insights-grid">
+        <InsightCard question="Why soft illustrations instead of icons?" answer="Illustrations humanize failure states. A sad cart character creates empathy. A kitchen scene with a 'CLOSED' sign provides context instantly. Icons feel systemic and cold — illustrations feel personal and warm." />
+        <InsightCard question="Why action-oriented CTA labels?" answer="'Explore' is better than 'Go Back.' 'Browse Plans' is better than 'View Subscriptions.' Every label was written from the user's intent perspective, not the system's — reducing cognitive translation effort." />
+        <InsightCard question="Why minimal layouts?" answer="At a frustrating moment, visual complexity increases cognitive load. These screens use maximum whitespace, a single illustration, one message, and one CTA — the user's attention is never split." />
+        <InsightCard question="Why preserve bottom navigation?" answer="Removing the tab bar during an edge case traps users in a dead end. Keeping Home, Cart, Track, Subscribe, and Profile always visible ensures users can always self-recover, even without the primary CTA." />
+        <InsightCard question="Why show exact timing?" answer="'Opens again at 7:00 AM' is measurably more effective than 'Currently unavailable.' Specificity reduces uncertainty — and uncertainty is the primary driver of app abandonment during inactive states." />
+        <InsightCard question="Why single CTA per screen?" answer="Hick's Law: more choices = slower decisions. At a frustrating moment, decision paralysis is the enemy. One CTA per screen means zero decision cost for the user — they either tap it or pivot via the tab bar." />
+      </div>
     </FlowSection>
+
+    {/* ── SECTION 7: PRODUCT IMPACT ── */}
+    <section id="product-impact" className="gw-flow-section ord-outcome-section">
+      <h3 className="ord-outcome-headline">Turning Dead Ends<br />Into Re-engagement</h3>
+      <p className="ord-outcome-body">
+        These screens aren't just better empty states — they're retention surfaces. Each one transforms a moment where users would silently leave into an opportunity to guide them back into the product. The result: fewer drop-offs, fewer support tickets, and higher session continuity across every edge case.
+      </p>
+      <div className="ord-outcome-tags">
+        <span className="ord-outcome-tag">Recovery-First UX</span>
+        <span className="ord-outcome-tag">Retention Design</span>
+        <span className="ord-outcome-tag">Emotional Intelligence</span>
+        <span className="ord-outcome-tag">Zero Dead Ends</span>
+        <span className="ord-outcome-tag">CTA Optimization</span>
+      </div>
+    </section>
+
+    {/* ── SECTION 8: LEARNINGS ── */}
+    <FlowSection title="Learnings">
+      <div className="ord-improvements-grid">
+        <ImprovementCard icon={<CheckIcon />} title="Edge cases are product moments" description="Every inactive state is a micro-interaction that shapes how users perceive product quality. Ignoring them signals carelessness. Designing them signals craft." />
+        <ImprovementCard icon={<CheckIcon />} title="Empty ≠ broken" description="The biggest shift was reframing empty states from 'nothing to show' to 'here's what to do next.' That single perspective change drove every design decision." />
+        <ImprovementCard icon={<CheckIcon />} title="Retention starts at the edges" description="Core flows get the most design attention, but edge cases are where trust is won or lost. A user who hits a dead end once may never return. A user who's guided back will." />
+        <ImprovementCard icon={<CheckIcon />} title="One CTA > three options" description="At moments of frustration, simplicity is kindness. Reducing choices to a single recovery action consistently outperforms multi-option layouts in conversion and satisfaction." />
+      </div>
+    </FlowSection>
+
   </div>
 )
 

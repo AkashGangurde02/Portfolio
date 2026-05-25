@@ -91,7 +91,7 @@
 .cf-card {
     background: #1c1c1c;
     border: 1px solid #262626;
-    border-bottom: 2px solid #FFB800;
+    border-bottom: 2px solid #9F7AEA;
     border-radius: 14px;
     padding: 1.75rem;
     width: 300px;
@@ -107,7 +107,7 @@
 
 .cf-card:hover {
     transform: translateY(-5px);
-    border-bottom-color: #FFC107;
+    border-bottom-color: #63B3ED;
     box-shadow: 0 14px 36px rgba(0, 0, 0, 0.4);
 }
 
@@ -139,7 +139,7 @@
 }
 
 .cf-star {
-    color: #FFB800;
+    color: #63B3ED;
     font-size: 1.1rem;
 }
 

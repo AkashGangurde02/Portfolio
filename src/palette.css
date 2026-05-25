@@ -332,11 +332,16 @@ body {
   color: var(--text-primary) !important;
 }
 
-/* Orange only on highlighted keyword spans */
-.hero-title-highlight,
+/* ── Title highlight spans across ALL sections ── */
+.title-highlight,
 .sub-highlight,
-.title-highlight {
-  color: var(--accent) !important;
+.hero-title-highlight {
+  background: linear-gradient(135deg, #63B3ED 0%, #9F7AEA 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  font-weight: 500 !important;
+  display: inline !important;
 }
 
 .text-light {
@@ -463,12 +468,24 @@ body {
   border: 1.5px solid rgba(0, 0, 0, 0.2) !important;
 }
 
-.hero-cta-btn.secondary:hover {
-  background-color: var(--accent-subtle) !important;
-  border-color: var(--accent) !important;
-  color: var(--accent) !important;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+/* Secondary buttons (Hire Me, Know More, View all works) hover overrides */
+.hero-cta-btn.secondary:hover,
+.about-secondary-btn:hover,
+.wsc-view-all-btn:hover {
+  background-color: rgba(99, 179, 237, 0.08) !important;
+  border-color: #63B3ED !important;
+  color: #63B3ED !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(99, 179, 237, 0.15) !important;
+}
+
+/* Primary buttons hover purple glow */
+.hero-cta-btn:not(.secondary):hover,
+.submit-btn:hover,
+.lets-talk-btn:hover {
+  background-color: #000000 !important;
+  border-color: #000000 !important;
+  box-shadow: 0 0 20px rgba(159, 122, 234, 0.4) !important;
 }
 
 /* Lets talk — dark pill */
@@ -632,11 +649,16 @@ body {
   letter-spacing: 1.5px;
 }
 
-/* ── Title highlight spans across ALL sections ── */
-.title-highlight,
-.sub-highlight,
-.hero-title-highlight {
-  color: var(--accent) !important;
+/* ── Section Titles Typography Consistency ── */
+.about-title,
+.wsc-section-title,
+.experience-section .section-title,
+.cf-title {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.04em !important;
+  line-height: 1.15 !important;
+  color: #000000 !important;
 }
 
 /* ── Orange accent bar above section headings ── */
@@ -669,7 +691,11 @@ body {
 
 /* ── About title highlight ── */
 .about-title .title-highlight {
-  color: var(--accent) !important;
+  background: linear-gradient(135deg, #63B3ED 0%, #9F7AEA 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  font-weight: 700 !important;
 }
 
 /* ── Strength tag hover ── */
@@ -686,9 +712,9 @@ body {
   color: var(--accent) !important;
 }
 
-/* ── Hero stat dividers — orange bar ── */
+/* ── Hero stat dividers — gradient bar ── */
 .impact-stat-divider {
-  background-color: var(--accent) !important;
+  background: linear-gradient(90deg, #63B3ED, #9F7AEA) !important;
   height: 2px !important;
   width: 28px !important;
   border-radius: 2px !important;
@@ -702,6 +728,92 @@ body {
 .footer-nav-link::after {
   background-color: #FFFFFF !important;
 }
+
+/* Works section card hover CTA link override */
+.wsc-card:hover .wsc-cta-link {
+  color: #63B3ED !important;
+}
+
+/* Experience item hover override */
+.experience-item-clickable:hover {
+  background-color: rgba(99, 179, 237, 0.04) !important;
+}
+
+/* ── ABOUT PAGE SPECIFIC OVERRIDES ── */
+
+/* About Page Titles & Headings Typography Consistency */
+.about-page-title,
+.about-hero-subheading,
+.about-page .section-title {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.04em !important;
+  line-height: 1.15 !important;
+  color: #000000 !important;
+}
+
+/* About Page Title Light Highlight (About me) */
+.about-page-title .title-light {
+  background: linear-gradient(135deg, #63B3ED 0%, #9F7AEA 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  font-weight: 500 !important;
+}
+
+/* About Page CTA button hover override */
+.about-mobile-cta:hover {
+  background-color: rgba(99, 179, 237, 0.08) !important;
+  border-color: #63B3ED !important;
+  color: #63B3ED !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(99, 179, 237, 0.15) !important;
+}
+
+/* Tool card hover glow */
+.tool-bubble-wrapper:hover .tool-card-square {
+  border-color: #63B3ED !important;
+  box-shadow: 0 10px 24px rgba(99, 179, 237, 0.12) !important;
+}
+
+
+
+/* Tooltip portal styles matching theme */
+.tool-tooltip-portal {
+  border-top: 2.5px solid #9F7AEA !important;
+}
+.tool-tooltip-portal .tooltip-name {
+  color: #9F7AEA !important;
+}
+
+/* ── WORK PAGE SPECIFIC OVERRIDES ── */
+
+/* Work Page Titles & Headings Typography Consistency */
+.work-headline-modern,
+.wc-title,
+.cta-headline {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.04em !important;
+  line-height: 1.15 !important;
+  color: #000000 !important;
+}
+
+/* Work Page Card Hover CTA Link Color Override */
+.wc-card:hover .wc-cta-link {
+  color: #63B3ED !important;
+}
+
+/* Work Page Bottom CTA Button Hover Glow */
+.cta-button-large:hover {
+  background-color: #000000 !important;
+  box-shadow: 0 0 20px rgba(159, 122, 234, 0.4) !important;
+}
+
+
+
+
+
 
 @media (max-width: 968px) {
   .navbar-links.mobile-menu-open li:last-child a {
