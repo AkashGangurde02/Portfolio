@@ -83,12 +83,7 @@
   transition: transform 0.35s ease;
 }
 
-.wsc-card:first-child {
-  padding-left: 0;
-}
-
 .wsc-card:last-child {
-  padding-right: 0;
   border-right: none !important;
 }
 
@@ -237,20 +232,8 @@
     border-right: 1px solid #E5E5E5 !important;
   }
 
-  /* Left column cards (odd child) */
-  .wsc-card:nth-child(2n+1) {
-    padding-left: 0 !important;
-    padding-right: 1.25rem !important;
-    border-right: 1px solid #E5E5E5 !important;
-  }
-
-  /* Right column cards (even child) */
-  .wsc-card:nth-child(2n) {
-    padding-left: 1.25rem !important;
-    padding-right: 0 !important;
-    border-right: none !important;
-  }
-
+  /* Right column cards (even child) and last card */
+  .wsc-card:nth-child(2n),
   .wsc-card:last-child {
     border-right: none !important;
   }

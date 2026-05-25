@@ -47,6 +47,16 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [location])
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 968) {
+        setIsMobileMenuOpen(false)
+      }
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   const showLetsTalk = !isHomePage || isPastThreshold
 
   useEffect(() => {

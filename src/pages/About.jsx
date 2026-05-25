@@ -207,17 +207,18 @@ const About = () => {
                   </h2>
 
                   <p className="about-hero-desc">
-                    I'm a <strong>UX/UI Designer</strong> focused on creating simple, intuitive, and{' '}
+                    <strong>Self-taught UX/UI Designer</strong> focused on creating simple, intuitive, and{' '}
                     <strong>user-centered digital experiences</strong> that solve real-world problems.
-                    Currently pursuing <strong>B.Tech in Computer Science (AI)</strong>, I bring a strong
-                    blend of <strong>technical understanding and design thinking</strong> to every project.
+                    With a background in <strong>Computer Science Engineering (AI)</strong>, I combine
+                    technical understanding with <strong>product thinking</strong> to design scalable and
+                    meaningful digital solutions.
                   </p>
 
                   <p className="about-hero-desc">
-                    I have led teams as <strong>Non-Technical Head at VIIT Robotics</strong> and
-                    completed a <strong>UX/UI internship at Somvanshi Technologies</strong>, where I
-                    designed landing pages, user flows, and responsive interfaces end-to-end in{' '}
-                    <strong>Figma</strong>.
+                    Previously worked as a <strong>UX/UI Design Intern at Somvanshi Technologies</strong>,
+                    where I designed landing pages, responsive interfaces, and end-to-end user experiences in{' '}
+                    <strong>Figma</strong>. I also led teams as the <strong>Non-Technical Head at VIIT Robotics Forum</strong>,
+                    strengthening my <strong>collaboration, leadership, and problem-solving skills</strong>.
                   </p>
 
                   {/* Quick-stat chips removed */}

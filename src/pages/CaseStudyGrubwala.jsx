@@ -35,14 +35,12 @@ gsap.registerPlugin(ScrollTrigger)
 const FLOWS = [
   { id: 'onboarding', label: 'Onboarding Redesign' },
   { id: 'ordering', label: 'Home Page Redesign' },
-  { id: 'checkout', label: 'Checkout Flow' },
   { id: 'edgecases', label: 'Edge Case UI Design' },
 ]
 
 const TOC_DATA = {
   onboarding: ['Onboarding Flow', 'Tools used', 'Existing Authentication problem', 'Design Goals', 'UX Thinking', 'Redesigned UI', 'Final Outcome'],
   ordering: ['Intro', 'Existing Experience Audit', 'Research & Benchmarking', 'Design Goals', 'UX Thinking', 'Redesigned UI', 'Key Improvements', 'Final Outcome'],
-  checkout: ['Overview', 'Existing Checkout Problems', 'Payment Friction', 'Hierarchy Improvements', 'Redesigned Checkout', 'Order Summary', 'Payment Experience', 'Outcome'],
   edgecases: ['Problem Context', 'Why Edge Cases Matter', 'UX Gaps & User Frustrations', 'Recovery UX Strategy', 'Designed Screens', 'CTA & Visual Design Thinking', 'Product Impact', 'Learnings']
 }
 
@@ -867,42 +865,6 @@ const OrderingFlow = () => (
   </div>
 )
 
-const CheckoutFlow = () => (
-  <div className="gw-flow-wrapper">
-    <FlowSection title="Overview">
-      <p className="gw-body">Checkout is where intent meets reality. The goal was to build confidence and reduce anxiety during the final payment steps.</p>
-    </FlowSection>
-    <FlowSection title="Existing Checkout Problems">
-      <p className="gw-body">The legacy flow had 6 distinct steps: Cart → Review → Address → Payment → Review Again → Confirm. This redundancy caused cart abandonment at the very last moment.</p>
-    </FlowSection>
-    <FlowSection title="Payment Friction">
-      <ul className="gw-bullet-list">
-        <li>Redundant review screens broke user momentum.</li>
-        <li>Address selection was unintuitive.</li>
-        <li>Hidden fees appeared too late in the flow.</li>
-      </ul>
-    </FlowSection>
-    <FlowSection title="Hierarchy Improvements">
-      <div className="gw-ba-compare">
-        <div className="gw-ba-box gw-ba-before"><h5>Before</h5><p>6 fragmented, low-confidence screens.</p></div>
-        <div className="gw-ba-box gw-ba-after"><h5>After</h5><p>3 linear, high-confidence decisive moments.</p></div>
-      </div>
-    </FlowSection>
-    <FlowSection title="Redesigned Checkout">
-      <p className="gw-body">Combined address selection and payment into a single fluid step. Order summary is always visible. No surprises.</p>
-    </FlowSection>
-    <FlowSection title="Order Summary">
-
-    </FlowSection>
-    <FlowSection title="Payment Experience">
-      <p className="gw-body">Integrated modern UPI and 1-tap payment solutions directly into the UI, avoiding external redirects where possible.</p>
-    </FlowSection>
-    <FlowSection title="Outcome">
-      <h4 className="gw-metric">↑ 45%</h4>
-      <p className="gw-body">Increase in checkout completion rate.</p>
-    </FlowSection>
-  </div>
-)
 
 const EdgeCaseCard = ({ icon, title, problem, solution }) => (
   <div className="gw-info-card edge-case-card">
@@ -1199,7 +1161,6 @@ export default function CaseStudyGrubwala() {
     switch (activeFlow) {
       case 'onboarding': return <OnboardingFlow />
       case 'ordering': return <OrderingFlow />
-      case 'checkout': return <CheckoutFlow />
       case 'edgecases': return <EdgeCaseFlow />
       default: return <OnboardingFlow />
     }
@@ -1224,7 +1185,7 @@ export default function CaseStudyGrubwala() {
         <div className="gw-hero-content">
           <span className="gw-hero-tag">Mobile App · Food Delivery · End-to-End UX Redesign</span>
           <h1 className="gw-hero-title">Redesigning Grubwala's<br /><span className="gw-accent">Food Ordering</span><br />Experience</h1>
-          <p className="gw-hero-sub">Simplifying onboarding, ordering, checkout, and edge cases through a mobile-first UX redesign that removes friction at every touchpoint.</p>
+          <p className="gw-hero-sub">Simplifying onboarding, ordering, and edge cases through a mobile-first UX redesign that removes friction at every touchpoint.</p>
           <div className="gw-meta-row">
             {[['Role', 'UI/UX Designer'], ['Platform', 'iOS & Android'], ['Focus', 'End-to-End Redesign']].map(([l, v], i) => (
               <div key={i} className="gw-meta-item">

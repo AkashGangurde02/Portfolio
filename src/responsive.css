@@ -1071,8 +1071,7 @@ img {
   .contact-container,
   .about-page-container,
   .experience-container,
-  .cs2-container,
-  .work-container {
+  .cs2-container {
     padding-left: 0;
     padding-right: 0;
   }

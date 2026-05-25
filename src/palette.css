@@ -48,19 +48,19 @@ body {
     background-color: var(--dark-bg) !important;
     box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
   }
+
+  .navbar-links.mobile-menu-open {
+    background-color: var(--dark-surface) !important;
+    border-color: var(--dark-border) !important;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5) !important;
+  }
+
+  .navbar-links.mobile-menu-open li {
+    border-bottom-color: var(--dark-border) !important;
+  }
 }
 
 /* Removed .navbar.scrolled override to let Navbar.css handle the light frosted background */
-
-.navbar-links.mobile-menu-open {
-  background-color: var(--dark-surface) !important;
-  border-color: var(--dark-border) !important;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.5) !important;
-}
-
-.navbar-links.mobile-menu-open li {
-  border-bottom-color: var(--dark-border) !important;
-}
 
 /* ═══════════════════════════════════════════════════════════════════
    HOME SUB NAVBAR
@@ -191,17 +191,29 @@ body {
 /* ═══════════════════════════════════════════════════════════════════
    COMPANY FEEDBACK
 ═══════════════════════════════════════════════════════════════════ */
-.sumip-wrapper {
+.cf-section {
   background-color: var(--bg-page) !important;
 }
 
-.sumip-container {
-  background-color: var(--bg-card) !important;
-  border-color: var(--border) !important;
+.cf-container {
+  background-color: var(--dark-surface) !important;
+  border-color: var(--dark-border) !important;
 }
 
-.carousel-window {
+.cf-window {
   background-color: var(--dark-bg) !important;
+}
+
+.cf-title {
+  color: #ffffff !important;
+}
+
+.cf-card-header h3 {
+  color: #ffffff !important;
+}
+
+.cf-card-body p {
+  color: #ffffff !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -542,13 +554,15 @@ body {
 }
 
 /* Mobile nav CTA pill */
-.navbar-links.mobile-menu-open li:last-child a {
-  background-color: var(--accent) !important;
-  color: #FFFFFF !important;
-}
+@media (max-width: 968px) {
+  .navbar-links.mobile-menu-open li:last-child a {
+    background-color: var(--accent) !important;
+    color: #FFFFFF !important;
+  }
 
-.navbar-links.mobile-menu-open li:last-child a:hover {
-  background-color: var(--accent-hover) !important;
+  .navbar-links.mobile-menu-open li:last-child a:hover {
+    background-color: var(--accent-hover) !important;
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -594,12 +608,12 @@ body {
   color: var(--dark-muted) !important;
 }
 
-.carousel-window .card-header h3 {
-  color: var(--dark-text) !important;
+.cf-window .cf-card-header h3 {
+  color: #ffffff !important;
 }
 
-.carousel-window .card-body p {
-  color: var(--dark-muted) !important;
+.cf-window .cf-card-body p {
+  color: #ffffff !important;
 }
 
 .suggestion-box .testimonial-name {
@@ -652,13 +666,20 @@ body {
 /* ── Section Titles Typography Consistency ── */
 .about-title,
 .wsc-section-title,
-.experience-section .section-title,
-.cf-title {
+.experience-section .section-title {
   font-family: 'Inter', sans-serif !important;
   font-weight: 500 !important;
   letter-spacing: -0.04em !important;
   line-height: 1.15 !important;
   color: #000000 !important;
+}
+
+.cf-title {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.04em !important;
+  line-height: 1.15 !important;
+  color: #ffffff !important;
 }
 
 /* ── Orange accent bar above section headings ── */

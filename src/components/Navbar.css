@@ -236,9 +236,16 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* When navbar is scrolled (white bg), make hamburger dark */
-.navbar.scrolled .hamburger-menu span {
-  background-color: #0D0D0D;
+/* When navbar is scrolled (white bg), make hamburger dark (desktop/tablet only) */
+@media (min-width: 969px) {
+  .navbar.scrolled .hamburger-menu span {
+    background-color: #0D0D0D;
+  }
+}
+
+/* Ensure hamburger icon (and X close icon) is always white when open on mobile dark menus */
+.hamburger-menu.open span {
+  background-color: #FFFFFF !important;
 }
 
 .hamburger-menu:hover span {
