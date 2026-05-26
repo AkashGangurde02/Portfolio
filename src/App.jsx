@@ -16,7 +16,7 @@ import DinoGame from './pages/DinoGame'
 import CursorFollower from './components/CursorFollower'
 import ScrollToTop from './components/ScrollToTop'
 import ScrollToTopButton from './components/ScrollToTopButton'
-import PasswordProtectedRoute from './components/PasswordProtectedRoute'
+
 import WhatsAppFloat from './components/WhatsAppFloat'
 // import IntroOverlay from './components/IntroOverlay'
 import './App.css'
@@ -39,16 +39,8 @@ function App() {
           {/* <Route path="/blog" element={<Blog />} /> */}
           <Route path="/contact" element={<Contact />} />
           <Route path="/case-study" element={<CaseStudyContactForm />} />
-          <Route path="/case-study/hemp-hop" element={
-            <PasswordProtectedRoute>
-              <CaseStudyHempHop />
-            </PasswordProtectedRoute>
-          } />
-          <Route path="/case-study/grubwala" element={
-            <PasswordProtectedRoute>
-              <CaseStudyGrubwala />
-            </PasswordProtectedRoute>
-          } />
+          <Route path="/case-study/hemp-hop" element={<CaseStudyHempHop />} />
+          <Route path="/case-study/grubwala" element={<CaseStudyGrubwala />} />
           <Route path="/experience/robotics" element={<ExperienceRobotics />} />
           <Route path="/experience/non-technical" element={<ExperienceNonTechnical />} />
           <Route path="/experience/somvanshi" element={<ExperienceSomvanshi />} />
