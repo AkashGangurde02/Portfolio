@@ -7,7 +7,7 @@
 ───────────────────────────────────────────────────────────────────────────── */
 
 /* ── Spotify page base ── */
-.sp-page { font-family: 'Inter', sans-serif; background: var(--bg-page); color: var(--text-body); -webkit-font-smoothing: antialiased; }
+.sp-page { font-family: 'Inter', sans-serif; background: var(--bg-page); color: var(--text-body); -webkit-font-smoothing: antialiased; padding-top: 72px; }
 
 /* ─────────────────────────────────────────────────────────────────────────────
    SECTION TYPOGRAPHY SYSTEM
