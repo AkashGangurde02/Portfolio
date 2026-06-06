@@ -280,12 +280,6 @@ export default function CaseStudySpotify() {
   return (
     <div className="gw-page sp-page">
 
-      {/* ── BREADCRUMB ── */}
-      <nav className="gw-breadcrumb">
-        <Link to="/work" className="gw-bc-link">Work</Link>
-        <span className="gw-bc-sep">/</span>
-        <span className="gw-bc-cur">Spotify Mini Player Redesign</span>
-      </nav>
 
       {/* ── HERO ── */}
       <section className="gw-hero">
