@@ -12,6 +12,12 @@ import spotifyHero from '../images/case-studies/case-study-4/spotify-hero.png'
 import spotifyResearch from '../images/case-studies/case-study-4/spotify-research.png'
 import spotifyFlow from '../images/case-studies/case-study-4/spotify-flow.png'
 
+// Player State Screenshots
+import stateDefault from '../images/case-studies/case-study-4/state-1-default.png'
+import stateHover from '../images/case-studies/case-study-4/state-2-hover.png'
+import stateLyricsPeek from '../images/case-studies/case-study-4/state-3-lyrics-peek.png'
+import stateLyricsMetadata from '../images/case-studies/case-study-4/state-4-lyrics-metadata.png'
+
 // Tool Icons
 import figmaIcon from '../images/icons/tool_figma.svg'
 import chatgptIcon from '../images/icons/tool_chatgpt.svg'
@@ -647,10 +653,42 @@ export default function CaseStudySpotify() {
             </p>
 
             <div className="sp-player-showcase">
-              <MiniPlayerMockup state="default" label="Default State" hasLyrics={false} isSelected={false} />
-              <MiniPlayerMockup state="hover" label="Hover State" hasLyrics={false} isSelected={false} />
-              <MiniPlayerMockup state="lyrics-peek" label="Lyrics Peek Mode" hasLyrics={true} isSelected={true} />
-              <MiniPlayerMockup state="lyrics-full" label="Lyrics + Metadata" hasLyrics={true} isSelected={false} />
+              <div className="sp-state-img-card">
+                <div className="sp-state-img-wrap">
+                  <img src={stateDefault} alt="State 1 — Default Mini Player" className="sp-state-img" />
+                </div>
+                <div className="sp-state-img-label">
+                  <span className="sp-state-img-num">01</span>
+                  <span className="sp-state-img-name">Default State</span>
+                </div>
+              </div>
+              <div className="sp-state-img-card">
+                <div className="sp-state-img-wrap">
+                  <img src={stateHover} alt="State 2 — Hover State" className="sp-state-img" />
+                </div>
+                <div className="sp-state-img-label">
+                  <span className="sp-state-img-num">02</span>
+                  <span className="sp-state-img-name">Hover State</span>
+                </div>
+              </div>
+              <div className="sp-state-img-card sp-state-img-card--selected">
+                <div className="sp-state-img-wrap">
+                  <img src={stateLyricsPeek} alt="State 3 — Lyrics Peek Mode" className="sp-state-img" />
+                </div>
+                <div className="sp-state-img-label">
+                  <span className="sp-state-img-num">03</span>
+                  <span className="sp-state-img-name">Lyrics Peek Mode</span>
+                </div>
+              </div>
+              <div className="sp-state-img-card">
+                <div className="sp-state-img-wrap">
+                  <img src={stateLyricsMetadata} alt="State 4 — Lyrics + Metadata" className="sp-state-img" />
+                </div>
+                <div className="sp-state-img-label">
+                  <span className="sp-state-img-num">04</span>
+                  <span className="sp-state-img-name">Lyrics + Metadata</span>
+                </div>
+              </div>
             </div>
 
             <div className="sp-ui-highlights">
