@@ -8,6 +8,7 @@ import Contact from './pages/Contact'
 import CaseStudyContactForm from './pages/CaseStudyContactForm'
 import CaseStudyHempHop from './pages/CaseStudyHempHop'
 import CaseStudyGrubwala from './pages/CaseStudyGrubwala'
+import CaseStudySpotify from './pages/CaseStudySpotify'
 import ExperienceRobotics from './pages/ExperienceRobotics'
 import ExperienceNonTechnical from './pages/ExperienceNonTechnical'
 import ExperienceSomvanshi from './pages/ExperienceSomvanshi'
@@ -41,6 +42,7 @@ function App() {
           <Route path="/case-study" element={<CaseStudyContactForm />} />
           <Route path="/case-study/hemp-hop" element={<CaseStudyHempHop />} />
           <Route path="/case-study/grubwala" element={<CaseStudyGrubwala />} />
+          <Route path="/case-study/spotify" element={<CaseStudySpotify />} />
           <Route path="/experience/robotics" element={<ExperienceRobotics />} />
           <Route path="/experience/non-technical" element={<ExperienceNonTechnical />} />
           <Route path="/experience/somvanshi" element={<ExperienceSomvanshi />} />

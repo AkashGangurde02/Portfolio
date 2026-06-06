@@ -6,6 +6,7 @@ import './Work.css'
 import contactFormImage from '../images/case-studies/case-study-1/contact-redesign.jpg'
 import hempHopImage from '../images/case-studies/case-study-2/hemp-hop-cover.png'
 import grubwalaImage from '../images/case-studies/case-study-3/grubwala-cover.jpg'
+import spotifyImage from '../images/case-studies/case-study-4/spotify-hero.png'
 import Footer from '../components/Footer'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -39,6 +40,14 @@ const Work = () => {
             description: 'Led the end-to-end UX redesign of a food delivery platform, improving usability, strengthening user trust, and creating a more emotionally engaging ordering experience.',
             image: grubwalaImage,
             link: '/case-study/grubwala',
+            ctaText: 'View Case Study'
+        },
+        {
+            id: 4,
+            title: 'Spotify Desktop Mini Player Redesign',
+            description: 'Designed a lyrics-in-mini-player feature for Spotify Desktop using progressive disclosure and hover-based interaction — bringing live lyrics to users without disrupting their workflow.',
+            image: spotifyImage,
+            link: '/case-study/spotify',
             ctaText: 'View Case Study'
         }
     ]
