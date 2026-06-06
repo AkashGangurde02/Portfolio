@@ -739,9 +739,10 @@ export default function CaseStudySpotify() {
                   <p>Explore the complete high-fidelity UI screens and component library.</p>
                 </div>
                 <a
-                  href="#"
+                  href="https://www.figma.com/design/vM1YbJONNAlsayJCEJIt6y/Spotify-Case-study--PUBLIC?node-id=0-1&t=YerxVfUt2TrRVIR8-1"
                   className="gw-btn gw-btn-primary sp-proto-btn"
-                  onClick={e => e.preventDefault()}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   View Design →
                 </a>
@@ -755,9 +756,10 @@ export default function CaseStudySpotify() {
                   <p>Interact with the live prototype including hover states and lyrics reveal.</p>
                 </div>
                 <a
-                  href="#"
+                  href="https://www.figma.com/make/ZUwGWcofp0lVANyUK3z7Yu/Spotify-Mini-Player-Prototype?t=m6eWMcqLwuSvKbyJ-20&fullscreen=1"
                   className="gw-btn gw-btn-ghost sp-proto-btn"
-                  onClick={e => e.preventDefault()}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   View Prototype →
                 </a>
