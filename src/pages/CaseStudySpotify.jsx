@@ -207,14 +207,12 @@ const slugify = (text) => text.toLowerCase().replace(/\s+/g, '-')
 
 const TOC_ITEMS = [
   'Overview',
-  'The Existing Experience',
+  'Existing Experience',
   'Research & Validation',
-  'Problem Statement',
   'Pain Points',
   'Design Goals',
   'Exploring Solutions',
   'UX Thinking',
-  'Interaction Flow',
   'Final UI',
   'Prototype',
   'Key UX Decisions',
@@ -311,14 +309,6 @@ export default function CaseStudySpotify() {
           <div className="gw-hero-glow" />
           <div className="gw-hero-img-wrap">
             <img src={spotifyHero} alt="Spotify Mini Player Redesign — Before vs After" className="gw-hero-img" />
-            <div className="gw-float-card gw-float-1">
-              <span className="gw-float-icon">🎵</span>
-              Lyrics in Mini Player
-            </div>
-            <div className="gw-float-card gw-float-2">
-              <span className="gw-float-icon">✦</span>
-              Zero Workflow Interruption
-            </div>
           </div>
         </div>
       </section>
@@ -349,7 +339,6 @@ export default function CaseStudySpotify() {
 
           {/* ── SECTION 1: OVERVIEW ── */}
           <section id="overview" className="gw-flow-section sp-ord-section">
-            <div className="sp-section-eyebrow">Project Overview</div>
             <h3 className="sp-section-headline">Lyrics Without<br />Leaving Your Workflow</h3>
             <p className="sp-section-sub">
               Spotify's Desktop Mini Player lets users listen to music without opening the full application —
@@ -386,9 +375,9 @@ export default function CaseStudySpotify() {
             </div>
           </section>
 
-          {/* ── SECTION 2: THE EXISTING EXPERIENCE ── */}
-          <section id="the-existing-experience" className="gw-flow-section sp-ord-section">
-            <h3 className="sp-section-headline">The Existing Experience</h3>
+          {/* ── SECTION 2: EXISTING EXPERIENCE ── */}
+          <section id="existing-experience" className="gw-flow-section sp-ord-section">
+            <h3 className="sp-section-headline">Existing Experience</h3>
             <p className="sp-section-sub">
               The current Spotify Desktop Mini Player offers playback controls but leaves lyrics entirely inaccessible.
             </p>
@@ -414,7 +403,7 @@ export default function CaseStudySpotify() {
               </div>
             </div>
 
-            <div className="sp-problem-result">
+            <div className="sp-problem-result" style={{ marginBottom: '3.5rem' }}>
               <div className="sp-result-label">Result</div>
               <div className="sp-result-cards">
                 <div className="sp-result-card">
@@ -431,20 +420,23 @@ export default function CaseStudySpotify() {
                 </div>
               </div>
             </div>
+
+            <h5 className="gw-sub-heading" style={{ marginTop: '3.5rem', marginBottom: '1.5rem', fontSize: '1.25rem', color: 'var(--text-primary)', fontWeight: 700 }}>Problem Statement</h5>
+            <div className="sp-hmw-block" style={{ marginTop: 0 }}>
+              <div className="sp-hmw-eyebrow">How Might We</div>
+              <blockquote className="sp-hmw-quote">
+                "How might Spotify help Desktop Mini Player users access lyrics without reopening the main application and disrupting their workflow?"
+              </blockquote>
+            </div>
           </section>
 
-          {/* ── SECTION 3: RESEARCH & VALIDATION ── */}
+          {/* ── SECTION 4: RESEARCH & VALIDATION ── */}
           <section id="research-&-validation" className="gw-flow-section sp-ord-section">
             <h3 className="sp-section-headline">Research & Validation</h3>
             <p className="sp-section-sub">
               Before designing, I validated the problem through community-driven research — Spotify Community,
               Reddit discussions, and feature request threads.
             </p>
-
-            <div className="sp-research-note">
-              <span className="sp-research-icon"><LightbulbIcon /></span>
-              <p>Research was conducted across <strong>Spotify Community forums</strong>, <strong>Reddit r/spotify</strong>, and public feature request boards. The pattern was consistent: users want lyrics in the Mini Player.</p>
-            </div>
 
             <img
               src={spotifyResearch}
@@ -470,17 +462,6 @@ export default function CaseStudySpotify() {
                 <div className="sp-finding-icon">🔧</div>
                 <p>Users <strong>actively search for workarounds</strong> — browser tabs, third-party apps</p>
               </div>
-            </div>
-          </section>
-
-          {/* ── SECTION 4: PROBLEM STATEMENT ── */}
-          <section id="problem-statement" className="gw-flow-section sp-ord-section">
-            <h3 className="sp-section-headline">Problem Statement</h3>
-            <div className="sp-hmw-block">
-              <div className="sp-hmw-eyebrow">How Might We</div>
-              <blockquote className="sp-hmw-quote">
-                "How might Spotify help Desktop Mini Player users access lyrics without reopening the main application and disrupting their workflow?"
-              </blockquote>
             </div>
           </section>
 
@@ -596,46 +577,6 @@ export default function CaseStudySpotify() {
                 question="Why not a full lyrics window?"
                 answer="The Mini Player's value is its footprint. A full lyrics window defeats the purpose. The peek approach gives users quick lyric access during focused work — not a karaoke session. The right amount of lyrics at the right time."
               />
-            </div>
-          </section>
-
-          {/* ── SECTION 9: INTERACTION FLOW ── */}
-          <section id="interaction-flow" className="gw-flow-section sp-ord-section">
-            <h3 className="sp-section-headline">Interaction Flow</h3>
-            <p className="sp-section-sub">
-              The redesign is structured around four distinct player states that transition smoothly in response to user interaction.
-            </p>
-
-            <img
-              src={spotifyFlow}
-              alt="Spotify Mini Player interaction flow — four states: Default, Hover, Lyrics Peek, Lyrics + Metadata"
-              className="sp-flow-img"
-            />
-
-            <div className="sp-states-grid">
-              <div className="sp-state-card">
-                <div className="sp-state-number">01</div>
-                <h4 className="sp-state-title">Default Mini Player</h4>
-                <p className="sp-state-desc">The compact player at rest. Track info, cover art, and playback controls. No lyrics visible. Identical to the existing experience.</p>
-              </div>
-              <div className="sp-state-connector"><ArrowRightIcon /></div>
-              <div className="sp-state-card">
-                <div className="sp-state-number">02</div>
-                <h4 className="sp-state-title">Hover State</h4>
-                <p className="sp-state-desc">User hovers over the Mini Player. A subtle glow activates and a ♪ lyrics button appears. No lyrics yet — just the affordance.</p>
-              </div>
-              <div className="sp-state-connector"><ArrowRightIcon /></div>
-              <div className="sp-state-card">
-                <div className="sp-state-number">03</div>
-                <h4 className="sp-state-title">Lyrics Peek Mode</h4>
-                <p className="sp-state-desc">Lyrics button tapped or player hovered longer. 2–3 lines of synced lyrics appear below the player in a translucent panel.</p>
-              </div>
-              <div className="sp-state-connector"><ArrowRightIcon /></div>
-              <div className="sp-state-card">
-                <div className="sp-state-number">04</div>
-                <h4 className="sp-state-title">Lyrics + Metadata</h4>
-                <p className="sp-state-desc">Full lyrics view with song metadata — album, release year, songwriter credits. Playback controls persist throughout.</p>
-              </div>
             </div>
           </section>
 

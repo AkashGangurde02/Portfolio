@@ -6,6 +6,7 @@ import './WorksSection.css'
 import contactFormImage from '../images/case-studies/case-study-1/contact-redesign.jpg'
 import hempHopImage from '../images/case-studies/case-study-2/hemp-hop-cover.png'
 import grubwalaImage from '../images/case-studies/case-study-3/grubwala-cover.jpg'
+import spotifyImage from '../images/case-studies/case-study-4/spotify-hero.png'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -20,13 +21,13 @@ const projects = [
     date: 'Jan 2025',
   },
   {
-    id: 2,
-    title: 'Improving Product Discovery & Trust',
-    category: 'E-Commerce UX',
-    description: 'Redesigned the product and collection pages of a D2C wellness e-commerce platform to improve discovery, clarity, and purchase confidence.',
-    image: hempHopImage,
-    link: '/case-study/hemp-hop',
-    date: 'Mar 2025',
+    id: 4,
+    title: 'Spotify Desktop Mini Player Redesign',
+    category: 'Interaction Design',
+    description: 'Designed a lyrics-in-mini-player feature for Spotify Desktop using progressive disclosure and hover-based interaction — bringing live lyrics to users without disrupting their workflow.',
+    image: spotifyImage,
+    link: '/case-study/spotify',
+    date: 'Jul 2025',
   },
   {
     id: 3,
@@ -37,6 +38,7 @@ const projects = [
     link: '/case-study/grubwala',
     date: 'May 2025',
   },
+
 ]
 
 const WorksSection = () => {

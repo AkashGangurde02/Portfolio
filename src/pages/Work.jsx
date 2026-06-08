@@ -27,11 +27,11 @@ const Work = () => {
             ctaText: 'View Case Study'
         },
         {
-            id: 2,
-            title: 'Improving Product Discovery & Trust',
-            description: 'Redesigned the product and collection pages of a D2C wellness e-commerce platform to improve product discovery, information clarity, and purchase confidence.',
-            image: hempHopImage,
-            link: '/case-study/hemp-hop',
+            id: 4,
+            title: 'Spotify Desktop Mini Player Redesign',
+            description: 'Designed a lyrics-in-mini-player feature for Spotify Desktop using progressive disclosure and hover-based interaction — bringing live lyrics to users without disrupting their workflow.',
+            image: spotifyImage,
+            link: '/case-study/spotify',
             ctaText: 'View Case Study'
         },
         {
@@ -40,14 +40,6 @@ const Work = () => {
             description: 'Led the end-to-end UX redesign of a food delivery platform, improving usability, strengthening user trust, and creating a more emotionally engaging ordering experience.',
             image: grubwalaImage,
             link: '/case-study/grubwala',
-            ctaText: 'View Case Study'
-        },
-        {
-            id: 4,
-            title: 'Spotify Desktop Mini Player Redesign',
-            description: 'Designed a lyrics-in-mini-player feature for Spotify Desktop using progressive disclosure and hover-based interaction — bringing live lyrics to users without disrupting their workflow.',
-            image: spotifyImage,
-            link: '/case-study/spotify',
             ctaText: 'View Case Study'
         }
     ]
