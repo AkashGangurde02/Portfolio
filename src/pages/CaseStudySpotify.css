@@ -620,10 +620,15 @@
    INTERACTION FLOW — STATES
 ───────────────────────────────────────────────────────────────────────────── */
 .sp-flow-img {
+  display: block;
   width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 8;
+  object-fit: cover;
+  object-position: top;
+  margin: 0 auto 2.5rem;
   border-radius: 16px;
   border: 1px solid var(--border);
-  margin-bottom: 2rem;
   box-shadow: 0 4px 20px rgba(0,0,0,0.04);
 }
 

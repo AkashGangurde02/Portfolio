@@ -209,7 +209,6 @@ const TOC_ITEMS = [
   'Overview',
   'Existing Experience',
   'Research & Validation',
-  'Pain Points',
   'Design Goals',
   'Exploring Solutions',
   'UX Thinking',
@@ -219,6 +218,7 @@ const TOC_ITEMS = [
   'Expected Impact',
   'What I Learned',
 ]
+
 
 // ── MAIN COMPONENT ────────────────────────────────────────────────────────────
 export default function CaseStudySpotify() {
@@ -382,52 +382,46 @@ export default function CaseStudySpotify() {
               The current Spotify Desktop Mini Player offers playback controls but leaves lyrics entirely inaccessible.
             </p>
 
-            <div className="sp-ba-grid">
-              <div className="sp-ba-panel sp-ba-can">
-                <div className="sp-ba-label sp-ba-label-green">Users Can</div>
-                <ul className="sp-ba-list">
-                  <li><span className="sp-ba-icon sp-ba-icon--check"><CheckIcon /></span>Play and pause music</li>
-                  <li><span className="sp-ba-icon sp-ba-icon--check"><CheckIcon /></span>Skip to next or previous track</li>
-                  <li><span className="sp-ba-icon sp-ba-icon--check"><CheckIcon /></span>Control volume</li>
-                  <li><span className="sp-ba-icon sp-ba-icon--check"><CheckIcon /></span>See track name and artist</li>
-                </ul>
-              </div>
-              <div className="sp-ba-panel sp-ba-cannot">
-                <div className="sp-ba-label sp-ba-label-red">Users Cannot</div>
-                <ul className="sp-ba-list">
-                  <li><span className="sp-ba-icon sp-ba-icon--x"><XIcon /></span>Access live synchronized lyrics</li>
-                  <li><span className="sp-ba-icon sp-ba-icon--x"><XIcon /></span>Sing along without opening Spotify</li>
-                  <li><span className="sp-ba-icon sp-ba-icon--x"><XIcon /></span>Stay in their workflow</li>
-                  <li><span className="sp-ba-icon sp-ba-icon--x"><XIcon /></span>Get song metadata inline</li>
-                </ul>
-              </div>
+            <p className="gw-body" style={{ marginBottom: '2.5rem' }}>
+              To view synchronized lyrics, users are forced to restore the main Spotify window, which defeats the purpose
+              of the compact player. This creates workflow disruption, constant window switching, and breaks the immersive
+              listening experience.
+            </p>
+
+            <img
+              src={spotifyFlow}
+              alt="Existing Spotify Mini Player Flow"
+              className="sp-flow-img"
+            />
+
+            <h5 className="gw-sub-heading" style={{ marginTop: '3.5rem', marginBottom: '1.5rem', fontSize: '1.25rem', color: 'var(--text-primary)', fontWeight: 700 }}>Problems Identified</h5>
+            <div className="sp-audit-grid" style={{ marginBottom: '3.5rem' }}>
+              <PainPointCard
+                number="01"
+                tag="Feature Gap"
+                title="No Lyrics Inside Mini Player"
+                description="Lyrics are entirely absent from the Mini Player experience. Users who multitask with Spotify minimized have no way to read lyrics without fully switching applications."
+              />
+              <PainPointCard
+                number="02"
+                tag="Interruption"
+                title="Workflow Interruption"
+                description="Opening the full Spotify window breaks user focus during deep work sessions. The Mini Player's core value — staying out of the way — is undermined the moment lyrics are needed."
+              />
+              <PainPointCard
+                number="03"
+                tag="Context Switching"
+                title="Repeated Context Switching"
+                description="Users must toggle between their primary application and Spotify repeatedly during a session. This constant switching compounds over time, degrading the music listening experience."
+              />
+              <PainPointCard
+                number="04"
+                tag="Immersion"
+                title="Reduced Music Immersion"
+                description="The inability to see lyrics passively during work reduces the sense of connection with the music. Workarounds like secondary lyric apps create unnecessary desktop clutter."
+              />
             </div>
 
-            <div className="sp-problem-result" style={{ marginBottom: '3.5rem' }}>
-              <div className="sp-result-label">Result</div>
-              <div className="sp-result-cards">
-                <div className="sp-result-card">
-                  <span>⚡</span>
-                  <p>Workflow interruption every time a user wants to view lyrics</p>
-                </div>
-                <div className="sp-result-card">
-                  <span>🔁</span>
-                  <p>Repeated app switching between the Mini Player and full Spotify</p>
-                </div>
-                <div className="sp-result-card">
-                  <span>🎧</span>
-                  <p>Reduced music immersion during focus and multitasking sessions</p>
-                </div>
-              </div>
-            </div>
-
-            <h5 className="gw-sub-heading" style={{ marginTop: '3.5rem', marginBottom: '1.5rem', fontSize: '1.25rem', color: 'var(--text-primary)', fontWeight: 700 }}>Problem Statement</h5>
-            <div className="sp-hmw-block" style={{ marginTop: 0 }}>
-              <div className="sp-hmw-eyebrow">How Might We</div>
-              <blockquote className="sp-hmw-quote">
-                "How might Spotify help Desktop Mini Player users access lyrics without reopening the main application and disrupting their workflow?"
-              </blockquote>
-            </div>
           </section>
 
           {/* ── SECTION 4: RESEARCH & VALIDATION ── */}
@@ -465,37 +459,7 @@ export default function CaseStudySpotify() {
             </div>
           </section>
 
-          {/* ── SECTION 5: PAIN POINTS ── */}
-          <section id="pain-points" className="gw-flow-section sp-ord-section">
-            <h3 className="sp-section-headline">Pain Points</h3>
-            <p className="sp-section-sub">Four friction points identified from research and user behavior analysis.</p>
-            <div className="sp-audit-grid">
-              <PainPointCard
-                number="01"
-                tag="Feature Gap"
-                title="No Lyrics Inside Mini Player"
-                description="Lyrics are entirely absent from the Mini Player experience. Users who multitask with Spotify minimized have no way to read lyrics without fully switching applications."
-              />
-              <PainPointCard
-                number="02"
-                tag="Interruption"
-                title="Workflow Interruption"
-                description="Opening the full Spotify window breaks user focus during deep work sessions. The Mini Player's core value — staying out of the way — is undermined the moment lyrics are needed."
-              />
-              <PainPointCard
-                number="03"
-                tag="Context Switching"
-                title="Repeated Context Switching"
-                description="Users must toggle between their primary application and Spotify repeatedly during a session. This constant switching compounds over time, degrading the music listening experience."
-              />
-              <PainPointCard
-                number="04"
-                tag="Immersion"
-                title="Reduced Music Immersion"
-                description="The inability to see lyrics passively during work reduces the sense of connection with the music. Workarounds like secondary lyric apps create unnecessary desktop clutter."
-              />
-            </div>
-          </section>
+
 
           {/* ── SECTION 6: DESIGN GOALS ── */}
           <section id="design-goals" className="gw-flow-section sp-ord-section">
