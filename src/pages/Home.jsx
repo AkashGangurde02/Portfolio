@@ -1,6 +1,7 @@
 import HeroSection from '../components/HeroSection'
 import MarqueeStrip from '../components/MarqueeStrip'
 import WorksSection from '../components/WorksSection'
+import SpotifyCasePreview from '../components/SpotifyCasePreview'
 import SkillsSection from '../components/SkillsSection'
 import ProcessSection from '../components/ProcessSection'
 import AboutSection from '../components/AboutSection'
@@ -17,6 +18,7 @@ const Home = () => {
       <MarqueeStrip />
       <AboutSection />
       <WorksSection />
+      <SpotifyCasePreview />
       {/* <ExperienceSnapshot /> */}
       <ExperienceSection />
       {/* <ImpactSection /> */}

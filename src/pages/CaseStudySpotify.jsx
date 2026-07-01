@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import '../components/HomeSubNavbar.css'
 import './CaseStudySpotify.css'
 import Footer from '../components/Footer'
+import SpotifyPlayerPrototype from '../components/SpotifyPlayerPrototype'
 
 // Images
 import spotifyHero from '../images/case-studies/case-study-4/spotify-hero.png'
@@ -626,8 +627,20 @@ export default function CaseStudySpotify() {
           <section id="prototype" className="gw-flow-section sp-ord-section">
             <h3 className="sp-section-headline">Prototype</h3>
             <p className="sp-section-sub">
-              View the interactive Figma design and the functional Figma Make prototype.
+              An interactive coded prototype showing all four Mini Player states.
+              Hover the player to reveal controls, then click the mic icon to toggle lyrics.
             </p>
+
+            {/* ── Live Interactive Prototype ── */}
+            <div className="sp-proto-live-wrap">
+              <div className="sp-proto-live-label">
+                <span className="sp-proto-live-dot" />
+                Live Interactive Prototype
+              </div>
+              <SpotifyPlayerPrototype />
+            </div>
+
+            {/* ── Figma links ── */}
             <div className="sp-prototype-cards">
               <div className="sp-proto-card">
                 <div className="sp-proto-icon">
@@ -652,7 +665,7 @@ export default function CaseStudySpotify() {
                 </div>
                 <div className="sp-proto-info">
                   <h4>Figma Make Prototype</h4>
-                  <p>Interact with the live prototype including hover states and lyrics reveal.</p>
+                  <p>Interact with the live Figma prototype including hover states and lyrics reveal.</p>
                 </div>
                 <a
                   href="https://www.figma.com/make/ZUwGWcofp0lVANyUK3z7Yu/Spotify-Mini-Player-Prototype?t=m6eWMcqLwuSvKbyJ-20&fullscreen=1"

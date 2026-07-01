@@ -1,0 +1,473 @@
+/* ============================================================
+   SPOTIFY PLAYER PROTOTYPE
+   Pixel-accurate recreation of the 4-state Mini Player
+   ============================================================ */
+
+/* ── Wrapper & stage ─────────────────────────────────────── */
+.spp-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  padding: 2.5rem 1rem 3rem;
+  user-select: none;
+}
+
+.spp-stage {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+/* ════════════════════════════════════════════════════════════
+   PLAYER SHELL
+   Matches Spotify's dark mini-player dimensions exactly
+════════════════════════════════════════════════════════════ */
+.spp-player {
+  width: 380px;
+  background: #1a1a1a;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #2a2a2a;
+  box-shadow:
+    0 2px 6px rgba(0,0,0,0.5),
+    0 20px 60px rgba(0,0,0,0.7);
+  cursor: default;
+  transition: box-shadow 0.3s ease;
+  position: relative;
+}
+
+.spp-player:hover {
+  box-shadow:
+    0 2px 6px rgba(0,0,0,0.5),
+    0 30px 80px rgba(0,0,0,0.8),
+    0 0 0 1px rgba(255,255,255,0.05);
+}
+
+/* ── Chrome bar ──────────────────────────────────────────── */
+.spp-chrome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: #141414;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  flex-shrink: 0;
+}
+
+.spp-chrome-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.65);
+}
+
+.spp-url {
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.01em;
+}
+
+.spp-chrome-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.spp-chrome-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.4);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.spp-chrome-btn:hover {
+  color: rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.08);
+}
+
+/* ── Album art area ──────────────────────────────────────── */
+.spp-art-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 380 / 244;
+  overflow: hidden;
+  display: block;
+  line-height: 0;
+}
+
+.spp-art-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: filter 0.45s ease, brightness 0.45s ease;
+  filter: brightness(1);
+}
+
+.spp-art-img--dim {
+  filter: brightness(0.45);
+}
+
+/* ── Lyrics overlay ─────────────────────────────────────── */
+.spp-lyrics-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 28px;
+  gap: 6px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.spp-lyrics-overlay--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.spp-lyric {
+  text-align: center;
+  line-height: 1.4;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.spp-lyric--active {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.spp-lyric--dim {
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.5);
+}
+
+/* ── Progress section ───────────────────────────────────── */
+.spp-progress-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px 0;
+  background: #1a1a1a;
+}
+
+.spp-time {
+  font-size: 0.65rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.5);
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+  min-width: 26px;
+}
+
+.spp-time:last-child {
+  text-align: right;
+}
+
+.spp-progress-track {
+  flex: 1;
+  height: 3px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 3px;
+  position: relative;
+  cursor: pointer;
+}
+
+.spp-progress-fill {
+  height: 100%;
+  background: #ffffff;
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+.spp-player:hover .spp-progress-fill {
+  background: #1DB954;
+}
+
+.spp-progress-thumb {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s ease;
+}
+
+.spp-player:hover .spp-progress-thumb {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* ── Controls row ────────────────────────────────────────── */
+.spp-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px 14px 12px;
+  background: #1a1a1a;
+
+  /* Hidden by default — slides in on hover */
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition:
+    max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.25s ease,
+    padding 0.3s ease;
+}
+
+.spp-controls--visible {
+  max-height: 60px;
+  opacity: 1;
+  padding: 10px 14px 12px;
+}
+
+.spp-ctrl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: color 0.15s ease, transform 0.15s ease, background 0.15s ease;
+}
+
+.spp-ctrl:hover {
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.spp-ctrl--icon {
+  width: 36px;
+  height: 36px;
+}
+
+/* Play/pause — white circle */
+.spp-ctrl--play {
+  width: 42px;
+  height: 42px;
+  background: #ffffff;
+  color: #000 !important;
+  border-radius: 50%;
+  margin: 0 4px;
+}
+
+.spp-ctrl--play:hover {
+  background: #f0f0f0 !important;
+  transform: scale(1.06) !important;
+}
+
+/* Lyrics / mic toggle */
+.spp-ctrl--lyrics {
+  color: rgba(255,255,255,0.5);
+}
+
+.spp-ctrl--lyrics:hover {
+  color: rgba(255,255,255,0.85);
+}
+
+.spp-ctrl--lyrics-active {
+  color: #1DB954 !important;
+}
+
+.spp-ctrl--lyrics-active:hover {
+  color: #1ed760 !important;
+}
+
+/* ── Metadata row ────────────────────────────────────────── */
+.spp-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  background: #1a1a1a;
+
+  /* Hidden, slides in when not hovering */
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.25s ease,
+    padding 0.3s ease;
+}
+
+.spp-meta--visible {
+  max-height: 80px;
+  opacity: 1;
+  padding: 12px 14px 14px;
+}
+
+.spp-meta-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.spp-track-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: -0.01em;
+}
+
+.spp-track-artist {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.55);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.spp-add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.6);
+  cursor: pointer;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.spp-add-btn:hover {
+  color: #1DB954;
+  transform: scale(1.12);
+}
+
+/* ════════════════════════════════════════════════════════════
+   STATE GUIDE ROW
+════════════════════════════════════════════════════════════ */
+.spp-state-guide {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.spp-guide-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.03);
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease;
+  position: relative;
+}
+
+.spp-guide-pill--active {
+  border-color: rgba(29,185,84,0.45);
+  background: rgba(29,185,84,0.08);
+}
+
+.spp-guide-num {
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: rgba(255,255,255,0.3);
+  transition: color 0.25s ease;
+}
+
+.spp-guide-pill--active .spp-guide-num {
+  color: #1DB954;
+}
+
+.spp-guide-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.35);
+  transition: color 0.25s ease;
+}
+
+.spp-guide-pill--active .spp-guide-label {
+  color: rgba(255,255,255,0.75);
+}
+
+.spp-guide-dot {
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #1DB954;
+  animation: spp-dot-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes spp-dot-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
+}
+
+/* ── Hint text ───────────────────────────────────────────── */
+.spp-hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.25);
+  margin: 0;
+}
+
+.spp-hint svg {
+  display: inline;
+  vertical-align: middle;
+  margin: 0 2px;
+  color: rgba(255,255,255,0.35);
+}
+
+.spp-hint-sep {
+  opacity: 0.4;
+}
+
+/* ── Reduced motion ──────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .spp-controls,
+  .spp-meta,
+  .spp-lyrics-overlay,
+  .spp-art-img,
+  .spp-guide-dot {
+    transition: opacity 0.2s ease !important;
+    animation: none !important;
+  }
+}
