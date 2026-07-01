@@ -1,7 +1,7 @@
 .whatsapp-float {
     position: fixed;
     bottom: 30px;
-    right: 30px;
+    left: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -88,7 +88,7 @@
 @media (max-width: 480px) {
     .whatsapp-float {
         bottom: 20px;
-        right: 20px;
+        left: 20px;
         width: 42px;
         height: 42px;
     }
@@ -103,7 +103,7 @@
 .whatsapp-float.hidden {
     opacity: 0;
     visibility: hidden;
-    transform: translateX(100px);
+    transform: translateX(-100px);
 }
 
 .whatsapp-float.visible {

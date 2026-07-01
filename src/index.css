@@ -36,30 +36,14 @@ button,
   font-family: 'Inter', sans-serif;
 }
 
-/* Enable premium native smooth scrolling */
+/* Smooth scrolling — scrollbar hidden globally */
 html {
   scroll-behavior: smooth;
-  scrollbar-color: #E5E5E0 #FFFFFF;
-  scrollbar-width: thin;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE / Edge */
 }
 
-/* Light custom scrollbar for WebKit */
+/* Hide scrollbar for Chrome, Safari, Opera */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #FFFFFF;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #E5E5E0;
-  border-radius: 9999px;
-  border: 2.5px solid #FFFFFF;
-  transition: background 0.2s ease;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #D1D1CB;
+  display: none;
 }
