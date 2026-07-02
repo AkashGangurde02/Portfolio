@@ -18,9 +18,9 @@
 
   <!-- Chatbase bubble button nudge + chat window responsive override -->
   <style>
-    /* ── Desktop: bubble button — lifted 40px above default ── */
+    /* ── Bubble button — position set dynamically by JS to align with View Work btn ── */
     #chatbase-bubble-button {
-      transform: translateY(-40px) !important;
+      transform: none !important;
     }
 
     /* ── Hide the "Hi! What can I help you with?" nudge tooltip ── */
@@ -129,6 +129,44 @@
   <!-- Chatbase Chat Widget -->
   <script>
     (function () { if (!window.chatbase || window.chatbase("getState") !== "initialized") { window.chatbase = (...arguments) => { if (!window.chatbase.q) { window.chatbase.q = [] } window.chatbase.q.push(arguments) }; window.chatbase = new Proxy(window.chatbase, { get(target, prop) { if (prop === "q") { return target.q } return (...args) => target(prop, ...args) } }) } const onLoad = function () { const script = document.createElement("script"); script.src = "https://www.chatbase.co/embed.min.js"; script.id = "tnWuUaguCLOOEtCP3YGz7"; script.domain = "www.chatbase.co"; document.body.appendChild(script) }; if (document.readyState === "complete") { onLoad() } else { window.addEventListener("load", onLoad) } })();
+  </script>
+
+  <!-- Align Chatbase bubble + scroll-to-top with the hero "View Work" button -->
+  <script>
+    (function () {
+      function alignChatWithViewWork() {
+        var chatBtn = document.getElementById('chatbase-bubble-button');
+        var viewWorkBtn = document.querySelector('a.hero-cta-btn');
+        var scrollBtn = document.querySelector('.scroll-to-top-btn');
+        if (!chatBtn || !viewWorkBtn) return;
+
+        var rect = viewWorkBtn.getBoundingClientRect();
+        var btnMidY = rect.top + rect.height / 2;          // centre of View Work btn from top
+        var chatH   = chatBtn.offsetHeight  || 56;
+        var desired = window.innerHeight - btnMidY - chatH / 2; // distance from viewport bottom
+
+        var bottom = Math.max(desired, 20);                // never go below 20px
+
+        chatBtn.style.setProperty('bottom', bottom + 'px', 'important');
+        chatBtn.style.setProperty('transform', 'none', 'important');
+
+        // Keep scroll-to-top button on the same horizontal baseline
+        if (scrollBtn) {
+          scrollBtn.style.setProperty('bottom', bottom + 'px', 'important');
+        }
+      }
+
+      // Wait for Chatbase bubble to be injected into the DOM
+      var observer = new MutationObserver(function () {
+        if (document.getElementById('chatbase-bubble-button')) {
+          alignChatWithViewWork();
+          window.addEventListener('resize', alignChatWithViewWork);
+          observer.disconnect();
+        }
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+      window.addEventListener('load', alignChatWithViewWork);
+    })();
   </script>
 </body>
 
