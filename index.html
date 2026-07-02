@@ -23,6 +23,21 @@
       transform: translateY(-40px) !important;
     }
 
+    /* ── Hide the "Hi! What can I help you with?" nudge tooltip ── */
+    #chatbase-bubble-tooltip,
+    .chatbase-bubble-tooltip,
+    [id*="chatbase"][id*="tooltip"],
+    [class*="chatbase"][class*="tooltip"],
+    [id*="chatbase"][id*="nudge"],
+    [class*="chatbase"][class*="nudge"],
+    [id*="chatbase"][id*="message-bubble"],
+    [class*="chatbase"][class*="message-bubble"] {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+
     /* ── Desktop: chat window (default) ── */
     #chatbase-bubble-window {
       height: 460px !important;
