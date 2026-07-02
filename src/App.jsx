@@ -18,7 +18,7 @@ import CursorFollower from './components/CursorFollower'
 import ScrollToTop from './components/ScrollToTop'
 import ScrollToTopButton from './components/ScrollToTopButton'
 
-import WhatsAppFloat from './components/WhatsAppFloat'
+// import WhatsAppFloat from './components/WhatsAppFloat'
 // import IntroOverlay from './components/IntroOverlay'
 import './App.css'
 import './mobile-enhancements.css'
@@ -48,7 +48,7 @@ function App() {
           <Route path="/experience/somvanshi" element={<ExperienceSomvanshi />} />
           <Route path="/dino-game" element={<DinoGame />} />
         </Routes>
-        <WhatsAppFloat />
+        {/* <WhatsAppFloat /> */}
         <ScrollToTopButton />
       </div>
     </Router>
