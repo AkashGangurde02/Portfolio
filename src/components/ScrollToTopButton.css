@@ -1,7 +1,7 @@
 .scroll-to-top-btn {
     position: fixed;
     /* Sit to the LEFT of the Chatbase bubble so they're side by side */
-    bottom: 24px;
+    bottom: 20px;
     right: 90px;
     background-color: #ffffff;
     color: #333333;
