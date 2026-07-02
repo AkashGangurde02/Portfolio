@@ -16,10 +16,37 @@
     })(window, document, "clarity", "script", "x4cubumcoh");
   </script>
 
-  <!-- Chatbase bubble button nudge (window position managed by Chatbase internally) -->
+  <!-- Chatbase bubble button nudge + chat window height override -->
   <style>
+    /* Bubble button position */
     #chatbase-bubble-button {
       transform: translate(-24px, -110px) !important;
+    }
+
+    /* ── Chat window container ── */
+    #chatbase-bubble-window {
+      height: 520px !important;
+      max-height: 520px !important;
+      min-height: unset !important;
+    }
+
+    /* ── Inner iframe ── */
+    #chatbase-bubble-window iframe {
+      height: 520px !important;
+      max-height: 520px !important;
+      min-height: unset !important;
+    }
+
+    /* ── Mobile: keep it comfortable on small screens ── */
+    @media (max-width: 480px) {
+      #chatbase-bubble-window {
+        height: 75vh !important;
+        max-height: 75vh !important;
+      }
+      #chatbase-bubble-window iframe {
+        height: 75vh !important;
+        max-height: 75vh !important;
+      }
     }
   </style>
 
