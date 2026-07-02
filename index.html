@@ -16,14 +16,14 @@
     })(window, document, "clarity", "script", "x4cubumcoh");
   </script>
 
-  <!-- Chatbase bubble button nudge + chat window height override -->
+  <!-- Chatbase bubble button nudge + chat window responsive override -->
   <style>
-    /* Bubble button position */
+    /* ── Desktop: bubble button position ── */
     #chatbase-bubble-button {
       transform: translate(-24px, -110px) !important;
     }
 
-    /* ── Chat window container ── */
+    /* ── Desktop: chat window (default) ── */
     #chatbase-bubble-window {
       height: 460px !important;
       max-height: 460px !important;
@@ -31,7 +31,7 @@
       width: 420px !important;
     }
 
-    /* ── Inner iframe ── */
+    /* ── Desktop: inner iframe ── */
     #chatbase-bubble-window iframe {
       height: 460px !important;
       max-height: 460px !important;
@@ -39,17 +39,68 @@
       width: 420px !important;
     }
 
-    /* ── Mobile: keep it comfortable on small screens ── */
-    @media (max-width: 480px) {
+    /* ── Tablet (≤ 768px) ── */
+    @media (max-width: 768px) {
+      #chatbase-bubble-button {
+        transform: translate(-12px, -80px) !important;
+      }
       #chatbase-bubble-window {
-        height: 75vh !important;
-        max-height: 75vh !important;
-        width: 95vw !important;
+        height: 55vh !important;
+        max-height: 55vh !important;
+        width: 92vw !important;
+        max-width: 400px !important;
+        right: 16px !important;
+        bottom: 80px !important;
       }
       #chatbase-bubble-window iframe {
-        height: 75vh !important;
-        max-height: 75vh !important;
-        width: 95vw !important;
+        height: 55vh !important;
+        max-height: 55vh !important;
+        width: 100% !important;
+      }
+    }
+
+    /* ── Large phones (≤ 480px) ── */
+    @media (max-width: 480px) {
+      #chatbase-bubble-button {
+        transform: translate(-8px, -70px) !important;
+      }
+      #chatbase-bubble-window {
+        height: 58vh !important;
+        max-height: 58vh !important;
+        width: 96vw !important;
+        max-width: unset !important;
+        right: 8px !important;
+        bottom: 72px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+      }
+      #chatbase-bubble-window iframe {
+        height: 58vh !important;
+        max-height: 58vh !important;
+        width: 100% !important;
+      }
+    }
+
+    /* ── Small phones (≤ 360px) ── */
+    @media (max-width: 360px) {
+      #chatbase-bubble-button {
+        transform: translate(-4px, -60px) !important;
+      }
+      #chatbase-bubble-window {
+        height: 52vh !important;
+        max-height: 52vh !important;
+        width: 100vw !important;
+        right: 0 !important;
+        left: 0 !important;
+        bottom: 64px !important;
+        transform: none !important;
+        border-radius: 0 !important;
+      }
+      #chatbase-bubble-window iframe {
+        height: 52vh !important;
+        max-height: 52vh !important;
+        width: 100% !important;
+        border-radius: 0 !important;
       }
     }
   </style>
