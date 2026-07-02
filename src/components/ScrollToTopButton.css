@@ -1,7 +1,8 @@
 .scroll-to-top-btn {
     position: fixed;
-    bottom: 100px;
-    right: 30px;
+    /* Sit to the LEFT of the Chatbase bubble so they're side by side */
+    bottom: 24px;
+    right: 90px;
     background-color: #ffffff;
     color: #333333;
     width: 45.5px;
@@ -46,12 +47,13 @@
     transform: translateY(-3px);
 }
 
-/* Responsive */
+/* Responsive: mobile — sit beside the Chatbase bubble */
 @media (max-width: 480px) {
     .scroll-to-top-btn {
-        bottom: 90px;
-        right: 20px;
+        bottom: 20px;
+        right: 80px;
         width: 40px;
         height: 40px;
     }
 }
+
