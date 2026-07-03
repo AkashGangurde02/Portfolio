@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef, useCallback } from 'react'
+import { useSEO } from '../hooks/useSEO'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
@@ -223,6 +224,12 @@ const TOC_ITEMS = [
 
 // ── MAIN COMPONENT ────────────────────────────────────────────────────────────
 export default function CaseStudySpotify() {
+  useSEO({
+    title: 'Spotify Desktop Mini Player Redesign',
+    description: 'UX case study: bringing live lyrics to the Spotify Desktop Mini Player using progressive disclosure and hover-based interaction — without disrupting user workflow.',
+    canonical: '/case-study/spotify',
+    ogImage: '/og/og-spotify.png',
+  })
   const [activeSection, setActiveSection] = useState('')
   const tocListRef = useRef(null)
   const tocIndicatorRef = useRef(null)

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
+import { useSEO } from '../hooks/useSEO'
 import { createPortal } from 'react-dom'
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
@@ -42,6 +43,12 @@ const ToolCard = ({ tool, rowIndex, onMouseEnter, onMouseLeave }) => (
 )
 
 const About = () => {
+  useSEO({
+    title: 'About',
+    description: 'Self-taught UX/UI Designer with a background in Computer Science Engineering (AI). Specialising in mobile-first products, interaction design, and scalable design systems.',
+    canonical: '/about',
+    ogImage: '/og/og-about.png',
+  })
   const heroRef = useRef(null)
   const titleRef = useRef(null)
   const topSectionRef = useRef(null)

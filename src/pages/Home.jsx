@@ -1,3 +1,4 @@
+import { useSEO } from '../hooks/useSEO'
 import HeroSection from '../components/HeroSection'
 import MarqueeStrip from '../components/MarqueeStrip'
 import WorksSection from '../components/WorksSection'
@@ -12,6 +13,12 @@ import Footer from '../components/Footer'
 import ImpactSection from '../components/ImpactSection'
 
 const Home = () => {
+  useSEO({
+    title: 'Akash Gangurde – UX/UI Designer Portfolio',
+    description: 'Award-winning UX/UI designer crafting mobile-first digital products. Explore case studies in product design, interaction design, food-tech, and music.',
+    canonical: '/',
+    ogImage: '/og/og-default.png',
+  })
   return (
     <>
       <HeroSection />

@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef, useCallback } from 'react'
+import { useSEO } from '../hooks/useSEO'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
@@ -537,6 +538,12 @@ const RefinementFlow = () => (
 )
 
 export default function CaseStudyContactForm() {
+  useSEO({
+    title: 'B2B Contact Form UX Case Study',
+    description: 'How I reduced friction in a high-drop-off B2B SaaS contact form through layout restructuring, inline validation, and interaction-level improvements.',
+    canonical: '/case-study',
+    ogImage: '/og/og-contact-form.png',
+  })
   const [activeFlow, setActiveFlow] = useState('discovery')
   const [activeSection, setActiveSection] = useState('')
   const [isVisible, setIsVisible] = useState(false)

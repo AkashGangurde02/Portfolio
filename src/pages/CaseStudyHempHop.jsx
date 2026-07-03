@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { useSEO } from '../hooks/useSEO'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import gsap from 'gsap'
@@ -30,6 +31,12 @@ const HEMP_HOP_PROBLEMS = [
 ]
 
 const CaseStudyHempHop = () => {
+    useSEO({
+      title: 'Hemp Hop UX Case Study',
+      description: 'UX case study: redesigning the Hemp Hop D2C wellness e-commerce experience to improve product discovery, trust signals, and purchase confidence.',
+      canonical: '/case-study/hemp-hop',
+      ogImage: '/og/og-hemp-hop.png',
+    })
     const heroRef = useRef(null)
     const sectionsRef = useRef([])
     const [activeProblemIndex, setActiveProblemIndex] = useState(0)

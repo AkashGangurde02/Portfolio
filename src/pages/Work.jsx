@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { useSEO } from '../hooks/useSEO'
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -12,6 +13,12 @@ import Footer from '../components/Footer'
 gsap.registerPlugin(ScrollTrigger)
 
 const Work = () => {
+    useSEO({
+      title: 'Work',
+      description: 'Browse UX case studies by Akash Gangurde — covering food-tech, music UX, wellness e-commerce, and B2B SaaS. Mobile-first, user-centered design work.',
+      canonical: '/work',
+      ogImage: '/og/og-work.png',
+    })
     const heroRef    = useRef(null)
     const cardsRef   = useRef(null)
     const ctaRef     = useRef(null)

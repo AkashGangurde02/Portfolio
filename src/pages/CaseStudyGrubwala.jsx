@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef, useCallback } from 'react'
+import { useSEO } from '../hooks/useSEO'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import gsap from 'gsap'
@@ -1051,6 +1052,12 @@ const EdgeCaseFlow = () => (
 )
 
 export default function CaseStudyGrubwala() {
+  useSEO({
+    title: 'Grubwala UX Case Study',
+    description: 'How I redesigned Grubwala’s onboarding and homepage to improve trust signals, ordering conversion, and the mobile food-ordering experience.',
+    canonical: '/case-study/grubwala',
+    ogImage: '/og/og-grubwala.png',
+  })
   const [activeFlow, setActiveFlow] = useState('onboarding')
   const [activeSection, setActiveSection] = useState('')
   const [isVisible, setIsVisible] = useState(false)
